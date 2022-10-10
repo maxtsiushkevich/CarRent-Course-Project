@@ -7,16 +7,20 @@ using namespace std;
 
 Car :: Car()
 {
-    ofstream file;
-    file.open("cars.txt");
-    if (!file.is_open())
-    {
-        cout << "Error" << endl;
-    }
-    file.close();
     odometer = 0;
-    cout << "Введите марку автомобиля: " << endl;
-    cin >> brand;
-    cout << "Введите модель автомобиля: " << endl;
-    cin >> model;
+    cout << "Марка автомобиля: " << endl; // выбор
+    // открывается файл с марками
+    cout << "Модель автомобиля: " << endl; // выбор
+    cout << "Год выпуска автомобиля: " << endl;
+    cin >> manufacturedYear; // 2000 <= year <= 2022
+    cout << "Тип кузова: " << endl;
+    cin >> bodyType; // выбор седан универсал хэтчбек лимузин пикап минивен купе кабриолет кроссовер внедорожник
+    cout << "Коробка передач: " << endl; // выбор из АКПП или МКПП
+    cout << "Государственный номер автомобиля: " << endl;
+    cin >> carPlate; // должно соответствовать формату 9999АА-9
+    cout << "Стоимость аренды на день: " << endl;
+    cin >> costPerDay; // >0
+    costPerWeek = costPerDay * 6;
+    costPerMonth = costPerDay * 25;
+
 }

@@ -8,15 +8,16 @@ class Car // виртуальный деструктор
 {
     friend class Admin;
 private:
+    string brand; // бренд
+    string model; // модель
+    string carPlate; // госномер
     int costPerDay; // стоимость в день
     int costPerWeek; // в неделю
     int costPerMonth; // в месяц
-    string carPlate; // госномер
     int odometer; // пробег
     int manufacturedYear; // год
     string bodyType; // тип кузова
-    string brand; // бренд
-    string model; // модель
+
     string country; // страна
     string transmissionType; // КПП
 
@@ -38,7 +39,6 @@ private:
         string color;
     } exterior;
 
-    ////////////////// ОПЦИИ //////////////////
     bool cruiseControl;
     bool parkingAssist;
     bool music;
@@ -48,6 +48,7 @@ private:
     bool gps;
     bool sunroof;
 public:
+    //Car(string);
     Car();
     //virtual ~Car();
     double getTariff();
