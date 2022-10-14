@@ -1,0 +1,10 @@
+1 - Audi : Германия			11 - Ford : США				21 - Opel : Германия
+2 - Alfa Romeo : Италия			12 - Honda : Япония			22 - Peugeot : Франция
+3 - Aston Martin : Великобритания 	13 - Hyundai : Южная Корея		23 - Porsche : Германия
+4 - Bentley : Великобритания      	14 - Kia : Южная Корея			24 - Renault : Франция
+5 - BMW	: Германия			15 - Land Rover	: Великобритания	25 - : Skoda Чехия
+6 - Cadillac : США			16 - Lexus : Япония			26 - Subaru : Япония
+7 - Chevrolet : США			17 - Mazda : Япония			27 - Toyota : Япония
+8 - Citroen : Италия			18 - Mercedes-Benz : Германия		28 - Tesla : США	
+9 - Ferrari : Италия			19 - Mitsubishi : Япония		29 - Volvo : Швеция
+10 - Fiat : Италия			20 - Nissan : Япония			30 - Volkswagen : Германия
