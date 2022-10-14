@@ -4,10 +4,13 @@
 #include <string>
 
 
-class ElecticCar : private Car
+class ElectricCar : private Car
 {
 private:
     int batteryCapacity;
+public:
+    //ElectricCar(int);
+    //~ElectricCar();
 };
 
 

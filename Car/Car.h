@@ -4,37 +4,37 @@
 
 using namespace std;
 
-class Car // виртуальный деструктор
+class Car
 {
     friend class Admin;
 private:
-    string brand; // бренд
-    string model; // модель
-    string carPlate; // госномер
-    int costPerDay; // стоимость в день
-    int costPerWeek; // в неделю
-    int costPerMonth; // в месяц
-    int odometer; // пробег
-    int manufacturedYear; // год
-    string bodyType; // тип кузова
+    string brand;
+    string model;
+    string carPlate;
+    int costPerDay;
+    int costPerWeek;
+    int costPerMonth;
+    int odometer;
+    int manufacturedYear;
+    string bodyType;
 
-    string country; // страна
-    string transmissionType; // КПП
+    string country;
+    string transmissionType;
 
-    struct engine // двигатель
+    struct engine
     {
         int horsepower;
         double maxSpeed;
         double to100;
     } engine;
 
-    struct interior // интерьер
+    struct interior
     {
         string color;
         string material;
     } interior;
 
-    struct exterior // экстерьер
+    struct exterior
     {
         string color;
     } exterior;
@@ -48,10 +48,9 @@ private:
     bool gps;
     bool sunroof;
 public:
-    //Car(string);
+    Car(int);
     Car();
     //virtual ~Car();
-    double getTariff();
     string getPlate();
     double getOdometer();
     string getBodyType();
@@ -59,5 +58,6 @@ public:
     string getModel();
     string getCountry();
     string getTransmission();
+
 };
 #endif
