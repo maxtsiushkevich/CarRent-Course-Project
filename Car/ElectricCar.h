@@ -6,11 +6,14 @@
 
 class ElectricCar : private Car
 {
-private:
+protected:
     int batteryCapacity;
 public:
-    //ElectricCar(int);
-    //~ElectricCar();
+    ElectricCar();
+    virtual ~ElectricCar();
+    void writeInFile();
+    void readFromFile();
+
 };
 
 

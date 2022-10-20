@@ -5,8 +5,9 @@
 
 class GasCar : private Car
 {
+private:
     int gasCapacity;
-    double gasConsumption; // 110-120% от бензина
+    float gasConsumption; // 110-120% от бензина
 };
 
 #endif

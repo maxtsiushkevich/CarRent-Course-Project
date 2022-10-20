@@ -8,8 +8,6 @@ include_directories(Car)
 include_directories(Client)
 
 add_executable(CarRent
-        Admin/Admin.cpp
-        Admin/Admin.h
         Car/Car.cpp
         Car/Car.h
         Car/ElectricCar.cpp
@@ -20,6 +18,4 @@ add_executable(CarRent
         Car/HybridCar.h
         Car/OilCar.cpp
         Car/OilCar.h
-        Client/Client.cpp
-        Client/Client.h
-        main.cpp)
+        main.cpp Persons/Person.cpp Persons/Person.h Persons/User.cpp Persons/User.h Persons/Admin.cpp Persons/Admin.h)

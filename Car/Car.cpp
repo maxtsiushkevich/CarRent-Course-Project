@@ -2,7 +2,6 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-
 using namespace std;
 
 Car :: Car()
@@ -54,7 +53,7 @@ Car :: Car()
             continue;
         }
     }
-    cout << "Модель автомобиля: " << endl; // аналогично с маркой, вместе с моделью в файле хранится кузов
+    cout << "Модель автомобиля: " << endl;
     cin >> model;
     cout << "Тип кузова: " << endl;
     cin >> bodyType;
@@ -88,7 +87,7 @@ Car :: Car()
     // проверка на соответствие
 
     cout << "Стоимость аренды на день: " << endl;
-    cin >> costPerDay; // >0
+    cin >> costPerDay;
     while (costPerDay < 0)
     {
         cout << "Ошибка. Введите еще раз: ";
@@ -111,6 +110,12 @@ Car :: Car()
     cin >> choice;
     while (choice != 0)
     {
+        while (choice > 9 || choice < 0)
+        {
+            cout << "Ошибка. Введите еще раз: ";
+            cin >> choice;
+        }
+
         switch (choice)
         {
             case 1: cruiseControl = true; break;
@@ -127,9 +132,32 @@ Car :: Car()
         }
         cin >> choice;
     }
+
+    cout << "Количество лошадиных сил в двигателе: " << endl;
+    cin >> engine.horsepower;
+    while (engine.horsepower > 1000 || engine.horsepower <= 0)
+    {
+        cout << "Ошибка. Введите еще раз: ";
+        cin >> engine.horsepower;
+    }
+    cout << "Разгон до 100: " << endl;
+    cin >> engine.to100;
+    while (engine.to100 < 1.0)
+    {
+        cout << "Ошибка. Введите еще раз: ";
+        cin >> engine.to100;
+    }
+    cout << "Максимальная скорость: " << endl;
+    cin >> engine.maxSpeed;
+    while (engine.maxSpeed > 500 || engine.maxSpeed < 10)
+    {
+        cout << "Ошибка. Введите еще раз: ";
+        cin >> engine.maxSpeed;
+    }
     file.close();
+
     ofstream carsFile;
-    carsFile.open("/Users/max/Desktop/CarRent/AllCars.bin");
+    carsFile.open("/Users/max/Desktop/CarRent/AllCars.bin", ios::binary);
     if (!carsFile.is_open())
         cout << "Error";
     carsFile.write((char*)this, sizeof(Car));
@@ -137,10 +165,16 @@ Car :: Car()
 }
 
 Car :: Car(int odo) { odometer = odo; }
+Car :: ~Car() { }
 string Car :: getBrand() { return brand; }
 string Car :: getPlate() { return carPlate; }
-double Car :: getOdometer() { return odometer; }
+int Car :: getOdometer() { return odometer; }
 string Car :: getBodyType() { return bodyType; }
 string Car :: getModel() { return model; }
 string Car :: getCountry() { return country; }
 string Car :: getTransmission() { return transmissionType; }
+
+void Car :: printAll()
+{
+    cout << "Модель: " << brand << ' ' << model << ' ' << manufacturedYear <<' ' << bodyType << ' ' << country << ' ' << transmissionType << ' ' << carPlate << endl;
+}

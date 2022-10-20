@@ -1,13 +1,19 @@
 #ifndef CARRENT_HYBRIDCAR_H
 #define CARRENT_HYBRIDCAR_H
 #include "Car.h"
+#include "ElectricCar.h"
+#include "OilCar.h"
 #include <string>
 
-class HybridCar : private Car
+class HybridCar : private ElectricCar, private OilCar
 {
-    int batteryCapacity;
-    double consumption;
-    double engineVolume;
+private:
+    //int batteryCapacity;
+    //float consumption;
+    //float engineVolume;
+public:
+   /* HybridCar();
+    ~HybridCar();*/
 };
 
 #endif

@@ -6,8 +6,7 @@ using namespace std;
 
 class Car
 {
-    friend class Admin;
-private:
+protected:
     string brand;
     string model;
     string carPlate;
@@ -17,17 +16,14 @@ private:
     int odometer;
     int manufacturedYear;
     string bodyType;
-
     string country;
     string transmissionType;
-
     struct engine
     {
         int horsepower;
-        double maxSpeed;
-        double to100;
+        float maxSpeed;
+        float to100;
     } engine;
-
     struct interior
     {
         string color;
@@ -47,17 +43,21 @@ private:
     bool seatHeating;
     bool gps;
     bool sunroof;
+
 public:
     Car(int);
     Car();
-    //virtual ~Car();
-    string getPlate();
-    double getOdometer();
-    string getBodyType();
-    string getBrand();
-    string getModel();
-    string getCountry();
-    string getTransmission();
-
+    virtual ~Car();
+    virtual string getPlate();
+    virtual int getOdometer();
+    virtual string getBodyType();
+    virtual string getBrand();
+    virtual string getModel();
+    virtual string getCountry();
+    virtual string getTransmission();
+    //virtual void printOptions();
+    //virtual void writeInFile();
+    //virtual void readFromFile();
+    virtual void printAll();
 };
 #endif

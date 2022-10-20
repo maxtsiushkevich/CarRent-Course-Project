@@ -5,10 +5,19 @@
 
 class OilCar : private Car
 {
-private:
-    double consumption; // расход
-    double engineVolume; // объем
-
+protected:
+    struct engine
+    {
+        float consumption; // расход
+        float engineVolume; // объем
+    } engine;
+public:
+    OilCar();
+    OilCar(int);
+    virtual ~OilCar();
+    void writeInFile();
+    void readFromFile();
+    void printAll();
 };
 
 #endif
