@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(Admin)
 include_directories(Car)
 include_directories(Client)
+include_directories(Interface)
 
 add_executable(CarRent
         Car/Car.cpp
@@ -16,4 +17,6 @@ add_executable(CarRent
         Car/HybridCar.h
         Car/OilCar.cpp
         Car/OilCar.h
-        main.cpp Persons/Person.cpp Persons/Person.h Persons/User.cpp Persons/User.h Persons/Admin.cpp Persons/Admin.h)
+        Interface/Interface.cpp
+        Interface/Interface.h
+        main.cpp Persons/Person.cpp Persons/Person.h Persons/User.cpp Persons/User.h Persons/Admin.cpp Persons/Admin.h Interface/Interface.cpp Interface/Interface.h)
