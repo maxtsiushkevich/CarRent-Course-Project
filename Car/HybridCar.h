@@ -5,15 +5,15 @@
 #include "OilCar.h"
 #include <string>
 
-class HybridCar : private ElectricCar, private OilCar
+class HybridCar : protected ElectricCar, protected OilCar
 {
 private:
     //int batteryCapacity;
     //float consumption;
     //float engineVolume;
 public:
-   /* HybridCar();
-    ~HybridCar();*/
+    HybridCar();
+    ~HybridCar();
 };
 
 #endif

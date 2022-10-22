@@ -4,7 +4,7 @@
 #include <string>
 
 
-class ElectricCar : private Car
+class ElectricCar : virtual protected Car
 {
 protected:
     int batteryCapacity;

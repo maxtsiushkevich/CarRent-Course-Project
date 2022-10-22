@@ -28,7 +28,7 @@ OilCar :: ~OilCar() { }
 
 void OilCar :: writeInFile()
 {
-    ofstream file("/Users/max/Desktop/CarRent/OilCar.bin", ios::binary |  ios::app);
+    ofstream file("/Users/max/Desktop/CarRent/OilCar.bin", ios::binary | ios::app);
     if (!file.is_open())
         cout << "Error";
     file.write((char*)this, sizeof(OilCar));
@@ -45,7 +45,21 @@ void OilCar :: readFromFile()
     file.close();
 }
 
-void OilCar :: printAll()
+void OilCar :: printAllInfo()
 {
     cout << "Модель: " << brand << ' ' << model << ' ' << manufacturedYear <<' ' << bodyType << ' ' << country << ' ' << transmissionType << ' ' << carPlate << endl;
+}
+
+void OilCar :: printAllCars()
+{
+    ifstream file("/Users/max/Desktop/CarRent/OilCar.bin", ios::binary);
+    file.seekg(0, ios::beg);
+    if (!file.is_open())
+        cout << "Error";
+    while (file.read((char *)this, sizeof(OilCar)))
+    {
+        this->printAllInfo();
+    }
+    file.close();
+
 }

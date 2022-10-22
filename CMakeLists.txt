@@ -12,8 +12,6 @@ add_executable(CarRent
         Car/Car.h
         Car/ElectricCar.cpp
         Car/ElectricCar.h
-        Car/GasCar.cpp
-        Car/GasCar.h
         Car/HybridCar.cpp
         Car/HybridCar.h
         Car/OilCar.cpp

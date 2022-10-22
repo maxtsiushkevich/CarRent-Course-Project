@@ -155,13 +155,6 @@ Car :: Car()
         cin >> engine.maxSpeed;
     }
     file.close();
-
-    ofstream carsFile;
-    carsFile.open("/Users/max/Desktop/CarRent/AllCars.bin", ios::binary);
-    if (!carsFile.is_open())
-        cout << "Error";
-    carsFile.write((char*)this, sizeof(Car));
-    carsFile.close();
 }
 
 Car :: Car(int odo) { odometer = odo; }
@@ -174,7 +167,7 @@ string Car :: getModel() { return model; }
 string Car :: getCountry() { return country; }
 string Car :: getTransmission() { return transmissionType; }
 
-void Car :: printAll()
+void Car :: printAllInfo()
 {
     cout << "Модель: " << brand << ' ' << model << ' ' << manufacturedYear <<' ' << bodyType << ' ' << country << ' ' << transmissionType << ' ' << carPlate << endl;
 }

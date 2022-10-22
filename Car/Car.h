@@ -55,9 +55,14 @@ public:
     virtual string getModel();
     virtual string getCountry();
     virtual string getTransmission();
-    //virtual void printOptions();
+
     //virtual void writeInFile();
     //virtual void readFromFile();
-    virtual void printAll();
+
+    //virtual void printAllCars();
+    //virtual void printByCriteria(string);
+    //virtual void printByCriteria(int);
+    //virtual void printByCriteria(float);
+    virtual void printAllInfo();
 };
 #endif
