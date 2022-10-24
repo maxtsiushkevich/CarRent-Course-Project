@@ -5,7 +5,7 @@
 #include "OilCar.h"
 #include <string>
 
-class HybridCar : protected ElectricCar, protected OilCar
+class HybridCar : public ElectricCar, public  OilCar
 {
 private:
     //int batteryCapacity;

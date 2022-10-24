@@ -16,6 +16,8 @@ int main()
     Interface interface;
 
     //OilCar c1;
+    //c1.getBrand();
+
     //c1.writeInFile();
 
     //OilCar c2(0);

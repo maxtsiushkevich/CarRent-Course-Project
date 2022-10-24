@@ -3,7 +3,7 @@
 #include "Car.h"
 #include <string>
 
-class OilCar : virtual protected Car
+class OilCar : virtual public Car
 {
 protected:
     struct engine
