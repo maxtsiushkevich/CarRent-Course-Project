@@ -9,31 +9,32 @@ class Car
 protected:
     string brand;
     string model;
-    string carPlate;
-    int costPerDay;
-    int costPerWeek;
-    int costPerMonth;
-    int odometer;
-    int manufacturedYear;
-    string bodyType;
     string country;
+    string bodyType;
+    int manufacturedYear;
     string transmissionType;
+    int numberOfSeats;
+    int odometer;
+    string plate;
+
     struct engine
     {
         int horsepower;
         float maxSpeed;
         float to100;
     } engine;
+
     struct interior
     {
         string color;
         string material;
     } interior;
 
-    struct exterior
-    {
-        string color;
-    } exterior;
+    string color;
+
+    int costPerDay;
+    int costPerWeek;
+    int costPerMonth;
 
     bool cruiseControl;
     bool parkingAssist;
@@ -47,14 +48,22 @@ protected:
 public:
     Car(int);
     Car();
+
     virtual ~Car();
-    virtual string getPlate();
-    virtual int getOdometer();
-    virtual string getBodyType();
+
     virtual string getBrand();
     virtual string getModel();
     virtual string getCountry();
-    virtual string getTransmission();
+    virtual string getBodyType();
+    virtual int getManufacturedYear();
+    virtual int getNumberOfSeats();
+    virtual string getTransmissionType();
+    virtual int getOdometer();
+    virtual string getPlate();
+
+
+
+
 
     //virtual void writeInFile();
     //virtual void readFromFile();
@@ -63,6 +72,6 @@ public:
     //virtual void printByCriteria(string);
     //virtual void printByCriteria(int);
     //virtual void printByCriteria(float);
-    virtual void printAllInfo();
+    //virtual void printAllInfo();
 };
 #endif

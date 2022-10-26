@@ -13,6 +13,12 @@ ElectricCar :: ElectricCar()
     }
 }
 
+ElectricCar :: ElectricCar(int odo)
+{
+    odometer = odo;
+}
+
+
 ElectricCar :: ~ElectricCar() { }
 
 

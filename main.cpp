@@ -14,8 +14,7 @@ int main()
     setlocale(LC_ALL, "ru");
 
     Interface interface;
-
-    //OilCar c1;
+    //HybridCar h1;
     //c1.getBrand();
 
     //c1.writeInFile();

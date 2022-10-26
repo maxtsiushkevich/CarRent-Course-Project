@@ -8,14 +8,10 @@ Car :: Car()
 {
     string str;
     int choice;
-    cruiseControl = false;
-    parkingAssist = false;
-    music = false;
-    bluetooth = false;
-    climat = false;
-    seatHeating = false;
-    gps = false;
-    sunroof = false;
+    odometer = 0;
+
+    cruiseControl = parkingAssist = music = bluetooth = climat = seatHeating = gps = sunroof = false;
+
     ifstream file("/Users/max/Desktop/CarRent/Files/CarBrands.txt");
     if (!file.is_open())
         cout << "Error";
@@ -49,14 +45,17 @@ Car :: Car()
                 break;
             }
         }
-        catch (std::invalid_argument) {
+        catch (std::invalid_argument){
             continue;
         }
     }
+
     cout << "Модель автомобиля: " << endl;
     cin >> model;
+
     cout << "Тип кузова: " << endl;
     cin >> bodyType;
+
     cout << "Год выпуска автомобиля: " << endl;
     cin >> manufacturedYear;
     while (manufacturedYear < 2000 || manufacturedYear > 2022)
@@ -64,6 +63,7 @@ Car :: Car()
         cout << "Ошибка. Введите еще раз: ";
         cin >> manufacturedYear;
     }
+
     cout << "Коробка передач:\n1 - Автоматическа\n2 - Механическая " << endl; // выбор из АКПП или МКПП
     cin >> choice;
     while (choice > 2 || choice < 1)
@@ -76,15 +76,49 @@ Car :: Car()
         case 1: transmissionType = "АКПП"; break;
         case 2: transmissionType = "МКПП"; break;
     }
-    cout << "Цвет автомобиля" << endl;
-    cin >> exterior.color;
+
+    cout << "Количество мест: " << endl;
+    cin >> numberOfSeats;
+    while (numberOfSeats < 2 || numberOfSeats > 7)
+    {
+        cout << "Ошибка. Введите еще раз: ";
+        cin >> numberOfSeats;
+    }
+
     cout << "Материал салона" << endl;
     cin >> interior.material;
     cout << "Цвет салона" << endl;
     cin >> interior.color;
+    cout << "Цвет автомобиля" << endl;
+    cin >> color;
+
     cout << "Государственный номер автомобиля: " << endl;
-    cin >> carPlate; // должно соответствовать формату 9999АА-9
+    cin >> plate; // должно соответствовать формату 9999АА-9
     // проверка на соответствие
+
+    cout << "Количество лошадиных сил в двигателе: " << endl;
+    cin >> engine.horsepower;
+    while (engine.horsepower > 1000 || engine.horsepower <= 0)
+    {
+        cout << "Ошибка. Введите еще раз: ";
+        cin >> engine.horsepower;
+    }
+
+    cout << "Разгон до 100: " << endl;
+    cin >> engine.to100;
+    while (engine.to100 < 1.0)
+    {
+        cout << "Ошибка. Введите еще раз: ";
+        cin >> engine.to100;
+    }
+
+    cout << "Максимальная скорость: " << endl;
+    cin >> engine.maxSpeed;
+    while (engine.maxSpeed > 500 || engine.maxSpeed < 10)
+    {
+        cout << "Ошибка. Введите еще раз: ";
+        cin >> engine.maxSpeed;
+    }
 
     cout << "Стоимость аренды на день: " << endl;
     cin >> costPerDay;
@@ -95,6 +129,7 @@ Car :: Car()
     }
     costPerWeek = costPerDay * 6;
     costPerMonth = costPerDay * 25;
+
     cout << "Выберите опции: " << endl;
     cout << "1 - Круизконтроль\n"
             "2 - Паркинг-ассист\n"
@@ -106,7 +141,6 @@ Car :: Car()
             "8 - Панорамная крыша\n"
             "9 - Есть все\n"
             "0 - Окончить ввод" << endl;
-
     cin >> choice;
     while (choice != 0)
     {
@@ -133,41 +167,19 @@ Car :: Car()
         cin >> choice;
     }
 
-    cout << "Количество лошадиных сил в двигателе: " << endl;
-    cin >> engine.horsepower;
-    while (engine.horsepower > 1000 || engine.horsepower <= 0)
-    {
-        cout << "Ошибка. Введите еще раз: ";
-        cin >> engine.horsepower;
-    }
-    cout << "Разгон до 100: " << endl;
-    cin >> engine.to100;
-    while (engine.to100 < 1.0)
-    {
-        cout << "Ошибка. Введите еще раз: ";
-        cin >> engine.to100;
-    }
-    cout << "Максимальная скорость: " << endl;
-    cin >> engine.maxSpeed;
-    while (engine.maxSpeed > 500 || engine.maxSpeed < 10)
-    {
-        cout << "Ошибка. Введите еще раз: ";
-        cin >> engine.maxSpeed;
-    }
     file.close();
 }
 
 Car :: Car(int odo) { odometer = odo; }
+
 Car :: ~Car() { }
+
 string Car :: getBrand() { return brand; }
-string Car :: getPlate() { return carPlate; }
-int Car :: getOdometer() { return odometer; }
-string Car :: getBodyType() { return bodyType; }
 string Car :: getModel() { return model; }
 string Car :: getCountry() { return country; }
-string Car :: getTransmission() { return transmissionType; }
-
-void Car :: printAllInfo()
-{
-    cout << "Модель: " << brand << ' ' << model << ' ' << manufacturedYear <<' ' << bodyType << ' ' << country << ' ' << transmissionType << ' ' << carPlate << endl;
-}
+string Car :: getBodyType() {return bodyType; }
+int Car :: getManufacturedYear() { return manufacturedYear; }
+int Car :: getNumberOfSeats() { return numberOfSeats;}
+string Car :: getTransmissionType() { return transmissionType; }
+int Car :: getOdometer() { return odometer; }
+string Car :: getPlate() { return plate;}

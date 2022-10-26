@@ -10,7 +10,9 @@ protected:
     int batteryCapacity;
 public:
     ElectricCar();
+    ElectricCar(int);
     virtual ~ElectricCar();
+    // геттеры
     void writeInFile();
     void readFromFile();
 

@@ -3,8 +3,7 @@
 #include <iostream>
 
 HybridCar :: HybridCar()
-{
+{ }
 
-}
 
 HybridCar :: ~HybridCar() { }

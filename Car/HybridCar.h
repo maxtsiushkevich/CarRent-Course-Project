@@ -8,12 +8,15 @@
 class HybridCar : public ElectricCar, public  OilCar
 {
 private:
-    //int batteryCapacity;
-    //float consumption;
-    //float engineVolume;
+    string fuelType;
+    int batteryCapacity;
+    float consumption;
+    float engineVolume;
 public:
     HybridCar();
+    HybridCar(int);
     ~HybridCar();
+
 };
 
 #endif

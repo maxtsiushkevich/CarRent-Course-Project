@@ -6,11 +6,11 @@
 OilCar :: OilCar () : Car()
 {
     cout << "Объем двигателя: " << endl;
-    cin >> engine.engineVolume;
-    while (engine.consumption > 8.5 || engine.consumption < 0)
+    cin >> engine.volume;
+    while (engine.volume> 8.5 || engine.volume < 0)
     {
         cout << "Ошибка. Введите еще раз: ";
-        cin >> engine.engineVolume;
+        cin >> engine.volume;
     }
     cout << "Расход топлива на 100км: " << endl;
     cin >> engine.consumption;
@@ -21,8 +21,7 @@ OilCar :: OilCar () : Car()
     }
 };
 
-OilCar :: OilCar (int odo) : Car(0)
-{ odometer = odo; }
+OilCar :: OilCar (int odo) : Car(0) { odometer = odo; }
 
 OilCar :: ~OilCar() { }
 
@@ -46,21 +45,17 @@ void OilCar :: readFromFile()
     file.close();
 }
 
-void OilCar :: printAllInfo()
-{
-    cout << "Модель: " << brand << ' ' << model << ' ' << manufacturedYear <<' ' << bodyType << ' ' << country << ' ' << transmissionType << ' ' << carPlate << endl;
-}
 
-void OilCar :: printAllCars()
-{
-    ifstream file("/Users/max/Desktop/CarRent/Files/OilCar.bin", ios::binary);
-    file.seekg(0, ios::beg);
-    if (!file.is_open())
-        cout << "Error";
-    while (file.read((char *)this, sizeof(OilCar)))
-    {
-        this->printAllInfo();
-    }
-    file.close();
 
-}
+//void OilCar :: printAllCars()
+//{
+//    ifstream file("/Users/max/Desktop/CarRent/Files/OilCar.bin", ios::binary);
+//    file.seekg(0, ios::beg);
+//    if (!file.is_open())
+//        cout << "Error";
+//    while (file.read((char *)this, sizeof(OilCar)))
+//    {
+//        this->printAllInfo();
+//    }
+//    file.close();
+//}
