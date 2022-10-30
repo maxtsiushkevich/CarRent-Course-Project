@@ -6,6 +6,8 @@ using namespace std;
 
 Car :: Car()
 {
+    deleteMark = false;
+
     string str;
     int choice;
     odometer = 0;
@@ -45,7 +47,8 @@ Car :: Car()
                 break;
             }
         }
-        catch (std::invalid_argument){
+        catch (std::invalid_argument)
+        {
             continue;
         }
     }
@@ -92,8 +95,9 @@ Car :: Car()
     cout << "Цвет автомобиля" << endl;
     cin >> color;
 
-    cout << "Государственный номер автомобиля: " << endl;
-    cin >> plate; // должно соответствовать формату 9999АА-9
+    cout << "Государственный номер автомобиля в формате 1111АА-1: " << endl;
+    cin >> plate;
+    // должно соответствовать формату 9999АА-9
     // проверка на соответствие
 
     cout << "Количество лошадиных сил в двигателе: " << endl;
@@ -174,12 +178,15 @@ Car :: Car(int odo) { odometer = odo; }
 
 Car :: ~Car() { }
 
-string Car :: getBrand() { return brand; }
-string Car :: getModel() { return model; }
-string Car :: getCountry() { return country; }
-string Car :: getBodyType() {return bodyType; }
-int Car :: getManufacturedYear() { return manufacturedYear; }
-int Car :: getNumberOfSeats() { return numberOfSeats;}
-string Car :: getTransmissionType() { return transmissionType; }
-int Car :: getOdometer() { return odometer; }
-string Car :: getPlate() { return plate;}
+
+
+//string Car :: GetModel() { return model; }
+//string Car :: GetCountry() { return country; }
+//string Car :: GetBodyType() {return bodyType; }
+//int Car :: GetManufacturedYear() { return manufacturedYear; }
+//int Car :: GetNumberOfSeats() { return numberOfSeats;}
+//string Car :: GetTransmissionType() { return transmissionType; }
+//int Car :: GetOdometer() { return odometer; }
+//string Car :: GetPlate() { return plate;}
+
+

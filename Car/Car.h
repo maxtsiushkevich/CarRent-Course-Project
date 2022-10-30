@@ -7,6 +7,7 @@ using namespace std;
 class Car
 {
 protected:
+    bool deleteMark;
     string brand;
     string model;
     string country;
@@ -16,7 +17,6 @@ protected:
     int numberOfSeats;
     int odometer;
     string plate;
-
     struct engine
     {
         int horsepower;
@@ -48,25 +48,22 @@ protected:
 public:
     Car(int);
     Car();
-
     virtual ~Car();
 
-    virtual string getBrand();
-    virtual string getModel();
-    virtual string getCountry();
-    virtual string getBodyType();
-    virtual int getManufacturedYear();
-    virtual int getNumberOfSeats();
-    virtual string getTransmissionType();
-    virtual int getOdometer();
-    virtual string getPlate();
+//    virtual string GetBrand();
+//    virtual int GetManufacturedYear();
+//    virtual string GetModel();
+//    virtual string GetCountry();
+//    virtual string GetBodyType();
+//    virtual int GetManufacturedYear();
+//    virtual int GetNumberOfSeats();
+//    virtual string GetTransmissionType();
+//    virtual int GetOdometer();
+//    virtual string GetPlate();
 
 
 
 
-
-    //virtual void writeInFile();
-    //virtual void readFromFile();
 
     //virtual void printAllCars();
     //virtual void printByCriteria(string);

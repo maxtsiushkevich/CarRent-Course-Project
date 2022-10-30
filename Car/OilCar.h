@@ -15,9 +15,7 @@ public:
     OilCar();
     OilCar(int);
     virtual ~OilCar();
-    void writeInFile(); // записывает в файл объект
-    void readFromFile(); // читает из файла объект
-
+    int getYear();
 };
 
 #endif

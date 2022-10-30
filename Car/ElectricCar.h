@@ -13,8 +13,7 @@ public:
     ElectricCar(int);
     virtual ~ElectricCar();
     // геттеры
-    void writeInFile();
-    void readFromFile();
+
 
 };
 

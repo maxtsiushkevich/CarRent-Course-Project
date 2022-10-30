@@ -3,44 +3,51 @@
 #include "Car/ElectricCar.h"
 #include "Car/HybridCar.h"
 #include "Car/OilCar.h"
+#include "Car/FileWorker.h"
 #include <string>
 #include <fstream>
-#include "Interface/Interface.h"
 
 using namespace std;
 
 int main()
 {
     setlocale(LC_ALL, "ru");
+    //OilCar c1;
 
-    Interface interface;
-    //HybridCar h1;
-    //c1.getBrand();
+//    ofstream file;
+//    file.open("/Users/max/Desktop/CarRent/Files/OilCar.txt", ofstream::app);
+//    if (!file.is_open())
+//        cout << "Error";
+//    file.write((char*)&c1, sizeof(OilCar));
+//    file.close();
 
-    //c1.writeInFile();
 
-    //OilCar c2(0);
-    //c2.printAllCars();
+//    ifstream fil;
+//    fil.open("/Users/max/Desktop/CarRent/Files/OilCar.txt");
+//    //fil.seekg(0, ios::beg);
+//    if (!fil.is_open())
+//        cout << "Error";
+//    else
+//    {
+//        OilCar car(0);
+//        fil.read((char*)&car, sizeof(OilCar));
+//        cout << car.GetBrand() << endl;
+//    }
+//    fil.close();
 
-    //c2.writeInFile();
 
-    //c2.readFromFile();
-    //c2.printAllInfo();
 
-    //int main()
-    //{
-    //    test_label(2);  // in label1
-    //    test_label(2);  // in label2
-    //}
+    ifstream file("/Users/max/Desktop/CarRent/Files/OilCar.bin", ios::binary);
+    if (!file.is_open())
+        cout << "Error";
+    else
+    {
+        OilCar c1(0);
+        file.read((char*)&c1, sizeof(OilCar));
+        cout << c1.manufacturedYear << endl;
+    }
+    file.close();
 
-    //Car c2(0);
-
-    //ifstream carsFile("/Users/max/Desktop/CarRent/AllCars.bin", ios::binary);
-    //if (!carsFile.is_open())
-    //    cout << "Error";
-    //carsFile.read((char*)&c2, sizeof(Car));
-    //carsFile.close();
-    //c2.printAll();
 
     //cout << "Car" << sizeof(Car) << endl;
     //cout << "GasCar" << sizeof(GasCar) << endl;
