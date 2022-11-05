@@ -12,7 +12,7 @@ void FileWorker :: WriteInFile (OilCar car)
     file.close();
 }
 
-void FileWorker :: WriteInFile (DieselCar &car)
+void FileWorker :: WriteInFile (DieselCar car)
 {
     ofstream file("/Users/max/Desktop/CarRent/Files/DieselCar.bin", ios::binary | ios::app);
     if (!file.is_open())
@@ -21,7 +21,7 @@ void FileWorker :: WriteInFile (DieselCar &car)
     file.close();
 }
 
-void FileWorker :: WriteInFile (PetrolCar &car)
+void FileWorker :: WriteInFile (PetrolCar car)
 {
     ofstream file("/Users/max/Desktop/CarRent/Files/PetrolCar.bin", ios::binary | ios::app);
     if (!file.is_open())
@@ -30,7 +30,7 @@ void FileWorker :: WriteInFile (PetrolCar &car)
     file.close();
 }
 
-void FileWorker :: WriteInFile (ElectricCar &car)
+void FileWorker :: WriteInFile (ElectricCar car)
 {
     ofstream file("/Users/max/Desktop/CarRent/Files/ElectricCar.bin", ios::binary | ios::app);
     if (!file.is_open())
@@ -39,7 +39,7 @@ void FileWorker :: WriteInFile (ElectricCar &car)
     file.close();
 }
 
-void FileWorker :: WriteInFile (HybridCar &car)
+void FileWorker :: WriteInFile (HybridCar car)
 {
     ofstream file("/Users/max/Desktop/CarRent/Files/ElectricCar.bin", ios::binary | ios::app);
     if (!file.is_open())
@@ -48,7 +48,7 @@ void FileWorker :: WriteInFile (HybridCar &car)
     file.close();
 }
 
-void FileWorker :: ReadFromFile(OilCar &car)
+void FileWorker :: ReadFromFile(OilCar car)
 {
     ifstream file("/Users/max/Desktop/CarRent/Files/OilCar.bin", ios::binary);
     file.seekg(0, ios::beg);

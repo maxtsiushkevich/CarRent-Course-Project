@@ -8,15 +8,10 @@ using namespace std;
 Car :: Car()
 {
     deleteMark = false;
-
     int choice;
     odometer = 0;
-
     cruiseControl = parkingAssist = music = bluetooth = climat = seatHeating = gps = sunroof = false;
-
-    CarBrands CB;
-
-    CB.GetCarBrands();
+    CarBrands::GetCarBrands();
     cout << "Выберите марку автомобиля: " << endl; // выбор
     cin >> choice;
     while (choice > 30 || choice < 1)
@@ -24,9 +19,8 @@ Car :: Car()
         cout << "Ошибка. Введите еще раз: ";
         cin >> choice;
     }
-
-    brand = CB.GetBrand(choice);
-    country = CB.GetCountry(choice);
+    brand = CarBrands::GetBrand(choice);
+    country = CarBrands::GetCountry(choice);
 
     cout << "Модель автомобиля: " << endl;
     cin >> model;

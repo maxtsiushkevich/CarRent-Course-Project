@@ -7,6 +7,7 @@
 
 class HybridCar : virtual public ElectricCar, virtual public OilCar
 {
+    friend class Database;
 private:
     string fuelType;
     int batteryCapacity;

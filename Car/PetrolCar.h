@@ -4,6 +4,7 @@
 
 class PetrolCar : public OilCar
 {
+    friend class Database;
 protected:
     int petrolType;
 public:

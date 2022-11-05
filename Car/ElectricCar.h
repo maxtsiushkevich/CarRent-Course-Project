@@ -6,6 +6,7 @@
 
 class ElectricCar : virtual public Car
 {
+    friend class Database;
 protected:
     int batteryCapacity;
 public:

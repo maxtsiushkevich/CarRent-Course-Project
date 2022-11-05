@@ -14,16 +14,16 @@ public:
     ~FileWorker() = default;
 
     void WriteInFile(OilCar);
-    void WriteInFile(DieselCar &);
-    void WriteInFile(PetrolCar &);
-    void WriteInFile(ElectricCar &);
-    void WriteInFile(HybridCar &);
+    void WriteInFile(DieselCar);
+    void WriteInFile(PetrolCar);
+    void WriteInFile(ElectricCar);
+    void WriteInFile(HybridCar);
 
-    void ReadFromFile(OilCar &);
-    void ReadFromFile(DieselCar &);
-    void ReadFromFile(PetrolCar &);
-    void ReadFromFile(ElectricCar &);
-    void ReadFromFile(HybridCar &);
+    void ReadFromFile(OilCar);
+    void ReadFromFile(DieselCar);
+    void ReadFromFile(PetrolCar);
+    void ReadFromFile(ElectricCar);
+    void ReadFromFile(HybridCar);
 };
 
 

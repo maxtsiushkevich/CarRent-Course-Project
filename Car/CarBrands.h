@@ -10,9 +10,9 @@ struct CarBrands
     char brand[30];
     char country[30];
 
-    void GetCarBrands();
-    string GetCountry(int);
-    string GetBrand(int);
+    static void GetCarBrands();
+    static string GetCountry(int);
+    static string GetBrand(int);
 };
 
 void CarBrands :: GetCarBrands() // оформить вывод в виде красивой таблицы

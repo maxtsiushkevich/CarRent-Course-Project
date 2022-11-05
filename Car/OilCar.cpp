@@ -6,27 +6,27 @@
 OilCar :: OilCar () : Car()
 {
     cout << "Объем двигателя: " << endl;
-    cin >> engine.volume;
-    while (engine.volume > 8.5 || engine.volume < 0)
+    cin >> volume;
+    while (volume > 8.5 || volume < 0)
     {
         cout << "Ошибка. Введите еще раз: ";
-        cin >> engine.volume;
+        cin >> volume;
     }
     cout << "Расход топлива на 100км: " << endl;
-    cin >> engine.consumption;
-    while (engine.consumption < 0)
+    cin >> consumption;
+    while (consumption < 0)
     {
         cout << "Ошибка. Введите еще раз: ";
-        cin >> engine.consumption;
+        cin >> consumption;
     }
 }
 
-OilCar :: OilCar (int od) : Car(od) { this->engine.consumption = od; }
+OilCar :: OilCar (int od) : Car(od) { consumption = od; }
 
 OilCar :: ~OilCar() { }
 
-float OilCar ::  GetVolume() { return this->engine.volume; }
-float OilCar :: GetConsuption() { return this->engine.consumption; }
+float OilCar ::  GetVolume() { return volume; }
+float OilCar :: GetConsuption() { return consumption; }
 
 
 

@@ -7,6 +7,7 @@ using namespace std;
 class Car
 {
     friend class CarBrands;
+    friend class Database;
 protected:
     bool deleteMark;
     string brand;
@@ -51,15 +52,16 @@ public:
     Car();
     virtual ~Car();
 
-    virtual string GetBrand();
-    virtual string GetModel();
-    virtual int GetManufacturedYear();
-    virtual string GetCountry();
-    virtual string GetBodyType();
-    virtual int GetNumberOfSeats();
-    virtual string GetTransmissionType();
-    virtual int GetOdometer();
-    virtual string GetPlate();
+    string GetBrand();
+    string GetModel();
+    int GetManufacturedYear();
+    string GetCountry();
+    string GetBodyType();
+    int GetNumberOfSeats();
+    string GetTransmissionType();
+    int GetOdometer();
+    string GetPlate();
+    bool IsDelete();
 
 
 

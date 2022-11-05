@@ -1,18 +1,26 @@
 #include <iostream>
+#include <string>
+#include <fstream>
+
 #include "Car/Car.h"
 #include "Car/ElectricCar.h"
+#include "Car/DieselCar.h"
+#include "Car/PetrolCar.h"
 #include "Car/HybridCar.h"
 #include "Car/OilCar.h"
 
-#include "Car/FileWorker.h"
-#include <string>
-#include <fstream>
+#include "Database/Database.h"
+
+//#include "Car/FileWorker.h"
 
 using namespace std;
 
 int main()
 {
-
+    //OilCar c1;
+    OilCar c2(0);
+    Database::GetFromDatabase(c2);
+    cout << c2.GetBrand();
 }
 
 

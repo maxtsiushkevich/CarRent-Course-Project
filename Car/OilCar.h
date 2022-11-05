@@ -5,12 +5,10 @@
 
 class OilCar : virtual public Car
 {
+    friend class Database;
 protected:
-    struct engine
-    {
         float consumption; // расход
         float volume; // объем
-    } engine;
 public:
     OilCar();
     OilCar(int);
