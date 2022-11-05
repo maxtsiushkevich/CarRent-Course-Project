@@ -19,4 +19,4 @@ add_executable(CarRent
         Car/OilCar.h
         Interface/Interface.cpp
         Interface/Interface.h
-        main.cpp Persons/Person.cpp Persons/Person.h Persons/User.cpp Persons/User.h Persons/Admin.cpp Persons/Admin.h Interface/Interface.cpp Interface/Interface.h Car/PetrolCar.cpp Car/PetrolCar.h Car/DieselCar.cpp Car/DieselCar.h Car/FileWorker.cpp Car/FileWorker.h)
+        main.cpp Persons/Person.cpp Persons/Person.h Persons/User.cpp Persons/User.h Persons/Admin.cpp Persons/Admin.h Interface/Interface.cpp Interface/Interface.h Car/PetrolCar.cpp Car/PetrolCar.h Car/DieselCar.cpp Car/DieselCar.h Car/FileWorker.cpp Car/FileWorker.h Car/CarBrands.h DataBase/Database.cpp DataBase/Database.h)

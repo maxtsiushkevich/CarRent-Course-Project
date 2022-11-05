@@ -15,7 +15,8 @@ public:
     OilCar();
     OilCar(int);
     virtual ~OilCar();
-    int getYear();
+    float GetVolume();
+    float GetConsuption();
 };
 
 #endif

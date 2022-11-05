@@ -2,9 +2,9 @@
 #define CARRENT_DIESELCAR_H
 #include "OilCar.h"
 
-class DieselCar : virtual public OilCar
+class DieselCar : public OilCar
 {
-private:
+public:
     DieselCar();
     DieselCar (int);
     ~DieselCar();

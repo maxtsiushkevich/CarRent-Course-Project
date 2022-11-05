@@ -2,56 +2,31 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include "CarBrands.h"
 using namespace std;
 
 Car :: Car()
 {
     deleteMark = false;
 
-    string str;
     int choice;
     odometer = 0;
 
     cruiseControl = parkingAssist = music = bluetooth = climat = seatHeating = gps = sunroof = false;
 
-    ifstream file("/Users/max/Desktop/CarRent/Files/CarBrands.txt");
-    if (!file.is_open())
-        cout << "Error";
+    CarBrands CB;
+
+    CB.GetCarBrands();
     cout << "Выберите марку автомобиля: " << endl; // выбор
-    while (!file.eof())
-    {
-        getline(file, str);
-        cout << str << endl;
-    }
     cin >> choice;
     while (choice > 30 || choice < 1)
     {
         cout << "Ошибка. Введите еще раз: ";
         cin >> choice;
     }
-    string tmp;
-    file.seekg(0, ios::beg);
-    while (!file.eof())
-    {
-        file >> tmp;
-        try
-        {
-            if (stoi(tmp) == choice) // добавить try catch
-            {
-                file >> tmp;
-                file >> tmp;
-                brand = tmp;
-                file >> tmp;
-                file >> tmp;
-                country = tmp;
-                break;
-            }
-        }
-        catch (std::invalid_argument)
-        {
-            continue;
-        }
-    }
+
+    brand = CB.GetBrand(choice);
+    country = CB.GetCountry(choice);
 
     cout << "Модель автомобиля: " << endl;
     cin >> model;
@@ -170,23 +145,20 @@ Car :: Car()
         }
         cin >> choice;
     }
-
-    file.close();
 }
 
 Car :: Car(int odo) { odometer = odo; }
 
-Car :: ~Car() { }
+Car :: ~Car() = default;
 
-
-
-//string Car :: GetModel() { return model; }
-//string Car :: GetCountry() { return country; }
-//string Car :: GetBodyType() {return bodyType; }
-//int Car :: GetManufacturedYear() { return manufacturedYear; }
-//int Car :: GetNumberOfSeats() { return numberOfSeats;}
-//string Car :: GetTransmissionType() { return transmissionType; }
-//int Car :: GetOdometer() { return odometer; }
-//string Car :: GetPlate() { return plate;}
+string Car :: GetBrand() { return brand; }
+string Car :: GetModel() { return model; }
+string Car :: GetCountry() { return country; }
+string Car :: GetBodyType() {return bodyType; }
+int Car :: GetManufacturedYear() { return manufacturedYear; }
+int Car :: GetNumberOfSeats() { return numberOfSeats;}
+string Car :: GetTransmissionType() { return transmissionType; }
+int Car :: GetOdometer() { return odometer; }
+string Car :: GetPlate() { return plate;}
 
 

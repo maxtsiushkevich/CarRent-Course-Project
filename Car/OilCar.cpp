@@ -19,18 +19,14 @@ OilCar :: OilCar () : Car()
         cout << "Ошибка. Введите еще раз: ";
         cin >> engine.consumption;
     }
-
-    ofstream file("/Users/max/Desktop/CarRent/Files/OilCar.bin", ofstream::binary | ofstream::app);
-    if (!file.is_open())
-        cout << "Error";
-    file.write((char*)this, sizeof(OilCar));
-    file.close();
 }
 
-OilCar :: OilCar (int odo) : Car(0) { odometer = odo; }
+OilCar :: OilCar (int od) : Car(od) { this->engine.consumption = od; }
 
-OilCar :: ~OilCar() { cout << "Del" << endl; }
+OilCar :: ~OilCar() { }
 
+float OilCar ::  GetVolume() { return this->engine.volume; }
+float OilCar :: GetConsuption() { return this->engine.consumption; }
 
 
 

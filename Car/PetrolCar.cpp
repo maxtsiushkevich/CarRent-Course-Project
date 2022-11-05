@@ -4,12 +4,11 @@
 PetrolCar :: PetrolCar() : OilCar()
 {
     int choice;
-    cout << "Марка бензина: ";
+    cout << "Марка бензина: " << endl;
     cout << "1 - 80\n"
             "2 - 92\n"
             "3 - 95\n"
-            "4 - 98\n"
-            "0 - Выход";
+            "4 - 98\n";
     cin >> choice;
     while (choice > 4 || choice < 0)
     {
@@ -28,3 +27,5 @@ PetrolCar :: PetrolCar() : OilCar()
 PetrolCar :: PetrolCar (int odo) : OilCar(0) { odometer = odo; }
 
 PetrolCar :: ~PetrolCar() { }
+
+int PetrolCar :: GetPetrolType() { return petrolType; }
