@@ -11,16 +11,31 @@
 
 #include "Database/Database.h"
 
-//#include "Car/FileWorker.h"
+//#include <ncurses.h>
+
+
 
 using namespace std;
 
 int main()
 {
-    //OilCar c1;
-    OilCar c2(0);
-    Database::GetFromDatabase(c2);
-    cout << c2.GetBrand();
+    //Car c1;
+    ElectricCar c1;
+    //DieselCar c1;
+    //HybridCar c1;
+    //Database::AddInDatabase(c1);
+    //OilCar c2(0);
+    //Database::GetFromDatabase(c2);
+    //cout << c2.GetBrand();
+
+//    cout << "Car" << sizeof(Car) << endl;
+//    cout << "DieselCar" << sizeof(DieselCar) << endl;
+//    cout << "PetrolCar" << sizeof(DieselCar) << endl;
+//    cout << "ElectricCar" << sizeof(ElectricCar) << endl;
+//    cout << "OilCar" << sizeof(OilCar) << endl;
+//    cout << "HybridCar" << sizeof(HybridCar) << endl;
+
+    return 0;
 }
 
 

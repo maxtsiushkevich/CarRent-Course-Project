@@ -7,6 +7,8 @@ using namespace std;
 
 Car :: Car()
 {
+    //count++;
+    //id = count;
     deleteMark = false;
     int choice;
     odometer = 0;
@@ -24,7 +26,8 @@ Car :: Car()
     country = carinfo.GetCountry(choice);
 
     cout << "Модель автомобиля: " << endl;
-    cin >> model;
+    fflush(stdin);
+    getline(cin, model);
 
     cout << "Тип кузова: " << endl;
     cin >> bodyType;

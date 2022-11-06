@@ -9,6 +9,7 @@ class Car
     friend class CarBrands;
     friend class Database;
 protected:
+    int id;
     bool deleteMark;
     string brand;
     string model;
@@ -48,6 +49,8 @@ protected:
     bool sunroof;
 
 public:
+    //static int count;
+
     Car(int);
     Car();
     virtual ~Car();
@@ -61,7 +64,8 @@ public:
     string GetTransmissionType();
     int GetOdometer();
     string GetPlate();
-    bool IsDelete();
+
+    //bool IsDelete();
 
 
 

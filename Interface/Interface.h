@@ -13,8 +13,6 @@ protected:
         string password;
     } userdata;
 public:
-    Interface();
-    ~Interface();
     void authentication();
     void registration();
 };

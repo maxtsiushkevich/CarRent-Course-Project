@@ -15,8 +15,6 @@ public:
     virtual ~ElectricCar();
 
     int GetBatteryCapacity();
-
-
 };
 
 
