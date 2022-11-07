@@ -64,16 +64,5 @@ public:
     string GetTransmissionType();
     int GetOdometer();
     int GetId();
-    //bool IsDelete();
-
-
-
-
-
-    //virtual void printAllCars();
-    //virtual void printByCriteria(string);
-    //virtual void printByCriteria(int);
-    //virtual void printByCriteria(float);
-    //virtual void printAllInfo();
 };
 #endif

@@ -8,7 +8,7 @@
 class HybridCar : virtual public ElectricCar, virtual public OilCar
 {
     friend class Database;
-private:
+protected:
     string fuelType;
     int batteryCapacity;
     float consumption;

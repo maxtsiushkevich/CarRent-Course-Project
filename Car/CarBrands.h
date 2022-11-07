@@ -17,7 +17,7 @@ struct CarBrands
 
 void CarBrands :: GetCarBrands() // оформить вывод в виде красивой таблицы
 {
-    ifstream file("/Users/max/Desktop/CarRent/Files/CarBrands.bin", ios::binary);
+    ifstream file("../Files/CarBrands.bin", ios::binary);
     int i = 1;
     if (!file.is_open())
         cout << "Error";
@@ -39,7 +39,7 @@ void CarBrands :: GetCarBrands() // оформить вывод в виде кр
 
 string CarBrands :: GetBrand(int choice)
 {
-    ifstream file("/Users/max/Desktop/CarRent/Files/CarBrands.bin", ios::binary);
+    ifstream file("../Files/CarBrands.bin", ios::binary);
     string brandTmp;
     if (!file.is_open())
         cout << "Error";
@@ -58,7 +58,7 @@ string CarBrands :: GetBrand(int choice)
 
 string CarBrands :: GetCountry(int choice)
 {
-    ifstream file("/Users/max/Desktop/CarRent/Files/CarBrands.bin", ios::binary);
+    ifstream file("../Files/CarBrands.bin", ios::binary);
     string countryTmp;
     if (!file.is_open())
         cout << "Error";
