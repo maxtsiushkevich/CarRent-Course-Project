@@ -19,22 +19,9 @@ using namespace std;
 
 int main()
 {
-    //Car c1;
-    ElectricCar c1;
-    //DieselCar c1;
-    //HybridCar c1;
-    //Database::AddInDatabase(c1);
-    //OilCar c2(0);
-    //Database::GetFromDatabase(c2);
-    //cout << c2.GetBrand();
-
-//    cout << "Car" << sizeof(Car) << endl;
-//    cout << "DieselCar" << sizeof(DieselCar) << endl;
-//    cout << "PetrolCar" << sizeof(DieselCar) << endl;
-//    cout << "ElectricCar" << sizeof(ElectricCar) << endl;
-//    cout << "OilCar" << sizeof(OilCar) << endl;
-//    cout << "HybridCar" << sizeof(HybridCar) << endl;
-
+    //DieselCar d1(0);
+    //Database::GetFromDatabase(d1);
+    //cout << d1.GetId();
     return 0;
 }
 

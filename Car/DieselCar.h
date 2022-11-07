@@ -7,7 +7,7 @@ class DieselCar : public OilCar
     friend class Database;
 public:
     DieselCar();
-    DieselCar (int);
+    DieselCar(int);
     ~DieselCar();
 
 };

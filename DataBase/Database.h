@@ -14,13 +14,11 @@ public:
     Database() = default;
     ~Database() = default;
 
-    static void AddInDatabase(OilCar&);
     static void AddInDatabase(DieselCar&);
     static void AddInDatabase(PetrolCar&);
     static void AddInDatabase(ElectricCar&);
     static void AddInDatabase(HybridCar&);
 
-    static void GetFromDatabase(OilCar&);
     static void GetFromDatabase(DieselCar&);
     static void GetFromDatabase(PetrolCar&);
     static void GetFromDatabase(ElectricCar&);

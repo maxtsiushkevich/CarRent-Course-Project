@@ -24,7 +24,7 @@ PetrolCar :: PetrolCar() : OilCar()
     }
 }
 
-PetrolCar :: PetrolCar (int odo) : OilCar(0) { odometer = odo; }
+PetrolCar :: PetrolCar(int odo) : Car(0), OilCar(0) { }
 
 PetrolCar :: ~PetrolCar() { }
 

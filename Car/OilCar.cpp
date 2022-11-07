@@ -21,7 +21,7 @@ OilCar :: OilCar () : Car()
     }
 }
 
-OilCar :: OilCar (int od) : Car(od) { consumption = od; }
+OilCar :: OilCar(int cons) : Car(0) { }
 
 OilCar :: ~OilCar() { }
 

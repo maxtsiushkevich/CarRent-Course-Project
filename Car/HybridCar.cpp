@@ -2,7 +2,7 @@
 #include <fstream>
 #include <iostream>
 
-HybridCar :: HybridCar() : OilCar(), ElectricCar()
+HybridCar :: HybridCar() : Car(), OilCar(), ElectricCar()
 {
     int choice;
     cout << "Тип топлива: " << endl;
@@ -22,5 +22,5 @@ HybridCar :: HybridCar() : OilCar(), ElectricCar()
     }
 }
 
-HybridCar :: HybridCar(int odo) : OilCar(0) { odometer = odo; }
+HybridCar :: HybridCar(int odo) : Car(0), OilCar(0), ElectricCar(0) { odometer = odo; }
 HybridCar :: ~HybridCar() { }

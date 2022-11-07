@@ -9,7 +9,7 @@ protected:
     int petrolType;
 public:
     PetrolCar();
-    PetrolCar (int);
+    PetrolCar(int);
     ~PetrolCar();
     int GetPetrolType();
 };

@@ -19,7 +19,9 @@ protected:
     string transmissionType;
     int numberOfSeats;
     int odometer;
-    string plate;
+
+    char plate[8];
+
     struct engine
     {
         int horsepower;
@@ -49,8 +51,6 @@ protected:
     bool sunroof;
 
 public:
-    //static int count;
-
     Car(int);
     Car();
     virtual ~Car();
@@ -63,8 +63,7 @@ public:
     int GetNumberOfSeats();
     string GetTransmissionType();
     int GetOdometer();
-    string GetPlate();
-
+    int GetId();
     //bool IsDelete();
 
 

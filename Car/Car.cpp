@@ -3,12 +3,13 @@
 #include <iostream>
 #include <fstream>
 #include "CarBrands.h"
+#include "IdGenerator.h"
+
 using namespace std;
 
 Car :: Car()
 {
-    //count++;
-    //id = count;
+    id = IdGenerator::GetIdForCar();
     deleteMark = false;
     int choice;
     odometer = 0;
@@ -68,10 +69,8 @@ Car :: Car()
     cout << "Цвет автомобиля" << endl;
     cin >> color;
 
-    cout << "Государственный номер автомобиля в формате 1111АА-1: " << endl;
-    cin >> plate;
-    // должно соответствовать формату 9999АА-9
-    // проверка на соответствие
+    //cout << "Государственный номер автомобиля в формате 1111АА-1: " << endl;
+    //cin >> plate;
 
     cout << "Количество лошадиных сил в двигателе: " << endl;
     cin >> engine.horsepower;
@@ -154,9 +153,9 @@ string Car :: GetModel() { return model; }
 string Car :: GetCountry() { return country; }
 string Car :: GetBodyType() {return bodyType; }
 int Car :: GetManufacturedYear() { return manufacturedYear; }
-int Car :: GetNumberOfSeats() { return numberOfSeats;}
+int Car :: GetNumberOfSeats() { return numberOfSeats; }
 string Car :: GetTransmissionType() { return transmissionType; }
 int Car :: GetOdometer() { return odometer; }
-string Car :: GetPlate() { return plate;}
+int Car :: GetId() { return id; }
 
 
