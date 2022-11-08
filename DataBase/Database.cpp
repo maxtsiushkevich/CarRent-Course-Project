@@ -3,6 +3,8 @@
 #include <fstream>
 #include <iostream>
 
+// объеденить в шаблон как-то
+
 void Database :: AddInDatabase(DieselCar &obj)
 {
     struct Data
@@ -75,7 +77,7 @@ void Database :: AddInDatabase(DieselCar &obj)
     data.sunroof = obj.sunroof;
 
     ofstream file;
-    file.open("/Users/max/Desktop/CarRent/Files/DieselCars.bin", ios::binary | ios::app);
+    file.open("../Files/DieselCars.bin", ios::binary | ios::app);
     if (!file.is_open())
         cout << "Error";
     file.write((char*)&data, sizeof(data));
@@ -123,7 +125,7 @@ void Database :: GetFromDatabase(DieselCar &obj)
     } data;
 
     ifstream file;
-    file.open("/Users/max/Desktop/CarRent/Files/DieselCars.bin", ios::binary);
+    file.open("../Files/DieselCars.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
     file.read((char*)&data, sizeof(data));
@@ -234,7 +236,7 @@ void Database :: AddInDatabase(PetrolCar &obj)
     data.petrolType = obj.petrolType;
 
     ofstream file;
-    file.open("/Users/max/Desktop/CarRent/Files/PetrolCars.bin", ios::binary | ios::app);
+    file.open("../Files/PetrolCars.bin", ios::binary | ios::app);
     if (!file.is_open())
         cout << "Error";
     file.write((char*)&data, sizeof(data));
@@ -283,7 +285,7 @@ void Database :: GetFromDatabase(PetrolCar &obj)
     } data;
 
     ifstream file;
-    file.open("/Users/max/Desktop/CarRent/Files/DieselCars.bin", ios::binary);
+    file.open("../Files/DieselCars.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
     file.read((char*)&data, sizeof(data));
@@ -391,7 +393,7 @@ void Database :: AddInDatabase(ElectricCar &obj)
     data.batteryCapacity = obj.batteryCapacity;
 
     ofstream file;
-    file.open("/Users/max/Desktop/CarRent/Files/ElectricCars.bin", ios::binary | ios::app);
+    file.open("../Files/ElectricCars.bin", ios::binary | ios::app);
     if (!file.is_open())
         cout << "Error";
     file.write((char*)&data, sizeof(data));
@@ -438,7 +440,7 @@ void Database :: GetFromDatabase(ElectricCar &obj)
     } data;
 
     ifstream file;
-    file.open("/Users/max/Desktop/CarRent/Files/ElectricCars.bin", ios::binary);
+    file.open("../Files/ElectricCars.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
     file.read((char*)&data, sizeof(data));
@@ -548,7 +550,7 @@ void Database :: AddInDatabase(HybridCar &obj)
     data.batteryCapacity = obj.batteryCapacity;
 
     ofstream file;
-    file.open("/Users/max/Desktop/CarRent/Files/HybridCars.bin", ios::binary | ios::app);
+    file.open("../Files/HybridCars.bin", ios::binary | ios::app);
     if (!file.is_open())
         cout << "Error";
     file.write((char*)&data, sizeof(data));
@@ -597,7 +599,7 @@ void Database :: GetFromDatabase(HybridCar &obj)
     } data;
 
     ifstream file;
-    file.open("/Users/max/Desktop/CarRent/Files/HybridCars.bin", ios::binary);
+    file.open("../Files/HybridCars.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
     file.read((char*)&data, sizeof(data));
