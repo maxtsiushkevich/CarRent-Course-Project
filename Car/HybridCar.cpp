@@ -22,5 +22,5 @@ HybridCar :: HybridCar() : Car(), OilCar(), ElectricCar()
     }
 }
 
-HybridCar :: HybridCar(int odo) : Car(0), OilCar(0), ElectricCar(0) { odometer = odo; }
+HybridCar :: HybridCar(int odo) : Car(odo), OilCar(odo), ElectricCar(odo) { }
 HybridCar :: ~HybridCar() { }

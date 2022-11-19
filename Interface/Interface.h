@@ -1,20 +1,23 @@
 #ifndef CARRENT_INTERFACE_H
 #define CARRENT_INTERFACE_H
 #include <string>
+#include "Userdata.h"
+
 using namespace std;
 
 class Interface
 {
-protected:
-    int mode; // mode 1 - admin, mode 2 - user
-    struct userdata
-    {
-        string login;
-        string password;
-    } userdata;
+private:
+    Userdata account;
 public:
-    void authentication();
-    void registration();
+    Interface();
+    ~Interface() = default;
+    void FirstMenu();
+    void AdminAuthentication();
+    void UserAuthentication();
+    void UserMainMenu();
+    void AdminMainMenu();
+    void Registation();
 };
 
 

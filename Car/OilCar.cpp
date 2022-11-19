@@ -21,12 +21,13 @@ OilCar :: OilCar () : Car()
     }
 }
 
-OilCar :: OilCar(int cons) : Car(0) { }
+OilCar :: OilCar(int odo) : Car(odo) { }
 
 OilCar :: ~OilCar() { }
 
 float OilCar ::  GetVolume() { return volume; }
-float OilCar :: GetConsuption() { return consumption; }
+
+__attribute__((unused)) float OilCar :: GetConsuption() { return consumption; }
 
 
 

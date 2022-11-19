@@ -5,9 +5,12 @@
 Person :: Person()
 {
     id = IdGenerator::GetIdForPerson();
-    cout << "Введите фамилию и имя: " << endl;
+    cout << "Введите фамилию: " << endl;
     fflush(stdin);
     getline(cin, name);
+    cout << "Введите имя: " << endl;
+    fflush(stdin);
+    getline(cin, surname);
     cout << "Введите возраст: ";
     cin >> age;
     while (age < 18)
@@ -17,6 +20,6 @@ Person :: Person()
     }
 }
 
-Person :: Person(int a) { }
+Person :: Person(int mode) { }
 
 Person :: ~Person() { }

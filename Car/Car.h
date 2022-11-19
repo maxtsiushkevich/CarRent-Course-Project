@@ -1,60 +1,39 @@
 #ifndef CARRENT_CAR_H
 #define CARRENT_CAR_H
 #include <string>
+#include <vector>
 
 using namespace std;
 
 class Car
 {
-    friend class CarBrands;
     friend class Database;
 protected:
     int id;
     bool deleteMark;
-    string brand;
-    string model;
-    string country;
-    string bodyType;
+    string brand, model, country, bodyType;
     int manufacturedYear;
     string transmissionType;
     int numberOfSeats;
     int odometer;
-
-    char plate[8];
-
     struct engine
     {
         int horsepower;
         float maxSpeed;
         float to100;
     } engine;
-
     struct interior
     {
-        string color;
-        string material;
+        string color, material;
     } interior;
-
     string color;
-
-    int costPerDay;
-    int costPerWeek;
-    int costPerMonth;
-
-    bool cruiseControl;
-    bool parkingAssist;
-    bool music;
-    bool bluetooth;
-    bool climat;
-    bool seatHeating;
-    bool gps;
-    bool sunroof;
+    int costPerDay, costPerWeek, costPerMonth;
+    bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
 
 public:
     Car(int);
     Car();
     virtual ~Car();
-
     string GetBrand();
     string GetModel();
     int GetManufacturedYear();

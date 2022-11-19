@@ -13,7 +13,7 @@ ElectricCar :: ElectricCar()
     }
 }
 
-ElectricCar :: ElectricCar(int cap) : Car(0) { }
+ElectricCar :: ElectricCar(int odo) : Car(odo) { }
 
 ElectricCar :: ~ElectricCar() { }
 

@@ -11,10 +11,7 @@ void Database :: AddInDatabase(DieselCar &obj)
     {
         int id;
         bool deleteMark;
-        string brand;
-        string model;
-        string country;
-        string bodyType;
+        string brand, model, country, bodyType;
         int manufacturedYear;
         string transmissionType;
         int numberOfSeats;
@@ -29,21 +26,12 @@ void Database :: AddInDatabase(DieselCar &obj)
         float volume;
         struct interior
         {
-            string color;
-            string material;
+            string color, material;
         } interior;
         string color;
-        int costPerDay;
-        int costPerWeek;
-        int costPerMonth;
-        bool cruiseControl;
-        bool parkingAssist;
-        bool music;
-        bool bluetooth;
-        bool climat;
-        bool seatHeating;
-        bool gps;
-        bool sunroof;
+        int costPerDay, costPerWeek, costPerMonth;
+        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
+
     } data;
 
     data.id = obj.id;
@@ -89,10 +77,7 @@ void Database :: GetFromDatabase(DieselCar &obj)
     {
         int id;
         bool deleteMark;
-        string brand;
-        string model;
-        string country;
-        string bodyType;
+        string brand, model, country, bodyType;
         int manufacturedYear;
         string transmissionType;
         int numberOfSeats;
@@ -107,21 +92,11 @@ void Database :: GetFromDatabase(DieselCar &obj)
         float volume;
         struct interior
         {
-            string color;
-            string material;
+            string color, material;
         } interior;
         string color;
-        int costPerDay;
-        int costPerWeek;
-        int costPerMonth;
-        bool cruiseControl;
-        bool parkingAssist;
-        bool music;
-        bool bluetooth;
-        bool climat;
-        bool seatHeating;
-        bool gps;
-        bool sunroof;
+        int costPerDay, costPerWeek, costPerMonth;
+        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
     } data;
 
     ifstream file;
@@ -168,10 +143,7 @@ void Database :: AddInDatabase(PetrolCar &obj)
     {
         int id;
         bool deleteMark;
-        string brand;
-        string model;
-        string country;
-        string bodyType;
+        string brand, model, country, bodyType;
         int manufacturedYear;
         string transmissionType;
         int numberOfSeats;
@@ -186,21 +158,11 @@ void Database :: AddInDatabase(PetrolCar &obj)
         float volume;
         struct interior
         {
-            string color;
-            string material;
+            string color, material;
         } interior;
         string color;
-        int costPerDay;
-        int costPerWeek;
-        int costPerMonth;
-        bool cruiseControl;
-        bool parkingAssist;
-        bool music;
-        bool bluetooth;
-        bool climat;
-        bool seatHeating;
-        bool gps;
-        bool sunroof;
+        int costPerDay, costPerWeek, costPerMonth;
+        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
         int petrolType;
     } data;
 
@@ -248,10 +210,7 @@ void Database :: GetFromDatabase(PetrolCar &obj)
     {
         int id;
         bool deleteMark;
-        string brand;
-        string model;
-        string country;
-        string bodyType;
+        string brand, model, country, bodyType;
         int manufacturedYear;
         string transmissionType;
         int numberOfSeats;
@@ -266,21 +225,11 @@ void Database :: GetFromDatabase(PetrolCar &obj)
         float volume;
         struct interior
         {
-            string color;
-            string material;
+            string color, material;
         } interior;
         string color;
-        int costPerDay;
-        int costPerWeek;
-        int costPerMonth;
-        bool cruiseControl;
-        bool parkingAssist;
-        bool music;
-        bool bluetooth;
-        bool climat;
-        bool seatHeating;
-        bool gps;
-        bool sunroof;
+        int costPerDay, costPerWeek, costPerMonth;
+        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
         int petrolType;
     } data;
 
@@ -329,10 +278,7 @@ void Database :: AddInDatabase(ElectricCar &obj)
     {
         int id;
         bool deleteMark;
-        string brand;
-        string model;
-        string country;
-        string bodyType;
+        string brand, model, country, bodyType;
         int manufacturedYear;
         string transmissionType;
         int numberOfSeats;
@@ -345,21 +291,11 @@ void Database :: AddInDatabase(ElectricCar &obj)
         } engine;
         struct interior
         {
-            string color;
-            string material;
+            string color, material;
         } interior;
         string color;
-        int costPerDay;
-        int costPerWeek;
-        int costPerMonth;
-        bool cruiseControl;
-        bool parkingAssist;
-        bool music;
-        bool bluetooth;
-        bool climat;
-        bool seatHeating;
-        bool gps;
-        bool sunroof;
+        int costPerDay, costPerWeek, costPerMonth;
+        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
         int batteryCapacity;
     } data;
 
@@ -405,10 +341,7 @@ void Database :: GetFromDatabase(ElectricCar &obj)
     {
         int id;
         bool deleteMark;
-        string brand;
-        string model;
-        string country;
-        string bodyType;
+        string brand, model, country, bodyType;
         int manufacturedYear;
         string transmissionType;
         int numberOfSeats;
@@ -421,21 +354,11 @@ void Database :: GetFromDatabase(ElectricCar &obj)
         } engine;
         struct interior
         {
-            string color;
-            string material;
+            string color, material;
         } interior;
         string color;
-        int costPerDay;
-        int costPerWeek;
-        int costPerMonth;
-        bool cruiseControl;
-        bool parkingAssist;
-        bool music;
-        bool bluetooth;
-        bool climat;
-        bool seatHeating;
-        bool gps;
-        bool sunroof;
+        int costPerDay, costPerWeek, costPerMonth;
+        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
         int batteryCapacity;
     } data;
 
@@ -482,10 +405,7 @@ void Database :: AddInDatabase(HybridCar &obj)
     {
         int id;
         bool deleteMark;
-        string brand;
-        string model;
-        string country;
-        string bodyType;
+        string brand, model, country, bodyType;
         int manufacturedYear;
         string transmissionType;
         int numberOfSeats;
@@ -500,21 +420,11 @@ void Database :: AddInDatabase(HybridCar &obj)
         float volume;
         struct interior
         {
-            string color;
-            string material;
+            string color, material;
         } interior;
         string color;
-        int costPerDay;
-        int costPerWeek;
-        int costPerMonth;
-        bool cruiseControl;
-        bool parkingAssist;
-        bool music;
-        bool bluetooth;
-        bool climat;
-        bool seatHeating;
-        bool gps;
-        bool sunroof;
+        int costPerDay, costPerWeek, costPerMonth;
+        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
         int batteryCapacity;
     } data;
 
@@ -562,10 +472,7 @@ void Database :: GetFromDatabase(HybridCar &obj)
     {
         int id;
         bool deleteMark;
-        string brand;
-        string model;
-        string country;
-        string bodyType;
+        string brand, model, country, bodyType;
         int manufacturedYear;
         string transmissionType;
         int numberOfSeats;
@@ -580,21 +487,11 @@ void Database :: GetFromDatabase(HybridCar &obj)
         float volume;
         struct interior
         {
-            string color;
-            string material;
+            string color, material;
         } interior;
         string color;
-        int costPerDay;
-        int costPerWeek;
-        int costPerMonth;
-        bool cruiseControl;
-        bool parkingAssist;
-        bool music;
-        bool bluetooth;
-        bool climat;
-        bool seatHeating;
-        bool gps;
-        bool sunroof;
+        int costPerDay, costPerWeek, costPerMonth;
+        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
         int batteryCapacity;
     } data;
 

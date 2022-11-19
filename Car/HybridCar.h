@@ -5,7 +5,7 @@
 #include "OilCar.h"
 #include <string>
 
-class HybridCar : virtual public ElectricCar, virtual public OilCar
+class HybridCar : public ElectricCar, public OilCar
 {
     friend class Database;
 protected:

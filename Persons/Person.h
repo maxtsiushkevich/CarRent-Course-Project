@@ -8,9 +8,10 @@ using namespace std;
 
 class Person
 {
-private:
+protected:
     int id;
     string name;
+    string surname;
     int age;
 public:
     Person();

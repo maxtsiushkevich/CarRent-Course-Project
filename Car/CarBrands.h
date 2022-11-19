@@ -6,10 +6,11 @@ using namespace std;
 
 struct CarBrands
 {
+    friend class Car;
+private:
     int num;
     char brand[30];
     char country[30];
-
     void GetCarBrands();
     string GetCountry(int);
     string GetBrand(int);

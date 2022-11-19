@@ -1,27 +1,54 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-
+#include "Persons/User.h"
+#include "Persons/Admin.h"
 #include "Car/Car.h"
 #include "Car/ElectricCar.h"
 #include "Car/DieselCar.h"
 #include "Car/PetrolCar.h"
 #include "Car/HybridCar.h"
 #include "Car/OilCar.h"
-
+#include "Interface/Interface.h"
 #include "Database/Database.h"
-
-//#include <ncurses.h>
-
 
 
 using namespace std;
 
 int main()
 {
-    //DieselCar d1(0);
-    //Database::GetFromDatabase(d1);
-    //cout << d1.GetId();
+    //boost::serialization();
+    PetrolCar c1;
+    //while(1)
+    //{
+    //    Database::GetFromDatabase(c1);
+    //    cout << c1.GetBrand() << endl;
+    //}
+    //Interface menu;
+    //User user;
+    //Admin admin;
+//    DieselCar c1;
+//    ofstream file;
+//    file.open("../Files/test.bin", ios::binary | ios::app);
+//    if (!file.is_open())
+//        cout << "Error";
+//    file.write((char*)&c1, sizeof(c1));
+//    file.close();
+
+//    OilCar c1(0);
+//    ifstream file;
+//    file.open("../Files/test.bin", ios::binary);
+//    if (!file.is_open())
+//        cout << "Error";
+//    file.read((char*)&c1, sizeof(c1));
+//    cout << c1.GetBrand();
+//    file.close();
+//
+//Car c1;
+//Car c2;
+//cout << sizeof(c1) << endl;
+//cout << sizeof(c2) << endl;
+
     return 0;
 }
 

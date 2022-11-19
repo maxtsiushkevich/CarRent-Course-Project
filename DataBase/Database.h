@@ -11,9 +11,6 @@
 class Database
 {
 public:
-    Database() = default;
-    ~Database() = default;
-
     static void AddInDatabase(DieselCar&);
     static void AddInDatabase(PetrolCar&);
     static void AddInDatabase(ElectricCar&);
