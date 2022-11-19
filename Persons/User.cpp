@@ -37,7 +37,6 @@ User :: User()
     cout << "Введите номер квартиры: " << endl;
     cin >> adress.flat;
 
-
     ofstream file;
     file.open("../Files/User.bin", ios::binary | ios::app);
     if (!file.is_open())

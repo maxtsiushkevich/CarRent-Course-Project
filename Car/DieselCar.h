@@ -6,9 +6,9 @@ class DieselCar : public OilCar
 {
     friend class Database;
 public:
-    DieselCar();
-    DieselCar(int);
-    ~DieselCar();
+    DieselCar() { };
+    DieselCar(int odo) : OilCar(odo) { };
+    ~DieselCar() = default;
 
 };
 

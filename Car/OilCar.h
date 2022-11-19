@@ -7,14 +7,14 @@ class OilCar : virtual public Car
 {
     friend class Database;
 protected:
-        float consumption; // расход
-        float volume; // объем
+    float consumption; // расход
+    float volume; // объем
 public:
     OilCar();
-    OilCar(int);
-    virtual ~OilCar();
-    float GetVolume();
-    float GetConsuption();
+    OilCar(int odo) : Car(odo) { };
+    virtual ~OilCar() = default;
+    float GetConsumption() { return consumption; };
+    float GetVolume() { return volume; };
 };
 
 #endif

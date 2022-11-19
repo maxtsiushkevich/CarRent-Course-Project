@@ -21,6 +21,3 @@ HybridCar :: HybridCar() : Car(), OilCar(), ElectricCar()
 
     }
 }
-
-HybridCar :: HybridCar(int odo) : Car(odo), OilCar(odo), ElectricCar(odo) { }
-HybridCar :: ~HybridCar() { }

@@ -11,10 +11,9 @@ protected:
     int batteryCapacity;
 public:
     ElectricCar();
-    ElectricCar(int);
-    virtual ~ElectricCar();
-
-    int GetBatteryCapacity();
+    ElectricCar(int odo) : Car(odo) { };
+    virtual ~ElectricCar() = default;
+    int GetBatteryCapacity() { return batteryCapacity; };
 };
 
 

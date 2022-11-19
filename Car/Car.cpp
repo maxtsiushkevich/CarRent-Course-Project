@@ -73,27 +73,27 @@ Car :: Car()
     //cin >> plate;
 
     cout << "Количество лошадиных сил в двигателе: " << endl;
-    cin >> engine.horsepower;
-    while (engine.horsepower > 1000 || engine.horsepower <= 0)
+    cin >> horsepower;
+    while (horsepower > 1000 || horsepower <= 0)
     {
         cout << "Ошибка. Введите еще раз: ";
-        cin >> engine.horsepower;
+        cin >> horsepower;
     }
 
     cout << "Разгон до 100: " << endl;
-    cin >> engine.to100;
-    while (engine.to100 < 1.0)
+    cin >> to100;
+    while (to100 < 1.0)
     {
         cout << "Ошибка. Введите еще раз: ";
-        cin >> engine.to100;
+        cin >> to100;
     }
 
     cout << "Максимальная скорость: " << endl;
-    cin >> engine.maxSpeed;
-    while (engine.maxSpeed > 500 || engine.maxSpeed < 10)
+    cin >> maxSpeed;
+    while (maxSpeed > 500 || maxSpeed < 10)
     {
         cout << "Ошибка. Введите еще раз: ";
-        cin >> engine.maxSpeed;
+        cin >> maxSpeed;
     }
 
     cout << "Стоимость аренды на день: " << endl;
@@ -137,25 +137,9 @@ Car :: Car()
             case 7: gps = true; break;
             case 8: sunroof = true; break;
             case 9: cruiseControl = true, parkingAssist = true, music = true, bluetooth = true,
-            climat = true, seatHeating = true, gps = true, sunroof = true; break;
+                    climat = true, seatHeating = true, gps = true, sunroof = true; break;
             case 0: break;
         }
         cin >> choice;
     }
 }
-
-Car :: Car(int odo) { odometer = odo; }
-
-Car :: ~Car() = default;
-
-string Car :: GetBrand() { return brand; }
-string Car :: GetModel() { return model; }
-string Car :: GetCountry() { return country; }
-string Car :: GetBodyType() {return bodyType; }
-int Car :: GetManufacturedYear() { return manufacturedYear; }
-int Car :: GetNumberOfSeats() { return numberOfSeats; }
-string Car :: GetTransmissionType() { return transmissionType; }
-int Car :: GetOdometer() { return odometer; }
-int Car :: GetId() { return id; }
-
-

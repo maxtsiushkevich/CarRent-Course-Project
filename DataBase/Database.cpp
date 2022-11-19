@@ -16,12 +16,9 @@ void Database :: AddInDatabase(DieselCar &obj)
         string transmissionType;
         int numberOfSeats;
         int odometer;
-        struct engine
-        {
-            int horsepower;
-            float maxSpeed;
-            float to100;
-        } engine;
+        int horsepower;
+        float maxSpeed;
+        float to100;
         float consumption;
         float volume;
         struct interior
@@ -44,9 +41,9 @@ void Database :: AddInDatabase(DieselCar &obj)
     data.transmissionType = obj.transmissionType;
     data.numberOfSeats = obj.numberOfSeats;
     data.odometer = obj.odometer;
-    data.engine.horsepower = obj.engine.horsepower;
-    data.engine.maxSpeed = obj.engine.maxSpeed;
-    data.engine.to100 = obj.engine.to100;
+    data.horsepower = obj.horsepower;
+    data.maxSpeed = obj.maxSpeed;
+    data.to100 = obj.to100;
     data.consumption = obj.consumption;
     data.volume = obj.volume;
     data.interior.color = obj.interior.color;
@@ -82,12 +79,9 @@ void Database :: GetFromDatabase(DieselCar &obj)
         string transmissionType;
         int numberOfSeats;
         int odometer;
-        struct engine
-        {
-            int horsepower;
-            float maxSpeed;
-            float to100;
-        } engine;
+        int horsepower;
+        float maxSpeed;
+        float to100;
         float consumption;
         float volume;
         struct interior
@@ -116,9 +110,9 @@ void Database :: GetFromDatabase(DieselCar &obj)
     obj.transmissionType = data.transmissionType;
     obj.numberOfSeats = data.numberOfSeats;
     obj.odometer = data.odometer;
-    obj.engine.horsepower = data.engine.horsepower;
-    obj.engine.maxSpeed = data.engine.maxSpeed;
-    obj.engine.to100 = data.engine.to100;
+    obj.horsepower = data.horsepower;
+    obj.maxSpeed = data.maxSpeed;
+    obj.to100 = data.to100;
     obj.consumption = data.consumption;
     obj.volume = data.volume ;
     obj.interior.color = data.interior.color;
@@ -148,12 +142,9 @@ void Database :: AddInDatabase(PetrolCar &obj)
         string transmissionType;
         int numberOfSeats;
         int odometer;
-        struct engine
-        {
-            int horsepower;
-            float maxSpeed;
-            float to100;
-        } engine;
+        int horsepower;
+        float maxSpeed;
+        float to100;
         float consumption;
         float volume;
         struct interior
@@ -176,9 +167,9 @@ void Database :: AddInDatabase(PetrolCar &obj)
     data.transmissionType = obj.transmissionType;
     data.numberOfSeats = obj.numberOfSeats;
     data.odometer = obj.odometer;
-    data.engine.horsepower = obj.engine.horsepower;
-    data.engine.maxSpeed = obj.engine.maxSpeed;
-    data.engine.to100 = obj.engine.to100;
+    data.horsepower = obj.horsepower;
+    data.maxSpeed = obj.maxSpeed;
+    data.to100 = obj.to100;
     data.consumption = obj.consumption;
     data.volume = obj.volume;
     data.interior.color = obj.interior.color;
@@ -215,12 +206,9 @@ void Database :: GetFromDatabase(PetrolCar &obj)
         string transmissionType;
         int numberOfSeats;
         int odometer;
-        struct engine
-        {
-            int horsepower;
-            float maxSpeed;
-            float to100;
-        } engine;
+        int horsepower;
+        float maxSpeed;
+        float to100;
         float consumption;
         float volume;
         struct interior
@@ -250,9 +238,9 @@ void Database :: GetFromDatabase(PetrolCar &obj)
     obj.transmissionType = data.transmissionType;
     obj.numberOfSeats = data.numberOfSeats;
     obj.odometer = data.odometer;
-    obj.engine.horsepower = data.engine.horsepower;
-    obj.engine.maxSpeed = data.engine.maxSpeed;
-    obj.engine.to100 = data.engine.to100;
+    obj.horsepower = data.horsepower;
+    obj.maxSpeed = data.maxSpeed;
+    obj.to100 = data.to100;
     obj.consumption = data.consumption;
     obj.volume = data.volume;
     obj.interior.color = data.interior.color;
@@ -283,12 +271,9 @@ void Database :: AddInDatabase(ElectricCar &obj)
         string transmissionType;
         int numberOfSeats;
         int odometer;
-        struct engine
-        {
-            int horsepower;
-            float maxSpeed;
-            float to100;
-        } engine;
+        int horsepower;
+        float maxSpeed;
+        float to100;
         struct interior
         {
             string color, material;
@@ -309,9 +294,9 @@ void Database :: AddInDatabase(ElectricCar &obj)
     data.transmissionType = obj.transmissionType;
     data.numberOfSeats = obj.numberOfSeats;
     data.odometer = obj.odometer;
-    data.engine.horsepower = obj.engine.horsepower;
-    data.engine.maxSpeed = obj.engine.maxSpeed;
-    data.engine.to100 = obj.engine.to100;
+    data.horsepower = obj.horsepower;
+    data.maxSpeed = obj.maxSpeed;
+    data.to100 = obj.to100;
     data.interior.color = obj.interior.color;
     data.interior.material = obj.interior.material;
     data.color = obj.color;
@@ -346,12 +331,9 @@ void Database :: GetFromDatabase(ElectricCar &obj)
         string transmissionType;
         int numberOfSeats;
         int odometer;
-        struct engine
-        {
-            int horsepower;
-            float maxSpeed;
-            float to100;
-        } engine;
+        int horsepower;
+        float maxSpeed;
+        float to100;
         struct interior
         {
             string color, material;
@@ -379,9 +361,9 @@ void Database :: GetFromDatabase(ElectricCar &obj)
     obj.transmissionType = data.transmissionType;
     obj.numberOfSeats = data.numberOfSeats;
     obj.odometer = data.odometer;
-    obj.engine.horsepower = data.engine.horsepower;
-    obj.engine.maxSpeed = data.engine.maxSpeed;
-    obj.engine.to100 = data.engine.to100;
+    obj.horsepower = data.horsepower;
+    obj.maxSpeed = data.maxSpeed;
+    obj.to100 = data.to100;
     obj.interior.color = data.interior.color;
     obj.interior.material = data.interior.material;
     obj.color = data.color;
@@ -410,12 +392,9 @@ void Database :: AddInDatabase(HybridCar &obj)
         string transmissionType;
         int numberOfSeats;
         int odometer;
-        struct engine
-        {
-            int horsepower;
-            float maxSpeed;
-            float to100;
-        } engine;
+        int horsepower;
+        float maxSpeed;
+        float to100;
         float consumption;
         float volume;
         struct interior
@@ -438,9 +417,9 @@ void Database :: AddInDatabase(HybridCar &obj)
     data.transmissionType = obj.transmissionType;
     data.numberOfSeats = obj.numberOfSeats;
     data.odometer = obj.odometer;
-    data.engine.horsepower = obj.engine.horsepower;
-    data.engine.maxSpeed = obj.engine.maxSpeed;
-    data.engine.to100 = obj.engine.to100;
+    data.horsepower = obj.horsepower;
+    data.maxSpeed = obj.maxSpeed;
+    data.to100 = obj.to100;
     data.consumption = obj.consumption;
     data.volume = obj.volume;
     data.interior.color = obj.interior.color;
@@ -477,12 +456,9 @@ void Database :: GetFromDatabase(HybridCar &obj)
         string transmissionType;
         int numberOfSeats;
         int odometer;
-        struct engine
-        {
-            int horsepower;
-            float maxSpeed;
-            float to100;
-        } engine;
+        int horsepower;
+        float maxSpeed;
+        float to100;
         float consumption;
         float volume;
         struct interior
@@ -512,9 +488,9 @@ void Database :: GetFromDatabase(HybridCar &obj)
     obj.transmissionType = data.transmissionType;
     obj.numberOfSeats = data.numberOfSeats;
     obj.odometer = data.odometer;
-    obj.engine.horsepower = data.engine.horsepower;
-    obj.engine.maxSpeed = data.engine.maxSpeed;
-    obj.engine.to100 = data.engine.to100;
+    obj.horsepower = data.horsepower;
+    obj.maxSpeed = data.maxSpeed;
+    obj.to100 = data.to100;
     obj.consumption = data.consumption;
     obj.volume = data.volume;
     obj.interior.color = data.interior.color;

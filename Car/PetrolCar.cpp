@@ -23,9 +23,3 @@ PetrolCar :: PetrolCar() : OilCar()
         case 4: petrolType = 98; break;
     }
 }
-
-PetrolCar :: PetrolCar(int odo) : Car(odo), OilCar(odo) { }
-
-PetrolCar :: ~PetrolCar() { }
-
-int PetrolCar :: GetPetrolType() { return petrolType; }

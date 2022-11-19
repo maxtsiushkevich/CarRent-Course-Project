@@ -16,12 +16,9 @@ protected:
     string transmissionType;
     int numberOfSeats;
     int odometer;
-    struct engine
-    {
-        int horsepower;
-        float maxSpeed;
-        float to100;
-    } engine;
+    int horsepower;
+    float maxSpeed;
+    float to100;
     struct interior
     {
         string color, material;
@@ -29,19 +26,25 @@ protected:
     string color;
     int costPerDay, costPerWeek, costPerMonth;
     bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
-
 public:
-    Car(int);
     Car();
-    virtual ~Car();
-    string GetBrand();
-    string GetModel();
-    int GetManufacturedYear();
-    string GetCountry();
-    string GetBodyType();
-    int GetNumberOfSeats();
-    string GetTransmissionType();
-    int GetOdometer();
-    int GetId();
+    Car(int odo) { odometer = odo; } ;
+    virtual ~Car() = default;
+    int GetId() { return id; };
+    string GetBrand() { return brand; };
+    string GetModel() { return model; };
+    string GetCountry() { return country; };
+    string GetBodyType() { return bodyType; };
+    int GetNumberOfSeats() { return numberOfSeats; };
+    int GetOdometer() { return odometer; };
+    int GetHorsepower() { return horsepower; };
+    float GetMaxSpeed() { return maxSpeed; };
+    float GetTo100() { return to100; };
+    string GetInteriorColor() { return interior.color; };
+    string GetInteriorMaterial() { return interior.material; };
+    string GetColor() { return color; };
+    int GetCostPerDay() { return costPerDay; };
+    int GetCostPerWeek() { return costPerWeek; };
+    int GetCostPerMonth() { return costPerMonth; };
 };
 #endif

@@ -12,9 +12,3 @@ ElectricCar :: ElectricCar()
         cin >> batteryCapacity;
     }
 }
-
-ElectricCar :: ElectricCar(int odo) : Car(odo) { }
-
-ElectricCar :: ~ElectricCar() { }
-
-int ElectricCar :: GetBatteryCapacity() { return batteryCapacity; }

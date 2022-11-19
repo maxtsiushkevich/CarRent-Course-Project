@@ -23,14 +23,14 @@ Userdata :: Userdata(int id, int mode)
     switch (mode)
     {
         case 1:
-            file.open("../Files/adminAuthentication.bin", ios::binary | ios::app);
+            file.open("../Files/AdminAuthentication.bin", ios::binary | ios::app);
             if (!file.is_open())
                 cout << "Error";
             file.write((char*)this, sizeof(Userdata));
             file.close();
             break;
         case 2:
-            file.open("../Files/userAuthentication.bin", ios::binary | ios::app);
+            file.open("../Files/UserAuthentication.bin", ios::binary | ios::app);
             if (!file.is_open())
                 cout << "Error";
             file.write((char*)this, sizeof(Userdata));
@@ -51,7 +51,7 @@ bool Userdata :: CheckAccess(int mode)
     ifstream file;
     if (mode == 1)
     {
-        file.open("../Files/adminAuthentication.bin", ios::binary);
+        file.open("../Files/AdminAuthentication.bin", ios::binary);
         if (!file.is_open())
             cout << "Error";
             // добавить исключение
@@ -71,7 +71,7 @@ bool Userdata :: CheckAccess(int mode)
     }
     if (mode == 2)
     {
-        file.open("../Files/userAuthentication.bin", ios::binary);
+        file.open("../Files/UserAuthentication.bin", ios::binary);
         if (!file.is_open())
             cout << "Error";
             // добавить искючения
@@ -95,7 +95,7 @@ bool Userdata :: CheckLogin(string login)
 {
     Userdata tmp;
     ifstream file;
-    file.open("../Files/adminAuthentication.bin", ios::binary);
+    file.open("../Files/AdminAuthentication.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
         // добавить исключения
@@ -109,7 +109,7 @@ bool Userdata :: CheckLogin(string login)
     }
     file.close();
 
-    file.open("../Files/userAuthentication.bin", ios::binary);
+    file.open("../Files/UserAuthentication.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
         // добавить исключения

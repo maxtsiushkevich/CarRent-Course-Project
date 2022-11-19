@@ -2,61 +2,43 @@
 
 int IdGenerator :: GetIdForCar()
 {
-    int sum=0;
-    ifstream file;
-    file.open("../Files/DieselCars.bin", ios::binary);
-    file.seekg (0, ios::end);
+    fstream file;
+    file.open("../ID/CarId.bin", ios::binary | ios::in);
+    int id = 1;
     if (!file.is_open())
-        sum += 0;
-    else
-        sum += (file.tellg() / 264);
+    {
+        ofstream file2("../ID/CarId.bin", ios::binary | ios::app);
+        file2.write((char*)&id, sizeof(int));
+        file2.close();
+        return 1;
+    }
+    file.seekp(0, ios::beg);
+    file.read((char*)&id, sizeof(int));
     file.close();
-
-    file.open("../Files/PetrolCars.bin", ios::binary);
-    file.seekg (0, ios::end);
-    if (!file.is_open())
-        sum += 0;
-    else
-        sum += (file.tellg() / 264);
+    id++;
+    file.open("../ID/CarId.bin", ios::binary | ios::out);
+    file.write((char*)&id, sizeof(int));
     file.close();
-
-    file.open("../Files/ElectricCars.bin", ios::binary);
-    file.seekg (0, ios::end);
-    if (!file.is_open())
-        sum += 0;
-    else
-        sum += (file.tellg() / 256);
-    file.close();
-
-    file.open("../Files/HybridCars.bin", ios::binary);
-    file.seekg (0, ios::end);
-    if (!file.is_open())
-        sum += 0;
-    else
-        sum += (file.tellg() / 264);
-    file.close();
-
-    return sum+1;
+    return id;
 }
 int IdGenerator :: GetIdForPerson()
 {
-    int sum = 0;
-    ifstream file;
-    file.open("../Files/Users.bin", ios::binary);
-    file.seekg(0, ios::end);
+    fstream file;
+    file.open("../ID/PersodID.bin", ios::binary | ios::in);
+    int id = 1;
     if (!file.is_open())
-        sum += 0;
-    else
-        sum += file.tellg();
+    {
+        ofstream file2("../ID/PersodID.bin", ios::binary | ios::app);
+        file2.write((char*)&id, sizeof(int));
+        file2.close();
+        return 1;
+    }
+    file.seekp(0, ios::beg);
+    file.read((char*)&id, sizeof(int));
     file.close();
-
-    file.open("../Files/Admins.bin", ios::binary);
-    file.seekg (0, ios::end);
-    if (!file.is_open())
-        sum += 0;
-    else
-        sum += file.tellg();
+    id++;
+    file.open("../ID/PersodID.bin", ios::binary | ios::out);
+    file.write((char*)&id, sizeof(int));
     file.close();
-
-    return sum+1;
+    return id;
 }
