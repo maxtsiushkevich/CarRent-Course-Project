@@ -10,9 +10,6 @@ class HybridCar : public ElectricCar, public OilCar
     friend class Database;
 protected:
     string fuelType;
-    int batteryCapacity;
-    float consumption;
-    float engineVolume;
 public:
     HybridCar();
     HybridCar(int);
