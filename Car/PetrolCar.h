@@ -9,7 +9,7 @@ protected:
     int petrolType;
 public:
     PetrolCar();
-    PetrolCar(int odo) : OilCar(odo) { };
+    PetrolCar(int odo) :Car(odo), OilCar(odo) { };
     virtual ~PetrolCar() = default;
     int GetPetrolType() { return petrolType; };
 };

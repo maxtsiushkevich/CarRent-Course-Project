@@ -2,8 +2,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
-
-// объеденить в шаблон как-то
+#include <vector>
 
 void Database :: AddInDatabase(DieselCar &obj)
 {
@@ -28,7 +27,6 @@ void Database :: AddInDatabase(DieselCar &obj)
         string color;
         int costPerDay, costPerWeek, costPerMonth;
         bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
-
     } data;
 
     data.id = obj.id;
@@ -68,8 +66,9 @@ void Database :: AddInDatabase(DieselCar &obj)
     file.write((char*)&data, sizeof(data));
     file.close();
 }
-void Database :: GetFromDatabase(DieselCar &obj)
+void Database :: GetFromDatabase(vector<DieselCar>&dieselCars)
 {
+    DieselCar obj(0);
     struct Data
     {
         int id;
@@ -97,38 +96,46 @@ void Database :: GetFromDatabase(DieselCar &obj)
     file.open("../Files/DieselCars.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
-    file.read((char*)&data, sizeof(data));
+    while(file.read((char*)&data, sizeof(data)))
+    {
+        obj.deleteMark = data.deleteMark;
+
+        if (obj.deleteMark == true) // если объект считается удаленным, то пропускается
+            continue;
+
+        obj.id = data.id;
+        obj.brand = data.brand;
+        obj.model = data.model;
+        obj.country = data.country;
+        obj.bodyType = data.bodyType;
+        obj.manufacturedYear = data.manufacturedYear;
+        obj.transmissionType = data.transmissionType;
+        obj.numberOfSeats = data.numberOfSeats;
+        obj.odometer = data.odometer;
+        obj.horsepower = data.horsepower;
+        obj.maxSpeed = data.maxSpeed;
+        obj.to100 = data.to100;
+        obj.consumption = data.consumption;
+        obj.volume = data.volume ;
+        obj.interior.color = data.interior.color;
+        obj.interior.material = data.interior.material;
+        obj.color = data.color;
+        obj.costPerDay = data.costPerDay;
+        obj.costPerWeek = data.costPerWeek;
+        obj.costPerMonth = data.costPerMonth;
+        obj.cruiseControl = data.cruiseControl;
+        obj.parkingAssist = data.parkingAssist;
+        obj.music = data.music;
+        obj.bluetooth = data.bluetooth;
+        obj.climat = data.climat;
+        obj.seatHeating = data.seatHeating;
+        obj.gps = data.gps;
+        obj.sunroof = data.sunroof;
+
+        dieselCars.emplace_back(obj);
+    }
     file.close();
 
-    obj.id = data.id;
-    obj.deleteMark = data.deleteMark;
-    obj.brand = data.brand;
-    obj.model = data.model;
-    obj.country = data.country;
-    obj.bodyType = data.bodyType;
-    obj.manufacturedYear = data.manufacturedYear;
-    obj.transmissionType = data.transmissionType;
-    obj.numberOfSeats = data.numberOfSeats;
-    obj.odometer = data.odometer;
-    obj.horsepower = data.horsepower;
-    obj.maxSpeed = data.maxSpeed;
-    obj.to100 = data.to100;
-    obj.consumption = data.consumption;
-    obj.volume = data.volume ;
-    obj.interior.color = data.interior.color;
-    obj.interior.material = data.interior.material;
-    obj.color = data.color;
-    obj.costPerDay = data.costPerDay;
-    obj.costPerWeek = data.costPerWeek;
-    obj.costPerMonth = data.costPerMonth;
-    obj.cruiseControl = data.cruiseControl;
-    obj.parkingAssist = data.parkingAssist;
-    obj.music = data.music;
-    obj.bluetooth = data.bluetooth;
-    obj.climat = data.climat;
-    obj.seatHeating = data.seatHeating;
-    obj.gps = data.gps;
-    obj.sunroof = data.sunroof;
 }
 
 void Database :: AddInDatabase(PetrolCar &obj)
@@ -195,70 +202,70 @@ void Database :: AddInDatabase(PetrolCar &obj)
     file.write((char*)&data, sizeof(data));
     file.close();
 }
-void Database :: GetFromDatabase(PetrolCar &obj)
-{
-    struct Data
-    {
-        int id;
-        bool deleteMark;
-        string brand, model, country, bodyType;
-        int manufacturedYear;
-        string transmissionType;
-        int numberOfSeats;
-        int odometer;
-        int horsepower;
-        float maxSpeed;
-        float to100;
-        float consumption;
-        float volume;
-        struct interior
-        {
-            string color, material;
-        } interior;
-        string color;
-        int costPerDay, costPerWeek, costPerMonth;
-        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
-        int petrolType;
-    } data;
-
-    ifstream file;
-    file.open("../Files/DieselCars.bin", ios::binary);
-    if (!file.is_open())
-        cout << "Error";
-    file.read((char*)&data, sizeof(data));
-    file.close();
-
-    obj.id = data.id;
-    obj.deleteMark = data.deleteMark;
-    obj.brand = data.brand;
-    obj.model = data.model;
-    obj.country = data.country;
-    obj.bodyType = data.bodyType;
-    obj.manufacturedYear = data.manufacturedYear;
-    obj.transmissionType = data.transmissionType;
-    obj.numberOfSeats = data.numberOfSeats;
-    obj.odometer = data.odometer;
-    obj.horsepower = data.horsepower;
-    obj.maxSpeed = data.maxSpeed;
-    obj.to100 = data.to100;
-    obj.consumption = data.consumption;
-    obj.volume = data.volume;
-    obj.interior.color = data.interior.color;
-    obj.interior.material = data.interior.material;
-    obj.color = data.color;
-    obj.costPerDay = data.costPerDay;
-    obj.costPerWeek = data.costPerWeek;
-    obj.costPerMonth = data.costPerMonth;
-    obj.cruiseControl = data.cruiseControl;
-    obj.parkingAssist = data.parkingAssist;
-    obj.music = data.music;
-    obj.bluetooth = data.bluetooth;
-    obj.climat = data.climat;
-    obj.seatHeating = data.seatHeating;
-    obj.gps = data.gps;
-    obj.sunroof = data.sunroof;
-    obj.petrolType = data.petrolType;
-}
+//void Database :: GetFromDatabase(PetrolCar &obj)
+//{
+//    struct Data
+//    {
+//        int id;
+//        bool deleteMark;
+//        string brand, model, country, bodyType;
+//        int manufacturedYear;
+//        string transmissionType;
+//        int numberOfSeats;
+//        int odometer;
+//        int horsepower;
+//        float maxSpeed;
+//        float to100;
+//        float consumption;
+//        float volume;
+//        struct interior
+//        {
+//            string color, material;
+//        } interior;
+//        string color;
+//        int costPerDay, costPerWeek, costPerMonth;
+//        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
+//        int petrolType;
+//    } data;
+//
+//    ifstream file;
+//    file.open("../Files/PetrolCars.bin", ios::binary);
+//    if (!file.is_open())
+//        cout << "Error";
+//    file.read((char*)&data, sizeof(data));
+//    file.close();
+//
+//    obj.id = data.id;
+//    obj.deleteMark = data.deleteMark;
+//    obj.brand = data.brand;
+//    obj.model = data.model;
+//    obj.country = data.country;
+//    obj.bodyType = data.bodyType;
+//    obj.manufacturedYear = data.manufacturedYear;
+//    obj.transmissionType = data.transmissionType;
+//    obj.numberOfSeats = data.numberOfSeats;
+//    obj.odometer = data.odometer;
+//    obj.horsepower = data.horsepower;
+//    obj.maxSpeed = data.maxSpeed;
+//    obj.to100 = data.to100;
+//    obj.consumption = data.consumption;
+//    obj.volume = data.volume;
+//    obj.interior.color = data.interior.color;
+//    obj.interior.material = data.interior.material;
+//    obj.color = data.color;
+//    obj.costPerDay = data.costPerDay;
+//    obj.costPerWeek = data.costPerWeek;
+//    obj.costPerMonth = data.costPerMonth;
+//    obj.cruiseControl = data.cruiseControl;
+//    obj.parkingAssist = data.parkingAssist;
+//    obj.music = data.music;
+//    obj.bluetooth = data.bluetooth;
+//    obj.climat = data.climat;
+//    obj.seatHeating = data.seatHeating;
+//    obj.gps = data.gps;
+//    obj.sunroof = data.sunroof;
+//    obj.petrolType = data.petrolType;
+//}
 
 void Database :: AddInDatabase(ElectricCar &obj)
 {
@@ -320,66 +327,66 @@ void Database :: AddInDatabase(ElectricCar &obj)
     file.write((char*)&data, sizeof(data));
     file.close();
 }
-void Database :: GetFromDatabase(ElectricCar &obj)
-{
-    struct Data
-    {
-        int id;
-        bool deleteMark;
-        string brand, model, country, bodyType;
-        int manufacturedYear;
-        string transmissionType;
-        int numberOfSeats;
-        int odometer;
-        int horsepower;
-        float maxSpeed;
-        float to100;
-        struct interior
-        {
-            string color, material;
-        } interior;
-        string color;
-        int costPerDay, costPerWeek, costPerMonth;
-        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
-        int batteryCapacity;
-    } data;
-
-    ifstream file;
-    file.open("../Files/ElectricCars.bin", ios::binary);
-    if (!file.is_open())
-        cout << "Error";
-    file.read((char*)&data, sizeof(data));
-    file.close();
-
-    obj.id = data.id;
-    obj.deleteMark = data.deleteMark;
-    obj.brand = data.brand;
-    obj.model = data.model;
-    obj.country = data.country;
-    obj.bodyType = data.bodyType;
-    obj.manufacturedYear = data.manufacturedYear;
-    obj.transmissionType = data.transmissionType;
-    obj.numberOfSeats = data.numberOfSeats;
-    obj.odometer = data.odometer;
-    obj.horsepower = data.horsepower;
-    obj.maxSpeed = data.maxSpeed;
-    obj.to100 = data.to100;
-    obj.interior.color = data.interior.color;
-    obj.interior.material = data.interior.material;
-    obj.color = data.color;
-    obj.costPerDay = data.costPerDay;
-    obj.costPerWeek = data.costPerWeek;
-    obj.costPerMonth = data.costPerMonth;
-    obj.cruiseControl = data.cruiseControl;
-    obj.parkingAssist = data.parkingAssist;
-    obj.music = data.music;
-    obj.bluetooth = data.bluetooth;
-    obj.climat = data.climat;
-    obj.seatHeating = data.seatHeating;
-    obj.gps = data.gps;
-    obj.sunroof = data.sunroof;
-    obj.batteryCapacity = data.batteryCapacity;
-}
+//void Database :: GetFromDatabase(ElectricCar &obj)
+//{
+//    struct Data
+//    {
+//        int id;
+//        bool deleteMark;
+//        string brand, model, country, bodyType;
+//        int manufacturedYear;
+//        string transmissionType;
+//        int numberOfSeats;
+//        int odometer;
+//        int horsepower;
+//        float maxSpeed;
+//        float to100;
+//        struct interior
+//        {
+//            string color, material;
+//        } interior;
+//        string color;
+//        int costPerDay, costPerWeek, costPerMonth;
+//        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
+//        int batteryCapacity;
+//    } data;
+//
+//    ifstream file;
+//    file.open("../Files/ElectricCars.bin", ios::binary);
+//    if (!file.is_open())
+//        cout << "Error";
+//    file.read((char*)&data, sizeof(data));
+//    file.close();
+//
+//    obj.id = data.id;
+//    obj.deleteMark = data.deleteMark;
+//    obj.brand = data.brand;
+//    obj.model = data.model;
+//    obj.country = data.country;
+//    obj.bodyType = data.bodyType;
+//    obj.manufacturedYear = data.manufacturedYear;
+//    obj.transmissionType = data.transmissionType;
+//    obj.numberOfSeats = data.numberOfSeats;
+//    obj.odometer = data.odometer;
+//    obj.horsepower = data.horsepower;
+//    obj.maxSpeed = data.maxSpeed;
+//    obj.to100 = data.to100;
+//    obj.interior.color = data.interior.color;
+//    obj.interior.material = data.interior.material;
+//    obj.color = data.color;
+//    obj.costPerDay = data.costPerDay;
+//    obj.costPerWeek = data.costPerWeek;
+//    obj.costPerMonth = data.costPerMonth;
+//    obj.cruiseControl = data.cruiseControl;
+//    obj.parkingAssist = data.parkingAssist;
+//    obj.music = data.music;
+//    obj.bluetooth = data.bluetooth;
+//    obj.climat = data.climat;
+//    obj.seatHeating = data.seatHeating;
+//    obj.gps = data.gps;
+//    obj.sunroof = data.sunroof;
+//    obj.batteryCapacity = data.batteryCapacity;
+//}
 
 void Database :: AddInDatabase(HybridCar &obj)
 {
@@ -445,7 +452,72 @@ void Database :: AddInDatabase(HybridCar &obj)
     file.write((char*)&data, sizeof(data));
     file.close();
 }
-void Database :: GetFromDatabase(HybridCar &obj)
+//void Database :: GetFromDatabase(HybridCar &obj)
+//{
+//    struct Data
+//    {
+//        int id;
+//        bool deleteMark;
+//        string brand, model, country, bodyType;
+//        int manufacturedYear;
+//        string transmissionType;
+//        int numberOfSeats;
+//        int odometer;
+//        int horsepower;
+//        float maxSpeed;
+//        float to100;
+//        float consumption;
+//        float volume;
+//        struct interior
+//        {
+//            string color, material;
+//        } interior;
+//        string color;
+//        int costPerDay, costPerWeek, costPerMonth;
+//        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
+//        int batteryCapacity;
+//    } data;
+//
+//    ifstream file;
+//    file.open("../Files/HybridCars.bin", ios::binary);
+//    if (!file.is_open())
+//        cout << "Error";
+//    file.read((char*)&data, sizeof(data));
+//    file.close();
+//
+//    obj.id = data.id;
+//    obj.deleteMark = data.deleteMark;
+//    obj.brand = data.brand;
+//    obj.model = data.model;
+//    obj.country = data.country;
+//    obj.bodyType = data.bodyType;
+//    obj.manufacturedYear = data.manufacturedYear;
+//    obj.transmissionType = data.transmissionType;
+//    obj.numberOfSeats = data.numberOfSeats;
+//    obj.odometer = data.odometer;
+//    obj.horsepower = data.horsepower;
+//    obj.maxSpeed = data.maxSpeed;
+//    obj.to100 = data.to100;
+//    obj.consumption = data.consumption;
+//    obj.volume = data.volume;
+//    obj.interior.color = data.interior.color;
+//    obj.interior.material = data.interior.material;
+//    obj.color = data.color;
+//    obj.costPerDay = data.costPerDay;
+//    obj.costPerWeek = data.costPerWeek;
+//    obj.costPerMonth = data.costPerMonth;
+//    obj.cruiseControl = data.cruiseControl;
+//    obj.parkingAssist = data.parkingAssist;
+//    obj.music = data.music;
+//    obj.bluetooth = data.bluetooth;
+//    obj.climat = data.climat;
+//    obj.seatHeating = data.seatHeating;
+//    obj.gps = data.gps;
+//    obj.sunroof = data.sunroof;
+//    obj.batteryCapacity = data.batteryCapacity;
+//}
+
+void Database :: DeleteFromDatabase(DieselCar &obj)
 {
     struct Data
     {
@@ -468,44 +540,30 @@ void Database :: GetFromDatabase(HybridCar &obj)
         string color;
         int costPerDay, costPerWeek, costPerMonth;
         bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
-        int batteryCapacity;
     } data;
 
-    ifstream file;
-    file.open("../Files/HybridCars.bin", ios::binary);
+    fstream file;
+    file.open("../Files/DieselCars.bin", ios::binary | ios::in);
     if (!file.is_open())
         cout << "Error";
-    file.read((char*)&data, sizeof(data));
-    file.close();
 
-    obj.id = data.id;
-    obj.deleteMark = data.deleteMark;
-    obj.brand = data.brand;
-    obj.model = data.model;
-    obj.country = data.country;
-    obj.bodyType = data.bodyType;
-    obj.manufacturedYear = data.manufacturedYear;
-    obj.transmissionType = data.transmissionType;
-    obj.numberOfSeats = data.numberOfSeats;
-    obj.odometer = data.odometer;
-    obj.horsepower = data.horsepower;
-    obj.maxSpeed = data.maxSpeed;
-    obj.to100 = data.to100;
-    obj.consumption = data.consumption;
-    obj.volume = data.volume;
-    obj.interior.color = data.interior.color;
-    obj.interior.material = data.interior.material;
-    obj.color = data.color;
-    obj.costPerDay = data.costPerDay;
-    obj.costPerWeek = data.costPerWeek;
-    obj.costPerMonth = data.costPerMonth;
-    obj.cruiseControl = data.cruiseControl;
-    obj.parkingAssist = data.parkingAssist;
-    obj.music = data.music;
-    obj.bluetooth = data.bluetooth;
-    obj.climat = data.climat;
-    obj.seatHeating = data.seatHeating;
-    obj.gps = data.gps;
-    obj.sunroof = data.sunroof;
-    obj.batteryCapacity = data.batteryCapacity;
+    int pos = 0;
+
+    while(file.read((char*)&data, sizeof(data)))
+    {
+        if (obj.id == data.id)
+       {
+            data.deleteMark = true;
+            file.close();
+            file.open("../Files/DieselCars.bin", ios::binary | ios::app);
+            if (!file.is_open())
+               cout << "Error";
+            file.seekg(pos * sizeof(data), ios::beg);
+            file.write((char*)&data, sizeof(data));
+            file.close();
+            return;
+        }
+        pos++;
+    }
+
 }

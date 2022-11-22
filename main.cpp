@@ -10,15 +10,27 @@
 #include "Car/HybridCar.h"
 #include "Car/OilCar.h"
 #include "Interface/Interface.h"
-
-
+#include "Database/Database.h"
 using namespace std;
 
 int main()
 {
-    Interface Menu;
-    //Car c1;
-    //User u1;
-    //Admin a1;
+//    vector<DieselCar> dieselCars;
+//    Database::GetFromDatabase(dieselCars);
+//
+//    for (auto it = dieselCars.begin(); it != dieselCars.end(); ++it)
+//    {
+//        cout << it->GetBrand() << ' ' << it->GetModel() << endl;
+//    }
+//
+//    cout << '\n';
+
+
+
+//   for (auto it = dieselCars.begin(); it != dieselCars.end(); ++it)
+//   {
+//       cout << it->GetBrand() << ' ' << it->GetModel() << endl;
+//   }
+
     return 0;
 }

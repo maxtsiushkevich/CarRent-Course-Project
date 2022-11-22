@@ -9,13 +9,13 @@ using namespace std;
 
 Car :: Car()
 {
-    id = IdGenerator::GetIdForCar();
+    id = IdGenerator::GetIdForCar(); // присваем ID
     deleteMark = false;
     int choice;
     odometer = 0;
     cruiseControl = parkingAssist = music = bluetooth = climat = seatHeating = gps = sunroof = false;
     CarBrands carinfo;
-    carinfo.GetCarBrands();
+    carinfo.GetCarBrands(); // выводит список марок
     cout << "Выберите марку автомобиля: " << endl; // выбор
     cin >> choice;
     while (choice > 30 || choice < 1)
@@ -23,7 +23,7 @@ Car :: Car()
         cout << "Ошибка. Введите еще раз: ";
         cin >> choice;
     }
-    brand = carinfo.GetBrand(choice);
+    brand = carinfo.GetBrand(choice); // в зависимости от выбора возвращается марка и страна этой марки
     country = carinfo.GetCountry(choice);
 
     cout << "Модель автомобиля: " << endl;
@@ -35,7 +35,7 @@ Car :: Car()
 
     cout << "Год выпуска автомобиля: " << endl;
     cin >> manufacturedYear;
-    while (manufacturedYear < 2000 || manufacturedYear > 2022)
+    while (manufacturedYear < 1930 || manufacturedYear > 2022)
     {
         cout << "Ошибка. Введите еще раз: ";
         cin >> manufacturedYear;
@@ -68,9 +68,6 @@ Car :: Car()
     cin >> interior.color;
     cout << "Цвет автомобиля" << endl;
     cin >> color;
-
-    //cout << "Государственный номер автомобиля в формате 1111АА-1: " << endl;
-    //cin >> plate;
 
     cout << "Количество лошадиных сил в двигателе: " << endl;
     cin >> horsepower;
@@ -140,6 +137,8 @@ Car :: Car()
                     climat = true, seatHeating = true, gps = true, sunroof = true; break;
             case 0: break;
         }
+        if (choice == 9)
+            break;
         cin >> choice;
     }
 }

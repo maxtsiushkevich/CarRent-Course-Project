@@ -9,8 +9,8 @@ class Car
 {
     friend class Database;
 protected:
-    int id;
-    bool deleteMark;
+    int id; // ID
+    bool deleteMark; // метка, удалена ли машина
     string brand, model, country, bodyType;
     int manufacturedYear;
     string transmissionType;
@@ -25,7 +25,7 @@ protected:
     } interior;
     string color;
     int costPerDay, costPerWeek, costPerMonth;
-    bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
+    bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof; // опции
 public:
     Car();
     Car(int odo) { odometer = odo; } ;

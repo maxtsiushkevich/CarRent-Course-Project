@@ -1,34 +1,36 @@
 #include "IdGenerator.h"
 
+// ID определяется исходя из ID прошлого элмента, который записывается в файл
+
 int IdGenerator :: GetIdForCar()
 {
-    fstream file;
-    file.open("../ID/CarId.bin", ios::binary | ios::in);
+    fstream file; // файл для записи и чтения
+    file.open("../ID/CarId.bin", ios::binary | ios::in); // открытие файла
     int id = 1;
-    if (!file.is_open())
+    if (!file.is_open()) // если файла несуществует, то ID = 1
     {
         ofstream file2("../ID/CarId.bin", ios::binary | ios::app);
         file2.write((char*)&id, sizeof(int));
         file2.close();
-        return 1;
+        return id;
     }
-    file.seekp(0, ios::beg);
-    file.read((char*)&id, sizeof(int));
-    file.close();
-    id++;
+    file.seekp(0, ios::beg); // если существует
+    file.read((char*)&id, sizeof(int)); // то считываем значение
+    file.close(); // закрываем
+    id++; // прибавляем 1
     file.open("../ID/CarId.bin", ios::binary | ios::out);
-    file.write((char*)&id, sizeof(int));
+    file.write((char*)&id, sizeof(int)); // открываем файл для записи и перезаписываем новое значение
     file.close();
-    return id;
+    return id; // возвращаем значение
 }
-int IdGenerator :: GetIdForPerson()
+int IdGenerator :: GetIdForPerson() // все абсолютно аналогично
 {
     fstream file;
-    file.open("../ID/PersodID.bin", ios::binary | ios::in);
+    file.open("../ID/PersonID.bin", ios::binary | ios::in);
     int id = 1;
     if (!file.is_open())
     {
-        ofstream file2("../ID/PersodID.bin", ios::binary | ios::app);
+        ofstream file2("../ID/PersonID.bin", ios::binary | ios::app);
         file2.write((char*)&id, sizeof(int));
         file2.close();
         return 1;
@@ -37,7 +39,7 @@ int IdGenerator :: GetIdForPerson()
     file.read((char*)&id, sizeof(int));
     file.close();
     id++;
-    file.open("../ID/PersodID.bin", ios::binary | ios::out);
+    file.open("../ID/PersonID.bin", ios::binary | ios::out);
     file.write((char*)&id, sizeof(int));
     file.close();
     return id;
