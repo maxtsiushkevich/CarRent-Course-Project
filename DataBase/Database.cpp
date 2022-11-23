@@ -541,7 +541,6 @@ void Database :: DeleteFromDatabase(DieselCar &obj)
         int costPerDay, costPerWeek, costPerMonth;
         bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
     } data;
-
     fstream file;
     file.open("../Files/DieselCars.bin", ios::binary | ios::in);
     if (!file.is_open())
@@ -565,5 +564,4 @@ void Database :: DeleteFromDatabase(DieselCar &obj)
         }
         pos++;
     }
-
-}
+} // удаление из файла, не работает

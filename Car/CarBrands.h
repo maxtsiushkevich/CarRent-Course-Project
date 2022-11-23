@@ -2,6 +2,7 @@
 #define CARRENT_CARBRANDS_H
 #include <fstream>
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 struct CarBrands
@@ -16,24 +17,19 @@ private:
     string GetBrand(int);
 };
 
-void CarBrands :: GetCarBrands() // оформить вывод в виде красивой таблицы
+void CarBrands :: GetCarBrands()
 {
-    ifstream file("../Files/CarBrands.bin", ios::binary);
-    int i = 1;
+    ifstream file("/Users/max/Desktop/CarRent/Files/CarBrands.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
-    else
+    cout << setw(10) << right << "Номер"
+         << setw(15) << "Марка"
+         << setw(15) << "Страна" << endl;
+    while (file.read((char*)this, sizeof(CarBrands)))
     {
-        while (file.read((char*)this, sizeof(CarBrands)))
-        {
-            cout << this->num << ' ' << this->brand << ' ' << this->country << "\t\t\t";
-            i++;
-            if (i == 4)
-            {
-                cout << endl;
-                i=1;
-            }
-        }
+        cout << setw(10) << left << this->num
+             << setw(15) << this->brand
+             << setw(15) << this->country << endl;
     }
     file.close();
 }

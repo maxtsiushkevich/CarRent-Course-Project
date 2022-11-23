@@ -62,12 +62,9 @@ bool Userdata :: CheckAccess(int mode)
                 file.close();
                 return true;
             }
-            else
-            {
-                file.close();
-                return false;
-            }
         }
+        file.close();
+        return false;
     }
     if (mode == 2)
     {
@@ -82,12 +79,9 @@ bool Userdata :: CheckAccess(int mode)
                 file.close();
                 return true;
             }
-            else
-            {
-                file.close();
-                return false;
-            }
         }
+        file.close();
+        return false;
     }
 }
 

@@ -34,7 +34,6 @@ void Interface :: FirstMenu()
                 break;
             case 2:
                 this->UserAuthentication();
-                this->UserMainMenu();
                 break;
             case 3:
                 this->Registation();
@@ -98,6 +97,8 @@ void Interface :: UserAuthentication()
         account.SetData(login, password);
     }
     cout << "Вход выполнен!" << endl;
+
+    this->UserMainMenu();
     return;
 };
 

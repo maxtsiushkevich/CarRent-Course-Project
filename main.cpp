@@ -15,6 +15,11 @@ using namespace std;
 
 int main()
 {
+    Interface menu;
+
+      //DieselCar c1;
+      //Database::AddInDatabase(c1);
+
 //    vector<DieselCar> dieselCars;
 //    Database::GetFromDatabase(dieselCars);
 //
@@ -24,9 +29,9 @@ int main()
 //    }
 //
 //    cout << '\n';
-
-
-
+//
+//    Database::DeleteFromDatabase(dieselCars[0]);
+//
 //   for (auto it = dieselCars.begin(); it != dieselCars.end(); ++it)
 //   {
 //       cout << it->GetBrand() << ' ' << it->GetModel() << endl;

@@ -12,19 +12,19 @@ protected:
     int id; // ID
     bool deleteMark; // метка, удалена ли машина
     string brand, model, country, bodyType;
-    int manufacturedYear;
-    string transmissionType;
-    int numberOfSeats;
-    int odometer;
-    int horsepower;
-    float maxSpeed;
-    float to100;
+    int manufacturedYear; // год производства
+    string transmissionType; // тип КПП
+    int numberOfSeats; // количество мест
+    int odometer; // пробег
+    int horsepower; // лошадиные силы
+    float maxSpeed; // максимальная скорость
+    float to100; // разгон до 100
     struct interior
     {
-        string color, material;
+        string color, material; // цвет и материал салона
     } interior;
     string color;
-    int costPerDay, costPerWeek, costPerMonth;
+    int costPerDay, costPerWeek, costPerMonth; // стоимость аренды
     bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof; // опции
 public:
     Car();
