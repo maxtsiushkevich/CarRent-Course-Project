@@ -15,10 +15,27 @@ using namespace std;
 
 int main()
 {
-    Interface menu;
+    //Interface menu;
 
-      //DieselCar c1;
-      //Database::AddInDatabase(c1);
+    //DieselCar c1;
+    //Database::AddInDatabase(c1);
+
+      //Car c1(0);
+
+
+     // char string[30];
+//      fgets(string, 30, stdin);
+//      ofstream file;
+//      file.open("tmp.bin", ios::binary | ios::app);
+//      file.write((char*)&string, sizeof(string));
+//      file.close();
+
+//    ifstream file;
+//    file.open("tmp.bin", ios::binary);
+//    file.read((char*)&string, sizeof(string));
+//    cout << string << endl;
+//    file.close();
+
 
 //    vector<DieselCar> dieselCars;
 //    Database::GetFromDatabase(dieselCars);

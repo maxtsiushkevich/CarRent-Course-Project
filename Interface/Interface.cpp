@@ -69,6 +69,7 @@ void Interface :: AdminAuthentication()
         account.SetData(login, password);
     }
     cout << "Вход выполнен!" << endl;
+   //this->AdminMainMenu();
     return;
 };
 
@@ -140,4 +141,6 @@ void Interface :: UserMainMenu()
         }
     }
 }
+
+// AdminMainMenu
 

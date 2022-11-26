@@ -553,6 +553,7 @@ void Database :: DeleteFromDatabase(DieselCar &obj)
         if (obj.id == data.id)
        {
             data.deleteMark = true;
+            obj.deleteMark = true;
             file.close();
             file.open("../Files/DieselCars.bin", ios::binary | ios::app);
             if (!file.is_open())
