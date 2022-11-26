@@ -19,8 +19,8 @@ private:
         string country;
         string city;
         string street;
-        string house;
-        string flat;
+        int house;
+        int flat;
     } adress;
 public:
     User();

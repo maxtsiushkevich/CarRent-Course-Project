@@ -4,6 +4,7 @@
 #include <fstream>
 #include "CarBrands.h"
 #include "../ID/IdGenerator.h"
+#include <cctype>
 
 using namespace std;
 
@@ -23,15 +24,35 @@ Car :: Car()
         cout << "Ошибка. Введите еще раз: ";
         cin >> choice;
     }
+    brand.reserve(60);
     brand = carinfo.GetBrand(choice); // в зависимости от выбора возвращается марка и страна этой марки
+
+    country.reserve(60);
     country = carinfo.GetCountry(choice);
 
     cout << "Модель автомобиля: " << endl;
     fflush(stdin);
+    model.reserve(60);
     getline(cin, model);
+    while (model.size() > 60 || model.size() == 0)
+    {
+        cout << "Слишком длинная запись или пустой ввод. Введите еще раз: ";
+        model.reserve(60);
+        getline(cin, model);
+    }
+
+    cout << model.size() << endl;
 
     cout << "Тип кузова: " << endl;
-    cin >> bodyType;
+    fflush(stdin);
+    bodyType.reserve(60);
+    getline(cin, bodyType);
+    while (bodyType.size() > 60 || bodyType.size() == 0)
+    {
+        cout << "Слишком длинная запись или пустой ввод. Введите еще раз: ";
+        bodyType.reserve(60);
+        getline(cin, bodyType);
+    }
 
     cout << "Год выпуска автомобиля: " << endl;
     cin >> manufacturedYear;
@@ -63,11 +84,38 @@ Car :: Car()
     }
 
     cout << "Материал салона" << endl;
-    cin >> interior.material;
+    interior.material.reserve(60);
+    fflush(stdin);
+    getline(cin, interior.material);
+    while (interior.material.size() > 60 || interior.material.size() == 0)
+    {
+        cout << "Слишком длинная запись или пустой ввод. Введите еще раз: ";
+        interior.material.reserve(60);
+        getline(cin, interior.material);
+    }
+
     cout << "Цвет салона" << endl;
-    cin >> interior.color;
+    interior.color.reserve(60);
+    fflush(stdin);
+    getline(cin, interior.color);
+    while (interior.color.size() > 60 || interior.color.size() == 0)
+    {
+        cout << "Слишком длинная запись или пустой ввод. Введите еще раз: ";
+        interior.color.reserve(60);
+        getline(cin, interior.color);
+    }
+
     cout << "Цвет автомобиля" << endl;
-    cin >> color;
+    color.reserve(60);
+    fflush(stdin);
+    getline(cin, color);
+    while (color.size() > 60 || color.size() == 0)
+    {
+        cout << "Слишком длинная запись или пустой ввод. Введите еще раз: ";
+        color.reserve(60);
+        getline(cin, color);
+    }
+
 
     cout << "Количество лошадиных сил в двигателе: " << endl;
     cin >> horsepower;
@@ -140,5 +188,8 @@ Car :: Car()
         if (choice == 9)
             break;
         cin >> choice;
+
+        //toupper(model[0]);
+        //toupper(bodyType[0]);
     }
 }

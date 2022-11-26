@@ -4,6 +4,7 @@
 
 HybridCar :: HybridCar() : Car(), OilCar(), ElectricCar()
 {
+    fuelType.reserve(60);
     int choice;
     cout << "Тип топлива: " << endl;
     cout << "1 - Бензин\n"

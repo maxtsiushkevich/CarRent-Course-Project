@@ -17,36 +17,70 @@ int main()
 {
     //Interface menu;
 
-    //DieselCar c1;
-    //Database::AddInDatabase(c1);
+//    string a[30];
+//    cout << "Length: " << a[1].length() << endl;
+//    cout << "Capacity: " << a[1].capacity() << endl;
 
-      //Car c1(0);
+      Car c1;
+      //Database::AddInDatabase(c1);
+
+      //setlocale(LC_ALL, "Russian");
+
+      string str;
+      str.reserve(30);
+      cin >> str;
+      cout << "Length: " << str.length() << endl;
+      cout << "Capacity: " << str.capacity() << endl;
+      string str1;
+      //str.reserve(30);
+      str1 = str;
+      cout << "Length: " << str1.length() << endl;
+      cout << "Capacity: " << str1.capacity() << endl;
 
 
-     // char string[30];
-//      fgets(string, 30, stdin);
 //      ofstream file;
 //      file.open("tmp.bin", ios::binary | ios::app);
-//      file.write((char*)&string, sizeof(string));
+//      file.write((char*)&str, sizeof(str));
 //      file.close();
 
 //    ifstream file;
 //    file.open("tmp.bin", ios::binary);
-//    file.read((char*)&string, sizeof(string));
-//    cout << string << endl;
+//    while(file.read((char*)&str, sizeof(str)))
+//    {
+//        cout << str << endl;
+//        cout << "Length: " << str.length() << endl;
+//        cout << "Capacity: " << str.capacity() << endl;
+//
+//    }
 //    file.close();
 
+
+//    char str1[20];
+//    char str2[20];
+//    cin >> str1;
+//    cin >> str2;
+//    cout << str1 << endl;
+//    cout << str2 << endl;
+//    str2 = str1;
+//    cout << str2 << endl;
+
+
+    //DieselCar c1;
+    //Database::AddInDatabase(c1);
 
 //    vector<DieselCar> dieselCars;
 //    Database::GetFromDatabase(dieselCars);
 //
 //    for (auto it = dieselCars.begin(); it != dieselCars.end(); ++it)
 //    {
-//        cout << it->GetBrand() << ' ' << it->GetModel() << endl;
+//        cout << it->GetBodyType().length() << endl;
+//        cout << it->GetBodyType().capacity() << endl;
 //    }
+
+
 //
 //    cout << '\n';
-//
+
 //    Database::DeleteFromDatabase(dieselCars[0]);
 //
 //   for (auto it = dieselCars.begin(); it != dieselCars.end(); ++it)
