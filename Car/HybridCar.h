@@ -9,7 +9,7 @@ class HybridCar : public ElectricCar, public OilCar
 {
     friend class Database;
 protected:
-    string fuelType;
+    char fuelType[60];
 public:
     HybridCar();
     HybridCar(int odo) : OilCar(odo), ElectricCar(odo) { };

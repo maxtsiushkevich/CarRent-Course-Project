@@ -3,7 +3,6 @@
 #include "Person.h"
 #include <string>
 #include <vector>
-#include <map>
 
 using namespace std;
 
@@ -11,7 +10,8 @@ class Admin : public Person
 {
 public:
     Admin();
-    //Admin(int);
+    //Admin(int) { };
+    ~Admin() = default;
 };
 
 

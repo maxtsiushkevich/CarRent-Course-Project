@@ -7,26 +7,13 @@ Person :: Person()
     id = IdGenerator::GetIdForPerson();
     cout << "Введите фамилию: " << endl;
     fflush(stdin);
-    name.reserve(60);
-    getline(cin, surname);
-    while (surname.size() > 60 || surname.size() == 0)
-    {
-        cout << "Слишком длинная запись или пустой ввод. Введите еще раз: ";
-        surname.reserve(60);
-        getline(cin, surname);
-    }
-
+    fgets(surname, 60, stdin);
+    surname[strcspn(surname, "\n")] = '\0';
 
     cout << "Введите имя: " << endl;
     fflush(stdin);
-    name.reserve(60);
-    getline(cin, name);
-    while (name.size() > 60 || name.size() == 0)
-    {
-        cout << "Слишком длинная запись или пустой ввод. Введите еще раз: ";
-        name.reserve(60);
-        getline(cin, name);
-    }
+    fgets(name, 60, stdin);
+    name[strcspn(name, "\n")] = '\0';
 
     cout << "Введите возраст: ";
     cin >> age;
@@ -38,5 +25,3 @@ Person :: Person()
 }
 
 Person :: Person(int mode) { }
-
-Person :: ~Person() { }

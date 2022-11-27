@@ -1,6 +1,5 @@
 #ifndef CARRENT_USERDATA_H
 #define CARRENT_USERDATA_H
-#include <string>
 
 using namespace std;
 
@@ -8,15 +7,15 @@ class Userdata
 {
     friend class Interface;
 private:
-    string login;
-    string password;
+    char login[60]; // ограничить длину
+    char password[60];
     int id;
 public:
     Userdata();
     Userdata(int, int);
-    void SetData(string, string);
+    void SetData(char*, char*);
     bool CheckAccess(int); // admin - 1, user - 2
-    bool CheckLogin(string); // admin - 1, user - 2
+    bool CheckLogin(char*); // admin - 1, user - 2
 };
 
 

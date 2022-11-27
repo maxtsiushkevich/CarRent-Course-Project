@@ -11,9 +11,9 @@ class Car
 protected:
     int id; // ID
     bool deleteMark; // метка, удалена ли машина
-    string brand, model, country, bodyType;
+    char brand[60], model[60], country[60], bodyType[60];
     int manufacturedYear; // год производства
-    string transmissionType; // тип КПП
+    char transmissionType[8];
     int numberOfSeats; // количество мест
     int odometer; // пробег
     int horsepower; // лошадиные силы
@@ -21,9 +21,9 @@ protected:
     float to100; // разгон до 100
     struct interior
     {
-        string color, material; // цвет и материал салона
+        char color[60], material[60];
     } interior;
-    string color;
+    char color[60];
     int costPerDay, costPerWeek, costPerMonth; // стоимость аренды
     bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof; // опции
 public:
@@ -35,6 +35,7 @@ public:
     string GetModel() { return model; };
     string GetCountry() { return country; };
     string GetBodyType() { return bodyType; };
+    string GetTransmissionType() { return transmissionType; };
     int GetNumberOfSeats() { return numberOfSeats; };
     int GetOdometer() { return odometer; };
     int GetHorsepower() { return horsepower; };

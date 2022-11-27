@@ -15,33 +15,43 @@ using namespace std;
 
 int main()
 {
+    //Admin admin;
     //Interface menu;
+    //DieselCar c1(0);
+    //Database::AddInDatabase(c1);
 
-//    string a[30];
-//    cout << "Length: " << a[1].length() << endl;
-//    cout << "Capacity: " << a[1].capacity() << endl;
+    vector<DieselCar> dieselCars;
+    Database::GetFromDatabase(dieselCars);
 
-      Car c1;
-      //Database::AddInDatabase(c1);
 
+    Database::DeleteFromDatabase(dieselCars[1]);
+    Database::GetFromDatabase(dieselCars);
+    for (auto it = dieselCars.begin(); it != dieselCars.end(); ++it)
+    {
+        cout << it->GetBrand() << ' ';
+        cout << it->GetModel() << endl;
+    }
+
+
+    //cout << dieselCars[0].GetBodyType() << endl;
       //setlocale(LC_ALL, "Russian");
 
-      string str;
-      str.reserve(30);
-      cin >> str;
-      cout << "Length: " << str.length() << endl;
-      cout << "Capacity: " << str.capacity() << endl;
-      string str1;
+      //string str;
       //str.reserve(30);
-      str1 = str;
-      cout << "Length: " << str1.length() << endl;
-      cout << "Capacity: " << str1.capacity() << endl;
+      //cin >> str;
+      //cout << "Length: " << str.length() << endl;
+      //cout << "Capacity: " << str.capacity() << endl;
+      //string str1;
+      //str1.reserve(30);
+      //str1 = str;
+      //cout << "Length: " << str1.length() << endl;
+      //cout << "Capacity: " << str1.capacity() << endl;
 
 
-//      ofstream file;
-//      file.open("tmp.bin", ios::binary | ios::app);
-//      file.write((char*)&str, sizeof(str));
-//      file.close();
+      //ofstream file;
+      //file.open("tmp.bin", ios::binary | ios::app);
+      //file.write((char*)&str, sizeof(str));
+      //file.close();
 
 //    ifstream file;
 //    file.open("tmp.bin", ios::binary);
@@ -68,8 +78,6 @@ int main()
     //DieselCar c1;
     //Database::AddInDatabase(c1);
 
-//    vector<DieselCar> dieselCars;
-//    Database::GetFromDatabase(dieselCars);
 //
 //    for (auto it = dieselCars.begin(); it != dieselCars.end(); ++it)
 //    {

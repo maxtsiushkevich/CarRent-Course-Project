@@ -9,16 +9,22 @@ Userdata :: Userdata() { }
 Userdata :: Userdata(int id, int mode)
 {
     this->id = id;
-    cout << "Введите логин: ";
-    cin >> login;
+    cout << "Введите логин (пробелы недопустимы): ";
+    fflush(stdin);
+    fgets(login, 60, stdin);
+    login[strcspn(login, "\n")] = '\0';
     while (this->CheckLogin(login) == false)
     {
         cout << "Данный логин недоступен! " << endl;
         cout << "Введите другой логин: " << endl;
-        cin >> login;
+        fflush(stdin);
+        fgets(login, 60, stdin);
+        login[strcspn(login, "\n")] = '\0';
     }
-    cout << "Введите пароль: ";
-    cin >> password;
+    cout << "Введите пароль (пробелы недопустимы): ";
+    fflush(stdin);
+    fgets(password, 60, stdin);
+    password[strcspn(password, "\n")] = '\0';
     ofstream file;
     switch (mode)
     {
@@ -39,10 +45,10 @@ Userdata :: Userdata(int id, int mode)
     }
 }
 
-void Userdata :: SetData(string login, string password)
+void Userdata :: SetData(char login[], char password[])
 {
-    this->login = login;
-    this->password = password;
+    strcpy(this->login, login);
+    strcpy(this->password, password);
 }
 
 bool Userdata :: CheckAccess(int mode)
@@ -57,8 +63,9 @@ bool Userdata :: CheckAccess(int mode)
             // добавить исключение
         while (file.read((char*)&tmp, sizeof(tmp)))
         {
-            if (tmp.login == login && tmp.password == password)
+            if (!strcmp(tmp.login, login) && !strcmp(tmp.password, password))
             {
+                this->id = tmp.id;
                 file.close();
                 return true;
             }
@@ -74,8 +81,9 @@ bool Userdata :: CheckAccess(int mode)
             // добавить искючения
         while (file.read((char *) &tmp, sizeof(tmp)))
         {
-            if (tmp.login == login && tmp.password == password)
+            if (!strcmp(tmp.login, login) && !strcmp(tmp.password, password))
             {
+                this->id = tmp.id;
                 file.close();
                 return true;
             }
@@ -85,7 +93,7 @@ bool Userdata :: CheckAccess(int mode)
     }
 }
 
-bool Userdata :: CheckLogin(string login)
+bool Userdata :: CheckLogin(char login[])
 {
     Userdata tmp;
     ifstream file;
@@ -95,7 +103,7 @@ bool Userdata :: CheckLogin(string login)
         // добавить исключения
     while (file.read((char*)&tmp, sizeof(tmp)))
     {
-        if (tmp.login == login)
+        if (!strcmp(tmp.login, login))
         {
             file.close();
             return false;
@@ -109,7 +117,7 @@ bool Userdata :: CheckLogin(string login)
         // добавить исключения
     while (file.read((char*)&tmp, sizeof(tmp)))
     {
-        if (tmp.login == login)
+        if (!strcmp(tmp.login, login))
         {
             file.close();
             return false;

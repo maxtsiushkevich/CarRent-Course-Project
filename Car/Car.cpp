@@ -24,35 +24,19 @@ Car :: Car()
         cout << "Ошибка. Введите еще раз: ";
         cin >> choice;
     }
-    brand.reserve(60);
-    brand = carinfo.GetBrand(choice); // в зависимости от выбора возвращается марка и страна этой марки
 
-    country.reserve(60);
-    country = carinfo.GetCountry(choice);
+    strcpy(brand, carinfo.GetBrand(choice).c_str());
+    strcpy(country, carinfo.GetCountry(choice).c_str());
 
     cout << "Модель автомобиля: " << endl;
     fflush(stdin);
-    model.reserve(60);
-    getline(cin, model);
-    while (model.size() > 60 || model.size() == 0)
-    {
-        cout << "Слишком длинная запись или пустой ввод. Введите еще раз: ";
-        model.reserve(60);
-        getline(cin, model);
-    }
-
-    cout << model.size() << endl;
+    fgets(model, 60, stdin);
+    model[strcspn(model, "\n")] = '\0';
 
     cout << "Тип кузова: " << endl;
     fflush(stdin);
-    bodyType.reserve(60);
-    getline(cin, bodyType);
-    while (bodyType.size() > 60 || bodyType.size() == 0)
-    {
-        cout << "Слишком длинная запись или пустой ввод. Введите еще раз: ";
-        bodyType.reserve(60);
-        getline(cin, bodyType);
-    }
+    fgets(bodyType, 60, stdin);
+    bodyType[strcspn(bodyType, "\n")] = '\0';
 
     cout << "Год выпуска автомобиля: " << endl;
     cin >> manufacturedYear;
@@ -71,8 +55,8 @@ Car :: Car()
     }
     switch (choice)
     {
-        case 1: transmissionType = "АКПП"; break;
-        case 2: transmissionType = "МКПП"; break;
+        case 1: strcpy(transmissionType, "АКПП"); break;
+        case 2: strcpy(transmissionType, "МКПП"); break;
     }
 
     cout << "Количество мест: " << endl;
@@ -84,38 +68,19 @@ Car :: Car()
     }
 
     cout << "Материал салона" << endl;
-    interior.material.reserve(60);
     fflush(stdin);
-    getline(cin, interior.material);
-    while (interior.material.size() > 60 || interior.material.size() == 0)
-    {
-        cout << "Слишком длинная запись или пустой ввод. Введите еще раз: ";
-        interior.material.reserve(60);
-        getline(cin, interior.material);
-    }
+    fgets(interior.material, 60, stdin);
+    interior.material[strcspn(interior.material, "\n")] = '\0';
 
     cout << "Цвет салона" << endl;
-    interior.color.reserve(60);
     fflush(stdin);
-    getline(cin, interior.color);
-    while (interior.color.size() > 60 || interior.color.size() == 0)
-    {
-        cout << "Слишком длинная запись или пустой ввод. Введите еще раз: ";
-        interior.color.reserve(60);
-        getline(cin, interior.color);
-    }
+    fgets(interior.color, 60, stdin);
+    interior.color[strcspn(interior.color, "\n")] = '\0';
 
     cout << "Цвет автомобиля" << endl;
-    color.reserve(60);
     fflush(stdin);
-    getline(cin, color);
-    while (color.size() > 60 || color.size() == 0)
-    {
-        cout << "Слишком длинная запись или пустой ввод. Введите еще раз: ";
-        color.reserve(60);
-        getline(cin, color);
-    }
-
+    fgets(color, 60, stdin);
+    color[strcspn(color, "\n")] = '\0';
 
     cout << "Количество лошадиных сил в двигателе: " << endl;
     cin >> horsepower;
@@ -189,7 +154,5 @@ Car :: Car()
             break;
         cin >> choice;
 
-        //toupper(model[0]);
-        //toupper(bodyType[0]);
     }
 }

@@ -11,21 +11,23 @@ using namespace std;
 class User : public Person
 {
 private:
-    string status; // classic, silver, gold, platinum
+    char status[10]; // classic, silver, gold, platinum
     float count;
-    string phoneNumber;
+    char phoneNumber[20];
     struct Adress
     {
-        string country;
-        string city;
-        string street;
+        char country[60];
+        char city[60];
+        char street[60];
         int house;
         int flat;
     } adress;
 public:
     User();
-    //User(int);
+    User(int);
+    ~User() = default;
 };
 
 
 #endif //CARRENT_USER_H
+

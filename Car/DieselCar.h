@@ -9,7 +9,6 @@ public:
     DieselCar() { };
     DieselCar(int odo) : Car(odo), OilCar(odo) { };
     ~DieselCar() = default;
-
 };
 
 

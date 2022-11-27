@@ -5,53 +5,31 @@
 
 using namespace std;
 
+User :: User(int a) { count = 0; }
 User :: User()
 {
     Userdata user(id, 2);
-    status.reserve(10);
-    status = "Classic";
+    strcpy(status, "Classic");
     count = 0;
     cout << "Введите номер телефона в формате <<КОД CТРАНЫ-ХХХХХХХХХХ>>: " << endl;
     fflush(stdin);
-    getline (cin, phoneNumber);
-    while (phoneNumber.size() < 12 || phoneNumber.size() > 15)
-    {
-        cout << "Неверный ввод! Попробуйте еще раз: " << endl;
-        getline (cin, phoneNumber);
-    }
+    fgets(phoneNumber, 20, stdin);
+    phoneNumber[strcspn(phoneNumber, "\n")] = '\0';
 
     cout << "Введите страну проживания: " << endl;
     fflush(stdin);
-    adress.country.reserve(60);
-    getline(cin, adress.country);
-    while (adress.country.size() > 60 || adress.country.size() == 0)
-    {
-        cout << "Слишком длинная запись или пустой ввод. Введите еще раз: ";
-        adress.country.reserve(60);
-        getline(cin, adress.country);
-    }
+    fgets(adress.country, 60, stdin);
+    adress.country[strcspn(adress.country, "\n")] = '\0';
 
     cout << "Введите город проживания: " << endl;
     fflush(stdin);
-    adress.city.reserve(60);
-    getline(cin, adress.city);
-    while (adress.city.size() > 60 || adress.city.size() == 0)
-    {
-        cout << "Слишком длинная запись или пустой ввод. Введите еще раз: ";
-        adress.city.reserve(60);
-        getline(cin, adress.city);
-    }
+    fgets(adress.city, 60, stdin);
+    adress.city[strcspn(adress.city, "\n")] = '\0';
 
     cout << "Введите улицу: " << endl;
     fflush(stdin);
-    adress.street.reserve(60);
-    getline(cin, adress.street);
-    while (adress.street.size() > 60 || adress.street.size() == 0)
-    {
-        cout << "Слишком длинная запись или пустой ввод. Введите еще раз: ";
-        adress.street.reserve(60);
-        getline(cin, adress.street);
-    }
+    fgets(adress.street, 60, stdin);
+    adress.street[strcspn(adress.street, "\n")] = '\0';
 
     cout << "Введите дом: " << endl;
     cin >> adress.house;

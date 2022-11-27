@@ -10,13 +10,13 @@ class Person
 {
 protected:
     int id;
-    string name;
-    string surname;
+    char name[60];
+    char surname[60];
     int age;
 public:
     Person();
     Person(int);
-    ~Person();
+    ~Person() = default;
 };
 
 

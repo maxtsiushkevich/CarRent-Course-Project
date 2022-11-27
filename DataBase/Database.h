@@ -18,9 +18,9 @@ public:
     static void AddInDatabase(HybridCar&);
 
     static void GetFromDatabase(vector<DieselCar>&);
-    static void GetFromDatabase(PetrolCar&);
-    static void GetFromDatabase(ElectricCar&);
-    static void GetFromDatabase(HybridCar&);
+    static void GetFromDatabase(vector<PetrolCar>&);
+    static void GetFromDatabase(vector<ElectricCar>&);
+    static void GetFromDatabase(vector<HybridCar>&);
 
     static void DeleteFromDatabase(DieselCar&);
     static void DeleteFromDatabase(PetrolCar&);

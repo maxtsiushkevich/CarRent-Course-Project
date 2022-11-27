@@ -2,6 +2,8 @@
 #define CARRENT_INTERFACE_H
 #include <string>
 #include "../Persons/Userdata.h"
+#include "../Persons/User.h"
+#include "../Persons/Admin.h"
 #include "../Car/ElectricCar.h"
 #include "../Car/DieselCar.h"
 #include "../Car/PetrolCar.h"

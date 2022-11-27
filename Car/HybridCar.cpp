@@ -4,7 +4,6 @@
 
 HybridCar :: HybridCar() : Car(), OilCar(), ElectricCar()
 {
-    fuelType.reserve(60);
     int choice;
     cout << "Тип топлива: " << endl;
     cout << "1 - Бензин\n"
@@ -17,8 +16,8 @@ HybridCar :: HybridCar() : Car(), OilCar(), ElectricCar()
     }
     switch (choice)
     {
-        case 1: fuelType = "Бензин"; break;
-        case 2: fuelType = "Дизель"; break;
+        case 1: strcpy(fuelType, "Бензин"); break;
+        case 2: strcpy(fuelType, "Дизель"); break;
 
     }
 }

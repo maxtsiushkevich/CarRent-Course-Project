@@ -8,7 +8,6 @@ using namespace std;
 
 Interface::Interface()
 {
-
     this->FirstMenu();
 }
 void Interface :: FirstMenu()
@@ -46,12 +45,16 @@ void Interface :: FirstMenu()
 
 void Interface :: AdminAuthentication()
 {
-    string login, password;
+    char login[60], password[60];
     int mode = 1;
     cout << "Введите логин учетной записи" << endl;
-    cin >> login;
+    fflush(stdin);
+    fgets(login, 60, stdin);
+    login[strcspn(login, "\n")] = '\0';
     cout << "Введите пароль от учетной записи" << endl;
-    cin >> password;
+    fflush(stdin);
+    fgets(password, 60, stdin);
+    password[strcspn(password, "\n")] = '\0';
     account.SetData(login, password);
     while(!account.CheckAccess(mode))
     {
@@ -63,9 +66,13 @@ void Interface :: AdminAuthentication()
         if (tmp == '1')
             return;
         cout << "Логин" << endl;
-        cin >> login;
+        fflush(stdin);
+        fgets(login, 60, stdin);
+        login[strcspn(login, "\n")] = '\0';
         cout << "Пароль" << endl;
-        cin >> password;
+        fflush(stdin);
+        fgets(password, 60, stdin);
+        password[strcspn(password, "\n")] = '\0';
         account.SetData(login, password);
     }
     cout << "Вход выполнен!" << endl;
@@ -75,12 +82,16 @@ void Interface :: AdminAuthentication()
 
 void Interface :: UserAuthentication()
 {
-    string login, password;
+    char login[60], password[60];
     int mode = 2;
     cout << "Введите логин учетной записи" << endl;
-    cin >> login;
+    fflush(stdin);
+    fgets(login, 60, stdin);
+    login[strcspn(login, "\n")] = '\0';
     cout << "Введите пароль от учетной записи" << endl;
-    cin >> password;
+    fflush(stdin);
+    fgets(password, 60, stdin);
+    password[strcspn(password, "\n")] = '\0';
     account.SetData(login, password);
     while(!account.CheckAccess(mode))
     {
@@ -116,9 +127,10 @@ void Interface :: UserMainMenu()
         cout << "===== Личный кабинет ===== " << endl;
         cout << "1 - Информация об аккаунте" << endl;
         cout << "2 - Доступные автомобили" << endl;
-        cout << "3 - Регистрация нового аккаунта пользователя" << endl;
-        cout << "4 - Выйти из аккаунта" << endl;
-        cout << "5 - Завершить работу" << endl;
+        cout << "3 - История поездок" << endl;
+        cout << "4 - Регистрация нового аккаунта пользователя" << endl;
+        cout << "5 - Выйти из аккаунта" << endl;
+        cout << "6 - Завершить работу" << endl;
         cin >> choice;
         while (choice < 1 || choice > 5)
         {
@@ -134,8 +146,10 @@ void Interface :: UserMainMenu()
             case 3:
                 break;
             case 4:
-                return;
+                break;
             case 5:
+                return;
+            case 6:
                 exit(0);
 
         }

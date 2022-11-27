@@ -23,6 +23,7 @@ int IdGenerator :: GetIdForCar()
     file.close();
     return id; // возвращаем значение
 }
+
 int IdGenerator :: GetIdForPerson() // все абсолютно аналогично
 {
     fstream file;
