@@ -11,7 +11,7 @@ protected:
     float volume; // объем
 public:
     OilCar();
-    OilCar(int odo) : Car(odo) { };
+    OilCar(int id) : Car(id) { };
     virtual ~OilCar() = default;
     float GetConsumption() { return consumption; };
     float GetVolume() { return volume; };

@@ -12,7 +12,7 @@ class User : public Person
 {
 private:
     char status[10]; // classic, silver, gold, platinum
-    float count;
+    float count; // счет
     char phoneNumber[20];
     struct Adress
     {

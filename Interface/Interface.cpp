@@ -3,12 +3,19 @@
 #include <fstream>
 #include "../Persons/Userdata.h"
 #include "../Persons/User.h"
+#include "../Database//Database.h"
 #include <map>
 using namespace std;
 
 Interface::Interface()
 {
     this->FirstMenu();
+    Database::GetFromDatabase(petrolCars);
+    Database::GetFromDatabase(dieselCars);
+    Database::GetFromDatabase(electricCars);
+    Database::GetFromDatabase(hybridCar);
+    //user(0);
+    //admin(0);
 }
 void Interface :: FirstMenu()
 {
@@ -128,11 +135,11 @@ void Interface :: UserMainMenu()
         cout << "1 - Информация об аккаунте" << endl;
         cout << "2 - Доступные автомобили" << endl;
         cout << "3 - История поездок" << endl;
-        cout << "4 - Регистрация нового аккаунта пользователя" << endl;
+        cout << "4 - Пополнение счета" << endl;
         cout << "5 - Выйти из аккаунта" << endl;
         cout << "6 - Завершить работу" << endl;
         cin >> choice;
-        while (choice < 1 || choice > 5)
+        while (choice < 1 || choice > 7)
         {
             cout << "Ошибка!" << endl;
             cin >> choice;
@@ -140,6 +147,7 @@ void Interface :: UserMainMenu()
         switch (choice)
         {
             case 1:
+                UserAccountInfo();
                 break;
             case 2:
                 break;
@@ -156,5 +164,9 @@ void Interface :: UserMainMenu()
     }
 }
 
+void Interface :: UserAccountInfo()
+{
+
+}
 // AdminMainMenu
 

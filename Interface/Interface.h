@@ -12,12 +12,15 @@ using namespace std;
 
 class Interface
 {
+    friend class Session;
 private:
     Userdata account;
     vector<PetrolCar> petrolCars;
     vector<DieselCar> dieselCars;
     vector<ElectricCar> electricCars;
     vector<HybridCar> hybridCar;
+    //User user(int);
+    //Admin admin(int);
 public:
     Interface();
     ~Interface() = default;
@@ -27,6 +30,9 @@ public:
     void UserMainMenu();
     void AdminMainMenu();
     void Registation();
+    void UserAccountInfo(); // выводит информацию об аккауте пользователя
+    void ShowAllSessions(); // показывает все заказы вообще
+    void ShowSessions(); // показывает все заказы конкретного пользователя
 };
 
 

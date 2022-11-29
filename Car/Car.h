@@ -15,7 +15,6 @@ protected:
     int manufacturedYear; // год производства
     char transmissionType[8];
     int numberOfSeats; // количество мест
-    int odometer; // пробег
     int horsepower; // лошадиные силы
     float maxSpeed; // максимальная скорость
     float to100; // разгон до 100
@@ -24,11 +23,11 @@ protected:
         char color[60], material[60];
     } interior;
     char color[60];
-    int costPerDay, costPerWeek, costPerMonth; // стоимость аренды
+    int costPerDay; // стоимость аренды
     bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof; // опции
 public:
     Car();
-    Car(int odo) { odometer = odo; } ;
+    Car(int id) { this->id = id; } ;
     virtual ~Car() = default;
     int GetId() { return id; };
     string GetBrand() { return brand; };
@@ -37,7 +36,6 @@ public:
     string GetBodyType() { return bodyType; };
     string GetTransmissionType() { return transmissionType; };
     int GetNumberOfSeats() { return numberOfSeats; };
-    int GetOdometer() { return odometer; };
     int GetHorsepower() { return horsepower; };
     float GetMaxSpeed() { return maxSpeed; };
     float GetTo100() { return to100; };
@@ -45,7 +43,5 @@ public:
     string GetInteriorMaterial() { return interior.material; };
     string GetColor() { return color; };
     int GetCostPerDay() { return costPerDay; };
-    int GetCostPerWeek() { return costPerWeek; };
-    int GetCostPerMonth() { return costPerMonth; };
 };
 #endif

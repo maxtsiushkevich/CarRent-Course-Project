@@ -13,7 +13,6 @@ Car :: Car()
     id = IdGenerator::GetIdForCar(); // присваем ID
     deleteMark = false;
     int choice;
-    odometer = 0;
     cruiseControl = parkingAssist = music = bluetooth = climat = seatHeating = gps = sunroof = false;
     CarBrands carinfo;
     carinfo.GetCarBrands(); // выводит список марок
@@ -113,8 +112,9 @@ Car :: Car()
         cout << "Ошибка. Введите еще раз: ";
         cin >> costPerDay;
     }
-    costPerWeek = costPerDay * 6;
-    costPerMonth = costPerDay * 25;
+
+    //costPerWeek = costPerDay * 6;
+    //costPerMonth = costPerDay * 25;
 
     cout << "Выберите опции: " << endl;
     cout << "1 - Круизконтроль\n"

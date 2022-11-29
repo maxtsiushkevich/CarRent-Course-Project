@@ -12,7 +12,7 @@ protected:
     char fuelType[60];
 public:
     HybridCar();
-    HybridCar(int odo) : OilCar(odo), ElectricCar(odo) { };
+    HybridCar(int id) : OilCar(id), ElectricCar(id) { };
     ~HybridCar() = default;
     string GetFuelType() { return fuelType; };
 

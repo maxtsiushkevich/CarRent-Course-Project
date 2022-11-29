@@ -11,26 +11,41 @@
 #include "Car/OilCar.h"
 #include "Interface/Interface.h"
 #include "Database/Database.h"
+
+#include <ctime>
 using namespace std;
 
 int main()
 {
+    //int a = (14 - 11) / 12;
+    //cout << a;
+    //time_t seconds = time(NULL);
+    //tm* currentTime = localtime(&seconds);
+    //cout << currentTime->tm_mday << endl;
+
+
+
+    //cout << tm.tm_mday;
+    //char buf[64];
+    //strftime(buf, 64, "%d.%m.%Y", localtime(&tm));
+    //cout << buf << endl;
     //Admin admin;
     //Interface menu;
-    //DieselCar c1(0);
+    //DieselCar c1;
     //Database::AddInDatabase(c1);
 
-    vector<DieselCar> dieselCars;
-    Database::GetFromDatabase(dieselCars);
+//    vector<DieselCar> dieselCars;
+//    Database::GetFromDatabase(dieselCars);
 
 
-    Database::DeleteFromDatabase(dieselCars[1]);
-    Database::GetFromDatabase(dieselCars);
-    for (auto it = dieselCars.begin(); it != dieselCars.end(); ++it)
-    {
-        cout << it->GetBrand() << ' ';
-        cout << it->GetModel() << endl;
-    }
+    //Database::DeleteFromDatabase(dieselCars[1]);
+    //Database::GetFromDatabase(dieselCars);
+
+//    for (auto it = dieselCars.begin(); it != dieselCars.end(); ++it)
+//    {
+//        cout << it->GetBrand() << ' ';
+//        cout << it->GetModel() << endl;
+//    }
 
 
     //cout << dieselCars[0].GetBodyType() << endl;
