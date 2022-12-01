@@ -12,7 +12,8 @@ private:
     int id;
 public:
     Userdata();
-    Userdata(int, int);
+    Userdata(int);
+    void SetInfo(int);
     void SetData(char*, char*);
     bool CheckAccess(int); // admin - 1, user - 2
     bool CheckLogin(char*); // admin - 1, user - 2

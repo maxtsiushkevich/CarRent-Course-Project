@@ -29,6 +29,7 @@ public:
     Car();
     Car(int id) { this->id = id; } ;
     virtual ~Car() = default;
+    virtual void SetInfo();
     int GetId() { return id; };
     string GetBrand() { return brand; };
     string GetModel() { return model; };

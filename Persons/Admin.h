@@ -9,9 +9,9 @@ using namespace std;
 class Admin : public Person
 {
 public:
-    Admin();
-    //Admin(int) { };
+    Admin() { };
     ~Admin() = default;
+    void SetInfo();
 };
 
 

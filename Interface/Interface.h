@@ -8,6 +8,7 @@
 #include "../Car/DieselCar.h"
 #include "../Car/PetrolCar.h"
 #include "../Car/HybridCar.h"
+#include "../Session/Session.h"
 using namespace std;
 
 class Interface
@@ -19,6 +20,7 @@ private:
     vector<DieselCar> dieselCars;
     vector<ElectricCar> electricCars;
     vector<HybridCar> hybridCar;
+    Session session;
     //User user(int);
     //Admin admin(int);
 public:

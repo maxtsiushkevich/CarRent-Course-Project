@@ -11,6 +11,7 @@ public:
     PetrolCar();
     PetrolCar(int id) :Car(id), OilCar(id) { };
     virtual ~PetrolCar() = default;
+    void SetInfo();
     int GetPetrolType() { return petrolType; };
 };
 

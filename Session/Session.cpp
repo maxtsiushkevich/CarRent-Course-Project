@@ -4,17 +4,29 @@
 #include <ctime>
 using namespace std;
 
-Session :: Session(int userID, int carID, int costPerDay, int count)
+Session :: Session()
+{
+    userID;
+    icarID;
+    cost = 0.0;
+    DateFrom.day = 0;
+    DateFrom.month = 0;
+    DateFrom.year = 0;
+    DateTo.day = 0;
+    DateTo.month = 0;
+    DateTo.year = 0;
+}
+
+void Session :: CreateSession(int userID, int carID, int costPerDay, int count)
 {
     int term;
     int JDNDay[2];
-
     cout << "С какой даты начинается аренда? Введите день, месяц и год через пробел" << endl;
     cin >> DateFrom.day; // добавить проверки
     cin >> DateFrom.month;
     cin >> DateFrom.year;
     JDNDay[0] = JDDate(DateFrom.day, DateFrom.month, DateFrom.year);
-    while (!this->CheckDate(JDNDay[0]))
+    while (this->CheckDate(JDNDay[0]))
     {
         cout << "Ошибка! Введите дату еще раз!" << endl;
         cin >> DateFrom.day; // добавить проверки
@@ -27,7 +39,7 @@ Session :: Session(int userID, int carID, int costPerDay, int count)
     cin >> DateTo.month;
     cin >> DateTo.year;
     JDNDay[1] = JDDate(DateTo.day, DateTo.month, DateTo.year);
-    while (!this->CheckDate(JDNDay[0], JDNDay[1]))
+    while (this->CheckDate(JDNDay[0], JDNDay[1]))
     {
         cout << "Ошибка! Введите дату еще раз!" << endl;
         cin >> DateTo.day; // добавить проверки
@@ -37,9 +49,28 @@ Session :: Session(int userID, int carID, int costPerDay, int count)
     term = JDNDay[1] - JDNDay[0];
 
     // механизм расчета стоимости поездки
+    if (term <= 6)
+    {
+        cost = costPerDay * term;
+    }
+    if (term > 6 && term < 30)
+    {
+        int week = (term - (term % 7)) / 7;
+        cost = week * costPerDay * 6 + (term - week * 7) * costPerDay;
+    }
+    if (term > 30)
+    {
+        int month = (term - (term % 30)) / 30;
+        int week = ((term - month * 30) - ((term - month * 30) % 7)) / 7;
+        cost = month * costPerDay * 26 + week * costPerDay * 6 + (term - month * 30 - week * 7) * costPerDay;
+    }
 
-    //if (cost > user.count)
-    //    cout << "Недостаточно средств" << endl;
+
+    if (cost > count)
+    {
+        cout << "Недостаточно средств" << endl; // прерывание, если недостаточно средств
+        return;
+    }
 
     ofstream file;
     file.open("../Files/Session.bin", ios::binary | ios::app);
@@ -61,10 +92,10 @@ bool Session :: CheckDate(int daysNum)
     int m = currentTime->tm_mon + 12 * a - 3;
     nowDays = currentTime->tm_mday + ((153*m+2)/5) + 365 * y + y/4 - y/100 + y/400 - 32045;
 
-    if (nowDays > daysNum)
-        return false;
-    else
+    if (nowDays <= daysNum)
         return true;
+    else
+        return false;
 }
 
 bool Session :: CheckDate(int daysNumFrom, int daysNumTo)
@@ -92,6 +123,6 @@ void Session :: GetAllSessions(vector<Session>&sessions)
     file.open("../Files/Session.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
-    while(file.read((char*)&obj, sizeof(obj)))
-        sessions.emplace_back(obj);
+    while(file.read((char*)&session, sizeof(session)))
+        sessions.emplace_back(session);
 }

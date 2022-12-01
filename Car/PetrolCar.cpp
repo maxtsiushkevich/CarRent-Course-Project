@@ -3,6 +3,12 @@
 
 PetrolCar :: PetrolCar() : OilCar()
 {
+        petrolType = 0;
+}
+
+void PetrolCar :: SetInfo()
+{
+    OilCar::SetInfo();
     int choice;
     cout << "Марка бензина: " << endl;
     cout << "1 - 80\n"

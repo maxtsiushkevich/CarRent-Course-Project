@@ -5,10 +5,14 @@
 
 using namespace std;
 
-User :: User(int a) { count = 0; }
 User :: User()
+{ }
+
+void User :: SetInfo()
 {
-    Userdata user(id, 2);
+    Person::SetInfo();
+    Userdata userdata(id);
+    userdata.SetInfo(2);
     strcpy(status, "Classic");
     count = 0;
     cout << "Введите номер телефона в формате <<КОД CТРАНЫ-ХХХХХХХХХХ>>: " << endl;
@@ -53,5 +57,4 @@ User :: User()
         cout << "Error";
     file.write((char*)this, sizeof(User));
     file.close();
-
 }

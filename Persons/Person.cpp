@@ -5,6 +5,11 @@
 Person :: Person()
 {
     id = IdGenerator::GetIdForPerson();
+    age = 0;
+}
+
+void Person :: SetInfo()
+{
     cout << "Введите фамилию: " << endl;
     fflush(stdin);
     fgets(surname, 60, stdin);
@@ -17,11 +22,9 @@ Person :: Person()
 
     cout << "Введите возраст: ";
     cin >> age;
-    while (age < 18)
+    while (age < 18 || age > 100)
     {
         cout << "Вам должно быть больше 18 лет!" << endl;
         cin >> age;
     }
 }
-
-Person :: Person(int mode) { }

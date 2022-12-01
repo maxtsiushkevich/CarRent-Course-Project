@@ -11,20 +11,33 @@
 #include "Car/OilCar.h"
 #include "Interface/Interface.h"
 #include "Database/Database.h"
+#include "Session/Session.h"
 
 #include <ctime>
 using namespace std;
 
 int main()
 {
+    //HybridCar car;
+    //car.SetInfo();
+    //Session ses(1, 2, 150, 5);
+
+    //int week = (22 - (22 % 7)) / 7;
+    //cout << week << endl;
+    //int cost = week * 2 * 6 + (22 - week * 7) * 2;
+    //cout << cost << endl;
+    //int month = (38 - (38 % 30)) / 30;
+    //int week = ((38 - month * 30) - ((38 - month * 30) % 7)) / 7;
+    //int cost = month * 2 * 26 + week * 2 * 6 + (38 - month * 30 - week * 7) * 2;
+    //cout << cost << endl;
     //int a = (14 - 11) / 12;
     //cout << a;
     //time_t seconds = time(NULL);
     //tm* currentTime = localtime(&seconds);
     //cout << currentTime->tm_mday << endl;
 
-
-
+    Interface menu;
+    menu.FirstMenu();
     //cout << tm.tm_mday;
     //char buf[64];
     //strftime(buf, 64, "%d.%m.%Y", localtime(&tm));

@@ -24,8 +24,8 @@ private:
     } adress;
 public:
     User();
-    User(int);
     ~User() = default;
+    void SetInfo();
 };
 
 

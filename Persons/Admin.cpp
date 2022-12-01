@@ -3,9 +3,11 @@
 #include <fstream>
 #include <iostream>
 
-Admin :: Admin()
+void Admin :: SetInfo()
 {
-    Userdata user(id, 1);
+    Person::SetInfo();
+    Userdata userdata(id);
+    userdata.SetInfo(1);
     ofstream file;
     file.open("../Files/Admin.bin", ios::binary | ios::app);
     if (!file.is_open())

@@ -5,6 +5,13 @@
 
 OilCar :: OilCar () : Car()
 {
+        volume = 0.0;
+        consumption = 0.0;
+}
+
+void OilCar :: SetInfo()
+{
+    Car::SetInfo();
     cout << "Объем двигателя: " << endl;
     cin >> volume;
     while (volume > 8.5 || volume < 0)
@@ -20,7 +27,6 @@ OilCar :: OilCar () : Car()
         cin >> consumption;
     }
 }
-
 
 
 

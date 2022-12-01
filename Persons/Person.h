@@ -15,8 +15,10 @@ protected:
     int age;
 public:
     Person();
-    Person(int);
     ~Person() = default;
+    int GetID() { return id; }
+    virtual void SetInfo();
+    //char* GetName() { return name; }
 };
 
 

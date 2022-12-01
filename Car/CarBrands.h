@@ -12,6 +12,8 @@ private:
     int num;
     char brand[30];
     char country[30];
+    CarBrands() = default;
+    ~CarBrands() = default;
     void GetCarBrands();
     string GetCountry(int);
     string GetBrand(int);

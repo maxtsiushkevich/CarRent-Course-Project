@@ -9,13 +9,10 @@ using namespace std;
 
 Interface::Interface()
 {
-    this->FirstMenu();
     Database::GetFromDatabase(petrolCars);
     Database::GetFromDatabase(dieselCars);
     Database::GetFromDatabase(electricCars);
     Database::GetFromDatabase(hybridCar);
-    //user(0);
-    //admin(0);
 }
 void Interface :: FirstMenu()
 {
@@ -124,6 +121,7 @@ void Interface :: UserAuthentication()
 void Interface :: Registation()
 {
     User user;
+    user.SetInfo();
 }
 
 void Interface :: UserMainMenu()
@@ -166,7 +164,6 @@ void Interface :: UserMainMenu()
 
 void Interface :: UserAccountInfo()
 {
-
 }
 // AdminMainMenu
 

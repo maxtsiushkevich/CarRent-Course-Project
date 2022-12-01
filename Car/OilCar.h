@@ -13,6 +13,7 @@ public:
     OilCar();
     OilCar(int id) : Car(id) { };
     virtual ~OilCar() = default;
+    void SetInfo();
     float GetConsumption() { return consumption; };
     float GetVolume() { return volume; };
 };

@@ -22,10 +22,11 @@ private:
         int month;
         int year;
     } DateTo;
-
+public:
     Session(int userID, int carID, int costPerDay, int count);
     Session() { }
     ~Session() = default;
+    void CreateSession();
     static void GetAllSessions(vector<Session>&);
     bool CheckDate(int);
     bool CheckDate(int, int);

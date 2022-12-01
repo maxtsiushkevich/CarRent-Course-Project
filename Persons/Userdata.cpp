@@ -4,11 +4,18 @@
 
 using namespace std;
 
-Userdata :: Userdata() { }
+Userdata :: Userdata()
+{
+    id = 0;
+}
 
-Userdata :: Userdata(int id, int mode)
+Userdata :: Userdata(int id)
 {
     this->id = id;
+}
+
+void Userdata :: SetInfo(int mode)
+{
     cout << "Введите логин (пробелы недопустимы): ";
     fflush(stdin);
     fgets(login, 60, stdin);
@@ -44,7 +51,6 @@ Userdata :: Userdata(int id, int mode)
             break;
     }
 }
-
 void Userdata :: SetData(char login[], char password[])
 {
     strcpy(this->login, login);

@@ -11,9 +11,10 @@ class HybridCar : public ElectricCar, public OilCar
 protected:
     char fuelType[60];
 public:
-    HybridCar();
+    HybridCar() : Car(), OilCar(), ElectricCar() { }
     HybridCar(int id) : OilCar(id), ElectricCar(id) { };
     ~HybridCar() = default;
+    void SetInfo();
     string GetFuelType() { return fuelType; };
 
 };
