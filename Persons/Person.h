@@ -17,6 +17,9 @@ public:
     Person();
     ~Person() = default;
     int GetID() { return id; }
+    char* GetName() { return name; }
+    char* GetSurname() { return surname; };
+    int GetAge() { return age; }
     virtual void SetInfo();
     //char* GetName() { return name; }
 };

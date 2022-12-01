@@ -20,9 +20,10 @@ private:
     vector<DieselCar> dieselCars;
     vector<ElectricCar> electricCars;
     vector<HybridCar> hybridCar;
+    vector<int> carIdInUsage;
     Session session;
-    //User user(int);
-    //Admin admin(int);
+    User user;
+    Admin admin;
 public:
     Interface();
     ~Interface() = default;

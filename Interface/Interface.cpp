@@ -80,7 +80,19 @@ void Interface :: AdminAuthentication()
         account.SetData(login, password);
     }
     cout << "Вход выполнен!" << endl;
+    ifstream file;
+    file.open("../Files/Admin.bin", ios::binary);
+    if (!file.is_open())
+        cout << "Error";
+    while(file.read((char*)&admin, sizeof(Admin)))
+    {
+        if (admin.GetID() == account.GetID())
+            break;
+    }
+    file.close();
+
    //this->AdminMainMenu();
+
     return;
 };
 
@@ -114,6 +126,18 @@ void Interface :: UserAuthentication()
     }
     cout << "Вход выполнен!" << endl;
 
+    // нужно инициализировать user
+    ifstream file;
+    file.open("../Files/User.bin", ios::binary);
+    if (!file.is_open())
+        cout << "Error";
+    while(file.read((char*)&user, sizeof(User)))
+    {
+        if (user.GetID() == account.GetID())
+            break;
+    }
+    file.close();
+
     this->UserMainMenu();
     return;
 };
@@ -131,7 +155,7 @@ void Interface :: UserMainMenu()
     {
         cout << "===== Личный кабинет ===== " << endl;
         cout << "1 - Информация об аккаунте" << endl;
-        cout << "2 - Доступные автомобили" << endl;
+        cout << "2 - Автомобили для заказа" << endl;
         cout << "3 - История поездок" << endl;
         cout << "4 - Пополнение счета" << endl;
         cout << "5 - Выйти из аккаунта" << endl;
@@ -148,6 +172,7 @@ void Interface :: UserMainMenu()
                 UserAccountInfo();
                 break;
             case 2:
+
                 break;
             case 3:
                 break;
@@ -164,6 +189,9 @@ void Interface :: UserMainMenu()
 
 void Interface :: UserAccountInfo()
 {
+    cout << "Имя: ";
+    cout << user.GetName() << " " << user.GetSurname() << endl;
+    getchar();
 }
 // AdminMainMenu
 

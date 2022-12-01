@@ -10,6 +10,7 @@ User :: User()
 
 void User :: SetInfo()
 {
+    // добавить номер паспорта
     Person::SetInfo();
     Userdata userdata(id);
     userdata.SetInfo(2);

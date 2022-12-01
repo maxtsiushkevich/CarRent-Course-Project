@@ -26,6 +26,7 @@ public:
     User();
     ~User() = default;
     void SetInfo();
+    // перегрузить оператор =
 };
 
 

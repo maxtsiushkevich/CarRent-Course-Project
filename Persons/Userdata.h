@@ -13,6 +13,7 @@ private:
 public:
     Userdata();
     Userdata(int);
+    int GetID() { return id; }
     void SetInfo(int);
     void SetData(char*, char*);
     bool CheckAccess(int); // admin - 1, user - 2

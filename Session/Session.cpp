@@ -6,8 +6,8 @@ using namespace std;
 
 Session :: Session()
 {
-    userID;
-    icarID;
+    userID = 0;
+    carID = 0;
     cost = 0.0;
     DateFrom.day = 0;
     DateFrom.month = 0;
