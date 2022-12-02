@@ -12,15 +12,22 @@
 #include "Interface/Interface.h"
 #include "Database/Database.h"
 #include "Session/Session.h"
+#include <locale>
 
 #include <ctime>
 using namespace std;
 
 int main()
 {
+    setlocale(LC_ALL, "");
+
     //HybridCar car;
     //car.SetInfo();
+    //Database::AddInDatabase(car);
+
     //Session ses(1, 2, 150, 5);
+    Interface menu;
+    menu.FirstMenu();
 
     //int week = (22 - (22 % 7)) / 7;
     //cout << week << endl;
@@ -35,9 +42,6 @@ int main()
     //time_t seconds = time(NULL);
     //tm* currentTime = localtime(&seconds);
     //cout << currentTime->tm_mday << endl;
-
-    Interface menu;
-    menu.FirstMenu();
     //cout << tm.tm_mday;
     //char buf[64];
     //strftime(buf, 64, "%d.%m.%Y", localtime(&tm));

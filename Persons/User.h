@@ -11,6 +11,8 @@ using namespace std;
 class User : public Person
 {
 private:
+    bool isBlocked;
+    char passportNum[60];
     char status[10]; // classic, silver, gold, platinum
     float count; // счет
     char phoneNumber[20];
@@ -26,6 +28,8 @@ public:
     User();
     ~User() = default;
     void SetInfo();
+    void SetNewNumber();
+    void SetNewAdress();
     // перегрузить оператор =
 };
 

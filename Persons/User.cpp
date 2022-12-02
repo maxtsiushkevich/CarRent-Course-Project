@@ -6,16 +6,24 @@
 using namespace std;
 
 User :: User()
-{ }
+{
+    count = 0;
+    isBlocked = false;
+}
 
 void User :: SetInfo()
 {
-    // добавить номер паспорта
     Person::SetInfo();
     Userdata userdata(id);
     userdata.SetInfo(2);
     strcpy(status, "Classic");
     count = 0;
+
+    cout << "Введите номер паспорта:" << endl;
+    fflush(stdin);
+    fgets(passportNum, 60, stdin);
+    passportNum[strcspn(passportNum, "\n")] = '\0';
+
     cout << "Введите номер телефона в формате <<КОД CТРАНЫ-ХХХХХХХХХХ>>: " << endl;
     fflush(stdin);
     fgets(phoneNumber, 20, stdin);

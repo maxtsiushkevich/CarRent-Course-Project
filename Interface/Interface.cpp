@@ -189,9 +189,33 @@ void Interface :: UserMainMenu()
 
 void Interface :: UserAccountInfo()
 {
-    cout << "Имя: ";
-    cout << user.GetName() << " " << user.GetSurname() << endl;
-    getchar();
+    //cout << "Имя: ";
+    //cout << '|' << setw(5) << left << user.GetName() << setw(5) << '|' << setw(5) << user.GetSurname() << endl;
+    //cout << '|' << setw(5) << left << user.GetName() << setw(5) << '|' << setw(5) << user.GetSurname() << endl;
+    for (auto it = hybridCar.begin(); it != hybridCar.end(); ++it)
+    {
+        cout << "—————————————————————————————————" << endl;
+        cout << '|' << setw(15) << left << it->GetBrand() << '|' << setw(15) << left << it->GetModel() << '|' << endl;
+    }
+    cout << "——————————————————————————" << endl;
+    //cout << '|' << setw(5) << left << user.GetName() << setw(5) << '|' << setw(5) << user.GetSurname() << endl;
+    //cout << user.GetName() << ' ' << user.GetSurname() << endl;
 }
-// AdminMainMenu
+
+void Interface :: AdminMainMenu()
+{
+    int choice;
+    while (1)
+    {
+        cout << "===== Личный кабинет ===== " << endl;
+        cout << "1 - Просмотреть базу данных пользователей" << endl;
+        cout << "2 - Просмотреть базу данных автомобилей" << endl;
+        cout << "3 - Просмотреть все заказы автомобилей" << endl;
+        cout << "4 - Просмотреть все заказы конкретного пользователя" << endl;
+        cout << "5 - Просмотреть все заказы конкретного автомобиля" << endl;
+        cout << "6 - Блокировка пользователя" << endl;
+        cout << "7 - Добавление автомобиля" << endl;
+        cout << "8 - Удаление автомобиля" << endl;
+    }
+}
 

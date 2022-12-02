@@ -5,7 +5,7 @@
 Person :: Person()
 {
     id = IdGenerator::GetIdForPerson();
-    age = 0;
+    age = 18;
 }
 
 void Person :: SetInfo()
