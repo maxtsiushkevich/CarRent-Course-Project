@@ -13,6 +13,7 @@ User :: User()
 
 void User :: SetInfo()
 {
+
     Person::SetInfo();
     Userdata userdata(id);
     userdata.SetInfo(2);

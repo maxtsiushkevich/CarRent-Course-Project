@@ -4,7 +4,6 @@
 #include "../Persons/Userdata.h"
 #include "../Persons/User.h"
 #include "../Database//Database.h"
-#include <map>
 using namespace std;
 
 Interface::Interface()
@@ -195,7 +194,14 @@ void Interface :: UserAccountInfo()
     for (auto it = hybridCar.begin(); it != hybridCar.end(); ++it)
     {
         cout << "—————————————————————————————————" << endl;
-        cout << '|' << setw(15) << left << it->GetBrand() << '|' << setw(15) << left << it->GetModel() << '|' << endl;
+        cout << '|';
+        cout.width(15);
+        cout << left << it->GetBrand();
+        cout << '|';
+        cout.width(15);
+        cout << left << it->GetModel();
+        cout << '|' << endl;
+        //cout << '|' << setw(15) << left << it->GetBrand() << '|' << setw(15) << left << it->GetModel() << '|' << endl;
     }
     cout << "——————————————————————————" << endl;
     //cout << '|' << setw(5) << left << user.GetName() << setw(5) << '|' << setw(5) << user.GetSurname() << endl;
