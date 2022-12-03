@@ -39,10 +39,10 @@ void CarBrands :: GetCarBrands()
     ifstream file("/Users/max/Desktop/CarRent/Files/CarBrands.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
-    cout << setw(10) << right << "Номер" << setw(15) << "Марка" << setw(22) << "Страна" << endl;
+    cout << left << setw(15) << "Номер" << setw(20) << "Марка" << setw(20) << "Страна" << endl;
     while (file.read((char*)this, sizeof(CarBrands)))
     {
-        wcout << setw(10) << left << this->num << setw(15) << this->brand << setw(15) << this->country << endl;
+        wcout << left << setw(10) << this->num << setw(15) << this->brand << setw(20) << this->country << endl;
     }
     file.close();
 }

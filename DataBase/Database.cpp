@@ -410,7 +410,7 @@ void Database :: AddInDatabase(HybridCar &obj)
         int costPerDay;
         bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
         int batteryCapacity;
-        wchar_t fuelType[6];
+        wchar_t fuelType[8];
     } data;
 
     data.id = obj.id;
@@ -473,7 +473,7 @@ void Database :: GetFromDatabase(vector<HybridCar>&hybridCars)
         int costPerDay;
         bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
         int batteryCapacity;
-        wchar_t fuelType[6];
+        wchar_t fuelType[8];
     } data;
 
     ifstream file;

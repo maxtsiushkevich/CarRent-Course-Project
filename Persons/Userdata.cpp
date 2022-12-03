@@ -36,14 +36,14 @@ void Userdata :: SetInfo(int mode)
     switch (mode)
     {
         case 1:
-            file.open("../Files/AdminAuthentication.bin", ios::binary | ios::app);
+            file.open("/Users/max/Desktop/CarRent/Files/AdminAuthentication.bin", ios::binary | ios::app);
             if (!file.is_open())
                 cout << "Error";
             file.write((char*)this, sizeof(Userdata));
             file.close();
             break;
         case 2:
-            file.open("../Files/UserAuthentication.bin", ios::binary | ios::app);
+            file.open("/Users/max/Desktop/CarRent/Files/UserAuthentication.bin", ios::binary | ios::app);
             if (!file.is_open())
                 cout << "Error";
             file.write((char*)this, sizeof(Userdata));
@@ -63,13 +63,13 @@ bool Userdata :: CheckAccess(int mode)
     ifstream file;
     if (mode == 1)
     {
-        file.open("../Files/AdminAuthentication.bin", ios::binary);
+        file.open("/Users/max/Desktop/CarRent/Files/AdminAuthentication.bin", ios::binary);
         if (!file.is_open())
             cout << "Error";
             // добавить исключение
         while (file.read((char*)&tmp, sizeof(tmp)))
         {
-            if (!wcscpy(tmp.login, login) && !wcscpy(tmp.password, password))
+            if (!wcscmp(tmp.login, login) && !wcscmp(tmp.password, password))
             {
                 this->id = tmp.id;
                 file.close();
@@ -81,13 +81,13 @@ bool Userdata :: CheckAccess(int mode)
     }
     if (mode == 2)
     {
-        file.open("../Files/UserAuthentication.bin", ios::binary);
+        file.open("/Users/max/Desktop/CarRent/Files/UserAuthentication.bin", ios::binary);
         if (!file.is_open())
             cout << "Error";
             // добавить искючения
         while (file.read((char *) &tmp, sizeof(tmp)))
         {
-            if (!wcscpy(tmp.login, login) && !wcscpy(tmp.password, password))
+            if (!wcscmp(tmp.login, login) && !wcscmp(tmp.password, password))
             {
                 this->id = tmp.id;
                 file.close();
@@ -103,13 +103,13 @@ bool Userdata :: CheckLogin(wchar_t login[])
 {
     Userdata tmp;
     ifstream file;
-    file.open("../Files/AdminAuthentication.bin", ios::binary);
+    file.open("/Users/max/Desktop/CarRent/Files/AdminAuthentication.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
         // добавить исключения
     while (file.read((char*)&tmp, sizeof(tmp)))
     {
-        if (!wcscpy(tmp.login, login))
+        if (!wcscmp(tmp.login, login))
         {
             file.close();
             return false;
@@ -117,13 +117,13 @@ bool Userdata :: CheckLogin(wchar_t login[])
     }
     file.close();
 
-    file.open("../Files/UserAuthentication.bin", ios::binary);
+    file.open("/Users/max/Desktop/CarRent/Files/UserAuthentication.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
         // добавить исключения
     while (file.read((char*)&tmp, sizeof(tmp)))
     {
-        if (!wcscpy(tmp.login, login))
+        if (!wcscmp(tmp.login, login))
         {
             file.close();
             return false;

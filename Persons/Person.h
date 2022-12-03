@@ -21,7 +21,6 @@ public:
     wchar_t* GetSurname() { return surname; };
     int GetAge() { return age; }
     virtual void SetInfo();
-    //char* GetName() { return name; }
 };
 
 

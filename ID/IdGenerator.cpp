@@ -5,11 +5,11 @@
 int IdGenerator :: GetIdForCar()
 {
     fstream file; // файл для записи и чтения
-    file.open("../ID/CarId.bin", ios::binary | ios::in); // открытие файла
+    file.open("/Users/max/Desktop/CarRent/ID/CarId.bin", ios::binary | ios::in); // открытие файла
     int id = 1;
     if (!file.is_open()) // если файла несуществует, то ID = 1
     {
-        ofstream file2("../ID/CarId.bin", ios::binary | ios::app);
+        ofstream file2("/Users/max/Desktop/CarRent/ID/CarId.bin", ios::binary | ios::app);
         file2.write((char*)&id, sizeof(int));
         file2.close();
         return id;
@@ -18,7 +18,7 @@ int IdGenerator :: GetIdForCar()
     file.read((char*)&id, sizeof(int)); // то считываем значение
     file.close(); // закрываем
     id++; // прибавляем 1
-    file.open("../ID/CarId.bin", ios::binary | ios::out);
+    file.open("/Users/max/Desktop/CarRent/ID/CarId.bin", ios::binary | ios::out);
     file.write((char*)&id, sizeof(int)); // открываем файл для записи и перезаписываем новое значение
     file.close();
     return id; // возвращаем значение
@@ -27,11 +27,11 @@ int IdGenerator :: GetIdForCar()
 int IdGenerator :: GetIdForPerson() // все абсолютно аналогично
 {
     fstream file;
-    file.open("../ID/PersonID.bin", ios::binary | ios::in);
+    file.open("/Users/max/Desktop/CarRent/ID/PersonID.bin", ios::binary | ios::in);
     int id = 1;
     if (!file.is_open())
     {
-        ofstream file2("../ID/PersonID.bin", ios::binary | ios::app);
+        ofstream file2("/Users/max/Desktop/CarRent/ID/PersonID.bin", ios::binary | ios::app);
         file2.write((char*)&id, sizeof(int));
         file2.close();
         return 1;
@@ -40,7 +40,7 @@ int IdGenerator :: GetIdForPerson() // все абсолютно аналоги�
     file.read((char*)&id, sizeof(int));
     file.close();
     id++;
-    file.open("../ID/PersonID.bin", ios::binary | ios::out);
+    file.open("/Users/max/Desktop/CarRent/ID/PersonID.bin", ios::binary | ios::out);
     file.write((char*)&id, sizeof(int));
     file.close();
     return id;

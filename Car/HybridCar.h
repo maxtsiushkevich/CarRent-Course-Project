@@ -9,7 +9,7 @@ class HybridCar : public ElectricCar, public OilCar
 {
     friend class Database;
 protected:
-    wchar_t fuelType[6];
+    wchar_t fuelType[8];
 public:
     HybridCar() : Car(), OilCar(), ElectricCar() { }
     HybridCar(int id) : OilCar(id), ElectricCar(id) { };

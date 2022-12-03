@@ -14,7 +14,7 @@ using namespace std;
 class Interface
 {
     friend class Session;
-private:
+protected:
     Userdata account;
     vector<PetrolCar> petrolCars;
     vector<DieselCar> dieselCars;
@@ -27,15 +27,14 @@ private:
 public:
     Interface();
     ~Interface() = default;
-    void FirstMenu();
-    void AdminAuthentication();
-    void UserAuthentication();
-    void UserMainMenu();
-    void AdminMainMenu();
-    void Registation();
+    void FirstMenu(); // главное меню, открывается при запуске
+    void UserMainMenu(); // главное меню пользователя
+    void AdminMainMenu(); // главное меню администратора
+    void Registation(); // регистрация
     void UserAccountInfo(); // выводит информацию об аккауте пользователя
     void ShowAllSessions(); // показывает все заказы вообще
     void ShowSessions(); // показывает все заказы конкретного пользователя
+    void UserAccountSettings(); // изменение данных аккаунта администратора
 };
 
 // добавление машины: вызов конструктора (там же записывается в файл) -> добавляется в соответствующий вектор

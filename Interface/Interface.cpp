@@ -4,6 +4,7 @@
 #include "../Persons/Userdata.h"
 #include "../Persons/User.h"
 #include "../Database//Database.h"
+#include "Authentication.h"
 using namespace std;
 
 Interface::Interface()
@@ -32,10 +33,12 @@ void Interface :: FirstMenu()
         switch (choice)
         {
             case 1:
-                this->AdminAuthentication();
+                Authentication auth;
+                auth.AdminAuthentication();
                 break;
             case 2:
-                this->UserAuthentication();
+                Authentication auth;
+                auth.UserAuthentication();
                 break;
             case 3:
                 this->Registation();
@@ -45,104 +48,6 @@ void Interface :: FirstMenu()
         }
     }
 }
-
-void Interface :: AdminAuthentication()
-{
-    wchar_t login[30], password[30];
-    int mode = 1;
-    cout << "Введите логин учетной записи" << endl;
-    fflush(stdin);
-    fgetws(login, 30, stdin);
-    login[wcscspn(login, L"\n")] = L'\0';
-    cout << "Введите пароль от учетной записи" << endl;
-    fflush(stdin);
-    fgetws(password, 30, stdin);
-    password[wcscspn(password, L"\n")] = L'\0';
-    account.SetData(login, password);
-    while(!account.CheckAccess(mode))
-    {
-        char tmp;
-        fflush(stdin);
-        cout << "Ошибка! Введите логин и пароль заново" << endl;
-        cout << "Если хотите выбрать другой режим входа, введите 1\nЕсли хотите продолжить, нажмите любую другую кнопку" << endl;
-        tmp = cin.get();
-        if (tmp == '1')
-            return;
-        cout << "Логин" << endl;
-        fflush(stdin);
-        fgetws(login, 30, stdin);
-        login[wcscspn(login, L"\n")] = L'\0';
-        cout << "Пароль" << endl;
-        fflush(stdin);
-        fgetws(password, 30, stdin);
-        password[wcscspn(password, L"\n")] = L'\0';
-        account.SetData(login, password);
-    }
-    cout << "Вход выполнен!" << endl;
-    ifstream file;
-    file.open("../Files/Admin.bin", ios::binary);
-    if (!file.is_open())
-        cout << "Error";
-    while(file.read((char*)&admin, sizeof(Admin)))
-    {
-        if (admin.GetID() == account.GetID())
-            break;
-    }
-    file.close();
-
-   //this->AdminMainMenu();
-
-    return;
-};
-
-void Interface :: UserAuthentication()
-{
-    wchar_t login[30], password[30];
-    int mode = 2;
-    cout << "Введите логин учетной записи" << endl;
-    fflush(stdin);
-    fgetws(login, 30, stdin);
-    login[wcscspn(login, L"\n")] = L'\0';
-    cout << "Введите пароль от учетной записи" << endl;
-    fflush(stdin);
-    fgetws(password, 30, stdin);
-    password[wcscspn(password, L"\n")] = L'\0';
-    account.SetData(login, password);
-    while(!account.CheckAccess(mode))
-    {
-        char tmp;
-        fflush(stdin);
-        cout << "Ошибка! Введите логин и пароль заново" << endl;
-        cout << "Если хотите выбрать другой режим входа, введите 1\nЕсли хотите продолжить, нажмите любую другую кнопку" << endl;
-        tmp = cin.get();
-        if (tmp == '1')
-            return;
-        cout << "Логин" << endl;
-        fflush(stdin);
-        fgetws(login, 30, stdin);
-        login[wcscspn(login, L"\n")] = L'\0';
-        cout << "Пароль" << endl;
-        fflush(stdin);
-        fgetws(password, 30, stdin);
-        password[wcscspn(password, L"\n")] = L'\0';
-        account.SetData(login, password);
-    }
-    cout << "Вход выполнен!" << endl;
-
-    ifstream file;
-    file.open("../Files/User.bin", ios::binary);
-    if (!file.is_open())
-        cout << "Error";
-    while(file.read((char*)&user, sizeof(User)))
-    {
-        if (user.GetID() == account.GetID())
-            break;
-    }
-    file.close();
-
-    this->UserMainMenu();
-    return;
-};
 
 void Interface :: Registation()
 {
@@ -160,6 +65,7 @@ void Interface :: UserMainMenu()
         cout << "2 - Автомобили для заказа" << endl;
         cout << "3 - История поездок" << endl;
         cout << "4 - Пополнение счета" << endl;
+        cout << "5 - Настройка аккаунта"
         cout << "5 - Выйти из аккаунта" << endl;
         cout << "6 - Завершить работу" << endl;
         cin >> choice;
@@ -184,31 +90,27 @@ void Interface :: UserMainMenu()
                 return;
             case 6:
                 exit(0);
-
         }
     }
 }
 
 void Interface :: UserAccountInfo()
 {
-    //cout << "Имя: ";
+    cout << "Имя: ";
+    wcout << user.GetName() << ' ' << user.GetSurname() << endl;
+    cout << "Возраст: ";
+    cout << user.GetAge()<< endl;
+    cout << "Баланс: "
+    cout << GetCo
     //cout << '|' << setw(5) << left << user.GetName() << setw(5) << '|' << setw(5) << user.GetSurname() << endl;
     //cout << '|' << setw(5) << left << user.GetName() << setw(5) << '|' << setw(5) << user.GetSurname() << endl;
-//    for (auto it = hybridCar.begin(); it != hybridCar.end(); ++it)
-//    {
-//        cout << "—————————————————————————————————" << endl;
-//        cout << '|';
-//        cout.width(15);
-//        cout << left << it->GetBrand();
-//        cout << '|';
-//        cout.width(15);
-//        cout << left << it->GetModel();
-//        cout << '|' << endl;
-//        //cout << '|' << setw(15) << left << it->GetBrand() << '|' << setw(15) << left << it->GetModel() << '|' << endl;
-//    }
-//    cout << "——————————————————————————" << endl;
+    for (auto it = hybridCar.begin(); it != hybridCar.end(); ++it)
+    {
+        cout << "—————————————————————————————————" << endl;
+        wcout << '|' << setw(15) << left << it->GetBrand() << '|' << setw(15) << left << it->GetModel() << '|' << endl;
+    }
+    cout << "——————————————————————————" << endl;
     //cout << '|' << setw(5) << left << user.GetName() << setw(5) << '|' << setw(5) << user.GetSurname() << endl;
-    //cout << user.GetName() << ' ' << user.GetSurname() << endl;
 }
 
 void Interface :: AdminMainMenu()
