@@ -10,9 +10,9 @@ void Database :: AddInDatabase(DieselCar &obj)
     {
         int id;
         bool deleteMark;
-        char brand[60], model[60], country[60], bodyType[60];
+        wchar_t brand[30], model[30], country[30], bodyType[30];
         int manufacturedYear;
-        char transmissionType[8];
+        wchar_t transmissionType[4];
         int numberOfSeats;
         int horsepower;
         float maxSpeed;
@@ -21,9 +21,9 @@ void Database :: AddInDatabase(DieselCar &obj)
         float volume;
         struct interior
         {
-            char color[60], material[60];
+            wchar_t color[30], material[30];
         } interior;
-        char color[60];
+        wchar_t color[30];
         int costPerDay;
         bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
     } data;
@@ -31,14 +31,14 @@ void Database :: AddInDatabase(DieselCar &obj)
     data.id = obj.id;
     data.deleteMark = obj.deleteMark;
 
-    strcpy(data.brand, obj.brand);
-    strcpy(data.model, obj.model);
-    strcpy(data.country, obj.country);
-    strcpy(data.bodyType, obj.bodyType);
+    wcscpy(data.brand, obj.brand);
+    wcscpy(data.model, obj.model);
+    wcscpy(data.country, obj.country);
+    wcscpy(data.bodyType, obj.bodyType);
 
     data.manufacturedYear = obj.manufacturedYear;
 
-    strcpy(data.transmissionType, obj.transmissionType);
+    wcscpy(data.transmissionType, obj.transmissionType);
 
     data.numberOfSeats = obj.numberOfSeats;
     data.horsepower = obj.horsepower;
@@ -47,9 +47,9 @@ void Database :: AddInDatabase(DieselCar &obj)
     data.consumption = obj.consumption;
     data.volume = obj.volume;
 
-    strcpy(data.interior.color, obj.interior.color);
-    strcpy(data.interior.material, obj.interior.material);
-    strcpy(data.color, obj.color);
+    wcscpy(data.interior.color, obj.interior.color);
+    wcscpy(data.interior.material, obj.interior.material);
+    wcscpy(data.color, obj.color);
 
     data.costPerDay = obj.costPerDay;
     data.cruiseControl = obj.cruiseControl;
@@ -61,7 +61,7 @@ void Database :: AddInDatabase(DieselCar &obj)
     data.gps = obj.gps;
     data.sunroof = obj.sunroof;
     ofstream file;
-    file.open("../Files/DieselCar.bin", ios::binary | ios::app);
+    file.open("/Users/max/Desktop/CarRent/Files/DieselCar.bin", ios::binary | ios::app);
     if (!file.is_open())
         cout << "Error";
     file.write((char*)&data, sizeof(data));
@@ -74,9 +74,9 @@ void Database :: GetFromDatabase(vector<DieselCar>&dieselCars)
     {
         int id;
         bool deleteMark;
-        char brand[60], model[60], country[60], bodyType[60];
+        wchar_t brand[30], model[30], country[30], bodyType[30];
         int manufacturedYear;
-        char transmissionType[8];
+        wchar_t transmissionType[4];
         int numberOfSeats;
         int horsepower;
         float maxSpeed;
@@ -85,15 +85,15 @@ void Database :: GetFromDatabase(vector<DieselCar>&dieselCars)
         float volume;
         struct interior
         {
-            char color[60], material[60];
+            wchar_t color[30], material[30];
         } interior;
-        char color[60];
+        wchar_t color[30];
         int costPerDay;
         bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
     } data;
 
     ifstream file;
-    file.open("../Files/DieselCar.bin", ios::binary);
+    file.open("/Users/max/Desktop/CarRent/Files/DieselCar.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
     while(file.read((char*)&data, sizeof(data)))
@@ -104,21 +104,21 @@ void Database :: GetFromDatabase(vector<DieselCar>&dieselCars)
         //    continue;
 
         obj.id = data.id;
-        strcpy(obj.brand, data.brand);
-        strcpy(obj.model, data.model);
-        strcpy(obj.country, data.country);
-        strcpy(obj.bodyType, data.bodyType);
+        wcscpy(obj.brand, data.brand);
+        wcscpy(obj.model, data.model);
+        wcscpy(obj.country, data.country);
+        wcscpy(obj.bodyType, data.bodyType);
         obj.manufacturedYear = data.manufacturedYear;
-        strcpy(obj.transmissionType, data.transmissionType);
+        wcscpy(obj.transmissionType, data.transmissionType);
         obj.numberOfSeats = data.numberOfSeats;
         obj.horsepower = data.horsepower;
         obj.maxSpeed = data.maxSpeed;
         obj.to100 = data.to100;
         obj.consumption = data.consumption;
         obj.volume = data.volume ;
-        strcpy(obj.interior.color, data.interior.color);
-        strcpy(obj.interior.material, data.interior.material);
-        strcpy(obj.color, data.color);
+        wcscpy(obj.interior.color, data.interior.color);
+        wcscpy(obj.interior.material, data.interior.material);
+        wcscpy(obj.color, data.color);
         obj.costPerDay = data.costPerDay;
         obj.cruiseControl = data.cruiseControl;
         obj.parkingAssist = data.parkingAssist;
@@ -141,9 +141,9 @@ void Database :: AddInDatabase(PetrolCar &obj)
     {
         int id;
         bool deleteMark;
-        char brand[60], model[60], country[60], bodyType[60];
+        wchar_t brand[30], model[30], country[30], bodyType[30];
         int manufacturedYear;
-        char transmissionType[8];
+        wchar_t transmissionType[4];
         int numberOfSeats;
         int horsepower;
         float maxSpeed;
@@ -152,9 +152,9 @@ void Database :: AddInDatabase(PetrolCar &obj)
         float volume;
         struct interior
         {
-            char color[60], material[60];
+            wchar_t color[30], material[30];
         } interior;
-        char color[60];
+        wchar_t color[30];
         int costPerDay;
         bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
         int petrolType;
@@ -162,21 +162,21 @@ void Database :: AddInDatabase(PetrolCar &obj)
 
     data.id = obj.id;
     data.deleteMark = obj.deleteMark;
-    strcpy(data.brand, obj.brand);
-    strcpy(data.model, obj.model);
-    strcpy(data.country, obj.country);
-    strcpy(data.bodyType, obj.bodyType);
+    wcscpy(data.brand, obj.brand);
+    wcscpy(data.model, obj.model);
+    wcscpy(data.country, obj.country);
+    wcscpy(data.bodyType, obj.bodyType);
     data.manufacturedYear = obj.manufacturedYear;
-    strcpy(data.transmissionType, obj.transmissionType);
+    wcscpy(data.transmissionType, obj.transmissionType);
     data.numberOfSeats = obj.numberOfSeats;
     data.horsepower = obj.horsepower;
     data.maxSpeed = obj.maxSpeed;
     data.to100 = obj.to100;
     data.consumption = obj.consumption;
     data.volume = obj.volume;
-    strcpy(data.interior.color, obj.interior.color);
-    strcpy(data.interior.material, obj.interior.material);
-    strcpy(data.color, obj.color);
+    wcscpy(data.interior.color, obj.interior.color);
+    wcscpy(data.interior.material, obj.interior.material);
+    wcscpy(data.color, obj.color);
     data.costPerDay = obj.costPerDay;
     data.cruiseControl = obj.cruiseControl;
     data.parkingAssist = obj.parkingAssist;
@@ -189,7 +189,7 @@ void Database :: AddInDatabase(PetrolCar &obj)
     data.petrolType = obj.petrolType;
 
     ofstream file;
-    file.open("../Files/PetrolCars.bin", ios::binary | ios::app);
+    file.open("/Users/max/Desktop/CarRent/Files/PetrolCars.bin", ios::binary | ios::app);
     if (!file.is_open())
         cout << "Error";
     file.write((char*)&data, sizeof(data));
@@ -202,9 +202,9 @@ void Database :: GetFromDatabase(vector<PetrolCar>&petrolCars)
     {
         int id;
         bool deleteMark;
-        char brand[60], model[60], country[60], bodyType[60];
+        wchar_t brand[30], model[30], country[30], bodyType[30];
         int manufacturedYear;
-        char transmissionType[8];
+        wchar_t transmissionType[4];
         int numberOfSeats;
         int horsepower;
         float maxSpeed;
@@ -213,16 +213,16 @@ void Database :: GetFromDatabase(vector<PetrolCar>&petrolCars)
         float volume;
         struct interior
         {
-            char color[60], material[60];
+            wchar_t color[30], material[30];
         } interior;
-        char color[60];
+        wchar_t color[30];
         int costPerDay;
         bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
         int petrolType;
     } data;
 
     ifstream file;
-    file.open("../Files/PetrolCars.bin", ios::binary);
+    file.open("/Users/max/Desktop/CarRent/Files/PetrolCars.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
     while (file.read((char*)&data, sizeof(data)))
@@ -233,21 +233,21 @@ void Database :: GetFromDatabase(vector<PetrolCar>&petrolCars)
         //    continue;
 
         obj.id = data.id;
-        strcpy(obj.brand, data.brand);
-        strcpy(obj.model, data.model);
-        strcpy(obj.country, data.country);
-        strcpy(obj.bodyType, data.bodyType);
+        wcscpy(obj.brand, data.brand);
+        wcscpy(obj.model, data.model);
+        wcscpy(obj.country, data.country);
+        wcscpy(obj.bodyType, data.bodyType);
         obj.manufacturedYear = data.manufacturedYear;
-        strcpy(obj.transmissionType, data.transmissionType);
+        wcscpy(obj.transmissionType, data.transmissionType);
         obj.numberOfSeats = data.numberOfSeats;
         obj.horsepower = data.horsepower;
         obj.maxSpeed = data.maxSpeed;
         obj.to100 = data.to100;
         obj.consumption = data.consumption;
         obj.volume = data.volume;
-        strcpy(obj.interior.color, data.interior.color);
-        strcpy(obj.interior.material, data.interior.material);
-        strcpy(obj.color, data.color);
+        wcscpy(obj.interior.color, data.interior.color);
+        wcscpy(obj.interior.material, data.interior.material);
+        wcscpy(obj.color, data.color);
         obj.costPerDay = data.costPerDay;
         obj.cruiseControl = data.cruiseControl;
         obj.parkingAssist = data.parkingAssist;
@@ -270,18 +270,18 @@ void Database :: AddInDatabase(ElectricCar &obj)
     {
         int id;
         bool deleteMark;
-        char brand[60], model[60], country[60], bodyType[60];
+        wchar_t brand[30], model[30], country[30], bodyType[30];
         int manufacturedYear;
-        char transmissionType[8];
+        wchar_t transmissionType[4];
         int numberOfSeats;
         int horsepower;
         float maxSpeed;
         float to100;
         struct interior
         {
-            char color[60], material[60];
+            wchar_t color[30], material[30];
         } interior;
-        char color[60];
+        wchar_t color[30];
         int costPerDay;
         bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
         int batteryCapacity;
@@ -289,19 +289,19 @@ void Database :: AddInDatabase(ElectricCar &obj)
 
     data.id = obj.id;
     data.deleteMark = obj.deleteMark;
-    strcpy(data.brand, obj.brand);
-    strcpy(data.model, obj.model);
-    strcpy(data.country, obj.country);
-    strcpy(data.bodyType, obj.bodyType);
+    wcscpy(data.brand, obj.brand);
+    wcscpy(data.model, obj.model);
+    wcscpy(data.country, obj.country);
+    wcscpy(data.bodyType, obj.bodyType);
     data.manufacturedYear = obj.manufacturedYear;
-    strcpy(data.transmissionType, obj.transmissionType);
+    wcscpy(data.transmissionType, obj.transmissionType);
     data.numberOfSeats = obj.numberOfSeats;
     data.horsepower = obj.horsepower;
     data.maxSpeed = obj.maxSpeed;
     data.to100 = obj.to100;
-    strcpy(data.interior.color, obj.interior.color);
-    strcpy(data.interior.material, obj.interior.material);
-    strcpy(data.color, obj.color);
+    wcscpy(data.interior.color, obj.interior.color);
+    wcscpy(data.interior.material, obj.interior.material);
+    wcscpy(data.color, obj.color);
     data.costPerDay = obj.costPerDay;
     data.cruiseControl = obj.cruiseControl;
     data.parkingAssist = obj.parkingAssist;
@@ -314,7 +314,7 @@ void Database :: AddInDatabase(ElectricCar &obj)
     data.batteryCapacity = obj.batteryCapacity;
 
     ofstream file;
-    file.open("../Files/ElectricCars.bin", ios::binary | ios::app);
+    file.open("/Users/max/Desktop/CarRent/Files/ElectricCars.bin", ios::binary | ios::app);
     if (!file.is_open())
         cout << "Error";
     file.write((char*)&data, sizeof(data));
@@ -327,25 +327,25 @@ void Database :: GetFromDatabase(vector<ElectricCar>&electricCars)
     {
         int id;
         bool deleteMark;
-        char brand[60], model[60], country[60], bodyType[60];
+        wchar_t brand[30], model[30], country[30], bodyType[30];
         int manufacturedYear;
-        char transmissionType[8];
+        wchar_t transmissionType[4];
         int numberOfSeats;
         int horsepower;
         float maxSpeed;
         float to100;
         struct interior
         {
-            char color[60], material[60];
+            wchar_t color[30], material[30];
         } interior;
-        char color[60];
+        wchar_t color[30];
         int costPerDay;
         bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
         int batteryCapacity;
     } data;
 
     ifstream file;
-    file.open("../Files/ElectricCars.bin", ios::binary);
+    file.open("/Users/max/Desktop/CarRent/Files/ElectricCars.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
     while(file.read((char*)&data, sizeof(data)))
@@ -357,19 +357,19 @@ void Database :: GetFromDatabase(vector<ElectricCar>&electricCars)
         //    continue;
 
         obj.id = data.id;
-        strcpy(obj.brand, data.brand);
-        strcpy(obj.model, data.model);
-        strcpy(obj.country, data.country);
-        strcpy(obj.bodyType, data.bodyType);
+        wcscpy(obj.brand, data.brand);
+        wcscpy(obj.model, data.model);
+        wcscpy(obj.country, data.country);
+        wcscpy(obj.bodyType, data.bodyType);
         obj.manufacturedYear = data.manufacturedYear;
-        strcpy(obj.transmissionType, data.transmissionType);
+        wcscpy(obj.transmissionType, data.transmissionType);
         obj.numberOfSeats = data.numberOfSeats;
         obj.horsepower = data.horsepower;
         obj.maxSpeed = data.maxSpeed;
         obj.to100 = data.to100;
-        strcpy(obj.interior.color, data.interior.color);
-        strcpy(obj.interior.material, data.interior.material);
-        strcpy(obj.color, data.color);
+        wcscpy(obj.interior.color, data.interior.color);
+        wcscpy(obj.interior.material, data.interior.material);
+        wcscpy(obj.color, data.color);
         obj.costPerDay = data.costPerDay;
         obj.cruiseControl = data.cruiseControl;
         obj.parkingAssist = data.parkingAssist;
@@ -393,9 +393,9 @@ void Database :: AddInDatabase(HybridCar &obj)
     {
         int id;
         bool deleteMark;
-        char brand[60], model[60], country[60], bodyType[60];
+        wchar_t brand[30], model[30], country[30], bodyType[30];
         int manufacturedYear;
-        char transmissionType[8];
+        wchar_t transmissionType[4];
         int numberOfSeats;
         int horsepower;
         float maxSpeed;
@@ -404,32 +404,32 @@ void Database :: AddInDatabase(HybridCar &obj)
         float volume;
         struct interior
         {
-            char color[60], material[60];
+            wchar_t color[30], material[30];
         } interior;
-        char color[60];
+        wchar_t color[30];
         int costPerDay;
         bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
         int batteryCapacity;
-        char fuelType[60];
+        wchar_t fuelType[6];
     } data;
 
     data.id = obj.id;
     data.deleteMark = obj.deleteMark;
-    strcpy(data.brand, obj.brand);
-    strcpy(data.model, obj.model);
-    strcpy(data.country, obj.country);
-    strcpy(data.bodyType, obj.bodyType);
+    wcscpy(data.brand, obj.brand);
+    wcscpy(data.model, obj.model);
+    wcscpy(data.country, obj.country);
+    wcscpy(data.bodyType, obj.bodyType);
     data.manufacturedYear = obj.manufacturedYear;
-    strcpy(data.transmissionType, obj.transmissionType);
+    wcscpy(data.transmissionType, obj.transmissionType);
     data.numberOfSeats = obj.numberOfSeats;
     data.horsepower = obj.horsepower;
     data.maxSpeed = obj.maxSpeed;
     data.to100 = obj.to100;
     data.consumption = obj.consumption;
     data.volume = obj.volume;
-    strcpy(data.interior.color, obj.interior.color);
-    strcpy(data.interior.material, obj.interior.material);
-    strcpy(data.color, obj.color);
+    wcscpy(data.interior.color, obj.interior.color);
+    wcscpy(data.interior.material, obj.interior.material);
+    wcscpy(data.color, obj.color);
     data.costPerDay = obj.costPerDay;
     data.cruiseControl = obj.cruiseControl;
     data.parkingAssist = obj.parkingAssist;
@@ -440,10 +440,10 @@ void Database :: AddInDatabase(HybridCar &obj)
     data.gps = obj.gps;
     data.sunroof = obj.sunroof;
     data.batteryCapacity = obj.batteryCapacity;
-    strcpy(data.fuelType, obj.fuelType);
+    wcscpy(data.fuelType, obj.fuelType);
 
     ofstream file;
-    file.open("../Files/HybridCars.bin", ios::binary | ios::app);
+    file.open("/Users/max/Desktop/CarRent/Files/HybridCars.bin", ios::binary | ios::app);
     if (!file.is_open())
         cout << "Error";
     file.write((char*)&data, sizeof(data));
@@ -456,9 +456,9 @@ void Database :: GetFromDatabase(vector<HybridCar>&hybridCars)
     {
         int id;
         bool deleteMark;
-        char brand[60], model[60], country[60], bodyType[60];
+        wchar_t brand[30], model[30], country[30], bodyType[30];
         int manufacturedYear;
-        char transmissionType[8];
+        wchar_t transmissionType[4];
         int numberOfSeats;
         int horsepower;
         float maxSpeed;
@@ -467,17 +467,17 @@ void Database :: GetFromDatabase(vector<HybridCar>&hybridCars)
         float volume;
         struct interior
         {
-            char color[60], material[60];
+            wchar_t color[30], material[30];
         } interior;
-        char color[60];
+        wchar_t color[30];
         int costPerDay;
         bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
         int batteryCapacity;
-        char fuelType[60];
+        wchar_t fuelType[6];
     } data;
 
     ifstream file;
-    file.open("../Files/HybridCars.bin", ios::binary);
+    file.open("/Users/max/Desktop/CarRent/Files/HybridCars.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
     while(file.read((char*)&data, sizeof(data)))
@@ -489,13 +489,13 @@ void Database :: GetFromDatabase(vector<HybridCar>&hybridCars)
 
         obj.id = data.id;
 
-        strcpy(obj.brand, data.brand);
-        strcpy(obj.model, data.model);
-        strcpy(obj.country, data.country);
-        strcpy(obj.bodyType, data.bodyType);
+        wcscpy(obj.brand, data.brand);
+        wcscpy(obj.model, data.model);
+        wcscpy(obj.country, data.country);
+        wcscpy(obj.bodyType, data.bodyType);
 
         obj.manufacturedYear = data.manufacturedYear;
-        strcpy(obj.transmissionType, data.transmissionType);
+        wcscpy(obj.transmissionType, data.transmissionType);
         obj.numberOfSeats = data.numberOfSeats;
         obj.horsepower = data.horsepower;
         obj.maxSpeed = data.maxSpeed;
@@ -503,9 +503,9 @@ void Database :: GetFromDatabase(vector<HybridCar>&hybridCars)
         obj.consumption = data.consumption;
         obj.volume = data.volume;
 
-        strcpy(obj.interior.color, data.interior.color);
-        strcpy(obj.interior.material, data.interior.material);
-        strcpy(obj.color, data.color);
+        wcscpy(obj.interior.color, data.interior.color);
+        wcscpy(obj.interior.material, data.interior.material);
+        wcscpy(obj.color, data.color);
 
         obj.costPerDay = data.costPerDay;
         obj.cruiseControl = data.cruiseControl;
@@ -518,7 +518,7 @@ void Database :: GetFromDatabase(vector<HybridCar>&hybridCars)
         obj.sunroof = data.sunroof;
         obj.batteryCapacity = data.batteryCapacity;
 
-        strcpy(obj.fuelType, data.fuelType);
+        wcscpy(obj.fuelType, data.fuelType);
 
         hybridCars.emplace_back(obj);
     }
@@ -531,9 +531,9 @@ void Database :: DeleteFromDatabase(DieselCar &obj)
     {
         int id;
         bool deleteMark;
-        char brand[60], model[60], country[60], bodyType[60];
+        wchar_t brand[30], model[30], country[30], bodyType[30];
         int manufacturedYear;
-        char transmissionType[8];
+        wchar_t transmissionType[4];
         int numberOfSeats;
         int horsepower;
         float maxSpeed;
@@ -542,7 +542,7 @@ void Database :: DeleteFromDatabase(DieselCar &obj)
         float volume;
         struct interior
         {
-            char color[60], material[60];
+            wchar_t color[30], material[30];
         } interior;
         char color[60];
         int costPerDay, costPerWeek, costPerMonth;
@@ -551,10 +551,10 @@ void Database :: DeleteFromDatabase(DieselCar &obj)
 
     ifstream file1; // для чтения
     ofstream file2; // для записи
-    file1.open("../Files/DieselCar.bin", ios::binary);
+    file1.open("/Users/max/Desktop/CarRent/Files/DieselCar.bin", ios::binary);
     if (!file1.is_open())
         cout << "Error";
-    file2.open("../Files/tmp.bin", ios::binary | ios::app);
+    file2.open("/Users/max/Desktop/CarRent/Files/tmp.bin", ios::binary | ios::app);
 
     while(file1.read((char*)&data, sizeof(data)))
     {
@@ -567,9 +567,9 @@ void Database :: DeleteFromDatabase(DieselCar &obj)
             file2.write((char*)&data, sizeof(data));
     }
     file1.close();
-    remove("../Files/DieselCar.bin");
+    remove("/Users/max/Desktop/CarRent/Files/DieselCar.bin");
     file2.close();
-    rename("../Files/tmp.bin","../Files/DieselCar.bin");
+    rename("/Users/max/Desktop/CarRent/Files/tmp.bin","/Users/max/Desktop/CarRent/Files/DieselCar.bin");
 }
 void Database :: DeleteFromDatabase(PetrolCar &obj)
 {
@@ -577,9 +577,9 @@ void Database :: DeleteFromDatabase(PetrolCar &obj)
     {
         int id;
         bool deleteMark;
-        char brand[60], model[60], country[60], bodyType[60];
+        wchar_t brand[30], model[30], country[30], bodyType[30];
         int manufacturedYear;
-        char transmissionType[8];
+        wchar_t transmissionType[4];
         int numberOfSeats;
         int horsepower;
         float maxSpeed;
@@ -588,9 +588,9 @@ void Database :: DeleteFromDatabase(PetrolCar &obj)
         float volume;
         struct interior
         {
-            char color[60], material[60];
+            wchar_t color[30], material[30];
         } interior;
-        char color[60];
+        wchar_t color[30];
         int costPerDay, costPerWeek, costPerMonth;
         bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
         int petrolType;
@@ -598,10 +598,10 @@ void Database :: DeleteFromDatabase(PetrolCar &obj)
 
     ifstream file1; // для чтения
     ofstream file2; // для записи
-    file1.open("../Files/PetrolCars.bin", ios::binary);
+    file1.open("/Users/max/Desktop/CarRent/Files/PetrolCars.bin", ios::binary);
     if (!file1.is_open())
         cout << "Error";
-    file2.open("../Files/tmp.bin", ios::binary | ios::app);
+    file2.open("/Users/max/Desktop/CarRent/Files/tmp.bin", ios::binary | ios::app);
 
     while(file1.read((char*)&data, sizeof(data)))
     {
@@ -614,9 +614,9 @@ void Database :: DeleteFromDatabase(PetrolCar &obj)
             file2.write((char*)&data, sizeof(data));
     }
     file1.close();
-    remove("../Files/PetrolCars.bin");
+    remove("/Users/max/Desktop/CarRent/Files/PetrolCars.bin");
     file2.close();
-    rename("../Files/tmp.bin","../Files/PetrolCars.bin");
+    rename("/Users/max/Desktop/CarRent/Files/tmp.bin","/Users/max/Desktop/CarRent/Files/PetrolCars.bin");
 }
 void Database :: DeleteFromDatabase(ElectricCar &obj)
 {
@@ -624,16 +624,16 @@ void Database :: DeleteFromDatabase(ElectricCar &obj)
     {
         int id;
         bool deleteMark;
-        char brand[60], model[60], country[60], bodyType[60];
+        wchar_t brand[30], model[30], country[30], bodyType[30];
         int manufacturedYear;
-        char transmissionType[8];
+        wchar_t transmissionType[4];
         int numberOfSeats;
         int horsepower;
         float maxSpeed;
         float to100;
         struct interior
         {
-            char color[60], material[60];
+            wchar_t color[30], material[30];
         } interior;
         char color[60];
         int costPerDay, costPerWeek, costPerMonth;
@@ -643,10 +643,10 @@ void Database :: DeleteFromDatabase(ElectricCar &obj)
 
     ifstream file1; // для чтения
     ofstream file2; // для записи
-    file1.open("../Files/ElectricCars.bin", ios::binary);
+    file1.open("/Users/max/Desktop/CarRent/Files/ElectricCars.bin", ios::binary);
     if (!file1.is_open())
         cout << "Error";
-    file2.open("../Files/tmp.bin", ios::binary | ios::app);
+    file2.open("/Users/max/Desktop/CarRent/Files/tmp.bin", ios::binary | ios::app);
 
     while(file1.read((char*)&data, sizeof(data)))
     {
@@ -659,9 +659,9 @@ void Database :: DeleteFromDatabase(ElectricCar &obj)
             file2.write((char*)&data, sizeof(data));
     }
     file1.close();
-    remove("../Files/ElectricCars.bin");
+    remove("/Users/max/Desktop/CarRent/Files/ElectricCars.bin");
     file2.close();
-    rename("../Files/tmp.bin","../Files/ElectricCars.bin");
+    rename("/Users/max/Desktop/CarRent/Files/tmp.bin","/Users/max/Desktop/CarRent/Files/ElectricCars.bin");
 }
 void Database :: DeleteFromDatabase(HybridCar &obj)
 {
@@ -669,9 +669,9 @@ void Database :: DeleteFromDatabase(HybridCar &obj)
     {
         int id;
         bool deleteMark;
-        char brand[60], model[60], country[60], bodyType[60];
+        wchar_t brand[30], model[30], country[30], bodyType[30];
         int manufacturedYear;
-        char transmissionType[8];
+        wchar_t transmissionType[4];
         int numberOfSeats;
         int horsepower;
         float maxSpeed;
@@ -680,7 +680,7 @@ void Database :: DeleteFromDatabase(HybridCar &obj)
         float volume;
         struct interior
         {
-            char color[60], material[60];
+            wchar_t color[30], material[30];
         } interior;
         char color[60];
         int costPerDay, costPerWeek, costPerMonth;
@@ -691,10 +691,10 @@ void Database :: DeleteFromDatabase(HybridCar &obj)
 
     ifstream file1; // для чтения
     ofstream file2; // для записи
-    file1.open("../Files/HybridCars.bin", ios::binary);
+    file1.open("/Users/max/Desktop/CarRent/Files/HybridCars.bin", ios::binary);
     if (!file1.is_open())
         cout << "Error";
-    file2.open("../Files/tmp.bin", ios::binary | ios::app);
+    file2.open("/Users/max/Desktop/CarRent/Files/tmp.bin", ios::binary | ios::app);
 
     while(file1.read((char*)&data, sizeof(data)))
     {
@@ -707,7 +707,7 @@ void Database :: DeleteFromDatabase(HybridCar &obj)
             file2.write((char*)&data, sizeof(data));
     }
     file1.close();
-    remove("../Files/HybridCars.bin");
+    remove("/Users/max/Desktop/CarRent/Files/HybridCars.bin");
     file2.close();
-    rename("../Files/tmp.bin","../Files/HybridCars.bin");
+    rename("/Users/max/Desktop/CarRent/Files/tmp.bin","/Users/max/Desktop/CarRent/Files/HybridCars.bin");
 }

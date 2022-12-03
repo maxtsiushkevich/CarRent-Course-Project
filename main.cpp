@@ -19,32 +19,42 @@ using namespace std;
 
 int main()
 {
-    //setlocale(LC_ALL, "Russian");
     setlocale(LC_ALL, "ru_RU.UTF-8");
+    wcout.imbue(locale("ru_RU.UTF-8"));
+    wcin.imbue(locale("ru_RU.UTF-8"));
+
     //HybridCar car;
-    //car.SetInfo();
+   // car.SetInfo();
+   // wcout << car.GetBodyType();
 //    Database::AddInDatabase(car);
 
     //Session ses(1, 2, 150, 5);
     //Interface menu;
     //menu.FirstMenu();
-    wchar_t a1[50];
-    wchar_t a2[50];
-    //wchar_t a3[] = L"aston";
-     //wcin >> a2;
-     fgetws(a2,50,stdin); // считывание строки
-     cout << sizeof(a2) << endl;
-     a2[wcscspn(a2, L"\n")] = L'\0'; // замена символа
-     wcscpy(a1, a2); // копирование строки
-     wcout << a2 << endl;
-     wcout << a2 << endl;
-   // wchar_t b1[] = L"rx7";
-   // wchar_t b2[] = L"апапр";
-   // wchar_t b3[] = L"au3i";
 
-    //wcout << '|' << setw(15) << left << a1 << '|' << setw(15) << left << b1 << '|' << endl;
-    //wcout << '|' << setw(15) << left << a2 << '|' << setw(15) << left << b2 << '|' << endl;
-    //wcout << '|' << setw(15) << left << a3 << '|' << setw(15) << left << b3 << '|' << endl;
+
+//    wchar_t a1[50];
+//    wchar_t a2[50];
+//    //wchar_t a3[] = L"aston";
+//     //wcin >> a2;
+//     fgetws(a2,50,stdin); // считывание строки
+////     cout << sizeof(a2) << endl;
+//     a2[wcscspn(a2, L"\n")] = L'\0'; // замена символа
+//     wcscpy(a1, a2); // копирование строки
+////     wcout << a2 << endl;
+//     wcout << a2 << endl;
+
+    wchar_t a1[] = L"asdfg";
+    wchar_t a2[] = L"bmw";
+    wchar_t a3[] = L"aston";
+
+    wchar_t b1[] = L"rx7";
+    wchar_t b2[] = L"апапр";
+    wchar_t b3[] = L"au3i";
+
+    wcout << '|' << setw(15) << left << a1 << '|' << setw(15) << left << b1 << '|' << endl;
+    wcout << '|' << setw(15) << left << a2 << '|' << setw(15) << left << b2 << '|' << endl;
+    wcout << '|' << setw(15) << left << a3 << '|' << setw(15) << left << b3 << '|' << endl;
 
     //int week = (22 - (22 % 7)) / 7;
     //cout << week << endl;

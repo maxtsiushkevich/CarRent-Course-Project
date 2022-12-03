@@ -9,13 +9,13 @@ class HybridCar : public ElectricCar, public OilCar
 {
     friend class Database;
 protected:
-    char fuelType[60];
+    wchar_t fuelType[6];
 public:
     HybridCar() : Car(), OilCar(), ElectricCar() { }
     HybridCar(int id) : OilCar(id), ElectricCar(id) { };
     ~HybridCar() = default;
     void SetInfo();
-    string GetFuelType() { return fuelType; };
+    wstring GetFuelType() { return fuelType; };
 
 };
 

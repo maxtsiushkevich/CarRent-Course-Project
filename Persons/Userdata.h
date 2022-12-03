@@ -7,17 +7,17 @@ class Userdata
 {
     friend class Interface;
 private:
-    char login[60]; // ограничить длину
-    char password[60];
+    wchar_t login[30]; // ограничить длину
+    wchar_t password[30];
     int id;
 public:
     Userdata();
     Userdata(int);
     int GetID() { return id; }
     void SetInfo(int);
-    void SetData(char*, char*);
+    void SetData(wchar_t*, wchar_t*);
     bool CheckAccess(int); // admin - 1, user - 2
-    bool CheckLogin(char*); // admin - 1, user - 2
+    bool CheckLogin(wchar_t*); // admin - 1, user - 2
 };
 
 

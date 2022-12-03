@@ -12,13 +12,13 @@ void Person :: SetInfo()
 {
     cout << "Введите фамилию: " << endl;
     fflush(stdin);
-    fgets(surname, 60, stdin);
-    surname[strcspn(surname, "\n")] = '\0';
+    fgetws(surname, 30, stdin);
+    surname[wcscspn(surname, L"\n")] = L'\0';
 
     cout << "Введите имя: " << endl;
     fflush(stdin);
-    fgets(name, 60, stdin);
-    name[strcspn(name, "\n")] = '\0';
+    fgetws(name, 30, stdin);
+    name[wcscspn(name, L"\n")] = L'\0';
 
     cout << "Введите возраст: ";
     cin >> age;

@@ -48,16 +48,16 @@ void Interface :: FirstMenu()
 
 void Interface :: AdminAuthentication()
 {
-    char login[60], password[60];
+    wchar_t login[30], password[30];
     int mode = 1;
     cout << "Введите логин учетной записи" << endl;
     fflush(stdin);
-    fgets(login, 60, stdin);
-    login[strcspn(login, "\n")] = '\0';
+    fgetws(login, 30, stdin);
+    login[wcscspn(login, L"\n")] = L'\0';
     cout << "Введите пароль от учетной записи" << endl;
     fflush(stdin);
-    fgets(password, 60, stdin);
-    password[strcspn(password, "\n")] = '\0';
+    fgetws(password, 30, stdin);
+    password[wcscspn(password, L"\n")] = L'\0';
     account.SetData(login, password);
     while(!account.CheckAccess(mode))
     {
@@ -70,12 +70,12 @@ void Interface :: AdminAuthentication()
             return;
         cout << "Логин" << endl;
         fflush(stdin);
-        fgets(login, 60, stdin);
-        login[strcspn(login, "\n")] = '\0';
+        fgetws(login, 30, stdin);
+        login[wcscspn(login, L"\n")] = L'\0';
         cout << "Пароль" << endl;
         fflush(stdin);
-        fgets(password, 60, stdin);
-        password[strcspn(password, "\n")] = '\0';
+        fgetws(password, 30, stdin);
+        password[wcscspn(password, L"\n")] = L'\0';
         account.SetData(login, password);
     }
     cout << "Вход выполнен!" << endl;
@@ -97,16 +97,16 @@ void Interface :: AdminAuthentication()
 
 void Interface :: UserAuthentication()
 {
-    char login[60], password[60];
+    wchar_t login[30], password[30];
     int mode = 2;
     cout << "Введите логин учетной записи" << endl;
     fflush(stdin);
-    fgets(login, 60, stdin);
-    login[strcspn(login, "\n")] = '\0';
+    fgetws(login, 30, stdin);
+    login[wcscspn(login, L"\n")] = L'\0';
     cout << "Введите пароль от учетной записи" << endl;
     fflush(stdin);
-    fgets(password, 60, stdin);
-    password[strcspn(password, "\n")] = '\0';
+    fgetws(password, 30, stdin);
+    password[wcscspn(password, L"\n")] = L'\0';
     account.SetData(login, password);
     while(!account.CheckAccess(mode))
     {
@@ -118,14 +118,17 @@ void Interface :: UserAuthentication()
         if (tmp == '1')
             return;
         cout << "Логин" << endl;
-        cin >> login;
+        fflush(stdin);
+        fgetws(login, 30, stdin);
+        login[wcscspn(login, L"\n")] = L'\0';
         cout << "Пароль" << endl;
-        cin >> password;
+        fflush(stdin);
+        fgetws(password, 30, stdin);
+        password[wcscspn(password, L"\n")] = L'\0';
         account.SetData(login, password);
     }
     cout << "Вход выполнен!" << endl;
 
-    // нужно инициализировать user
     ifstream file;
     file.open("../Files/User.bin", ios::binary);
     if (!file.is_open())
@@ -191,19 +194,19 @@ void Interface :: UserAccountInfo()
     //cout << "Имя: ";
     //cout << '|' << setw(5) << left << user.GetName() << setw(5) << '|' << setw(5) << user.GetSurname() << endl;
     //cout << '|' << setw(5) << left << user.GetName() << setw(5) << '|' << setw(5) << user.GetSurname() << endl;
-    for (auto it = hybridCar.begin(); it != hybridCar.end(); ++it)
-    {
-        cout << "—————————————————————————————————" << endl;
-        cout << '|';
-        cout.width(15);
-        cout << left << it->GetBrand();
-        cout << '|';
-        cout.width(15);
-        cout << left << it->GetModel();
-        cout << '|' << endl;
-        //cout << '|' << setw(15) << left << it->GetBrand() << '|' << setw(15) << left << it->GetModel() << '|' << endl;
-    }
-    cout << "——————————————————————————" << endl;
+//    for (auto it = hybridCar.begin(); it != hybridCar.end(); ++it)
+//    {
+//        cout << "—————————————————————————————————" << endl;
+//        cout << '|';
+//        cout.width(15);
+//        cout << left << it->GetBrand();
+//        cout << '|';
+//        cout.width(15);
+//        cout << left << it->GetModel();
+//        cout << '|' << endl;
+//        //cout << '|' << setw(15) << left << it->GetBrand() << '|' << setw(15) << left << it->GetModel() << '|' << endl;
+//    }
+//    cout << "——————————————————————————" << endl;
     //cout << '|' << setw(5) << left << user.GetName() << setw(5) << '|' << setw(5) << user.GetSurname() << endl;
     //cout << user.GetName() << ' ' << user.GetSurname() << endl;
 }

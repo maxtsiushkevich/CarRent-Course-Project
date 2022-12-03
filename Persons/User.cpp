@@ -17,33 +17,33 @@ void User :: SetInfo()
     Person::SetInfo();
     Userdata userdata(id);
     userdata.SetInfo(2);
-    strcpy(status, "Classic");
+    wcscpy(status, L"Classic");
     count = 0;
 
     cout << "Введите номер паспорта:" << endl;
     fflush(stdin);
-    fgets(passportNum, 60, stdin);
-    passportNum[strcspn(passportNum, "\n")] = '\0';
+    fgetws(passportNum, 30, stdin);
+    passportNum[wcscspn(passportNum, L"\n")] = L'\0';
 
     cout << "Введите номер телефона в формате <<КОД CТРАНЫ-ХХХХХХХХХХ>>: " << endl;
     fflush(stdin);
-    fgets(phoneNumber, 20, stdin);
-    phoneNumber[strcspn(phoneNumber, "\n")] = '\0';
+    fgetws(phoneNumber, 20, stdin);
+    phoneNumber[wcscspn(phoneNumber, L"\n")] = L'\0';
 
     cout << "Введите страну проживания: " << endl;
     fflush(stdin);
-    fgets(adress.country, 60, stdin);
-    adress.country[strcspn(adress.country, "\n")] = '\0';
+    fgetws(adress.country, 30, stdin);
+    adress.country[wcscspn(adress.country, L"\n")] = L'\0';
 
     cout << "Введите город проживания: " << endl;
     fflush(stdin);
-    fgets(adress.city, 60, stdin);
-    adress.city[strcspn(adress.city, "\n")] = '\0';
+    fgetws(adress.city, 30, stdin);
+    adress.city[wcscspn(adress.city, L"\n")] = L'\0';
 
     cout << "Введите улицу: " << endl;
     fflush(stdin);
-    fgets(adress.street, 60, stdin);
-    adress.street[strcspn(adress.street, "\n")] = '\0';
+    fgetws(adress.street, 30, stdin);
+    adress.street[wcscspn(adress.street, L"\n")] = L'\0';
 
     cout << "Введите дом: " << endl;
     cin >> adress.house;

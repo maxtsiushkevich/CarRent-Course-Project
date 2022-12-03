@@ -34,18 +34,18 @@ void Car :: SetInfo()
         cin >> choice;
     }
 
-    strcpy(brand, carinfo.GetBrand(choice).c_str());
-    strcpy(country, carinfo.GetCountry(choice).c_str());
+    //wcscpy(brand, carinfo.GetBrand(choice).c_str()); // порешать как-то
+    //wcscpy(country, carinfo.GetCountry(choice).c_str());
 
     cout << "Модель автомобиля: " << endl;
     fflush(stdin);
-    fgets(model, 60, stdin);
-    model[strcspn(model, "\n")] = '\0';
+    fgetws(model, 30, stdin);
+    model[wcscspn(model, L"\n")] = L'\0';
 
     cout << "Тип кузова: " << endl;
     fflush(stdin);
-    fgets(bodyType, 60, stdin);
-    bodyType[strcspn(bodyType, "\n")] = '\0';
+    fgetws(bodyType, 30, stdin);
+    bodyType[wcscspn(bodyType, L"\n")] = L'\0';
 
     cout << "Год выпуска автомобиля: " << endl;
     cin >> manufacturedYear;
@@ -64,8 +64,8 @@ void Car :: SetInfo()
     }
     switch (choice)
     {
-        case 1: strcpy(transmissionType, "АКПП"); break;
-        case 2: strcpy(transmissionType, "МКПП"); break;
+        case 1: wcscpy(transmissionType, L"АКПП"); break;
+        case 2: wcscpy(transmissionType, L"МКПП"); break;
     }
 
     cout << "Количество мест: " << endl;
@@ -78,18 +78,18 @@ void Car :: SetInfo()
 
     cout << "Материал салона" << endl;
     fflush(stdin);
-    fgets(interior.material, 60, stdin);
-    interior.material[strcspn(interior.material, "\n")] = '\0';
+    fgetws(interior.material, 30, stdin);
+    interior.material[wcscspn(interior.material, L"\n")] = L'\0';
 
     cout << "Цвет салона" << endl;
     fflush(stdin);
-    fgets(interior.color, 60, stdin);
-    interior.color[strcspn(interior.color, "\n")] = '\0';
+    fgetws(interior.color, 30, stdin);
+    interior.color[wcscspn(interior.color, L"\n")] = L'\0';
 
     cout << "Цвет автомобиля" << endl;
     fflush(stdin);
-    fgets(color, 60, stdin);
-    color[strcspn(color, "\n")] = '\0';
+    fgetws(color, 30, stdin);
+    color[wcscspn(color, L"\n")] = L'\0';
 
     cout << "Количество лошадиных сил в двигателе: " << endl;
     cin >> horsepower;

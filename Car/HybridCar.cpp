@@ -18,8 +18,8 @@ void HybridCar :: SetInfo()
     }
     switch (choice)
     {
-        case 1: strcpy(fuelType, "Бензин"); break;
-        case 2: strcpy(fuelType, "Дизель"); break;
+        case 1: wcscpy(fuelType, L"Бензин"); break;
+        case 2: wcscpy(fuelType, L"Дизель"); break;
     }
 
     cout << "Объем двигателя: " << endl;

@@ -10,15 +10,15 @@ class Person
 {
 protected:
     int id;
-    char name[60];
-    char surname[60];
+    wchar_t name[30];
+    wchar_t surname[30];
     int age;
 public:
     Person();
     ~Person() = default;
     int GetID() { return id; }
-    char* GetName() { return name; }
-    char* GetSurname() { return surname; };
+    wchar_t* GetName() { return name; }
+    wchar_t* GetSurname() { return surname; };
     int GetAge() { return age; }
     virtual void SetInfo();
     //char* GetName() { return name; }

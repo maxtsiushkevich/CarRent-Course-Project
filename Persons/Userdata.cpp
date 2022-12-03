@@ -18,20 +18,20 @@ void Userdata :: SetInfo(int mode)
 {
     cout << "Введите логин (пробелы недопустимы): ";
     fflush(stdin);
-    fgets(login, 60, stdin);
-    login[strcspn(login, "\n")] = '\0';
+    fgetws(login, 30, stdin);
+    login[wcscspn(login, L"\n")] = L'\0';
     while (this->CheckLogin(login) == false)
     {
         cout << "Данный логин недоступен! " << endl;
         cout << "Введите другой логин: " << endl;
         fflush(stdin);
-        fgets(login, 60, stdin);
-        login[strcspn(login, "\n")] = '\0';
+        fgetws(login, 60, stdin);
+        login[wcscspn(login, L"\n")] = L'\0';
     }
     cout << "Введите пароль (пробелы недопустимы): ";
     fflush(stdin);
-    fgets(password, 60, stdin);
-    password[strcspn(password, "\n")] = '\0';
+    fgetws(password, 60, stdin);
+    password[wcscspn(password, L"\n")] = L'\0';
     ofstream file;
     switch (mode)
     {
@@ -51,10 +51,10 @@ void Userdata :: SetInfo(int mode)
             break;
     }
 }
-void Userdata :: SetData(char login[], char password[])
+void Userdata :: SetData(wchar_t login[], wchar_t password[])
 {
-    strcpy(this->login, login);
-    strcpy(this->password, password);
+    wcscpy(this->login, login);
+    wcscpy(this->password, password);
 }
 
 bool Userdata :: CheckAccess(int mode)
@@ -69,7 +69,7 @@ bool Userdata :: CheckAccess(int mode)
             // добавить исключение
         while (file.read((char*)&tmp, sizeof(tmp)))
         {
-            if (!strcmp(tmp.login, login) && !strcmp(tmp.password, password))
+            if (!wcscpy(tmp.login, login) && !wcscpy(tmp.password, password))
             {
                 this->id = tmp.id;
                 file.close();
@@ -87,7 +87,7 @@ bool Userdata :: CheckAccess(int mode)
             // добавить искючения
         while (file.read((char *) &tmp, sizeof(tmp)))
         {
-            if (!strcmp(tmp.login, login) && !strcmp(tmp.password, password))
+            if (!wcscpy(tmp.login, login) && !wcscpy(tmp.password, password))
             {
                 this->id = tmp.id;
                 file.close();
@@ -99,7 +99,7 @@ bool Userdata :: CheckAccess(int mode)
     }
 }
 
-bool Userdata :: CheckLogin(char login[])
+bool Userdata :: CheckLogin(wchar_t login[])
 {
     Userdata tmp;
     ifstream file;
@@ -109,7 +109,7 @@ bool Userdata :: CheckLogin(char login[])
         // добавить исключения
     while (file.read((char*)&tmp, sizeof(tmp)))
     {
-        if (!strcmp(tmp.login, login))
+        if (!wcscpy(tmp.login, login))
         {
             file.close();
             return false;
@@ -123,7 +123,7 @@ bool Userdata :: CheckLogin(char login[])
         // добавить исключения
     while (file.read((char*)&tmp, sizeof(tmp)))
     {
-        if (!strcmp(tmp.login, login))
+        if (!wcscpy(tmp.login, login))
         {
             file.close();
             return false;
