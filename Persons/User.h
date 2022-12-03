@@ -33,6 +33,13 @@ public:
     wchar_t* GetPassportNum() { return passportNum; }
     wchar_t* GetStatus() { return status; }
     float GetCount() { return count; }
+    wchar_t* GetPhoneNumber() { return phoneNumber; }
+    wchar_t* GetCountry() { return adress.country; }
+    wchar_t* GetCity() { return adress.city; }
+    wchar_t* GetStreet() { return adress.street; }
+    int GetHouse() { return adress.house; }
+    int GetFlat() { return adress.flat; }
+
 
     // перегрузить оператор =
 };

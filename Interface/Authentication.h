@@ -4,11 +4,12 @@
 
 class Authentication : public Interface
 {
+    friend class Interface;
 private:
     Authentication() = default;
     ~Authentication() = default;
-    void AdminAuthentication(); // аутентификация администратора
-    void UserAuthentication(); // аутентификация пользователя
+//    void AdminAuthentication(); // аутентификация администратора
+//    void UserAuthentication(); // аутентификация пользователя
 };
 
 
