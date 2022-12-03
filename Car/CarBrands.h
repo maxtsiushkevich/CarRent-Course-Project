@@ -10,32 +10,47 @@ struct CarBrands
     friend class Car;
 private:
     int num;
-    char brand[30];
-    char country[30];
+    wchar_t brand[30];
+    wchar_t country[30];
     CarBrands() = default;
     ~CarBrands() = default;
     void GetCarBrands();
-    string GetCountry(int);
-    string GetBrand(int);
+    wstring GetCountry(int);
+    wstring GetBrand(int);
+    void AddNewBrand();
 };
+
+void CarBrands :: AddNewBrand()
+{
+    cin >> num;
+    fflush(stdin);
+    fgetws(brand, 30, stdin);
+    brand[wcscspn(brand, L"\n")] = L'\0';
+    fflush(stdin);
+    fgetws(country, 30, stdin);
+    country[wcscspn(country, L"\n")] = L'\0';
+    ofstream file("/Users/max/Desktop/CarRent/Files/CarBrands.bin", ios::binary | ios::app);
+    file.write((char*)this, sizeof(CarBrands));
+    file.close();
+}
 
 void CarBrands :: GetCarBrands()
 {
     ifstream file("/Users/max/Desktop/CarRent/Files/CarBrands.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
-    cout << setw(10) << right << "Номер" << setw(15) << "Марка" << setw(15) << "Страна" << endl;
+    cout << setw(10) << right << "Номер" << setw(15) << "Марка" << setw(22) << "Страна" << endl;
     while (file.read((char*)this, sizeof(CarBrands)))
     {
-        cout << setw(10) << left << this->num << setw(15) << this->brand << setw(15) << this->country << endl;
+        wcout << setw(10) << left << this->num << setw(15) << this->brand << setw(15) << this->country << endl;
     }
     file.close();
 }
 
-string CarBrands :: GetBrand(int choice)
+wstring CarBrands :: GetBrand(int choice)
 {
     ifstream file("../Files/CarBrands.bin", ios::binary);
-    string brandTmp;
+    wstring brandTmp;
     if (!file.is_open())
         cout << "Error";
     else
@@ -51,10 +66,10 @@ string CarBrands :: GetBrand(int choice)
     }
 }
 
-string CarBrands :: GetCountry(int choice)
+wstring CarBrands :: GetCountry(int choice)
 {
     ifstream file("../Files/CarBrands.bin", ios::binary);
-    string countryTmp;
+    wstring countryTmp;
     if (!file.is_open())
         cout << "Error";
     else

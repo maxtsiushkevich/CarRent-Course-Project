@@ -25,6 +25,7 @@ void Car :: SetInfo()
 {
     int choice;
     CarBrands carinfo;
+    //carinfo.AddNewBrand();
     carinfo.GetCarBrands(); // выводит список марок
     cout << "Выберите марку автомобиля: " << endl; // выбор
     cin >> choice;
@@ -34,8 +35,8 @@ void Car :: SetInfo()
         cin >> choice;
     }
 
-    //wcscpy(brand, carinfo.GetBrand(choice).c_str()); // порешать как-то
-    //wcscpy(country, carinfo.GetCountry(choice).c_str());
+    wcscpy(brand, carinfo.GetBrand(choice).c_str());
+    wcscpy(country, carinfo.GetCountry(choice).c_str());
 
     cout << "Модель автомобиля: " << endl;
     fflush(stdin);
