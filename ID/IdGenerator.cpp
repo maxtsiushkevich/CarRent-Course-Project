@@ -5,9 +5,9 @@
 int IdGenerator :: GetIdForCar()
 {
     fstream file; // файл для записи и чтения
-    file.open("/Users/max/Desktop/CarRent/ID/CarId.bin", ios::binary | ios::in); // открытие файла
+    file.open("/Users/max/Desktop/CarRent/ID/CarId.bin", ios::binary | ios::in | ios::ate); // открытие файла
     int id = 1;
-    if (!file.is_open()) // если файла несуществует, то ID = 1
+    if (file.tellg() == 0) // если файла пустой, то ID = 1
     {
         ofstream file2("/Users/max/Desktop/CarRent/ID/CarId.bin", ios::binary | ios::app);
         file2.write((char*)&id, sizeof(int));
@@ -27,14 +27,14 @@ int IdGenerator :: GetIdForCar()
 int IdGenerator :: GetIdForPerson() // все абсолютно аналогично
 {
     fstream file;
-    file.open("/Users/max/Desktop/CarRent/ID/PersonID.bin", ios::binary | ios::in);
+    file.open("/Users/max/Desktop/CarRent/ID/PersonID.bin", ios::binary | ios::in | ios::ate);
     int id = 1;
-    if (!file.is_open())
+    if (file.tellg() == 0)
     {
         ofstream file2("/Users/max/Desktop/CarRent/ID/PersonID.bin", ios::binary | ios::app);
         file2.write((char*)&id, sizeof(int));
         file2.close();
-        return 1;
+        return id;
     }
     file.seekp(0, ios::beg);
     file.read((char*)&id, sizeof(int));

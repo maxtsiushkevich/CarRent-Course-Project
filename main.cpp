@@ -23,13 +23,16 @@ int main()
     wcout.imbue(locale("ru_RU.UTF-8"));
     wcin.imbue(locale("ru_RU.UTF-8"));
 
-    //HybridCar car;
+    Session session;
+    session.CreateSession(2,2,2,2);
+
+    //DieselCar car;
     //car.SetInfo();
 //   // wcout << car.GetBodyType();
-   // Database::AddInDatabase(car);
+    //Database::AddInDatabase(car);
 
-    Interface menu;
-    menu.FirstMenu();
+    //Interface menu;
+    //menu.FirstMenu();
 
     //CarBrands c;
     //c.GetCarBrands();

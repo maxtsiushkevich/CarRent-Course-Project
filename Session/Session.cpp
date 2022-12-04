@@ -26,7 +26,7 @@ void Session :: CreateSession(int userID, int carID, int costPerDay, int count)
     cin >> DateFrom.month;
     cin >> DateFrom.year;
     JDNDay[0] = JDDate(DateFrom.day, DateFrom.month, DateFrom.year);
-    while (this->CheckDate(JDNDay[0]))
+    while (!this->CheckDate(JDNDay[0]))
     {
         cout << "Ошибка! Введите дату еще раз!" << endl;
         cin >> DateFrom.day; // добавить проверки
@@ -39,7 +39,7 @@ void Session :: CreateSession(int userID, int carID, int costPerDay, int count)
     cin >> DateTo.month;
     cin >> DateTo.year;
     JDNDay[1] = JDDate(DateTo.day, DateTo.month, DateTo.year);
-    while (this->CheckDate(JDNDay[0], JDNDay[1]))
+    while (!this->CheckDate(JDNDay[0], JDNDay[1]))
     {
         cout << "Ошибка! Введите дату еще раз!" << endl;
         cin >> DateTo.day; // добавить проверки
@@ -87,6 +87,7 @@ bool Session :: CheckDate(int daysNum)
     time_t seconds = time(NULL);
     tm* currentTime = localtime(&seconds);
 
+    // !!!!!!!!! ошибка !!!!!!!!!
     int a = (14 - currentTime->tm_mon) / 12;
     int y = currentTime->tm_year + 1900 + 4800 - a;
     int m = currentTime->tm_mon + 12 * a - 3;
@@ -109,6 +110,7 @@ bool Session :: CheckDate(int daysNumFrom, int daysNumTo)
 
 int Session :: JDDate(int day, int month, int year)
 {
+    // !!!!!!!!! ошибка !!!!!!!!!
     int a = (14 - month) / 12;
     int y = year + 4800 - a;
     int m = month + 12 * a - 3;
