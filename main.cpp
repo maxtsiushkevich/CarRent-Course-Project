@@ -26,6 +26,9 @@ int main()
     //Session session;
     //session.CreateSession(2,2,2,2);
 
+    //Admin adm;
+    //adm.SetInfo();
+
     //time_t seconds = time(NULL);
     //tm* currentTime = localtime(&seconds);
     //cout << currentTime->tm_year+1900 << ' ' << currentTime->tm_mon << ' ' << currentTime->tm_mday << endl;
@@ -34,7 +37,7 @@ int main()
     //car.SetInfo();
 //   // wcout << car.GetBodyType();
     //Database::AddInDatabase(car);
-    
+
     Interface menu;
     menu.FirstMenu();
 

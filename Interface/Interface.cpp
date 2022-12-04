@@ -204,7 +204,6 @@ void Interface :: UserAccountInfo()
     wcout << user.GetPhoneNumber() << endl;
     cout << "Адрес: ";
     wcout << user.GetCountry() << ", " << user.GetCity() << ", " << user.GetStreet() << ' ' << user.GetHouse() << '-' << user.GetFlat() << endl;
-    // задержка
 }
 
 void Interface :: AdminMainMenu()
