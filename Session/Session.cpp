@@ -87,10 +87,9 @@ bool Session :: CheckDate(int daysNum)
     time_t seconds = time(NULL);
     tm* currentTime = localtime(&seconds);
 
-    // !!!!!!!!! ошибка !!!!!!!!!
-    int a = (14 - currentTime->tm_mon) / 12;
+    int a = (14 - currentTime->tm_mon+1) / 12;
     int y = currentTime->tm_year + 1900 + 4800 - a;
-    int m = currentTime->tm_mon + 12 * a - 3;
+    int m = currentTime->tm_mon + 1 + 12 * a - 3;
     nowDays = currentTime->tm_mday + ((153*m+2)/5) + 365 * y + y/4 - y/100 + y/400 - 32045;
 
     if (nowDays <= daysNum)
@@ -110,7 +109,6 @@ bool Session :: CheckDate(int daysNumFrom, int daysNumTo)
 
 int Session :: JDDate(int day, int month, int year)
 {
-    // !!!!!!!!! ошибка !!!!!!!!!
     int a = (14 - month) / 12;
     int y = year + 4800 - a;
     int m = month + 12 * a - 3;
