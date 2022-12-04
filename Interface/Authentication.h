@@ -8,8 +8,8 @@ class Authentication : public Interface
 private:
     Authentication() = default;
     ~Authentication() = default;
-//    void AdminAuthentication(); // аутентификация администратора
-//    void UserAuthentication(); // аутентификация пользователя
+    bool AdminAuthentication(); // аутентификация администратора
+    bool UserAuthentication(); // аутентификация пользователя
 };
 
 

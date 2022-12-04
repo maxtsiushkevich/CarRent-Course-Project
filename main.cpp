@@ -23,8 +23,8 @@ int main()
     wcout.imbue(locale("ru_RU.UTF-8"));
     wcin.imbue(locale("ru_RU.UTF-8"));
 
-    Session session;
-    session.CreateSession(2,2,2,2);
+    //Session session;
+    //session.CreateSession(2,2,2,2);
 
     //time_t seconds = time(NULL);
     //tm* currentTime = localtime(&seconds);
@@ -34,9 +34,9 @@ int main()
     //car.SetInfo();
 //   // wcout << car.GetBodyType();
     //Database::AddInDatabase(car);
-
-    //Interface menu;
-    //menu.FirstMenu();
+    
+    Interface menu;
+    menu.FirstMenu();
 
     //CarBrands c;
     //c.GetCarBrands();

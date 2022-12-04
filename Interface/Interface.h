@@ -31,8 +31,8 @@ public:
     void UserMainMenu(); // главное меню пользователя
     void AdminMainMenu(); // главное меню администратора
     void Registation(); // регистрация
-    bool AdminAuthentication(); // аутентификация администратора
-    bool UserAuthentication(); // аутентификация пользователя
+    //bool AdminAuthentication(); // аутентификация администратора
+    //bool UserAuthentication(); // аутентификация пользователя
     void UserAccountInfo(); // выводит информацию об аккауте пользователя
     void ShowAllSessions(); // показывает все заказы вообще
     void ShowSessions(); // показывает все заказы конкретного пользователя
