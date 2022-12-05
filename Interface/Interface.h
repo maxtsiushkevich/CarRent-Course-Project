@@ -16,10 +16,16 @@ class Interface
     friend class Session;
 protected:
     Userdata account;
-    vector<PetrolCar> petrolCars;
+    vector<PetrolCar> petrolCars; // все авто
     vector<DieselCar> dieselCars;
     vector<ElectricCar> electricCars;
-    vector<HybridCar> hybridCar;
+    vector<HybridCar> hybridCars;
+
+    vector<PetrolCar> usiedPetrolCars;
+    vector<DieselCar> usiedDieselCars;
+    vector<ElectricCar>usiedElectricCars;
+    vector<HybridCar> usiedHybridCars;
+
     vector<int> carIdInUsage;
     Session session;
     User user;
@@ -31,9 +37,15 @@ public:
     void UserMainMenu(); // главное меню пользователя
     void AdminMainMenu(); // главное меню администратора
     void Registation(); // регистрация
-    //bool AdminAuthentication(); // аутентификация администратора
-    //bool UserAuthentication(); // аутентификация пользователя
     void UserAccountInfo(); // выводит информацию об аккауте пользователя
+    void ChoosingCar(); // показывает все заказы вообще
+    void ShowCars(int);
+    int FindCost(int, int);
+
+
+
+
+
     void ShowAllSessions(); // показывает все заказы вообще
     void ShowSessions(); // показывает все заказы конкретного пользователя
     void UserAccountSettings(); // изменение данных аккаунта администратора

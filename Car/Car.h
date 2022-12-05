@@ -30,7 +30,8 @@ public:
     Car(int id) { this->id = id; } ;
     virtual ~Car() = default;
     virtual void SetInfo();
-    int GetId() { return id; };
+    int GetID() { return id; };
+    int GetManufacturedYear() { return manufacturedYear; };
     wstring GetBrand() { return brand; };
     wstring GetModel() { return model; };
     wstring GetCountry() { return country; };

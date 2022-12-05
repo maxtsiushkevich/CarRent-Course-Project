@@ -25,7 +25,7 @@ private:
 public:
     Session();
     ~Session() = default;
-    void CreateSession(int, int, int, int);
+    bool CreateSession(int, int, int, float);
     static void GetAllSessions(vector<Session>&);
     bool CheckDate(int);
     bool CheckDate(int, int);

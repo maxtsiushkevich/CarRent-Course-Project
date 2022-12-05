@@ -17,8 +17,15 @@ Session :: Session()
     DateTo.year = 0;
 }
 
-void Session :: CreateSession(int userID, int carID, int costPerDay, int count)
+bool Session :: CreateSession(int userID, int carID, int costPerDay, float count)
 {
+    if (costPerDay == 0)
+    {
+        cout << "Введен неверный номер автомобиля" << endl;
+        return false;
+    }
+    this->userID = userID;
+    this->carID = carID;
     int term;
     int JDNDay[2];
     cout << "С какой даты начинается аренда? Введите день, месяц и год через пробел" << endl;
@@ -69,7 +76,7 @@ void Session :: CreateSession(int userID, int carID, int costPerDay, int count)
     if (cost > count)
     {
         cout << "Недостаточно средств" << endl; // прерывание, если недостаточно средств
-        return;
+        return false;
     }
 
     ofstream file;
@@ -78,6 +85,7 @@ void Session :: CreateSession(int userID, int carID, int costPerDay, int count)
         cout << "Error";
     file.write((char*)this, sizeof(this));
     file.close();
+    return true;
 
 }
 
