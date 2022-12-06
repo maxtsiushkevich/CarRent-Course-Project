@@ -172,26 +172,26 @@ void Interface :: ChoosingCar()
             cout << "Введите номер желаемого автомобиля: " << endl;
             int carId;
             cin >> carId;
-//            sort(carIdInUsage.begin(), carIdInUsage.end());
-//            // проверяем, доступен ли этот автомобиль
-//            if (binary_search(carIdInUsage.begin(), carIdInUsage.end(), carId))
-//            {
-//                cout << "К сожалению, данный автомобиль на данный момент недоступен!\n"
-//                        "Для ввода другого номера введите '1'\n"
-//                        "Для выхода в меню введите '2'" << endl;
-//                cin >> tmp;
-//                while (tmp < 1 || tmp > 2)
-//                {
-//                    cout << "Ошибка ввода" << endl;
-//                }
-//                if (tmp == 1)
-//                {
-//                    cout << "Введите номер желаемого автомобиля: " << endl;
-//                    cin >> carId;
-//                }
-//                if (tmp == 2)
-//                    break;
-//            }
+            sort(carIdInUsage.begin(), carIdInUsage.end());
+            // проверяем, доступен ли этот автомобиль
+            if (binary_search(carIdInUsage.begin(), carIdInUsage.end(), carId))
+            {
+                cout << "К сожалению, данный автомобиль на данный момент недоступен!\n"
+                        "Для ввода другого номера введите '1'\n"
+                        "Для выхода в меню введите '2'" << endl;
+                cin >> tmp;
+                while (tmp < 1 || tmp > 2)
+                {
+                    cout << "Ошибка ввода" << endl;
+                }
+                if (tmp == 1)
+                {
+                    cout << "Введите номер желаемого автомобиля: " << endl;
+                    cin >> carId;
+                }
+                if (tmp == 2)
+                    break;
+            }
             while(!session.CreateSession(user.GetID(), carId, FindCost(choice, carId), user))
             {
                 cout << "Желаете продолжить?\n"
@@ -213,7 +213,7 @@ void Interface :: ChoosingCar()
             carIdInUsage.push_back(carId);
             break;
         //case 3:
-            //this->ShowDetailedInfo(); // логика как и в case 2
+        //    this->ShowDetailedInfo(); // логика как и в case 2
     }
 }
 
