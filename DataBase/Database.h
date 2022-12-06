@@ -1,12 +1,10 @@
 #ifndef CARRENT_DATABASE_H
 #define CARRENT_DATABASE_H
 
-#include "Car.h"
 #include "ElectricCar.h"
 #include "DieselCar.h"
 #include "PetrolCar.h"
 #include "HybridCar.h"
-#include "OilCar.h"
 #include <vector>
 
 class Database

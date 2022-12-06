@@ -1,10 +1,10 @@
 #include "Interface.h"
 #include <iostream>
 #include <fstream>
-#include "../Persons/Userdata.h"
 #include "../Persons/User.h"
 #include "../Database//Database.h"
 #include "Authentication.h"
+#include "CarInUsage.h"
 using namespace std;
 
 Interface::Interface()
@@ -13,6 +13,9 @@ Interface::Interface()
     Database::GetFromDatabase(dieselCars);
     Database::GetFromDatabase(electricCars);
     Database::GetFromDatabase(hybridCars);
+
+    CarInUsage tmp;
+    tmp.GetCarsInUsage(carIdInUsage);
 }
 void Interface :: FirstMenu()
 {
@@ -34,11 +37,11 @@ void Interface :: FirstMenu()
         switch (choice)
         {
             case 1:
-                if (auth.AdminAuthentication())
+                if (auth.AdminAuthentication(this->admin))
                     this->AdminMainMenu();
                 break;
             case 2:
-                if (auth.UserAuthentication())
+                if (auth.UserAuthentication(this->user))
                     this->UserMainMenu();
                 break;
             case 3:
@@ -66,8 +69,8 @@ void Interface :: UserMainMenu()
         cout << "3 - История поездок" << endl;
         cout << "4 - Пополнение счета" << endl;
         cout << "5 - Настройка аккаунта" << endl;
-        cout << "5 - Выйти из аккаунта" << endl;
-        cout << "6 - Завершить работу" << endl;
+        cout << "6 - Выйти из аккаунта" << endl;
+        cout << "7 - Завершить работу" << endl;
         cin >> choice;
         while (choice < 1 || choice > 7)
         {
@@ -85,11 +88,14 @@ void Interface :: UserMainMenu()
             case 3:
                 break;
             case 4:
+                this->AddCount();
                 break;
             case 5:
-                return;
+                break;
             case 6:
-                exit(0);
+                return;
+            case 7:
+                exit(0); // сохранять измененный объект юзера, заменяя его в файле
         }
     }
 }
@@ -143,14 +149,17 @@ void Interface :: ChoosingCar()
         cout << "Ошибка. Введите еще раз:" << endl;
         cin >> choice;
     }
-    this->ShowCars(choice);
-
-    cout << "1 - Выход в меню пользователя\n"
-            "2 - Выбор автомобиля\n"
-            "3 - Просмотр подробной информации об автомобиле" << endl;
+    if(this->ShowCars(choice))
+    {
+        cout << "1 - Выход в меню пользователя\n"
+                "2 - Выбор автомобиля\n"
+                "3 - Просмотр подробной информации об автомобиле" << endl;
+    }
+    else
+        return;
     int tmp;
     cin >> tmp;
-    while (tmp < 0 | tmp >3)
+    while (tmp < 0 | tmp > 3)
     {
         cout << "Ошибка. Введите еще раз:" << endl;
         cin >> tmp;
@@ -163,12 +172,31 @@ void Interface :: ChoosingCar()
             cout << "Введите номер желаемого автомобиля: " << endl;
             int carId;
             cin >> carId;
-            while(!session.CreateSession(user.GetID(), carId, FindCost(choice, carId), user.GetCount()))
+//            sort(carIdInUsage.begin(), carIdInUsage.end());
+//            // проверяем, доступен ли этот автомобиль
+//            if (binary_search(carIdInUsage.begin(), carIdInUsage.end(), carId))
+//            {
+//                cout << "К сожалению, данный автомобиль на данный момент недоступен!\n"
+//                        "Для ввода другого номера введите '1'\n"
+//                        "Для выхода в меню введите '2'" << endl;
+//                cin >> tmp;
+//                while (tmp < 1 || tmp > 2)
+//                {
+//                    cout << "Ошибка ввода" << endl;
+//                }
+//                if (tmp == 1)
+//                {
+//                    cout << "Введите номер желаемого автомобиля: " << endl;
+//                    cin >> carId;
+//                }
+//                if (tmp == 2)
+//                    break;
+//            }
+            while(!session.CreateSession(user.GetID(), carId, FindCost(choice, carId), user))
             {
                 cout << "Желаете продолжить?\n"
                         "Для ввода другого номера введите '1'\n"
                         "Для выхода в меню введите '2'" << endl;
-                int tmp;
                 cin >> tmp;
                 while (tmp < 1 || tmp > 2)
                 {
@@ -181,66 +209,66 @@ void Interface :: ChoosingCar()
                 }
                 if (tmp == 2)
                     break;
-
             }
+            carIdInUsage.push_back(carId);
             break;
-        case 3:
-            this->ShowDetailedInfo(); // логика как и в case 2
+        //case 3:
+            //this->ShowDetailedInfo(); // логика как и в case 2
     }
 }
 
-void Interface :: ShowCars(int choice)
+bool Interface :: ShowCars(int choice)
 {
     switch (choice)
     {
         case 1:
             if (petrolCars.empty())
             {
-                cout << "Нет доступных автомобилей" << endl;
-                break;
+                cout << "Нет доступных автомобилей!" << endl;
+                return false;
             }
             for (auto it = petrolCars.begin(); it != petrolCars.end(); ++it)
             {
                 wcout << '|' << setw(10) << left << it->GetID() << '|' << setw(15) << it->GetBrand() << '|' << setw(15) << it->GetModel();
                 cout << '|' << setw(15) << left << it->GetManufacturedYear() << endl;
             }
-            break;
+            return true;
         case 2:
             if (dieselCars.empty())
             {
-                cout << "Нет доступных автомобилей" << endl;
-                break;
+                cout << "Нет доступных автомобилей!" << endl;
+                return false;
             }
             for (auto it = dieselCars.begin(); it != dieselCars.end(); ++it)
             {
                 wcout << '|' << setw(10) << left << it->GetID() << '|' << setw(15) << it->GetBrand() << '|' << setw(15) << it->GetModel();
                 cout << '|' << setw(15) << left << it->GetManufacturedYear() << endl;
             }
-            break;
+            return true;
         case 3:
             if (electricCars.empty())
             {
-                cout << "Нет доступных автомобилей" << endl;
-                break;
+                cout << "Нет доступных автомобилей!" << endl;
+                return false;
             }
             for (auto it = electricCars.begin(); it != electricCars.end(); ++it)
             {
                 wcout << '|' << setw(10) << left << it->GetID() << '|' << setw(15) << it->GetBrand() << '|' << setw(15) << it->GetModel();
                 cout << '|' << setw(15) << left << it->GetManufacturedYear() << endl;
             }
-            break;
+            return true;
         case 4:
             if (hybridCars.empty())
             {
-                cout << "Нет доступных автомобилей" << endl;
-                break;
+                cout << "Нет доступных автомобилей!" << endl;
+                return false;
             }
             for (auto it = hybridCars.begin(); it != hybridCars.end(); ++it)
             {
                 wcout << '|' << setw(10) << left << it->GetID() << '|' << setw(15) << it->GetBrand() << '|' << setw(15) << it->GetModel();
                 cout << '|' << setw(15) << left << it->GetManufacturedYear() << endl;
             }
-            break;
+            return true;
     }
 }
 
@@ -279,4 +307,12 @@ int Interface :: FindCost(int choice, int carId)
         }
     }
     return 0;
+}
+
+void Interface :: AddCount()
+{
+    cout << "Введите сумму для пополнения" << endl;
+    int plus;
+    cin >> plus;
+    user.SetCount(plus);
 }

@@ -2,14 +2,15 @@
 #define CARRENT_AUTHENTICATION_H
 #include "Interface.h"
 
-class Authentication : public Interface
+class Authentication
 {
     friend class Interface;
 private:
+    Userdata account;
     Authentication() = default;
     ~Authentication() = default;
-    bool AdminAuthentication(); // аутентификация администратора
-    bool UserAuthentication(); // аутентификация пользователя
+    bool AdminAuthentication(Admin&); // аутентификация администратора
+    bool UserAuthentication(User&); // аутентификация пользователя
 };
 
 

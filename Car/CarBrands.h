@@ -30,6 +30,8 @@ void CarBrands :: AddNewBrand()
     fgetws(country, 30, stdin);
     country[wcscspn(country, L"\n")] = L'\0';
     ofstream file("/Users/max/Desktop/CarRent/Files/CarBrands.bin", ios::binary | ios::app);
+    if (!file.is_open())
+        cout << "Error";
     file.write((char*)this, sizeof(CarBrands));
     file.close();
 }

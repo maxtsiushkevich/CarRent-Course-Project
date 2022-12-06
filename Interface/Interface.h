@@ -15,18 +15,14 @@ class Interface
 {
     friend class Session;
 protected:
-    Userdata account;
+
     vector<PetrolCar> petrolCars; // все авто
     vector<DieselCar> dieselCars;
     vector<ElectricCar> electricCars;
     vector<HybridCar> hybridCars;
 
-    vector<PetrolCar> usiedPetrolCars;
-    vector<DieselCar> usiedDieselCars;
-    vector<ElectricCar>usiedElectricCars;
-    vector<HybridCar> usiedHybridCars;
+    vector<int> carIdInUsage; // id машин, которые недоступны
 
-    vector<int> carIdInUsage;
     Session session;
     User user;
     Admin admin;
@@ -39,9 +35,9 @@ public:
     void Registation(); // регистрация
     void UserAccountInfo(); // выводит информацию об аккауте пользователя
     void ChoosingCar(); // показывает все заказы вообще
-    void ShowCars(int);
-    int FindCost(int, int);
-
+    bool ShowCars(int); // выводит автомобили
+    void AddCount(); // пополнение баланса
+    int FindCost(int, int); // ищет стоимость аренды по его ID
 
 
 

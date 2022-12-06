@@ -2,6 +2,8 @@
 #include <fstream>
 #include <iostream>
 #include <ctime>
+#include "../Persons/User.h"
+#include "../Interface/CarInUsage.h"
 using namespace std;
 
 Session :: Session()
@@ -17,7 +19,7 @@ Session :: Session()
     DateTo.year = 0;
 }
 
-bool Session :: CreateSession(int userID, int carID, int costPerDay, float count)
+bool Session :: CreateSession(int userID, int carID, int costPerDay, User &user)
 {
     if (costPerDay == 0)
     {
@@ -39,6 +41,7 @@ bool Session :: CreateSession(int userID, int carID, int costPerDay, float count
         cin >> DateFrom.day; // добавить проверки
         cin >> DateFrom.month;
         cin >> DateFrom.year;
+        JDNDay[0] = JDDate(DateFrom.day, DateFrom.month, DateFrom.year);
     }
 
     cout << "До какой даты аренда? Введите день, месяц и год через пробел\"" << endl;
@@ -52,11 +55,14 @@ bool Session :: CreateSession(int userID, int carID, int costPerDay, float count
         cin >> DateTo.day; // добавить проверки
         cin >> DateTo.month;
         cin >> DateTo.year;
+        JDNDay[1] = JDDate(DateFrom.day, DateFrom.month, DateFrom.year);
     }
     term = JDNDay[1] - JDNDay[0];
 
     // механизм расчета стоимости поездки
-    if (term <= 6)
+    if (term == 0)
+        cost = costPerDay;
+    if (term >0 || term <= 6)
     {
         cost = costPerDay * term;
     }
@@ -73,11 +79,15 @@ bool Session :: CreateSession(int userID, int carID, int costPerDay, float count
     }
 
 
-    if (cost > count)
+    if (cost > user.GetCount())
     {
         cout << "Недостаточно средств" << endl; // прерывание, если недостаточно средств
         return false;
     }
+    user.SetCount(-1*cost);
+
+    CarInUsage object(JDNDay[1], carID);
+    object.WriteInFile();
 
     ofstream file;
     file.open("../Files/Session.bin", ios::binary | ios::app);
@@ -91,6 +101,7 @@ bool Session :: CreateSession(int userID, int carID, int costPerDay, float count
 
 bool Session :: CheckDate(int daysNum)
 {
+
     int nowDays;
     time_t seconds = time(NULL);
     tm* currentTime = localtime(&seconds);

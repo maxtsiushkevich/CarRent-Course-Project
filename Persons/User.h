@@ -30,6 +30,7 @@ public:
     void SetInfo();
     void SetNewNumber();
     void SetNewAdress();
+    void SetCount(int plus) { count += plus; }
     wchar_t* GetPassportNum() { return passportNum; }
     wchar_t* GetStatus() { return status; }
     float GetCount() { return count; }

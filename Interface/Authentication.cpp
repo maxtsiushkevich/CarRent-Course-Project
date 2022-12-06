@@ -4,7 +4,7 @@
 
 using namespace std;
 
-bool Authentication :: AdminAuthentication()
+bool Authentication :: AdminAuthentication(Admin& admin)
 {
     wchar_t login[30], password[30];
     int mode = 1;
@@ -50,7 +50,7 @@ bool Authentication :: AdminAuthentication()
     return true;
 };
 
-bool Authentication :: UserAuthentication()
+bool Authentication :: UserAuthentication(User& user)
 {
     wchar_t login[30], password[30];
     int mode = 2;
@@ -91,8 +91,10 @@ bool Authentication :: UserAuthentication()
     while(file.read((char*)&user, sizeof(User)))
     {
         if (user.GetID() == account.GetID())
+        {
+            file.close();
             break;
+        }
     }
-    file.close();
     return true;
 };
