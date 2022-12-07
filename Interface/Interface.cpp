@@ -17,6 +17,7 @@ Interface::Interface()
     CarInUsage tmp;
     tmp.GetCarsInUsage(carIdInUsage);
 }
+
 void Interface :: FirstMenu()
 {
     int choice;
@@ -93,8 +94,10 @@ void Interface :: UserMainMenu()
             case 5:
                 break;
             case 6:
+                this->RefreshUserInFile();
                 return;
             case 7:
+                this->RefreshUserInFile();
                 exit(0); // сохранять измененный объект юзера, заменяя его в файле
         }
     }
@@ -195,7 +198,7 @@ void Interface :: ChoosingCar()
             while(!session.CreateSession(user.GetID(), carId, FindCost(choice, carId), user))
             {
                 cout << "Желаете продолжить?\n"
-                        "Для ввода другого номера введите '1'\n"
+                        "Для выбора другого автомобиля введите '1'\n"
                         "Для выхода в меню введите '2'" << endl;
                 cin >> tmp;
                 while (tmp < 1 || tmp > 2)
@@ -208,7 +211,7 @@ void Interface :: ChoosingCar()
                     cin >> carId;
                 }
                 if (tmp == 2)
-                    break;
+                    return;
             }
             carIdInUsage.push_back(carId);
             break;
@@ -315,4 +318,26 @@ void Interface :: AddCount()
     int plus;
     cin >> plus;
     user.SetCount(plus);
+}
+
+void Interface :: RefreshUserInFile()
+{
+    ifstream file1; // для чтения
+    ofstream file2; // для записи
+    file1.open("/Users/max/Desktop/CarRent/Files/User.bin", ios::binary);
+    if (!file1.is_open())
+        cout << "Error";
+    file2.open("/Users/max/Desktop/CarRent/Files/tmp.bin", ios::binary | ios::app);
+    User tmp;
+    while(file1.read((char*)&tmp, sizeof(User)))
+    {
+        if (tmp.GetID() == user.GetID())
+            file2.write((char*)&user, sizeof(User));
+        else
+            file2.write((char*)&tmp, sizeof(User));
+    }
+    file1.close();
+    remove("/Users/max/Desktop/CarRent/Files/User.bin");
+    file2.close();
+    rename("/Users/max/Desktop/CarRent/Files/tmp.bin","/Users/max/Desktop/CarRent/Files/User.bin");
 }

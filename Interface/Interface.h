@@ -38,6 +38,7 @@ public:
     bool ShowCars(int); // выводит автомобили
     void AddCount(); // пополнение баланса
     int FindCost(int, int); // ищет стоимость аренды по его ID
+    void RefreshUserInFile();
 
 
 

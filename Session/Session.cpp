@@ -57,12 +57,12 @@ bool Session :: CreateSession(int userID, int carID, int costPerDay, User &user)
         cin >> DateTo.year;
         JDNDay[1] = JDDate(DateFrom.day, DateFrom.month, DateFrom.year);
     }
-    term = JDNDay[1] - JDNDay[0];
+    term = JDNDay[1] - JDNDay[0] + 1;
 
     // механизм расчета стоимости поездки
     if (term == 0)
         cost = costPerDay;
-    if (term >0 || term <= 6)
+    if (term > 0 || term <= 6)
     {
         cost = costPerDay * term;
     }
@@ -84,6 +84,21 @@ bool Session :: CreateSession(int userID, int carID, int costPerDay, User &user)
         cout << "Недостаточно средств" << endl; // прерывание, если недостаточно средств
         return false;
     }
+
+    cout << "Стоимость аренды составит " << cost << endl;
+    cout << "Для подтверждения заказа введите '1'\n"
+            "Для отмены заказа введите '2'" << endl;
+    int tmp;
+    cin >> tmp;
+    while (tmp > 2 || tmp < 1)
+    {
+        cout << "Ошибка. Введите еще раз:" << endl;
+        cin  >> tmp;
+    }
+
+    if (tmp == 2)
+        return false;
+
     user.SetCount(-1*cost);
 
     CarInUsage object(JDNDay[1], carID);
@@ -95,6 +110,7 @@ bool Session :: CreateSession(int userID, int carID, int costPerDay, User &user)
         cout << "Error";
     file.write((char*)this, sizeof(this));
     file.close();
+    cout << "Заказ успешно оформлен!" << endl;
     return true;
 
 }
