@@ -10,12 +10,12 @@ Person :: Person()
 
 void Person :: SetInfo()
 {
-    cout << "Введите фамилию: " << endl;
+    cout << "Введите фамилию: ";
     fflush(stdin);
     fgetws(surname, 30, stdin);
     surname[wcscspn(surname, L"\n")] = L'\0';
 
-    cout << "Введите имя: " << endl;
+    cout << "Введите имя: ";
     fflush(stdin);
     fgetws(name, 30, stdin);
     name[wcscspn(name, L"\n")] = L'\0';

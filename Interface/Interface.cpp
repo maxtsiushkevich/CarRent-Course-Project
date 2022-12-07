@@ -87,6 +87,7 @@ void Interface :: UserMainMenu()
                 this->ChoosingCar();
                 break;
             case 3:
+
                 break;
             case 4:
                 this->AddCount();
@@ -111,6 +112,8 @@ void Interface :: UserAccountInfo()
     cout << user.GetAge()<< endl;
     cout << "Баланс: ";
     cout << user.GetCount() << endl;
+    cout << "Потрачено на платформе: ";
+    cout << user.GetSpendMoney() << endl;
     cout << "Текущий статус: ";
     wcout << user.GetStatus()<< endl;
     cout << "Номер паспорта, привязанного к аккаунту: ";

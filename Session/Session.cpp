@@ -99,7 +99,17 @@ bool Session :: CreateSession(int userID, int carID, int costPerDay, User &user)
     if (tmp == 2)
         return false;
 
+    if (!wcscmp(user.CheckStatus(), L"Classic"))
+        cost = cost;
+    if (!wcscmp(user.CheckStatus(), L"Silver"))
+        cost = cost-(cost*0.05);
+    if (!wcscmp(user.CheckStatus(), L"Gold"))
+        cost = cost-(cost*0.1);
+    if (!wcscmp(user.CheckStatus(), L"Platinum"))
+        cost = cost-(cost*0.15);
+
     user.SetCount(-1*cost);
+    user.SetSpendMoney(cost);
 
     CarInUsage object(JDNDay[1], carID);
     object.WriteInFile();
