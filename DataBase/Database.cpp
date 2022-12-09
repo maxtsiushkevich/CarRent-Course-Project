@@ -1,5 +1,4 @@
 #include "Database.h"
-#include <string>
 #include <fstream>
 #include <iostream>
 #include <vector>

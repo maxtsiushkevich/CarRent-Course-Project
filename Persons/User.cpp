@@ -62,6 +62,7 @@ void User :: SetInfo()
         cin >> adress.flat;
     }
 
+    cout << "Аккаунт успешно создан!" << endl;
     ofstream file;
     file.open("../Files/User.bin", ios::binary | ios::app);
     if (!file.is_open())

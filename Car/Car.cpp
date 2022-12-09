@@ -1,16 +1,14 @@
 #include "Car.h"
-#include <string>
 #include <iostream>
 #include <fstream>
 #include "CarBrands.h"
 #include "../ID/IdGenerator.h"
-#include <cctype>
 
 using namespace std;
 
 Car :: Car()
 {
-    id = IdGenerator::GetIdForCar(); // присваем ID
+    id = 0; // присваем ID
     deleteMark = false;
     cruiseControl = parkingAssist = music = bluetooth = climat = seatHeating = gps = sunroof = false;
     manufacturedYear = 0;
@@ -24,6 +22,7 @@ Car :: Car()
 void Car :: SetInfo()
 {
     int choice;
+    id = IdGenerator::GetIdForCar(); // присваем ID
     CarBrands carinfo;
     //carinfo.AddNewBrand();
     carinfo.GetCarBrands(); // выводит список марок

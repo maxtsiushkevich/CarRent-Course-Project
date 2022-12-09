@@ -84,6 +84,12 @@ bool Session :: CreateSession(int userID, int carID, int costPerDay, User &user)
         cout << "Недостаточно средств" << endl; // прерывание, если недостаточно средств
         return false;
     }
+    if (!wcscmp(user.CheckStatus(), L"Silver"))
+        cost = cost-(cost*0.05);
+    if (!wcscmp(user.CheckStatus(), L"Gold"))
+        cost = cost-(cost*0.1);
+    if (!wcscmp(user.CheckStatus(), L"Platinum"))
+        cost = cost-(cost*0.15);
 
     cout << "Стоимость аренды составит " << cost << endl;
     cout << "Для подтверждения заказа введите '1'\n"
@@ -99,14 +105,7 @@ bool Session :: CreateSession(int userID, int carID, int costPerDay, User &user)
     if (tmp == 2)
         return false;
 
-    if (!wcscmp(user.CheckStatus(), L"Classic"))
-        cost = cost;
-    if (!wcscmp(user.CheckStatus(), L"Silver"))
-        cost = cost-(cost*0.05);
-    if (!wcscmp(user.CheckStatus(), L"Gold"))
-        cost = cost-(cost*0.1);
-    if (!wcscmp(user.CheckStatus(), L"Platinum"))
-        cost = cost-(cost*0.15);
+
 
     user.SetCount(-1*cost);
     user.SetSpendMoney(cost);
@@ -115,7 +114,7 @@ bool Session :: CreateSession(int userID, int carID, int costPerDay, User &user)
     object.WriteInFile();
 
     ofstream file;
-    file.open("../Files/Session.bin", ios::binary | ios::app);
+    file.open("/Users/max/Desktop/CarRent/Files/Session.bin", ios::binary | ios::app);
     if (!file.is_open())
         cout << "Error";
     file.write((char*)this, sizeof(this));

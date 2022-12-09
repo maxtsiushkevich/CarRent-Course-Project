@@ -37,9 +37,9 @@ public:
     void SetInfo();
     void SetNewNumber();
     void SetNewAdress();
-    void SetCount(int plus) { count += plus; }
-    void SetSpendMoney(int spend) { spendMoney += spend; }
-    //void SetStatus();
+    void SetCount(float plus) { count += plus; }
+    void SetSpendMoney(float spend) { spendMoney += spend; }
+    void SetStatus(wchar_t *newStatus) { wcscpy(status, newStatus);}
     wchar_t* CheckStatus() { return status; }
     wchar_t* GetPassportNum() { return passportNum; }
     wchar_t* GetStatus() { return status; }

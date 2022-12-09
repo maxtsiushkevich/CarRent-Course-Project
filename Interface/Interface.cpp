@@ -113,7 +113,7 @@ void Interface :: UserAccountInfo()
     cout << "Баланс: ";
     cout << user.GetCount() << endl;
     cout << "Потрачено на платформе: ";
-    cout << user.GetSpendMoney() << endl;
+    cout << user.GetSpendMoney() << endl; // не выводит дробную часть
     cout << "Текущий статус: ";
     wcout << user.GetStatus()<< endl;
     cout << "Номер паспорта, привязанного к аккаунту: ";
@@ -198,7 +198,7 @@ void Interface :: ChoosingCar()
                 if (tmp == 2)
                     break;
             }
-            while(!session.CreateSession(user.GetID(), carId, FindCost(choice, carId), user))
+            while(!newSession.CreateSession(user.GetID(), carId, FindCost(choice, carId), user))
             {
                 cout << "Желаете продолжить?\n"
                         "Для выбора другого автомобиля введите '1'\n"
@@ -217,6 +217,7 @@ void Interface :: ChoosingCar()
                     return;
             }
             carIdInUsage.push_back(carId);
+            allSessions.push_back(newSession);
             break;
         //case 3:
         //    this->ShowDetailedInfo(); // логика как и в case 2
@@ -233,10 +234,15 @@ bool Interface :: ShowCars(int choice)
                 cout << "Нет доступных автомобилей!" << endl;
                 return false;
             }
+            cout << "-----------------------------------------------------------------------" << endl;
+            wcout << '|' << setw(10) << left << L"Номер" << '|' << setw(15) << L"Марка" << '|' << setw(15) << L"Модель" << '|'
+            << setw(15) << left << L"Год выпуска" << '|' << setw(10) << left << L"Стоимость" << '|' << endl;
+            cout << "-----------------------------------------------------------------------" << endl;
             for (auto it = petrolCars.begin(); it != petrolCars.end(); ++it)
             {
                 wcout << '|' << setw(10) << left << it->GetID() << '|' << setw(15) << it->GetBrand() << '|' << setw(15) << it->GetModel();
-                cout << '|' << setw(15) << left << it->GetManufacturedYear() << endl;
+                cout << '|' << setw(15) << left << it->GetManufacturedYear() << '|' << setw(10) << left << it->GetCostPerDay() << '|' << endl;
+                cout << "-----------------------------------------------------------------------" << endl;
             }
             return true;
         case 2:
@@ -245,10 +251,15 @@ bool Interface :: ShowCars(int choice)
                 cout << "Нет доступных автомобилей!" << endl;
                 return false;
             }
+            cout << "-----------------------------------------------------------------------" << endl;
+            wcout << '|' << setw(10) << left << L"Номер" << '|' << setw(15) << L"Марка" << '|' << setw(15) << L"Модель" << '|'
+            << setw(15) << left << L"Год выпуска" << '|' << setw(10) << left << L"Стоимость" << '|' << endl;
+            cout << "-----------------------------------------------------------------------" << endl;
             for (auto it = dieselCars.begin(); it != dieselCars.end(); ++it)
             {
                 wcout << '|' << setw(10) << left << it->GetID() << '|' << setw(15) << it->GetBrand() << '|' << setw(15) << it->GetModel();
-                cout << '|' << setw(15) << left << it->GetManufacturedYear() << endl;
+                cout << '|' << setw(15) << left << it->GetManufacturedYear() << '|' << setw(10) << left << it->GetCostPerDay() << '|' << endl;
+                cout << "-----------------------------------------------------------------------" << endl;
             }
             return true;
         case 3:
@@ -257,10 +268,16 @@ bool Interface :: ShowCars(int choice)
                 cout << "Нет доступных автомобилей!" << endl;
                 return false;
             }
+            cout << "-----------------------------------------------------------------------" << endl;
+            wcout << '|' << setw(10) << left << L"Номер" << '|' << setw(15) << L"Марка" << '|' << setw(15) << L"Модель" << '|'
+            << setw(15) << left << L"Год выпуска" << '|' << setw(10) << left << L"Стоимость" << '|' << endl;
+            cout << "-----------------------------------------------------------------------" << endl;
             for (auto it = electricCars.begin(); it != electricCars.end(); ++it)
             {
-                wcout << '|' << setw(10) << left << it->GetID() << '|' << setw(15) << it->GetBrand() << '|' << setw(15) << it->GetModel();
-                cout << '|' << setw(15) << left << it->GetManufacturedYear() << endl;
+                wcout << '|' << setw(10) << left << it->GetID() << '|' << setw(15) << it->GetBrand() << '|'
+                << setw(15) << it->GetModel();
+                cout << '|' << setw(15) << left << it->GetManufacturedYear() << '|' << setw(10) << left << it->GetCostPerDay() << '|'  << endl;
+                cout << "-----------------------------------------------------------------------" << endl;
             }
             return true;
         case 4:
@@ -269,10 +286,14 @@ bool Interface :: ShowCars(int choice)
                 cout << "Нет доступных автомобилей!" << endl;
                 return false;
             }
+            cout << "-----------------------------------------------------------------------" << endl;
+            wcout << '|' << setw(10) << left << L"Номер" << '|' << setw(15) << L"Марка" << '|' << setw(15) << L"Модель" << '|' << setw(15) << left << L"Год выпуска" << '|' << setw(10) << left << L"Стоимость" << '|' << endl;
+            cout << "-----------------------------------------------------------------------" << endl;
             for (auto it = hybridCars.begin(); it != hybridCars.end(); ++it)
             {
                 wcout << '|' << setw(10) << left << it->GetID() << '|' << setw(15) << it->GetBrand() << '|' << setw(15) << it->GetModel();
-                cout << '|' << setw(15) << left << it->GetManufacturedYear() << endl;
+                cout << '|' << setw(15) << left << it->GetManufacturedYear() << '|' << setw(10) << left << it->GetCostPerDay() << '|' << endl;
+                cout << "-----------------------------------------------------------------------" << endl;
             }
             return true;
     }
@@ -313,12 +334,12 @@ int Interface :: FindCost(int choice, int carId)
         }
     }
     return 0;
-}
+} // в шаблон
 
 void Interface :: AddCount()
 {
     cout << "Введите сумму для пополнения" << endl;
-    int plus;
+    float plus;
     cin >> plus;
     user.SetCount(plus);
 }
@@ -327,6 +348,12 @@ void Interface :: RefreshUserInFile()
 {
     ifstream file1; // для чтения
     ofstream file2; // для записи
+    if (user.GetSpendMoney() >= 500 && user.GetSpendMoney() < 1000)
+        user.SetStatus(L"Silver");
+    else if (user.GetSpendMoney() >= 1000 && user.GetSpendMoney() < 2000)
+        user.SetStatus(L"Gold");
+    else if (user.GetSpendMoney() >= 2000)
+        user.SetStatus(L"Platinum");
     file1.open("/Users/max/Desktop/CarRent/Files/User.bin", ios::binary);
     if (!file1.is_open())
         cout << "Error";

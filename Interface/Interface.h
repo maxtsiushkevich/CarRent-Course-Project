@@ -1,6 +1,5 @@
 #ifndef CARRENT_INTERFACE_H
 #define CARRENT_INTERFACE_H
-#include <string>
 #include "../Persons/Userdata.h"
 #include "../Persons/User.h"
 #include "../Persons/Admin.h"
@@ -15,7 +14,6 @@ class Interface
 {
     friend class Session;
 protected:
-
     vector<PetrolCar> petrolCars; // все авто
     vector<DieselCar> dieselCars;
     vector<ElectricCar> electricCars;
@@ -23,7 +21,9 @@ protected:
 
     vector<int> carIdInUsage; // id машин, которые недоступны
 
-    Session session;
+    Session newSession;
+    vector<Session> allSessions;
+
     User user;
     Admin admin;
 public:
@@ -35,6 +35,7 @@ public:
     void Registation(); // регистрация
     void UserAccountInfo(); // выводит информацию об аккауте пользователя
     void ChoosingCar(); // показывает все заказы вообще
+
     bool ShowCars(int); // выводит автомобили
     void AddCount(); // пополнение баланса
     int FindCost(int, int); // ищет стоимость аренды по его ID
