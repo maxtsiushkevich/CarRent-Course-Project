@@ -52,6 +52,7 @@ bool Authentication :: AdminAuthentication(Admin& admin)
 
 bool Authentication :: UserAuthentication(User& user)
 {
+
     wchar_t login[30], password[30];
     int mode = 2;
     cout << "Введите логин учетной записи" << endl;
@@ -63,7 +64,7 @@ bool Authentication :: UserAuthentication(User& user)
     fgetws(password, 30, stdin);
     password[wcscspn(password, L"\n")] = L'\0';
     account.SetData(login, password);
-    while(!account.CheckAccess(mode))
+    while(!account.CheckAccess(mode) || user.IsBlocked()) //////////////
     {
         char tmp;
         fflush(stdin);

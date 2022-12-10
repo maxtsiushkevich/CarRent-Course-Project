@@ -16,6 +16,8 @@ Interface::Interface()
 
     CarInUsage tmp;
     tmp.GetCarsInUsage(carIdInUsage);
+
+    Session::GetAllSessions(allSessions);
 }
 
 void Interface :: FirstMenu()
@@ -23,11 +25,11 @@ void Interface :: FirstMenu()
     int choice;
     while (1)
     {
-        cout << "Выберите режим входа: " << endl;
-        cout << "1 - Администратор" << endl;
-        cout << "2 - Пользователь" << endl;
-        cout << "3 - Регистрация нового аккаунта пользователя" << endl;
-        cout << "4 - Завершить работу" << endl;
+        cout << "Выберите режим входа: \n"
+                "1 - Администратор\n"
+                "2 - Пользователь\n"
+                "3 - Регистрация нового аккаунта пользователя\n"
+                "4 - Завершить работу" << endl;
         cin >> choice;
         while (choice < 1 || choice > 4)
         {
@@ -64,14 +66,14 @@ void Interface :: UserMainMenu()
     int choice;
     while (1)
     {
-        cout << "===== Личный кабинет ===== " << endl;
-        cout << "1 - Информация об аккаунте" << endl;
-        cout << "2 - Автомобили для заказа" << endl;
-        cout << "3 - История поездок" << endl;
-        cout << "4 - Пополнение счета" << endl;
-        cout << "5 - Настройка аккаунта" << endl;
-        cout << "6 - Выйти из аккаунта" << endl;
-        cout << "7 - Завершить работу" << endl;
+        cout << "===== Личный кабинет ===== \n"
+                "1 - Информация об аккаунте\n"
+                "2 - Автомобили для заказа\n"
+                "3 - История поездок\n"
+                "4 - Пополнение счета\n"
+                "5 - Настройка аккаунта\n"
+                "6 - Выйти из аккаунта\n"
+                "7 - Завершить работу" << endl;
         cin >> choice;
         while (choice < 1 || choice > 7)
         {
@@ -81,25 +83,19 @@ void Interface :: UserMainMenu()
         switch (choice)
         {
             case 1:
-                this->UserAccountInfo();
-                break;
+                this->UserAccountInfo(); break;
             case 2:
-                this->ChoosingCar();
-                break;
+                this->SeeCars(); break;
             case 3:
-
-                break;
+                this->SeeUserHistory(); break;
             case 4:
-                this->AddCount();
-                break;
+                this->AddCount(); break;
             case 5:
-                break;
+                this->SetAccountSettings(); break;
             case 6:
-                this->RefreshUserInFile();
-                return;
+                this->RefreshUserInFile(); return;
             case 7:
-                this->RefreshUserInFile();
-                exit(0); // сохранять измененный объект юзера, заменяя его в файле
+                this->RefreshUserInFile(); exit(0); // сохранять измененный объект юзера, заменяя его в файле
         }
     }
 }
@@ -129,102 +125,179 @@ void Interface :: AdminMainMenu()
     int choice;
     while (1)
     {
-        cout << "===== Личный кабинет ===== " << endl;
-        cout << "1 - Просмотреть базу данных пользователей" << endl;
-        cout << "2 - Просмотреть базу данных автомобилей" << endl;
-        cout << "3 - Просмотреть все заказы автомобилей" << endl;
-        cout << "4 - Просмотреть все заказы конкретного пользователя" << endl;
-        cout << "5 - Просмотреть все заказы конкретного автомобиля" << endl;
-        cout << "6 - Блокировка пользователя" << endl;
-        cout << "7 - Добавление автомобиля" << endl;
-        cout << "8 - Удаление автомобиля" << endl;
+        cout << "===== Личный кабинет ===== \n"
+                "1 - Просмотреть базу данных пользователей\n"
+                "2 - Просмотреть базу данных автомобилей\n"
+                "3 - Просмотреть все заказы автомобилей\n"
+                "4 - Просмотреть все заказы конкретного пользователя\n"
+                "5 - Просмотреть все заказы конкретного автомобиля\n"
+                "6 - Блокировка пользователя\n"
+                "7 - Добавление автомобиля\n"
+                "8 - Удаление автомобиля" << endl;
     }
 }
 
-void Interface :: ChoosingCar()
+void Interface :: CarOrder(int choice)
 {
-    int choice;
-    cout << "Какой тип автомобилей вас интересует?\n"
-            "1 - Бензиновые автомобили\n"
-            "2 - Дизельные автомобили\n"
-            "3 - Электрические автомобили\n"
-            "4 - Гибридные автомобили" << endl;
-    cin >> choice;
-    while (choice < 0 | choice > 4)
-    {
-        cout << "Ошибка. Введите еще раз:" << endl;
-        cin >> choice;
-    }
-    if(this->ShowCars(choice))
-    {
-        cout << "1 - Выход в меню пользователя\n"
-                "2 - Выбор автомобиля\n"
-                "3 - Просмотр подробной информации об автомобиле" << endl;
-    }
-    else
-        return;
+    cout << "Введите номер желаемого автомобиля: " << endl;
+    int carId;
     int tmp;
-    cin >> tmp;
-    while (tmp < 0 | tmp > 3)
+    cin >> carId;
+    sort(carIdInUsage.begin(), carIdInUsage.end());
+    // проверяем, доступен ли этот автомобиль
+    if (binary_search(carIdInUsage.begin(), carIdInUsage.end(), carId))
     {
-        cout << "Ошибка. Введите еще раз:" << endl;
+        cout << "К сожалению, данный автомобиль на данный момент недоступен!\n"
+                "Для ввода другого номера введите '1'\n"
+                "Для выхода в меню введите '2'" << endl;
         cin >> tmp;
-    }
-    switch (tmp)
-    {
-        case 1:
-            return;
-        case 2:
+        while (tmp < 1 || tmp > 2)
+        {
+            cout << "Ошибка ввода" << endl;
+            cin >> tmp;
+        }
+        if (tmp == 1)
+        {
             cout << "Введите номер желаемого автомобиля: " << endl;
-            int carId;
             cin >> carId;
-            sort(carIdInUsage.begin(), carIdInUsage.end());
-            // проверяем, доступен ли этот автомобиль
-            if (binary_search(carIdInUsage.begin(), carIdInUsage.end(), carId))
+        }
+        else
+            return;
+    }
+    while(!newSession.CreateSession(user.GetID(), carId, FindCost(choice, carId), user))
+    {
+        cout << "Желаете продолжить?\n"
+                "Для выбора другого автомобиля введите '1'\n"
+                "Для выхода в меню введите '2'" << endl;
+        cin >> tmp;
+        while (tmp < 1 || tmp > 2)
+        {
+            cout << "Ошибка ввода" << endl;
+            cin >> tmp;
+        }
+        if (tmp == 1)
+        {
+            cout << "Введите номер желаемого автомобиля: " << endl;
+            cin >> carId;
+        }
+        else
+            return;
+    }
+    carIdInUsage.push_back(carId);
+    allSessions.push_back(newSession);
+}
+
+void Interface :: SeeCars()
+{
+    while (1)
+    {
+        int choice;
+        cout << "Какой тип автомобилей вас интересует?\n"
+                "1 - Бензиновые автомобили\n"
+                "2 - Дизельные автомобили\n"
+                "3 - Электрические автомобили\n"
+                "4 - Гибридные автомобили\n"
+                "5 - Выход в главное меню" << endl;
+        cin >> choice;
+        while (choice < 0 | choice > 5) {
+            cout << "Ошибка. Введите еще раз:" << endl;
+            cin >> choice;
+        }
+        if (choice == 5)
+            return;
+        while (1)
+        {
+            if (this->ShowCarsForChoosing(choice))
             {
-                cout << "К сожалению, данный автомобиль на данный момент недоступен!\n"
-                        "Для ввода другого номера введите '1'\n"
-                        "Для выхода в меню введите '2'" << endl;
+                cout << "1 - Выход в меню пользователя\n"
+                        "2 - Выбор автомобиля\n"
+                        "3 - Просмотр подробной информации об автомобиле\n"
+                        "4 - Выбор в другого типа автомобилей" << endl;
+            } else
+                return;
+            int tmp;
+            cin >> tmp;
+            while (tmp < 0 | tmp > 4)
+            {
+                cout << "Ошибка. Введите еще раз:" << endl;
                 cin >> tmp;
-                while (tmp < 1 || tmp > 2)
-                {
-                    cout << "Ошибка ввода" << endl;
-                }
-                if (tmp == 1)
-                {
-                    cout << "Введите номер желаемого автомобиля: " << endl;
-                    cin >> carId;
-                }
-                if (tmp == 2)
-                    break;
             }
-            while(!newSession.CreateSession(user.GetID(), carId, FindCost(choice, carId), user))
+            if (tmp == 4)
+                break;
+            switch (tmp)
             {
-                cout << "Желаете продолжить?\n"
-                        "Для выбора другого автомобиля введите '1'\n"
-                        "Для выхода в меню введите '2'" << endl;
-                cin >> tmp;
-                while (tmp < 1 || tmp > 2)
-                {
-                    cout << "Ошибка ввода" << endl;
-                }
-                if (tmp == 1)
-                {
-                    cout << "Введите номер желаемого автомобиля: " << endl;
-                    cin >> carId;
-                }
-                if (tmp == 2)
+                case 1:
                     return;
+                case 2:
+                    this->CarOrder(choice);
+                    break;
+            case 3:
+                int id;
+                cout << "Введите номер автомобиля для просмотра: ";
+                cin >> id;
+                this->ShowDetailedInfo(choice, id); // логика как и в case 2
+                break;
             }
-            carIdInUsage.push_back(carId);
-            allSessions.push_back(newSession);
-            break;
-        //case 3:
-        //    this->ShowDetailedInfo(); // логика как и в case 2
+        }
     }
 }
 
-bool Interface :: ShowCars(int choice)
+void Interface :: SeeUserHistory()
+{
+    int i=0;
+    if (allSessions.empty())
+    {
+        cout << "Вы еще не арендовали автомобиль!" << endl;
+        return;
+    }
+    cout << "---------------------------------------------------------------------------------------" << endl;
+    wcout << '|' << setw(10) << left << L"Номер" << '|' << setw(15) << L"Марка" << '|' << setw(15) << L"Модель" << '|' << setw(15) << L"Дата начала" << '|'
+          << setw(15) << L"Дата окончания" << '|' << setw(10) << L"Стоимость" << '|' << endl;
+    cout << "---------------------------------------------------------------------------------------" << endl;
+    for (auto it = allSessions.begin(); it != allSessions.end(); ++it)
+    {
+        i++;
+        for (auto it1 = petrolCars.begin(); it1 != petrolCars.end(); ++it1)
+        {
+            if ((it1->GetID() == it->carID) && (user.GetID() == it->userID)) {
+                wcout << '|' << setw(10) << left << i << '|' << setw(15) << it1->GetBrand() << '|' << setw(15)
+                      << it1->GetModel() << '|';
+                cout << setw(2) << left << it->DateFrom.day << '.' << setw(2) << it->DateFrom.month << '.' << setw(9) << it->DateFrom.year << '|' << setw(2) << it->DateTo.day << '.' << setw(2) << it->DateTo.month << '.' << setw(9) << it->DateTo.year << '|' << setw(10) << it->cost << '|' << endl;
+                cout << "---------------------------------------------------------------------------------------" << endl;
+            }
+        }
+        for (auto it1 = dieselCars.begin(); it1 != dieselCars.end(); ++it1)
+        {
+            if ((it1->GetID() == it->carID) && (user.GetID() == it->userID)) {
+                wcout << '|' << setw(10) << left << i << '|' << setw(15) << it1->GetBrand() << '|' << setw(15)
+                      << it1->GetModel() << '|';
+                cout << setw(2) << left << it->DateFrom.day << '.' << setw(2) << it->DateFrom.month << '.' << setw(9) << it->DateFrom.year << '|' << setw(2) << it->DateTo.day << '.' << setw(2) << it->DateTo.month << '.' << setw(9) << it->DateTo.year << '|' << setw(10) << it->cost << '|' << endl;
+                cout << "---------------------------------------------------------------------------------------" << endl;
+            }
+        }
+        for (auto it1 = electricCars.begin(); it1 != electricCars.end(); ++it1)
+        {
+            if ((it1->GetID() == it->carID) && (user.GetID() == it->userID)) {
+                wcout << '|' << setw(10) << left << i << '|' << setw(15) << it1->GetBrand() << '|' << setw(15)
+                      << it1->GetModel() << '|';
+                cout << setw(2) << left << it->DateFrom.day << '.' << setw(2) << it->DateFrom.month << '.' << setw(9) << it->DateFrom.year << '|' << setw(2) << it->DateTo.day << '.' << setw(2) << it->DateTo.month << '.' << setw(9) << it->DateTo.year << '|' << setw(10)<< it->cost << '|' << endl;
+                cout << "---------------------------------------------------------------------------------------" << endl;
+            }
+        }
+        for (auto it1 = hybridCars.begin(); it1 != hybridCars.end(); ++it1)
+        {
+            if ((it1->GetID() == it->carID) && (user.GetID() == it->userID)) {
+                wcout << '|' << setw(10) << left << i << '|' << setw(15) << it1->GetBrand() << '|' << setw(15)
+                      << it1->GetModel() << '|';
+                cout << setw(2) << left << it->DateFrom.day << '.' << setw(2) << it->DateFrom.month << '.' << setw(9) << it->DateFrom.year << '|' << setw(2) << it->DateTo.day << '.' << setw(2) << it->DateTo.month << '.' << setw(9) << it->DateTo.year << '|' << setw(10)<< it->cost << '|' << endl;
+                cout << "---------------------------------------------------------------------------------------" << endl;
+            }
+        }
+    }
+
+}
+
+bool Interface :: ShowCarsForChoosing(int choice)
 {
     switch (choice)
     {
@@ -244,7 +317,7 @@ bool Interface :: ShowCars(int choice)
                 cout << '|' << setw(15) << left << it->GetManufacturedYear() << '|' << setw(10) << left << it->GetCostPerDay() << '|' << endl;
                 cout << "-----------------------------------------------------------------------" << endl;
             }
-            return true;
+            break;
         case 2:
             if (dieselCars.empty())
             {
@@ -261,7 +334,7 @@ bool Interface :: ShowCars(int choice)
                 cout << '|' << setw(15) << left << it->GetManufacturedYear() << '|' << setw(10) << left << it->GetCostPerDay() << '|' << endl;
                 cout << "-----------------------------------------------------------------------" << endl;
             }
-            return true;
+            break;
         case 3:
             if (electricCars.empty())
             {
@@ -279,7 +352,7 @@ bool Interface :: ShowCars(int choice)
                 cout << '|' << setw(15) << left << it->GetManufacturedYear() << '|' << setw(10) << left << it->GetCostPerDay() << '|'  << endl;
                 cout << "-----------------------------------------------------------------------" << endl;
             }
-            return true;
+            break;
         case 4:
             if (hybridCars.empty())
             {
@@ -295,8 +368,10 @@ bool Interface :: ShowCars(int choice)
                 cout << '|' << setw(15) << left << it->GetManufacturedYear() << '|' << setw(10) << left << it->GetCostPerDay() << '|' << endl;
                 cout << "-----------------------------------------------------------------------" << endl;
             }
-            return true;
+            break;
     }
+    return true;
+
 }
 
 int Interface :: FindCost(int choice, int carId)
@@ -370,4 +445,110 @@ void Interface :: RefreshUserInFile()
     remove("/Users/max/Desktop/CarRent/Files/User.bin");
     file2.close();
     rename("/Users/max/Desktop/CarRent/Files/tmp.bin","/Users/max/Desktop/CarRent/Files/User.bin");
+}
+
+void Interface :: SetAccountSettings()
+{
+    while (1)
+    {
+        cout << "1 - Cменить номер паспорта\n"
+                "2 - Сменить номер телефона\n"
+                "3 - Сменить адрес\n"
+                "4 - Заблокировать аккаунт\n"
+                "5 - Выход в меню" << endl;
+        int choice;
+        cin >> choice;
+        while (choice < 1 || choice > 5) {
+            cout << "Ошибка ввода. Введите еще раз:" << endl;
+            cin >> choice;
+        }
+        switch (choice)
+        {
+            case 1:
+                user.SetNewPassport();
+                break;
+            case 2:
+                user.SetNewNumber();
+                break;
+            case 3:
+                user.SetNewAdress();
+                break;
+            case 4:
+                user.BlockAccount();
+                break;
+            case 5:
+                return;
+        }
+    }
+}
+
+void Interface :: ShowDetailedInfo(int choice, int id)
+{
+    switch (choice)
+    {
+        case 1:
+            for (auto it = petrolCars.begin(); it != petrolCars.end(); ++it)
+            {
+                if (it->GetID() == id)
+                {
+//                    wcout << L"Марка: " << it->GetBrand() << endl;
+//                    wcout << L"Модель: " << it->GetModel() << endl;
+//                    wcout << L"Тип кузова: " << it->GetBodyType() << endl;
+//                    cout << "Год выпуска: " << it->GetManufacturedYear() << endl;
+//                    wcout << L"Тип трансмиссии: " << it->GetTransmissionType() << endl;
+//                    cout << "\nКоличество мест: " << it->GetNumberOfSeats() << endl;
+//                    wcout << L"Материал и цвет салона: " << it->GetInteriorMaterial() << ',' << it->GetInteriorColor() << endl;
+//                    wcout << L"Цвет автомобиля: " << it->GetColor() << endl;
+//                    cout << "Лошадиных сил: " << it->GetHorsepower() << " л.с." << endl;
+//                    cout << "Разгон до 100 км/ч: " << it->GetTo100() << " с." << endl;
+//                    cout << "Максимальная скорость: " << it->GetMaxSpeed() << " км/ч" << endl;
+//                    cout << "Минимальный тип бензина: " << it->GetPetrolType() << endl;
+//                    cout << "Стоимость аренды на день без учета скидок: " << it->GetCostPerDay() << " BYN"  << endl;
+//                    cout << "Стоимость аренды на неделю без учета скидок: " << it->GetCostPerDay()*6 << " BYN"  << endl;
+//                    cout << "Стоимость аренды на месяц без учета скидок: " << it->GetCostPerDay()*26 << " BYN"  << endl;
+                }
+            }
+            break;
+        case 2:
+            for (auto it = dieselCars.begin(); it != dieselCars.end(); ++it)
+            {
+                if (it->GetID() == id)
+                {
+//                    wcout << L"Марка: " << it->GetBrand() << endl;
+//                    wcout << L"Модель: " << it->GetModel() << endl;
+//                    wcout << L"Тип кузова: " << it->GetBodyType() << endl;
+//                    cout << "Год выпуска: " << it->GetManufacturedYear() << endl;
+//                    wcout << L"Тип трансмиссии: " << it->GetTransmissionType() << endl;
+//                    cout << "Количество мест: " << it->GetNumberOfSeats() << endl;
+//                    wcout << L"Материал и цвет салона: " << it->GetInteriorMaterial() << ',' << it->GetInteriorColor() << endl;
+//                    wcout << L"Цвет автомобиля: " << it->GetColor() << endl;
+//                    cout << "Лошадиных сил: " << it->GetHorsepower() << " л.с." << endl;
+//                    cout << "Разгон до 100 км/ч: " << it->GetTo100() << " с." << endl;
+//                    cout << "Максимальная скорость: " << it->GetMaxSpeed() << " км/ч" << endl;
+//                    cout << "Стоимость аренды на день без учета скидок: " << it->GetCostPerDay() << " BYN" << endl;
+//                    cout << "Стоимость аренды на неделю без учета скидок: " << it->GetCostPerDay()*6 << " BYN"  << endl;
+//                    cout << "Стоимость аренды на месяц без учета скидок: " << it->GetCostPerDay()*26 << " BYN"  << endl;
+                }
+            }
+            break;
+        case 3:
+
+            for (auto it = electricCars.begin(); it != electricCars.end(); ++it)
+            {
+                if (it->GetID() == id)
+                {
+
+                }
+            }
+            break;
+        case 4:
+            for (auto it = hybridCars.begin(); it != hybridCars.end(); ++it)
+            {
+                if (it->GetID() == id)
+                {
+
+                }
+            }
+            break;
+    }
 }

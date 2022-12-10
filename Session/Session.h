@@ -7,6 +7,7 @@ using namespace std;
 
 class Session
 {
+    friend class Interface;
 private:
     int userID;
     int carID;

@@ -84,11 +84,11 @@ bool Session :: CreateSession(int userID, int carID, int costPerDay, User &user)
         cout << "Недостаточно средств" << endl; // прерывание, если недостаточно средств
         return false;
     }
-    if (!wcscmp(user.CheckStatus(), L"Silver"))
+    if (!wcscmp(user.GetStatus(), L"Silver"))
         cost = cost-(cost*0.05);
-    if (!wcscmp(user.CheckStatus(), L"Gold"))
+    if (!wcscmp(user.GetStatus(), L"Gold"))
         cost = cost-(cost*0.1);
-    if (!wcscmp(user.CheckStatus(), L"Platinum"))
+    if (!wcscmp(user.GetStatus(), L"Platinum"))
         cost = cost-(cost*0.15);
 
     cout << "Стоимость аренды составит " << cost << endl;
@@ -117,7 +117,7 @@ bool Session :: CreateSession(int userID, int carID, int costPerDay, User &user)
     file.open("/Users/max/Desktop/CarRent/Files/Session.bin", ios::binary | ios::app);
     if (!file.is_open())
         cout << "Error";
-    file.write((char*)this, sizeof(this));
+    file.write((char*)this, sizeof(Session));
     file.close();
     cout << "Заказ успешно оформлен!" << endl;
     return true;
@@ -160,13 +160,13 @@ int Session :: JDDate(int day, int month, int year)
     return result;
 }
 
-void Session :: GetAllSessions(vector<Session>&sessions)
+void Session :: GetAllSessions(vector<Session>&allSessions)
 {
     Session session;
     ifstream file;
     file.open("../Files/Session.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
-    while(file.read((char*)&session, sizeof(session)))
-        sessions.emplace_back(session);
+    while(file.read((char*)&session, sizeof(Session)))
+        allSessions.push_back(session);
 }

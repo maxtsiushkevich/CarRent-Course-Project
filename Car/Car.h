@@ -15,9 +15,11 @@ protected:
     int manufacturedYear; // год производства
     wchar_t transmissionType[4];
     int numberOfSeats; // количество мест
+
     int horsepower; // лошадиные силы
     float maxSpeed; // максимальная скорость
     float to100; // разгон до 100
+
     struct interior
     {
         wchar_t color[30], material[30];
@@ -32,18 +34,18 @@ public:
     virtual void SetInfo();
     int GetID() { return id; };
     int GetManufacturedYear() { return manufacturedYear; };
-    wstring GetBrand() { return brand; };
-    wstring GetModel() { return model; };
-    wstring GetCountry() { return country; };
-    wstring GetBodyType() { return bodyType; };
-    wstring GetTransmissionType() { return transmissionType; };
+    wchar_t* GetBrand() { return brand; };
+    wchar_t* GetModel() { return model; };
+    wchar_t* GetCountry() { return country; };
+    wchar_t* GetBodyType() { return bodyType; };
+    wchar_t* GetTransmissionType() { return transmissionType; };
     int GetNumberOfSeats() { return numberOfSeats; };
     int GetHorsepower() { return horsepower; };
     float GetMaxSpeed() { return maxSpeed; };
     float GetTo100() { return to100; };
-    wstring GetInteriorColor() { return interior.color; };
-    wstring GetInteriorMaterial() { return interior.material; };
-    wstring GetColor() { return color; };
+    wchar_t* GetInteriorColor() { return interior.color; };
+    wchar_t* GetInteriorMaterial() { return interior.material; };
+    wchar_t* GetColor() { return color; };
     int GetCostPerDay() { return costPerDay; };
 };
 #endif

@@ -12,7 +12,7 @@ class User : public Person
 {
 private:
     bool isBlocked;
-    wchar_t passportNum[30];
+    wchar_t passportNum[30]; // номер паспорта
     wchar_t status[10]; // classic, silver, gold, platinum // добавить установку статуса
 
     // classic -0%
@@ -21,7 +21,7 @@ private:
     // platinum -15%
 
     float count; // счет
-    float spendMoney;
+    float spendMoney; // потраченные средства
     wchar_t phoneNumber[20];
     struct Adress
     {
@@ -34,23 +34,27 @@ private:
 public:
     User();
     ~User() = default;
-    void SetInfo();
-    void SetNewNumber();
-    void SetNewAdress();
-    void SetCount(float plus) { count += plus; }
-    void SetSpendMoney(float spend) { spendMoney += spend; }
-    void SetStatus(wchar_t *newStatus) { wcscpy(status, newStatus);}
-    wchar_t* CheckStatus() { return status; }
-    wchar_t* GetPassportNum() { return passportNum; }
-    wchar_t* GetStatus() { return status; }
-    float GetCount() { return count; }
-    float GetSpendMoney() { return spendMoney; }
-    wchar_t* GetPhoneNumber() { return phoneNumber; }
-    wchar_t* GetCountry() { return adress.country; }
-    wchar_t* GetCity() { return adress.city; }
-    wchar_t* GetStreet() { return adress.street; }
-    int GetHouse() { return adress.house; }
-    int GetFlat() { return adress.flat; }
+    bool IsBlocked() { return isBlocked; } // заблокирован ли аккаунт
+    void BlockAccount();// блокировка аккаунта
+    void SetInfo(); // заполнение полей класса
+
+    void SetNewNumber(); // установка нового номера телефона
+    void SetNewAdress(); // установка нового номера паспорта
+    void SetNewPassport();
+
+    void SetCount(float plus) { count += plus; } // пополнение счета
+    void SetSpendMoney(float spend) { spendMoney += spend; } // изменение количества потраченных средств
+    void SetStatus(wchar_t *newStatus) { wcscpy(status, newStatus); } // установка нового статуса
+    wchar_t* GetPassportNum() { return passportNum; } // получение номера паспорта
+    wchar_t* GetStatus() { return status; } // получение текущего статуса
+    float GetCount() { return count; } // получение текущего баланса
+    float GetSpendMoney() { return spendMoney; } // получение потраченных средств
+    wchar_t* GetPhoneNumber() { return phoneNumber; } // получение номера телефона
+    wchar_t* GetCountry() { return adress.country; } // получение страны
+    wchar_t* GetCity() { return adress.city; } // получение города
+    wchar_t* GetStreet() { return adress.street; } // получение улицы
+    int GetHouse() { return adress.house; } // получение дома
+    int GetFlat() { return adress.flat; } // получение квартиры
 };
 
 

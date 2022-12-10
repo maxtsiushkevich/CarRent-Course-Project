@@ -34,14 +34,20 @@ public:
     void AdminMainMenu(); // главное меню администратора
     void Registation(); // регистрация
     void UserAccountInfo(); // выводит информацию об аккауте пользователя
-    void ChoosingCar(); // показывает все заказы вообще
+    void SeeCars(); // показывает все заказы вообще
+    void CarOrder(int);
 
-    bool ShowCars(int); // выводит автомобили
+
+    void SeeUserHistory();
+    void ShowDetailedInfo(int, int); // реализовать
+
+
+    bool ShowCarsForChoosing(int); // выводит автомобили
     void AddCount(); // пополнение баланса
     int FindCost(int, int); // ищет стоимость аренды по его ID
     void RefreshUserInFile();
 
-
+    void SetAccountSettings();
 
 
     void ShowAllSessions(); // показывает все заказы вообще
