@@ -76,6 +76,17 @@ void Interface :: AdminMainMenu()
                 "6 - Блокировка пользователя\n"
                 "7 - Добавление автомобиля\n"
                 "8 - Удаление автомобиля" << endl;
+        cin >> choice;
+        while (choice < 1 || choice > 8)
+        {
+            cout << "Ошибка! Введите еще раз:" << endl;
+            cin >> choice;
+        }
+        switch (choice)
+        {
+            case 1:
+
+        }
     }
 }
 

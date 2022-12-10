@@ -20,7 +20,6 @@ protected:
     vector<HybridCar> hybridCars;
 
     vector<int> carIdInUsage; // id машин, которые недоступны
-
     Session newSession;
     vector<Session> allSessions;
 
