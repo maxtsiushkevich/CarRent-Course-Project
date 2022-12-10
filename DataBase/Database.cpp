@@ -11,7 +11,7 @@ void Database :: AddInDatabase(DieselCar &obj)
         bool deleteMark;
         wchar_t brand[30], model[30], country[30], bodyType[30];
         int manufacturedYear;
-        wchar_t transmissionType[4];
+        wchar_t transmissionType[5];
         int numberOfSeats;
         int horsepower;
         float maxSpeed;
@@ -24,7 +24,6 @@ void Database :: AddInDatabase(DieselCar &obj)
         } interior;
         wchar_t color[30];
         int costPerDay;
-        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
     } data;
 
     data.id = obj.id;
@@ -51,14 +50,6 @@ void Database :: AddInDatabase(DieselCar &obj)
     wcscpy(data.color, obj.color);
 
     data.costPerDay = obj.costPerDay;
-    data.cruiseControl = obj.cruiseControl;
-    data.parkingAssist = obj.parkingAssist;
-    data.music = obj.music;
-    data.bluetooth = obj.bluetooth;
-    data.climat = obj.climat;
-    data.seatHeating = obj.seatHeating;
-    data.gps = obj.gps;
-    data.sunroof = obj.sunroof;
     ofstream file;
     file.open("/Users/max/Desktop/CarRent/Files/DieselCar.bin", ios::binary | ios::app);
     if (!file.is_open())
@@ -75,7 +66,7 @@ void Database :: GetFromDatabase(vector<DieselCar>&dieselCars)
         bool deleteMark;
         wchar_t brand[30], model[30], country[30], bodyType[30];
         int manufacturedYear;
-        wchar_t transmissionType[4];
+        wchar_t transmissionType[5];
         int numberOfSeats;
         int horsepower;
         float maxSpeed;
@@ -88,7 +79,6 @@ void Database :: GetFromDatabase(vector<DieselCar>&dieselCars)
         } interior;
         wchar_t color[30];
         int costPerDay;
-        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
     } data;
 
     ifstream file;
@@ -119,14 +109,6 @@ void Database :: GetFromDatabase(vector<DieselCar>&dieselCars)
         wcscpy(obj.interior.material, data.interior.material);
         wcscpy(obj.color, data.color);
         obj.costPerDay = data.costPerDay;
-        obj.cruiseControl = data.cruiseControl;
-        obj.parkingAssist = data.parkingAssist;
-        obj.music = data.music;
-        obj.bluetooth = data.bluetooth;
-        obj.climat = data.climat;
-        obj.seatHeating = data.seatHeating;
-        obj.gps = data.gps;
-        obj.sunroof = data.sunroof;
 
         dieselCars.emplace_back(obj);
     }
@@ -142,7 +124,7 @@ void Database :: AddInDatabase(PetrolCar &obj)
         bool deleteMark;
         wchar_t brand[30], model[30], country[30], bodyType[30];
         int manufacturedYear;
-        wchar_t transmissionType[4];
+        wchar_t transmissionType[5];
         int numberOfSeats;
         int horsepower;
         float maxSpeed;
@@ -155,7 +137,6 @@ void Database :: AddInDatabase(PetrolCar &obj)
         } interior;
         wchar_t color[30];
         int costPerDay;
-        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
         int petrolType;
     } data;
 
@@ -177,14 +158,6 @@ void Database :: AddInDatabase(PetrolCar &obj)
     wcscpy(data.interior.material, obj.interior.material);
     wcscpy(data.color, obj.color);
     data.costPerDay = obj.costPerDay;
-    data.cruiseControl = obj.cruiseControl;
-    data.parkingAssist = obj.parkingAssist;
-    data.music = obj.music;
-    data.bluetooth = obj.bluetooth;
-    data.climat = obj.climat;
-    data.seatHeating = obj.seatHeating;
-    data.gps = obj.gps;
-    data.sunroof = obj.sunroof;
     data.petrolType = obj.petrolType;
 
     ofstream file;
@@ -203,7 +176,7 @@ void Database :: GetFromDatabase(vector<PetrolCar>&petrolCars)
         bool deleteMark;
         wchar_t brand[30], model[30], country[30], bodyType[30];
         int manufacturedYear;
-        wchar_t transmissionType[4];
+        wchar_t transmissionType[5];
         int numberOfSeats;
         int horsepower;
         float maxSpeed;
@@ -216,7 +189,6 @@ void Database :: GetFromDatabase(vector<PetrolCar>&petrolCars)
         } interior;
         wchar_t color[30];
         int costPerDay;
-        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
         int petrolType;
     } data;
 
@@ -248,14 +220,6 @@ void Database :: GetFromDatabase(vector<PetrolCar>&petrolCars)
         wcscpy(obj.interior.material, data.interior.material);
         wcscpy(obj.color, data.color);
         obj.costPerDay = data.costPerDay;
-        obj.cruiseControl = data.cruiseControl;
-        obj.parkingAssist = data.parkingAssist;
-        obj.music = data.music;
-        obj.bluetooth = data.bluetooth;
-        obj.climat = data.climat;
-        obj.seatHeating = data.seatHeating;
-        obj.gps = data.gps;
-        obj.sunroof = data.sunroof;
         obj.petrolType = data.petrolType;
 
         petrolCars.emplace_back(obj);
@@ -271,7 +235,7 @@ void Database :: AddInDatabase(ElectricCar &obj)
         bool deleteMark;
         wchar_t brand[30], model[30], country[30], bodyType[30];
         int manufacturedYear;
-        wchar_t transmissionType[4];
+        wchar_t transmissionType[5];
         int numberOfSeats;
         int horsepower;
         float maxSpeed;
@@ -282,7 +246,6 @@ void Database :: AddInDatabase(ElectricCar &obj)
         } interior;
         wchar_t color[30];
         int costPerDay;
-        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
         int batteryCapacity;
     } data;
 
@@ -302,14 +265,6 @@ void Database :: AddInDatabase(ElectricCar &obj)
     wcscpy(data.interior.material, obj.interior.material);
     wcscpy(data.color, obj.color);
     data.costPerDay = obj.costPerDay;
-    data.cruiseControl = obj.cruiseControl;
-    data.parkingAssist = obj.parkingAssist;
-    data.music = obj.music;
-    data.bluetooth = obj.bluetooth;
-    data.climat = obj.climat;
-    data.seatHeating = obj.seatHeating;
-    data.gps = obj.gps;
-    data.sunroof = obj.sunroof;
     data.batteryCapacity = obj.batteryCapacity;
 
     ofstream file;
@@ -328,7 +283,7 @@ void Database :: GetFromDatabase(vector<ElectricCar>&electricCars)
         bool deleteMark;
         wchar_t brand[30], model[30], country[30], bodyType[30];
         int manufacturedYear;
-        wchar_t transmissionType[4];
+        wchar_t transmissionType[5];
         int numberOfSeats;
         int horsepower;
         float maxSpeed;
@@ -339,7 +294,6 @@ void Database :: GetFromDatabase(vector<ElectricCar>&electricCars)
         } interior;
         wchar_t color[30];
         int costPerDay;
-        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
         int batteryCapacity;
     } data;
 
@@ -370,14 +324,6 @@ void Database :: GetFromDatabase(vector<ElectricCar>&electricCars)
         wcscpy(obj.interior.material, data.interior.material);
         wcscpy(obj.color, data.color);
         obj.costPerDay = data.costPerDay;
-        obj.cruiseControl = data.cruiseControl;
-        obj.parkingAssist = data.parkingAssist;
-        obj.music = data.music;
-        obj.bluetooth = data.bluetooth;
-        obj.climat = data.climat;
-        obj.seatHeating = data.seatHeating;
-        obj.gps = data.gps;
-        obj.sunroof = data.sunroof;
         obj.batteryCapacity = data.batteryCapacity;
 
         electricCars.emplace_back(obj);
@@ -394,7 +340,7 @@ void Database :: AddInDatabase(HybridCar &obj)
         bool deleteMark;
         wchar_t brand[30], model[30], country[30], bodyType[30];
         int manufacturedYear;
-        wchar_t transmissionType[4];
+        wchar_t transmissionType[5];
         int numberOfSeats;
         int horsepower;
         float maxSpeed;
@@ -407,7 +353,6 @@ void Database :: AddInDatabase(HybridCar &obj)
         } interior;
         wchar_t color[30];
         int costPerDay;
-        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
         int batteryCapacity;
         wchar_t fuelType[8];
     } data;
@@ -430,14 +375,6 @@ void Database :: AddInDatabase(HybridCar &obj)
     wcscpy(data.interior.material, obj.interior.material);
     wcscpy(data.color, obj.color);
     data.costPerDay = obj.costPerDay;
-    data.cruiseControl = obj.cruiseControl;
-    data.parkingAssist = obj.parkingAssist;
-    data.music = obj.music;
-    data.bluetooth = obj.bluetooth;
-    data.climat = obj.climat;
-    data.seatHeating = obj.seatHeating;
-    data.gps = obj.gps;
-    data.sunroof = obj.sunroof;
     data.batteryCapacity = obj.batteryCapacity;
     wcscpy(data.fuelType, obj.fuelType);
 
@@ -457,7 +394,7 @@ void Database :: GetFromDatabase(vector<HybridCar>&hybridCars)
         bool deleteMark;
         wchar_t brand[30], model[30], country[30], bodyType[30];
         int manufacturedYear;
-        wchar_t transmissionType[4];
+        wchar_t transmissionType[5];
         int numberOfSeats;
         int horsepower;
         float maxSpeed;
@@ -470,7 +407,6 @@ void Database :: GetFromDatabase(vector<HybridCar>&hybridCars)
         } interior;
         wchar_t color[30];
         int costPerDay;
-        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
         int batteryCapacity;
         wchar_t fuelType[8];
     } data;
@@ -507,14 +443,6 @@ void Database :: GetFromDatabase(vector<HybridCar>&hybridCars)
         wcscpy(obj.color, data.color);
 
         obj.costPerDay = data.costPerDay;
-        obj.cruiseControl = data.cruiseControl;
-        obj.parkingAssist = data.parkingAssist;
-        obj.music = data.music;
-        obj.bluetooth = data.bluetooth;
-        obj.climat = data.climat;
-        obj.seatHeating = data.seatHeating;
-        obj.gps = data.gps;
-        obj.sunroof = data.sunroof;
         obj.batteryCapacity = data.batteryCapacity;
 
         wcscpy(obj.fuelType, data.fuelType);
@@ -532,7 +460,7 @@ void Database :: DeleteFromDatabase(DieselCar &obj)
         bool deleteMark;
         wchar_t brand[30], model[30], country[30], bodyType[30];
         int manufacturedYear;
-        wchar_t transmissionType[4];
+        wchar_t transmissionType[5];
         int numberOfSeats;
         int horsepower;
         float maxSpeed;
@@ -545,7 +473,6 @@ void Database :: DeleteFromDatabase(DieselCar &obj)
         } interior;
         char color[60];
         int costPerDay, costPerWeek, costPerMonth;
-        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
     } data;
 
     ifstream file1; // для чтения
@@ -578,7 +505,7 @@ void Database :: DeleteFromDatabase(PetrolCar &obj)
         bool deleteMark;
         wchar_t brand[30], model[30], country[30], bodyType[30];
         int manufacturedYear;
-        wchar_t transmissionType[4];
+        wchar_t transmissionType[5];
         int numberOfSeats;
         int horsepower;
         float maxSpeed;
@@ -591,7 +518,6 @@ void Database :: DeleteFromDatabase(PetrolCar &obj)
         } interior;
         wchar_t color[30];
         int costPerDay, costPerWeek, costPerMonth;
-        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
         int petrolType;
     } data;
 
@@ -625,7 +551,7 @@ void Database :: DeleteFromDatabase(ElectricCar &obj)
         bool deleteMark;
         wchar_t brand[30], model[30], country[30], bodyType[30];
         int manufacturedYear;
-        wchar_t transmissionType[4];
+        wchar_t transmissionType[5];
         int numberOfSeats;
         int horsepower;
         float maxSpeed;
@@ -636,7 +562,6 @@ void Database :: DeleteFromDatabase(ElectricCar &obj)
         } interior;
         char color[60];
         int costPerDay, costPerWeek, costPerMonth;
-        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
         int batteryCapacity;
     } data;
 
@@ -670,7 +595,7 @@ void Database :: DeleteFromDatabase(HybridCar &obj)
         bool deleteMark;
         wchar_t brand[30], model[30], country[30], bodyType[30];
         int manufacturedYear;
-        wchar_t transmissionType[4];
+        wchar_t transmissionType[5];
         int numberOfSeats;
         int horsepower;
         float maxSpeed;
@@ -683,7 +608,6 @@ void Database :: DeleteFromDatabase(HybridCar &obj)
         } interior;
         char color[60];
         int costPerDay, costPerWeek, costPerMonth;
-        bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof;
         int batteryCapacity;
         char fuelType[60];
     } data;

@@ -13,7 +13,7 @@ protected:
     bool deleteMark; // метка, удалена ли машина
     wchar_t brand[30], model[30], country[30], bodyType[30];
     int manufacturedYear; // год производства
-    wchar_t transmissionType[4];
+    wchar_t transmissionType[5];
     int numberOfSeats; // количество мест
 
     int horsepower; // лошадиные силы
@@ -26,7 +26,6 @@ protected:
     } interior;
     wchar_t color[30];
     int costPerDay; // стоимость аренды
-    bool cruiseControl, parkingAssist, music, bluetooth, climat, seatHeating, gps, sunroof; // опции
 public:
     Car();
     Car(int id) { this->id = id; } ;

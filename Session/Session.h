@@ -32,6 +32,7 @@ public:
     bool CheckDate(int);
     bool CheckDate(int, int);
     int JDDate(int, int, int);
+    int NowDays();
 };
 
 #endif

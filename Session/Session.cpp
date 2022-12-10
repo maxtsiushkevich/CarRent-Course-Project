@@ -44,6 +44,12 @@ bool Session :: CreateSession(int userID, int carID, int costPerDay, User &user)
         JDNDay[0] = JDDate(DateFrom.day, DateFrom.month, DateFrom.year);
     }
 
+    if (JDNDay[0] - NowDays() > 3)
+    {
+        cout << "Ошибка! Максимальный срок до начала аренды - 3 дня" << endl;
+        return false;
+    }
+
     cout << "До какой даты аренда? Введите день, месяц и год через пробел\"" << endl;
     cin >> DateTo.day; // добавить проверки
     cin >> DateTo.month;
@@ -124,9 +130,8 @@ bool Session :: CreateSession(int userID, int carID, int costPerDay, User &user)
 
 }
 
-bool Session :: CheckDate(int daysNum)
+int Session :: NowDays()
 {
-
     int nowDays;
     time_t seconds = time(NULL);
     tm* currentTime = localtime(&seconds);
@@ -135,7 +140,13 @@ bool Session :: CheckDate(int daysNum)
     int y = currentTime->tm_year + 1900 + 4800 - a;
     int m = currentTime->tm_mon + 1 + 12 * a - 3;
     nowDays = currentTime->tm_mday + ((153*m+2)/5) + 365 * y + y/4 - y/100 + y/400 - 32045;
+    return nowDays;
+}
 
+bool Session :: CheckDate(int daysNum)
+{
+
+    int nowDays = NowDays();
     if (nowDays <= daysNum)
         return true;
     else

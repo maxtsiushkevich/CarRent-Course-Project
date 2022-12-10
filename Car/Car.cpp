@@ -10,7 +10,6 @@ Car :: Car()
 {
     id = 0; // присваем ID
     deleteMark = false;
-    cruiseControl = parkingAssist = music = bluetooth = climat = seatHeating = gps = sunroof = false;
     manufacturedYear = 0;
     numberOfSeats = 0;
     horsepower = 0;
@@ -24,7 +23,8 @@ void Car :: SetInfo()
     int choice;
     id = IdGenerator::GetIdForCar(); // присваем ID
     CarBrands carinfo;
-    //carinfo.AddNewBrand();
+
+
     carinfo.GetCarBrands(); // выводит список марок
     cout << "Выберите марку автомобиля: " << endl; // выбор
     cin >> choice;
@@ -64,8 +64,8 @@ void Car :: SetInfo()
     }
     switch (choice)
     {
-        case 1: wcscpy(transmissionType, L"АКПП"); break;
-        case 2: wcscpy(transmissionType, L"МКПП"); break;
+        case 1: wcscpy(transmissionType, L"АКПП\0"); break;
+        case 2: wcscpy(transmissionType, L"МКПП\0"); break;
     }
 
     cout << "Количество мест: " << endl;
@@ -121,44 +121,5 @@ void Car :: SetInfo()
     {
         cout << "Ошибка. Введите еще раз: ";
         cin >> costPerDay;
-    }
-
-    cout << "Выберите опции: " << endl;
-    cout << "1 - Круизконтроль\n"
-            "2 - Паркинг-ассист\n"
-            "3 - Аудиосистема\n"
-            "4 - Bluetooth\n"
-            "5 - Климат-контроль\n"
-            "6 - Подогрев сидений\n"
-            "7 - Навигация\n"
-            "8 - Панорамная крыша\n"
-            "9 - Есть все\n"
-            "0 - Окончить ввод" << endl;
-    cin >> choice;
-    while (choice != 0)
-    {
-        while (choice > 9 || choice < 0)
-        {
-            cout << "Ошибка. Введите еще раз: ";
-            cin >> choice;
-        }
-
-        switch (choice)
-        {
-            case 1: cruiseControl = true; break;
-            case 2: parkingAssist = true; break;
-            case 3: music = true; break;
-            case 4: bluetooth = true; break;
-            case 5: climat = true; break;
-            case 6: seatHeating = true; break;
-            case 7: gps = true; break;
-            case 8: sunroof = true; break;
-            case 9: cruiseControl = true, parkingAssist = true, music = true, bluetooth = true,
-                    climat = true, seatHeating = true, gps = true, sunroof = true; break;
-            case 0: break;
-        }
-        if (choice == 9)
-            break;
-        cin >> choice;
     }
 }

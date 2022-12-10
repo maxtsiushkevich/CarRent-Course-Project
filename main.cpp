@@ -11,6 +11,10 @@ int main()
     wcout.imbue(locale("ru_RU.UTF-8"));
     wcin.imbue(locale("ru_RU.UTF-8"));
 
+    //DieselCar car;
+    //car.SetInfo();
+    //Database::AddInDatabase(car);
+
     Interface menu;
     menu.FirstMenu();
 
