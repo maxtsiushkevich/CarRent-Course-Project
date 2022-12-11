@@ -64,7 +64,7 @@ bool Authentication :: UserAuthentication(User& user)
     fgetws(password, 30, stdin);
     password[wcscspn(password, L"\n")] = L'\0';
     account.SetData(login, password);
-    while(!account.CheckAccess(mode) || user.IsBlocked()) //////////////
+    while(!account.CheckAccess(mode))
     {
         char tmp;
         fflush(stdin);

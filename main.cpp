@@ -11,6 +11,8 @@ int main()
     wcout.imbue(locale("ru_RU.UTF-8"));
     wcin.imbue(locale("ru_RU.UTF-8"));
 
+    //Admin adm;
+    //adm.SetInfo();
     //DieselCar car;
     //car.SetInfo();
     //Database::AddInDatabase(car);

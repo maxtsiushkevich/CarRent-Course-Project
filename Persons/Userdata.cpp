@@ -25,12 +25,12 @@ void Userdata :: SetInfo(int mode)
         cout << "Данный логин недоступен! " << endl;
         cout << "Введите другой логин: " << endl;
         fflush(stdin);
-        fgetws(login, 60, stdin);
+        fgetws(login, 30, stdin);
         login[wcscspn(login, L"\n")] = L'\0';
     }
     cout << "Введите пароль (пробелы недопустимы): ";
     fflush(stdin);
-    fgetws(password, 60, stdin);
+    fgetws(password, 30, stdin);
     password[wcscspn(password, L"\n")] = L'\0';
     ofstream file;
     switch (mode)
@@ -106,7 +106,6 @@ bool Userdata :: CheckLogin(wchar_t login[])
     file.open("/Users/max/Desktop/CarRent/Files/AdminAuthentication.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
-        // добавить исключения
     while (file.read((char*)&tmp, sizeof(tmp)))
     {
         if (!wcscmp(tmp.login, login))
@@ -120,7 +119,6 @@ bool Userdata :: CheckLogin(wchar_t login[])
     file.open("/Users/max/Desktop/CarRent/Files/UserAuthentication.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
-        // добавить исключения
     while (file.read((char*)&tmp, sizeof(tmp)))
     {
         if (!wcscmp(tmp.login, login))
@@ -130,4 +128,95 @@ bool Userdata :: CheckLogin(wchar_t login[])
         }
     }
     return true;
+}
+
+void Userdata :: ChangeLogin(int id)
+{
+    Userdata newUserdata;
+    ifstream file;
+    file.open("/Users/max/Desktop/CarRent/Files/UserAuthentication.bin", ios::binary);
+    if (!file.is_open())
+        cout << "Error";
+    while (file.read((char*)&newUserdata, sizeof(Userdata)))
+    {
+        if(newUserdata.GetID() == id)
+            break;
+    }
+    file.close();
+    wchar_t login[30];
+    cout << "Введите новый логин (пробелы недопустимы): ";
+    fflush(stdin);
+    fgetws(login, 30, stdin);
+    login[wcscspn(login, L"\n")] = L'\0';
+    while (CheckLogin(login) == false)
+    {
+        cout << "Данный логин недоступен! " << endl;
+        cout << "Введите другой логин: " << endl;
+        fflush(stdin);
+        fgetws(login, 30, stdin);
+        login[wcscspn(login, L"\n")] = L'\0';
+    }
+    newUserdata.SetData(login, newUserdata.GetPassword());
+
+    ifstream file1; // для чтения
+    ofstream file2; // для записи
+
+    file1.open("/Users/max/Desktop/CarRent/Files/UserAuthentication.bin", ios::binary);
+    if (!file1.is_open())
+        cout << "Error";
+    file2.open("/Users/max/Desktop/CarRent/Files/tmp.bin", ios::binary | ios::app);
+    Userdata tmp;
+    while(file1.read((char*)&tmp, sizeof(Userdata)))
+    {
+        if (tmp.GetID() == newUserdata.GetID())
+            file2.write((char*)&newUserdata, sizeof(newUserdata));
+        else
+            file2.write((char*)&tmp, sizeof(newUserdata));
+    }
+    file1.close();
+    remove("/Users/max/Desktop/CarRent/Files/UserAuthentication.bin");
+    file2.close();
+    rename("/Users/max/Desktop/CarRent/Files/tmp.bin","/Users/max/Desktop/CarRent/Files/UserAuthentication.bin");
+}
+
+void Userdata :: ChangePassword(int id)
+{
+    Userdata newUserdata;
+    ifstream file;
+    file.open("/Users/max/Desktop/CarRent/Files/UserAuthentication.bin", ios::binary);
+    if (!file.is_open())
+        cout << "Error";
+    while (file.read((char*)&newUserdata, sizeof(Userdata)))
+    {
+        if(newUserdata.GetID() == id)
+            break;
+    }
+    file.close();
+    wchar_t password[30];
+    cout << "Введите новый пароль (пробелы недопустимы): ";
+    fflush(stdin);
+    fgetws(password, 30, stdin);
+    password[wcscspn(password, L"\n")] = L'\0';
+
+    newUserdata.SetData(newUserdata.GetLogin(), password);
+
+    ifstream file1; // для чтения
+    ofstream file2; // для записи
+
+    file1.open("/Users/max/Desktop/CarRent/Files/UserAuthentication.bin", ios::binary);
+    if (!file1.is_open())
+        cout << "Error";
+    file2.open("/Users/max/Desktop/CarRent/Files/tmp.bin", ios::binary | ios::app);
+    Userdata tmp;
+    while(file1.read((char*)&tmp, sizeof(Userdata)))
+    {
+        if (tmp.GetID() == newUserdata.GetID())
+            file2.write((char*)&newUserdata, sizeof(newUserdata));
+        else
+            file2.write((char*)&tmp, sizeof(newUserdata));
+    }
+    file1.close();
+    remove("/Users/max/Desktop/CarRent/Files/UserAuthentication.bin");
+    file2.close();
+    rename("/Users/max/Desktop/CarRent/Files/tmp.bin","/Users/max/Desktop/CarRent/Files/UserAuthentication.bin");
 }

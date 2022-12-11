@@ -11,8 +11,7 @@ using namespace std;
 class User : public Person
 {
 private:
-    bool isBlocked;
-    wchar_t passportNum[30]; // номер паспорта
+    wchar_t passportNum[15]; // номер паспорта
     wchar_t status[10]; // classic, silver, gold, platinum // добавить установку статуса
 
     // classic -0%
@@ -22,7 +21,7 @@ private:
 
     float count; // счет
     float spendMoney; // потраченные средства
-    wchar_t phoneNumber[20];
+    wchar_t phoneNumber[15];
     struct Adress
     {
         wchar_t country[30];
@@ -34,8 +33,6 @@ private:
 public:
     User();
     ~User() = default;
-    bool IsBlocked() { return isBlocked; } // заблокирован ли аккаунт
-    void BlockAccount();// блокировка аккаунта
     void SetInfo(); // заполнение полей класса
 
     void SetNewNumber(); // установка нового номера телефона

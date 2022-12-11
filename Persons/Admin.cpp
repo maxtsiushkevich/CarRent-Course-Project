@@ -2,9 +2,11 @@
 #include "Userdata.h"
 #include <fstream>
 #include <iostream>
+#include "../ID/IdGenerator.h"
 
 void Admin :: SetInfo()
 {
+    id = IdGenerator::GetIdForPerson();
     Person::SetInfo();
     Userdata userdata(id);
     userdata.SetInfo(1);

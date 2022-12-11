@@ -8,7 +8,8 @@ using namespace std;
 class IdGenerator
 {
     friend class Car;
-    friend class Person;
+    friend class User;
+    friend class Admin;
 private:
     static int GetIdForCar();
     static int GetIdForPerson();

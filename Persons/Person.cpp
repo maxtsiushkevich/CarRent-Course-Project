@@ -1,10 +1,9 @@
 #include "Person.h"
 #include <iostream>
-#include "../ID/IdGenerator.h"
 
 Person :: Person()
 {
-    id = IdGenerator::GetIdForPerson();
+    id = 0;
     age = 18;
 }
 

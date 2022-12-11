@@ -16,8 +16,14 @@ public:
     int GetID() { return id; }
     void SetInfo(int);
     void SetData(wchar_t*, wchar_t*);
+
+    wchar_t* GetLogin() { return login; }
+    wchar_t* GetPassword() { return password; }
+
     bool CheckAccess(int); // admin - 1, user - 2
-    bool CheckLogin(wchar_t*); // admin - 1, user - 2
+    static bool CheckLogin(wchar_t*); // admin - 1, user - 2
+    static void ChangeLogin(int);
+    static void ChangePassword(int);
 };
 
 

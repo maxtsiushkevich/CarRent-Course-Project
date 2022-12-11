@@ -2,6 +2,7 @@
 #include "Userdata.h"
 #include <fstream>
 #include <iostream>
+#include "../ID/IdGenerator.h"
 
 using namespace std;
 
@@ -14,7 +15,7 @@ User :: User()
 
 void User :: SetInfo()
 {
-
+    id = IdGenerator::GetIdForPerson();
     Person::SetInfo();
     Userdata userdata(id);
     userdata.SetInfo(2);
@@ -23,12 +24,12 @@ void User :: SetInfo()
 
     cout << "Введите номер паспорта: ";
     fflush(stdin);
-    fgetws(passportNum, 30, stdin);
+    fgetws(passportNum, 15, stdin);
     passportNum[wcscspn(passportNum, L"\n")] = L'\0';
 
     cout << "Введите номер телефона в формате <<КОД CТРАНЫ-ХХХХХХХХХХ>>: ";
     fflush(stdin);
-    fgetws(phoneNumber, 20, stdin);
+    fgetws(phoneNumber, 15, stdin);
     phoneNumber[wcscspn(phoneNumber, L"\n")] = L'\0';
 
     cout << "Введите страну проживания: ";
@@ -93,8 +94,8 @@ void User :: SetNewNumber()
 {
     cout << "Введите номер телефона: ";
     fflush(stdin);
-    wchar_t tmpPhoneNumber[20];
-    fgetws(tmpPhoneNumber, 20, stdin);
+    wchar_t tmpPhoneNumber[15];
+    fgetws(tmpPhoneNumber, 15, stdin);
     phoneNumber[wcscspn(tmpPhoneNumber, L"\n")] = L'\0';
 
     cout << "Подтвердить изменения?\n"
@@ -172,10 +173,10 @@ void User :: SetNewAdress()
 
 void User :: SetNewPassport()
 {
-    wchar_t tmpPassportNum[20];
+    wchar_t tmpPassportNum[15];
     cout << "Введите новый номер паспорта: ";
     fflush(stdin);
-    fgetws(tmpPassportNum, 30, stdin);
+    fgetws(tmpPassportNum, 15, stdin);
     passportNum[wcscspn(tmpPassportNum, L"\n")] = L'\0';
 
     cout << "Подтвердить изменения?\n"
