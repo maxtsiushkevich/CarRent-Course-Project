@@ -28,30 +28,24 @@ void Database :: AddInDatabase(DieselCar &obj)
 
     data.id = obj.id;
     data.deleteMark = obj.deleteMark;
-
     wcscpy(data.brand, obj.brand);
     wcscpy(data.model, obj.model);
     wcscpy(data.country, obj.country);
     wcscpy(data.bodyType, obj.bodyType);
-
     data.manufacturedYear = obj.manufacturedYear;
-
     wcscpy(data.transmissionType, obj.transmissionType);
-
     data.numberOfSeats = obj.numberOfSeats;
     data.horsepower = obj.horsepower;
     data.maxSpeed = obj.maxSpeed;
     data.to100 = obj.to100;
     data.consumption = obj.consumption;
     data.volume = obj.volume;
-
     wcscpy(data.interior.color, obj.interior.color);
     wcscpy(data.interior.material, obj.interior.material);
     wcscpy(data.color, obj.color);
-
     data.costPerDay = obj.costPerDay;
     ofstream file;
-    file.open("/Users/max/Desktop/CarRent/Files/DieselCar.bin", ios::binary | ios::app);
+    file.open("/Users/max/Desktop/CarRent/Files/DieselCars.bin", ios::binary | ios::app);
     if (!file.is_open())
         cout << "Error";
     file.write((char*)&data, sizeof(data));
@@ -82,7 +76,7 @@ void Database :: GetFromDatabase(vector<DieselCar>&dieselCars)
     } data;
 
     ifstream file;
-    file.open("/Users/max/Desktop/CarRent/Files/DieselCar.bin", ios::binary);
+    file.open("/Users/max/Desktop/CarRent/Files/DieselCars.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
     while(file.read((char*)&data, sizeof(data)))
@@ -305,9 +299,8 @@ void Database :: GetFromDatabase(vector<ElectricCar>&electricCars)
     {
 
         obj.deleteMark = data.deleteMark;
-
         //if (obj.deleteMark == true) // если объект считается удаленным, то пропускается
-        //    continue;
+        //     continue;
 
         obj.id = data.id;
         wcscpy(obj.brand, data.brand);
@@ -477,7 +470,7 @@ void Database :: DeleteFromDatabase(DieselCar &obj)
 
     ifstream file1; // для чтения
     ofstream file2; // для записи
-    file1.open("/Users/max/Desktop/CarRent/Files/DieselCar.bin", ios::binary);
+    file1.open("/Users/max/Desktop/CarRent/Files/DieselCars.bin", ios::binary);
     if (!file1.is_open())
         cout << "Error";
     file2.open("/Users/max/Desktop/CarRent/Files/tmp.bin", ios::binary | ios::app);
@@ -493,9 +486,9 @@ void Database :: DeleteFromDatabase(DieselCar &obj)
             file2.write((char*)&data, sizeof(data));
     }
     file1.close();
-    remove("/Users/max/Desktop/CarRent/Files/DieselCar.bin");
+    remove("/Users/max/Desktop/CarRent/Files/DieselCars.bin");
     file2.close();
-    rename("/Users/max/Desktop/CarRent/Files/tmp.bin","/Users/max/Desktop/CarRent/Files/DieselCar.bin");
+    rename("/Users/max/Desktop/CarRent/Files/tmp.bin","/Users/max/Desktop/CarRent/Files/DieselCars.bin");
 }
 void Database :: DeleteFromDatabase(PetrolCar &obj)
 {
