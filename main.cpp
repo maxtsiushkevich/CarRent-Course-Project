@@ -11,14 +11,20 @@ int main()
     wcout.imbue(locale("ru_RU.UTF-8"));
     wcin.imbue(locale("ru_RU.UTF-8"));
 
-    //Admin adm;
-    //adm.SetInfo();
-    //DieselCar car;
-    //car.SetInfo();
-    //Database::AddInDatabase(car);
+    //Interface menu;
+    //menu.FirstMenu();
 
-    Interface menu;
-    menu.FirstMenu();
+    wchar_t a[10];
+    scanf("%ls", a);
+    //wcin >> a;
+    wcout << a;
+    //wchar_t b = L'а';
+
+    //int a1 = a;
+    //int b1 = b;
+//    a[0] = towupper(a[0]);
+
+    //cout << b1 << endl;
 
     return 0;
 }

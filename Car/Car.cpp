@@ -41,11 +41,13 @@ void Car :: SetInfo()
     fflush(stdin);
     fgetws(model, 30, stdin);
     model[wcscspn(model, L"\n")] = L'\0';
+    model[0] = towupper(model[0]);
 
     cout << "Тип кузова: " << endl;
     fflush(stdin);
     fgetws(bodyType, 30, stdin);
     bodyType[wcscspn(bodyType, L"\n")] = L'\0';
+    bodyType[0] = towupper(bodyType[0]);
 
     cout << "Год выпуска автомобиля: " << endl;
     cin >> manufacturedYear;
@@ -80,16 +82,19 @@ void Car :: SetInfo()
     fflush(stdin);
     fgetws(interior.material, 30, stdin);
     interior.material[wcscspn(interior.material, L"\n")] = L'\0';
+    interior.material[0] = towupper(interior.material[0]);
 
     cout << "Цвет салона" << endl;
     fflush(stdin);
     fgetws(interior.color, 30, stdin);
     interior.color[wcscspn(interior.color, L"\n")] = L'\0';
+    interior.color[0] = towupper(interior.color[0]);
 
     cout << "Цвет автомобиля" << endl;
     fflush(stdin);
     fgetws(color, 30, stdin);
     color[wcscspn(color, L"\n")] = L'\0';
+    color[0] = towupper(color[0]);
 
     cout << "Количество лошадиных сил в двигателе: " << endl;
     cin >> horsepower;
