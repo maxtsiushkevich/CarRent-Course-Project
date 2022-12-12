@@ -6,6 +6,8 @@
 #include "Authentication.h"
 #include "CarInUsage.h"
 #include "UserInterface.h"
+#include "../Exception/Exception.h"
+
 using namespace std;
 
 Interface::Interface()
@@ -31,11 +33,33 @@ void Interface :: FirstMenu()
                 "2 - Пользователь\n"
                 "3 - Регистрация нового аккаунта пользователя\n"
                 "4 - Завершить работу" << endl;
-        cin >> choice;
-        while (choice < 1 || choice > 4)
-        {
-            cout << "Ошибка!" << endl;
-            cin >> choice;
+       while (1)
+       {
+           try
+           {
+                cin >> choice;
+                if (cin.fail())
+                    throw BadInputException("Введена не цифра");
+                if (choice < 1 || choice > 4)
+                    throw Exception("Введен неверный пункт");
+                break;
+            }
+            catch (BadInputException exp)
+            {
+                cin.clear();
+                cin.ignore();
+                fflush(stdin);
+                exp.Show();
+                cout << "Введите еще раз: ";
+            }
+            catch (Exception exp)
+            {
+                cin.clear();
+                cin.ignore();
+                fflush(stdin);
+                exp.Show();
+                cout << "Введите еще раз: ";
+            }
         }
         Authentication auth;
         switch (choice)
@@ -77,12 +101,33 @@ void Interface :: AdminMainMenu()
                 "7 - Удаление автомобиля\n"
                 "8 - Выход из аккаунта\n"
                 "9 - Завершить работу" << endl;
-        cin >> choice;
-
-        while (choice < 1 || choice > 9)
+        while (1)
         {
-            cout << "Ошибка! Введите еще раз:" << endl;
-            cin >> choice;
+            try
+            {
+                cin >> choice;
+                if (cin.fail())
+                    throw BadInputException("Введена не цифра");
+                if (choice < 1 || choice > 9)
+                    throw Exception("Введен неверный пункт");
+                break;
+            }
+            catch (BadInputException exp)
+            {
+                cin.clear();
+                cin.ignore();
+                fflush(stdin);
+                exp.Show();
+                cout << "Введите еще раз: ";
+            }
+            catch (Exception exp)
+            {
+                cin.clear();
+                cin.ignore();
+                fflush(stdin);
+                exp.Show();
+                cout << "Введите еще раз: ";
+            }
         }
         switch (choice)
         {
@@ -112,7 +157,7 @@ void Interface :: ShowAllUsers()
 {
     ifstream file;
     file.open("/Users/max/Desktop/CarRent/Files/User.bin", ios::binary);
-    if (!file.is_open())
+    if (!file.is_open()) // кетч
         cout << "Error";
     int i = 0;
     cout << "----------------------------------------------------------------------------------------------------------------------------------" << endl;
@@ -257,8 +302,25 @@ void Interface :: ShowSpecificUserSessions()
     int userID;
     ifstream file;
     cout << "Введите ID интересующего пользователя: ";
-    cin >> userID;
-    file.open("/Users/max/Desktop/CarRent/Files/User.bin", ios::binary);
+    while (1)
+    {
+        try
+        {
+            cin >> userID;
+            if (cin.fail())
+                throw BadInputException("Введена не цифра");
+            break;
+        }
+        catch (BadInputException exp)
+        {
+            cin.clear();
+            cin.ignore();
+            fflush(stdin);
+            exp.Show();
+            cout << "Введите еще раз: ";
+        }
+    }
+    file.open("/Users/max/Desktop/CarRent/Files/User.bin", ios::binary); // кетч
     if (!file.is_open())
         cout << "Error";
     while(file.read((char*)&user, sizeof(User)))
@@ -282,17 +344,57 @@ void Interface ::DeleteSpecificCar()
         this->ShowAllCars();
         cout << "Введите ID автомобиля для удаления: \n"
                 "Для выхода введите '0'" << endl;
-        cin >> choice;
+        while (1)
+        {
+            try
+            {
+                cin >> choice;
+                if (cin.fail())
+                    throw BadInputException("Введена не цифра");
+                break;
+            }
+            catch (BadInputException exp)
+            {
+                cin.clear();
+                cin.ignore();
+                fflush(stdin);
+                exp.Show();
+                cout << "Введите еще раз: ";
+            }
+        }
+
         if (choice == 0)
             return;
         cout << "Для подтверждения удаления введите '1'\n"
                 "Для отмены введите '0'" << endl;
         int tmp;
-        cin >> tmp;
-        while (tmp < 0 || tmp > 1)
+        while (1)
         {
-            cout << "Ошибка! Введите еще раз:" << endl;
-            cin >> tmp;
+            try
+            {
+                cin >> tmp;
+                if (cin.fail())
+                    throw BadInputException("Введена не цифра");
+                if (tmp < 0 || tmp > 1)
+                    throw Exception("Введен неверный пункт");
+                break;
+            }
+            catch (BadInputException exp)
+            {
+                cin.clear();
+                cin.ignore();
+                fflush(stdin);
+                exp.Show();
+                cout << "Введите еще раз: ";
+            }
+            catch (Exception exp)
+            {
+                cin.clear();
+                cin.ignore();
+                fflush(stdin);
+                exp.Show();
+                cout << "Введите еще раз: ";
+            }
         }
         if (tmp == 0)
             return;
@@ -375,7 +477,24 @@ void Interface :: ShowSpecificCarSessions()
     this->ShowAllCars();
     cout << "Введите ID интересуещего автомобиля: ";
     int carID;
-    cin >> carID;
+    while (1)
+    {
+        try
+        {
+            cin >> carID;
+            if (cin.fail())
+                throw BadInputException("Введена не цифра");
+            break;
+        }
+        catch (BadInputException exp)
+        {
+            cin.clear();
+            cin.ignore();
+            fflush(stdin);
+            exp.Show();
+            cout << "Введите еще раз: ";
+        }
+    }
     for (auto it = allSessions.begin(); it != allSessions.end(); ++it)
     {
         if (it->carID == carID)
@@ -415,11 +534,35 @@ void Interface :: AddNewCar()
             "4 - Гибридные автомобили\n"
             "5 - Выход в главное меню" << endl;
     int choice;
-    cin >> choice;
-    while (choice < 0 | choice > 5) {
-        cout << "Ошибка. Введите еще раз:" << endl;
-        cin >> choice;
+    while (1)
+    {
+        try
+        {
+            cin >> choice;
+            if (cin.fail())
+                throw BadInputException("Введена не цифра");
+            if (choice < 1 || choice > 5)
+                throw Exception("Введен неверный пункт");
+            break;
+        }
+        catch (BadInputException exp)
+        {
+            cin.clear();
+            cin.ignore();
+            fflush(stdin);
+            exp.Show();
+            cout << "Введите еще раз: ";
+        }
+        catch (Exception exp)
+        {
+            cin.clear();
+            cin.ignore();
+            fflush(stdin);
+            exp.Show();
+            cout << "Введите еще раз: ";
+        }
     }
+
     PetrolCar pcar;
     DieselCar dcar;
     ElectricCar ecar;

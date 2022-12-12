@@ -53,7 +53,7 @@ void Database :: AddInDatabase(DieselCar &obj)
 }
 void Database :: GetFromDatabase(vector<DieselCar>&dieselCars)
 {
-    DieselCar obj(0);
+    DieselCar obj;
     struct Data
     {
         int id;
@@ -163,7 +163,7 @@ void Database :: AddInDatabase(PetrolCar &obj)
 }
 void Database :: GetFromDatabase(vector<PetrolCar>&petrolCars)
 {
-    PetrolCar obj(0);
+    PetrolCar obj;
     struct Data
     {
         int id;
@@ -270,7 +270,7 @@ void Database :: AddInDatabase(ElectricCar &obj)
 }
 void Database :: GetFromDatabase(vector<ElectricCar>&electricCars)
 {
-    ElectricCar obj(0);
+    ElectricCar obj;
     struct Data
     {
         int id;
@@ -380,7 +380,7 @@ void Database :: AddInDatabase(HybridCar &obj)
 }
 void Database :: GetFromDatabase(vector<HybridCar>&hybridCars)
 {
-    HybridCar obj(0);
+    HybridCar obj;
     struct Data
     {
         int id;

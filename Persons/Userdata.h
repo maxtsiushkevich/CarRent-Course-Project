@@ -1,8 +1,6 @@
 #ifndef CARRENT_USERDATA_H
 #define CARRENT_USERDATA_H
 
-using namespace std;
-
 class Userdata
 {
     friend class Interface;

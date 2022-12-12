@@ -11,7 +11,6 @@ protected:
     int batteryCapacity;
 public:
     ElectricCar();
-    ElectricCar(int id) : Car(id) { };
     virtual ~ElectricCar() = default;
     void SetInfo();
     int GetBatteryCapacity() { return batteryCapacity; };

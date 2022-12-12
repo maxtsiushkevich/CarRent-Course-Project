@@ -1,6 +1,8 @@
 #include "Userdata.h"
 #include <iostream>
 #include <fstream>
+#include "../Exception/Exception.h"
+#include <wchar.h>
 
 using namespace std;
 
@@ -18,20 +20,89 @@ void Userdata :: SetInfo(int mode)
 {
     cout << "Введите логин (пробелы недопустимы): ";
     fflush(stdin);
-    fgetws(login, 30, stdin);
-    login[wcscspn(login, L"\n")] = L'\0';
+    while (1)
+    {
+        try
+        {
+            fgetws(login, 30, stdin);
+            login[wcscspn(login, L"\n")] = L'\0';
+            if (login[0] == L'\0')
+                throw EmptyInputException("Вы ничего не ввели");
+            if (wcscspn(login, L" ") <= 30)
+                throw SpaceException("Введена строка с пробелом");
+            break;
+        }
+        catch (EmptyInputException exp)
+        {
+            fflush(stdin);
+            exp.Show();
+            cout << "Введите еще раз: ";
+        }
+        catch (SpaceException exp)
+        {
+            fflush(stdin);
+            exp.Show();
+            cout << "Введите еще раз: ";
+        }
+    }
     while (this->CheckLogin(login) == false)
     {
         cout << "Данный логин недоступен! " << endl;
         cout << "Введите другой логин: " << endl;
         fflush(stdin);
-        fgetws(login, 30, stdin);
-        login[wcscspn(login, L"\n")] = L'\0';
+        while (1)
+        {
+            try
+            {
+                fgetws(login, 30, stdin);
+                login[wcscspn(login, L"\n")] = L'\0';
+                if (login[0] == L'\0')
+                    throw EmptyInputException("Вы ничего не ввели");
+                if (wcscspn(login, L" ") <= 30)
+                    throw SpaceException("Введена строка с пробелом");
+                break;
+            }
+            catch (EmptyInputException exp)
+            {
+                fflush(stdin);
+                exp.Show();
+                cout << "Введите еще раз: ";
+            }
+            catch (SpaceException exp)
+            {
+                fflush(stdin);
+                exp.Show();
+                cout << "Введите еще раз: ";
+            }
+        }
     }
     cout << "Введите пароль (пробелы недопустимы): ";
     fflush(stdin);
-    fgetws(password, 30, stdin);
-    password[wcscspn(password, L"\n")] = L'\0';
+    while (1)
+    {
+        try
+        {
+            fgetws(password, 30, stdin);
+            password[wcscspn(password, L"\n")] = L'\0';
+            if (login[0] == L'\0')
+                throw EmptyInputException("Вы ничего не ввели");
+            if (wcscspn(password, L" ") <= 30)
+                throw SpaceException("Введена строка с пробелом");
+            break;
+        }
+        catch (EmptyInputException exp)
+        {
+            fflush(stdin);
+            exp.Show();
+            cout << "Введите еще раз: ";
+        }
+        catch (SpaceException exp)
+        {
+            fflush(stdin);
+            exp.Show();
+            cout << "Введите еще раз: ";
+        }
+    }
     ofstream file;
     switch (mode)
     {
@@ -146,15 +217,61 @@ void Userdata :: ChangeLogin(int id)
     wchar_t login[30];
     cout << "Введите новый логин (пробелы недопустимы): ";
     fflush(stdin);
-    fgetws(login, 30, stdin);
-    login[wcscspn(login, L"\n")] = L'\0';
+    while (1)
+    {
+        try
+        {
+            fgetws(login, 30, stdin);
+            login[wcscspn(login, L"\n")] = L'\0';
+            if (login[0] == L'\0')
+                throw EmptyInputException("Вы ничего не ввели");
+            if (wcscspn(login, L" ") <= 30)
+                throw SpaceException("Введена строка с пробелом");
+            break;
+        }
+        catch (EmptyInputException exp)
+        {
+            fflush(stdin);
+            exp.Show();
+            cout << "Введите еще раз: ";
+        }
+        catch (SpaceException exp)
+        {
+            fflush(stdin);
+            exp.Show();
+            cout << "Введите еще раз: ";
+        }
+    }
     while (CheckLogin(login) == false)
     {
         cout << "Данный логин недоступен! " << endl;
         cout << "Введите другой логин: " << endl;
         fflush(stdin);
-        fgetws(login, 30, stdin);
-        login[wcscspn(login, L"\n")] = L'\0';
+        while (1)
+        {
+            try
+            {
+                fgetws(login, 30, stdin);
+                login[wcscspn(login, L"\n")] = L'\0';
+                if (login[0] == L'\0')
+                    throw EmptyInputException("Вы ничего не ввели");
+                if (wcscspn(login, L" ") <= 30)
+                    throw SpaceException("Введена строка с пробелом");
+                break;
+            }
+            catch (EmptyInputException exp)
+            {
+                fflush(stdin);
+                exp.Show();
+                cout << "Введите еще раз: ";
+            }
+            catch (SpaceException exp)
+            {
+                fflush(stdin);
+                exp.Show();
+                cout << "Введите еще раз: ";
+            }
+        }
     }
     newUserdata.SetData(login, newUserdata.GetPassword());
 
@@ -195,8 +312,31 @@ void Userdata :: ChangePassword(int id)
     wchar_t password[30];
     cout << "Введите новый пароль (пробелы недопустимы): ";
     fflush(stdin);
-    fgetws(password, 30, stdin);
-    password[wcscspn(password, L"\n")] = L'\0';
+    while (1)
+    {
+        try
+        {
+            fgetws(password, 30, stdin);
+            password[wcscspn(password, L"\n")] = L'\0';
+            if (password[0] == L'\0')
+                throw EmptyInputException("Вы ничего не ввели");
+            if (wcscspn(password, L" ") <= 30)
+                throw SpaceException("Введена строка с пробелом");
+            break;
+        }
+        catch (EmptyInputException exp)
+        {
+            fflush(stdin);
+            exp.Show();
+            cout << "Введите еще раз: ";
+        }
+        catch (SpaceException exp)
+        {
+            fflush(stdin);
+            exp.Show();
+            cout << "Введите еще раз: ";
+        }
+    }
 
     newUserdata.SetData(newUserdata.GetLogin(), password);
 

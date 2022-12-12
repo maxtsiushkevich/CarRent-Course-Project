@@ -12,10 +12,9 @@ protected:
     wchar_t fuelType[8];
 public:
     HybridCar() : Car(), OilCar(), ElectricCar() { }
-    HybridCar(int id) : OilCar(id), ElectricCar(id) { };
     ~HybridCar() = default;
     void SetInfo();
-    wstring GetFuelType() { return fuelType; };
+    wchar_t* GetFuelType() { return fuelType; };
 
 };
 

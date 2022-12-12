@@ -28,11 +28,12 @@ protected:
     int costPerDay; // стоимость аренды
 public:
     Car();
-    Car(int id) { this->id = id; } ;
     virtual ~Car() = default;
     virtual void SetInfo();
+
     bool IsDelete() { return deleteMark; } // при удалении цена аренды 0
     void DeleteCar() { deleteMark = true; costPerDay = 0;}
+
     int GetID() { return id; };
     int GetManufacturedYear() { return manufacturedYear; };
     wchar_t* GetBrand() { return brand; };

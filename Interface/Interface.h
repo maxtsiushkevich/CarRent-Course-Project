@@ -37,13 +37,12 @@ public:
     void SeeCars(); // показывает все заказы вообще
     void CarOrder(int);
     void SeeUserHistory(int);
-    void ShowDetailedInfo(int, int); // реализовать
+    void ShowDetailedInfo(int, int); // о пользователе
     bool ShowCarsForChoosing(int); // выводит автомобили
     void AddCount(); // пополнение баланса
     int FindCost(int, int); // ищет стоимость аренды по его ID
     void RefreshUserInFile(); // записывает обновленные данные пользователя в файл
     void SetAccountSettings(); // изменение данных аккаунта
-    void UserAccountSettings(); // изменение данных аккаунта администратора
 
     void ShowAllSessions(); // показывает все заказы
     void ShowAllUsers(); // показывает всех пользователей

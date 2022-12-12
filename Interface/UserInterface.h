@@ -2,7 +2,8 @@
 #define CARRENT_USERINTERFACE_H
 #include "Interface.h"
 #include <iostream>
-
+#include "../Exception/Exception.h"
+#include <FLOAT.H>
 using namespace std;
 
 void Interface :: UserMainMenu()
@@ -18,11 +19,33 @@ void Interface :: UserMainMenu()
                 "5 - Настройка аккаунта\n"
                 "6 - Выйти из аккаунта\n"
                 "7 - Завершить работу" << endl;
-        cin >> choice;
-        while (choice < 1 || choice > 7)
+        while (1)
         {
-            cout << "Ошибка!" << endl;
-            cin >> choice;
+            try
+            {
+                cin >> choice;
+                if (cin.fail())
+                    throw BadInputException("Введена не цифра");
+                if (choice < 1 || choice > 7)
+                    throw Exception("Введен неверный пункт");
+                break;
+            }
+            catch (BadInputException exp)
+            {
+                cin.clear();
+                cin.ignore();
+                fflush(stdin);
+                exp.Show();
+                cout << "Введите еще раз: ";
+            }
+            catch (Exception exp)
+            {
+                cin.clear();
+                cin.ignore();
+                fflush(stdin);
+                exp.Show();
+                cout << "Введите еще раз: ";
+            }
         }
         switch (choice)
         {
@@ -75,10 +98,33 @@ void Interface :: SeeCars()
                 "3 - Электрические автомобили\n"
                 "4 - Гибридные автомобили\n"
                 "5 - Выход в главное меню" << endl;
-        cin >> choice;
-        while (choice < 0 | choice > 5) {
-            cout << "Ошибка. Введите еще раз:" << endl;
-            cin >> choice;
+        while (1)
+        {
+            try
+            {
+                cin >> choice;
+                if (cin.fail())
+                    throw BadInputException("Введена не цифра");
+                if (choice < 1 || choice > 5)
+                    throw Exception("Введен неверный пункт");
+                break;
+            }
+            catch (BadInputException exp)
+            {
+                cin.clear();
+                cin.ignore();
+                fflush(stdin);
+                exp.Show();
+                cout << "Введите еще раз: ";
+            }
+            catch (Exception exp)
+            {
+                cin.clear();
+                cin.ignore();
+                fflush(stdin);
+                exp.Show();
+                cout << "Введите еще раз: ";
+            }
         }
         if (choice == 5)
             return;
@@ -93,11 +139,33 @@ void Interface :: SeeCars()
             } else
                 return;
             int tmp;
-            cin >> tmp;
-            while (tmp < 0 | tmp > 4)
+            while (1)
             {
-                cout << "Ошибка. Введите еще раз:" << endl;
-                cin >> tmp;
+                try
+                {
+                    cin >> tmp;
+                    if (cin.fail())
+                        throw BadInputException("Введена не цифра");
+                    if (tmp < 0 || tmp > 4)
+                        throw Exception("Введен неверный пункт");
+                    break;
+                }
+                catch (BadInputException exp)
+                {
+                    cin.clear();
+                    cin.ignore();
+                    fflush(stdin);
+                    exp.Show();
+                    cout << "Введите еще раз: ";
+                }
+                catch (Exception exp)
+                {
+                    cin.clear();
+                    cin.ignore();
+                    fflush(stdin);
+                    exp.Show();
+                    cout << "Введите еще раз: ";
+                }
             }
             if (tmp == 4)
                 break;
@@ -209,7 +277,24 @@ void Interface :: CarOrder(int choice)
     cout << "Введите номер желаемого автомобиля: " << endl;
     int carId;
     int tmp;
-    cin >> carId;
+    while (1)
+    {
+        try
+        {
+            cin >> carId;
+            if (cin.fail())
+                throw BadInputException("Введена не цифра");
+            break;
+        }
+        catch (BadInputException exp)
+        {
+            cin.clear();
+            cin.ignore();
+            fflush(stdin);
+            exp.Show();
+            cout << "Введите еще раз: ";
+        }
+    }
     sort(carIdInUsage.begin(), carIdInUsage.end());
     // проверяем, доступен ли этот автомобиль
     if (binary_search(carIdInUsage.begin(), carIdInUsage.end(), carId) )
@@ -217,11 +302,33 @@ void Interface :: CarOrder(int choice)
         cout << "К сожалению, данный автомобиль на данный момент недоступен!\n"
                 "Для ввода другого номера введите '1'\n"
                 "Для выхода в меню введите '2'" << endl;
-        cin >> tmp;
-        while (tmp < 1 || tmp > 2)
+        while (1)
         {
-            cout << "Ошибка ввода" << endl;
-            cin >> tmp;
+            try
+            {
+                cin >> tmp;
+                if (cin.fail())
+                    throw BadInputException("Введена не цифра");
+                if (tmp < 1 || tmp > 2)
+                    throw Exception("Введен неверный пункт");
+                break;
+            }
+            catch (BadInputException exp)
+            {
+                cin.clear();
+                cin.ignore();
+                fflush(stdin);
+                exp.Show();
+                cout << "Введите еще раз: ";
+            }
+            catch (Exception exp)
+            {
+                cin.clear();
+                cin.ignore();
+                fflush(stdin);
+                exp.Show();
+                cout << "Введите еще раз: ";
+            }
         }
         if (tmp == 1)
         {
@@ -237,11 +344,33 @@ void Interface :: CarOrder(int choice)
         cout << "Желаете продолжить?\n"
                 "Для выбора другого автомобиля введите '1'\n"
                 "Для выхода в меню введите '2'" << endl;
-        cin >> tmp;
-        while (tmp < 1 || tmp > 2)
+        while (1)
         {
-            cout << "Ошибка ввода" << endl;
-            cin >> tmp;
+            try
+            {
+                cin >> tmp;
+                if (cin.fail())
+                    throw BadInputException("Введена не цифра");
+                if (tmp < 1 || tmp > 2)
+                    throw Exception("Введен неверный пункт");
+                break;
+            }
+            catch (BadInputException exp)
+            {
+                cin.clear();
+                cin.ignore();
+                fflush(stdin);
+                exp.Show();
+                cout << "Введите еще раз: ";
+            }
+            catch (Exception exp)
+            {
+                cin.clear();
+                cin.ignore();
+                fflush(stdin);
+                exp.Show();
+                cout << "Введите еще раз: ";
+            }
         }
         if (tmp == 1)
         {
@@ -418,19 +547,19 @@ void Interface :: ShowDetailedInfo(int choice, int id)
 void Interface :: SeeUserHistory(int userID)
 {
     int i=0;
-    if (allSessions.empty())
-    {
-        cout << "Нет заказов!" << endl;
-        return;
-    }
-
-    for (auto it = allSessions.begin(); it != allSessions.end(); ++it)
-    {
-        if (it->userID == userID)
-            break;
-        cout << "Нет заказов!" << endl;
-        return;
-    }
+//    if (allSessions.empty())
+//    {
+//        cout << "Нет заказов!" << endl;
+//        return;
+//    }
+//
+//    for (auto it = allSessions.begin(); it != allSessions.end(); ++it)
+//    {
+//        if (it->userID == userID)
+//            break;
+//        cout << "Нет заказов!" << endl;
+//        return;
+//    }
 
     cout << "---------------------------------------------------------------------------------------" << endl;
     wcout << '|' << setw(10) << left << L"Номер" << '|' << setw(15) << L"Марка" << '|' << setw(15) << L"Модель" << '|' << setw(15) << L"Дата начала" << '|'
@@ -482,7 +611,34 @@ void Interface :: AddCount()
 {
     cout << "Введите сумму для пополнения" << endl;
     float plus;
-    cin >> plus;
+    while (1)
+    {
+        try
+        {
+            cin >> plus;
+            if (cin.fail())
+                throw BadInputException("Введена не цифра");
+            if (plus > FLT_MAX)
+                throw OverflowException("Введено слишком большое значение");
+            break;
+        }
+        catch (BadInputException exp)
+        {
+            cin.clear();
+            cin.ignore();
+            fflush(stdin);
+            exp.Show();
+            cout << "Введите еще раз: ";
+        }
+        catch (OverflowException exp)
+        {
+            cin.clear();
+            cin.ignore();
+            fflush(stdin);
+            exp.Show();
+            cout << "Введите еще раз: ";
+        }
+    }
     user.SetCount(plus);
 }
 
@@ -497,11 +653,33 @@ void Interface :: SetAccountSettings()
                 "5 - Сменить пароль\n"
                 "6 - Выход в меню" << endl; // смена логина и пароля
         int choice;
-        cin >> choice;
-        while (choice < 1 || choice > 6)
+        while (1)
         {
-            cout << "Ошибка ввода. Введите еще раз:" << endl;
-            cin >> choice;
+            try
+            {
+                cin >> choice;
+                if (cin.fail())
+                    throw BadInputException("Введена не цифра");
+                if (choice < 1 || choice > 6)
+                    throw Exception("Введен неверный пункт");
+                break;
+            }
+            catch (BadInputException exp)
+            {
+                cin.clear();
+                cin.ignore();
+                fflush(stdin);
+                exp.Show();
+                cout << "Введите еще раз: ";
+            }
+            catch (Exception exp)
+            {
+                cin.clear();
+                cin.ignore();
+                fflush(stdin);
+                exp.Show();
+                cout << "Введите еще раз: ";
+            }
         }
         switch (choice)
         {
