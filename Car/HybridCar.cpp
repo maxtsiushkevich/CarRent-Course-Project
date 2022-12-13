@@ -3,17 +3,14 @@
 #include <iostream>
 #include "../Exception/Exception.h"
 
-void HybridCar :: SetInfo()
-{
+void HybridCar :: SetInfo() {
     Car::SetInfo();
     int choice;
     cout << "Тип топлива: " << endl;
     cout << "1 - Бензин\n"
             "2 - Дизель\n";
-    while (1)
-    {
-        try
-        {
+    while (1) {
+        try {
             cin >> choice;
             if (cin.fail())
                 throw BadInputException("Введена не цифра");
@@ -21,27 +18,23 @@ void HybridCar :: SetInfo()
                 throw Exception("Введен неверный пункт");
             break;
         }
-        catch (BadInputException exp)
-        {
+        catch (BadInputException exp) {
             exp.Fix();
         }
-        catch (Exception exp)
-        {
+        catch (Exception exp) {
             exp.Fix();
         }
     }
-    switch (choice)
-    {
-        case 1: wcscpy(fuelType, L"Бензин\0"); break;
-        case 2: wcscpy(fuelType, L"Дизель\0"); break;
+    switch (choice) {
+        case 1:
+            wcscpy(fuelType, L"Бензин\0"); break;
+        case 2:
+            wcscpy(fuelType, L"Дизель\0"); break;
     }
-
     cout << "Объем двигателя: " << endl;
     cin >> volume;
-    while (1)
-    {
-        try
-        {
+    while (1) {
+        try {
             cin >> volume;
             if (cin.fail())
                 throw BadInputException("Введена не цифра");
@@ -49,20 +42,16 @@ void HybridCar :: SetInfo()
                 throw Exception("Введено неверное значение");
             break;
         }
-        catch (BadInputException exp)
-        {
+        catch (BadInputException exp) {
             exp.Fix();
         }
-        catch (Exception exp)
-        {
+        catch (Exception exp) {
             exp.Fix();
         }
     }
     cout << "Расход топлива на 100км: " << endl;
-    while (1)
-    {
-        try
-        {
+    while (1) {
+        try {
             cin >> consumption;
             if (cin.fail())
                 throw BadInputException("Введена не цифра");
@@ -70,21 +59,17 @@ void HybridCar :: SetInfo()
                 throw Exception("Введено неверное значение");
             break;
         }
-        catch (BadInputException exp)
-        {
+        catch (BadInputException exp) {
             exp.Fix();
         }
-        catch (Exception exp)
-        {
+        catch (Exception exp) {
             exp.Fix();
         }
     }
     cout << "Объем батареи: " << endl;
     cin >> batteryCapacity;
-    while (1)
-    {
-        try
-        {
+    while (1) {
+        try {
             cin >> batteryCapacity;
             if (cin.fail())
                 throw BadInputException("Введена не цифра");
@@ -92,12 +77,10 @@ void HybridCar :: SetInfo()
                 throw Exception("Введено неверное значение");
             break;
         }
-        catch (BadInputException exp)
-        {
+        catch (BadInputException exp) {
             exp.Fix();
         }
-        catch (Exception exp)
-        {
+        catch (Exception exp) {
             exp.Fix();
         }
     }

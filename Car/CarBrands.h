@@ -20,8 +20,7 @@ private:
     void AddNewBrand();
 };
 
-void CarBrands :: AddNewBrand()
-{
+void CarBrands :: AddNewBrand() {
     cin >> num;
     fflush(stdin);
     fgetws(brand, 30, stdin);
@@ -32,35 +31,29 @@ void CarBrands :: AddNewBrand()
     ofstream file("/Users/max/Desktop/CarRent/Files/CarBrands.bin", ios::binary | ios::app);
     if (!file.is_open())
         cout << "Error";
-    file.write((char*)this, sizeof(CarBrands));
+    file.write((char *) this, sizeof(CarBrands));
     file.close();
 }
 
-void CarBrands :: GetCarBrands()
-{
+void CarBrands :: GetCarBrands() {
     ifstream file("/Users/max/Desktop/CarRent/Files/CarBrands.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
     cout << left << setw(15) << "Номер" << setw(20) << "Марка" << setw(20) << "Страна" << endl;
-    while (file.read((char*)this, sizeof(CarBrands)))
-    {
+    while (file.read((char *) this, sizeof(CarBrands))) {
         wcout << left << setw(10) << this->num << setw(15) << this->brand << setw(20) << this->country << endl;
     }
     file.close();
 }
 
-wstring CarBrands :: GetBrand(int choice)
-{
+wstring CarBrands :: GetBrand(int choice) {
     ifstream file("../Files/CarBrands.bin", ios::binary);
     wstring brandTmp;
     if (!file.is_open())
         cout << "Error";
-    else
-    {
-        while (file.read((char*)this, sizeof(CarBrands)))
-        {
-            if (this->num == choice)
-            {
+    else {
+        while (file.read((char *) this, sizeof(CarBrands))) {
+            if (this->num == choice) {
                 brandTmp = this->brand;
                 return brandTmp;
             }
@@ -68,18 +61,14 @@ wstring CarBrands :: GetBrand(int choice)
     }
 }
 
-wstring CarBrands :: GetCountry(int choice)
-{
+wstring CarBrands :: GetCountry(int choice) {
     ifstream file("../Files/CarBrands.bin", ios::binary);
     wstring countryTmp;
     if (!file.is_open())
         cout << "Error";
-    else
-    {
-        while (file.read((char*)this, sizeof(CarBrands)))
-        {
-            if (this->num == choice)
-            {
+    else {
+        while (file.read((char *) this, sizeof(CarBrands))) {
+            if (this->num == choice) {
                 countryTmp = this->country;
                 return countryTmp;
             }

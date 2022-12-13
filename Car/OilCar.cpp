@@ -4,20 +4,16 @@
 #include <fstream>
 #include "../Exception/Exception.h"
 
-OilCar :: OilCar () : Car()
-{
-        volume = 0.0;
-        consumption = 0.0;
+OilCar :: OilCar () : Car() {
+    volume = 0.0;
+    consumption = 0.0;
 }
 
-void OilCar :: SetInfo()
-{
+void OilCar :: SetInfo() {
     Car::SetInfo();
     cout << "Объем двигателя: " << endl;
-    while (1)
-    {
-        try
-        {
+    while (1) {
+        try {
             cin >> volume;
             if (cin.fail())
                 throw BadInputException("Введена не цифра");
@@ -25,20 +21,16 @@ void OilCar :: SetInfo()
                 throw Exception("Введено неверное значение");
             break;
         }
-        catch (BadInputException exp)
-        {
+        catch (BadInputException exp) {
             exp.Fix();
         }
-        catch (Exception exp)
-        {
+        catch (Exception exp) {
             exp.Fix();
         }
     }
     cout << "Расход топлива на 100км: " << endl;
-    while (1)
-    {
-        try
-        {
+    while (1) {
+        try {
             cin >> consumption;
             if (cin.fail())
                 throw BadInputException("Введена не цифра");
@@ -46,12 +38,10 @@ void OilCar :: SetInfo()
                 throw Exception("Введено неверное значение");
             break;
         }
-        catch (BadInputException exp)
-        {
+        catch (BadInputException exp) {
             exp.Fix();
         }
-        catch (Exception exp)
-        {
+        catch (Exception exp) {
             exp.Fix();
         }
     }

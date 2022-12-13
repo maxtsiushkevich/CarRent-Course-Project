@@ -3,19 +3,15 @@
 #include <fstream>
 #include "../Exception/Exception.h"
 
-ElectricCar :: ElectricCar()
-{
+ElectricCar :: ElectricCar() {
     batteryCapacity = 0;
 }
 
-void ElectricCar :: SetInfo()
-{
+void ElectricCar :: SetInfo() {
     Car::SetInfo();
     cout << "Объем батареи: " << endl;
-    while (1)
-    {
-        try
-        {
+    while (1) {
+        try {
             cin >> batteryCapacity;
             if (cin.fail())
                 throw BadInputException("Введена не цифра");
@@ -23,12 +19,10 @@ void ElectricCar :: SetInfo()
                 throw Exception("Введено неверное значение");
             break;
         }
-        catch (BadInputException exp)
-        {
+        catch (BadInputException exp) {
             exp.Fix();
         }
-        catch (Exception exp)
-        {
+        catch (Exception exp) {
             exp.Fix();
         }
     }

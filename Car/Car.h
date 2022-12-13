@@ -2,7 +2,6 @@
 #define CARRENT_CAR_H
 #include <string>
 #include <vector>
-
 using namespace std;
 
 class Car
@@ -15,13 +14,10 @@ protected:
     int manufacturedYear; // год производства
     wchar_t transmissionType[5] = {L"\0"};
     int numberOfSeats; // количество мест
-
     int horsepower; // лошадиные силы
     float maxSpeed; // максимальная скорость
     float to100; // разгон до 100
-
-    struct interior
-    {
+    struct interior {
         wchar_t color[30] = {L"\0"}, material[30] = {L"\0"};
     } interior;
     wchar_t color[30] = {L"\0"};
@@ -30,10 +26,8 @@ public:
     Car();
     virtual ~Car() = default;
     virtual void SetInfo();
-
     bool IsDelete() { return deleteMark; } // при удалении цена аренды 0
     void DeleteCar() { deleteMark = true; costPerDay = 0;}
-
     int GetID() { return id; };
     int GetManufacturedYear() { return manufacturedYear; };
     wchar_t* GetBrand() { return brand; };

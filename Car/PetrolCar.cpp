@@ -2,13 +2,11 @@
 #include <iostream>
 #include "../Exception/Exception.h"
 
-PetrolCar :: PetrolCar() : OilCar()
-{
-        petrolType = 0;
+PetrolCar :: PetrolCar() : OilCar() {
+    petrolType = 0;
 }
 
-void PetrolCar :: SetInfo()
-{
+void PetrolCar :: SetInfo() {
     OilCar::SetInfo();
     int choice;
     cout << "Марка бензина: " << endl;
@@ -16,10 +14,8 @@ void PetrolCar :: SetInfo()
             "2 - 92\n"
             "3 - 95\n"
             "4 - 98\n";
-    while (1)
-    {
-        try
-        {
+    while (1) {
+        try {
             cin >> choice;
             if (cin.fail())
                 throw BadInputException("Введена не цифра");
@@ -27,20 +23,21 @@ void PetrolCar :: SetInfo()
                 throw Exception("Введен неверный пункт");
             break;
         }
-        catch (BadInputException exp)
-        {
+        catch (BadInputException exp) {
             exp.Fix();
         }
-        catch (Exception exp)
-        {
+        catch (Exception exp) {
             exp.Fix();
         }
     }
-    switch (choice)
-    {
-        case 1: petrolType = 80; break;
-        case 2: petrolType = 92; break;
-        case 3: petrolType = 95; break;
-        case 4: petrolType = 98; break;
+    switch (choice) {
+        case 1:
+            petrolType = 80; break;
+        case 2:
+            petrolType = 92; break;
+        case 3:
+            petrolType = 95; break;
+        case 4:
+            petrolType = 98; break;
     }
 }
