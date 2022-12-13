@@ -32,21 +32,17 @@ void User :: SetInfo()
             passportNum[wcscspn(passportNum, L"\n")] = L'\0';
             if (passportNum[0] == L'\0')
                 throw EmptyInputException("Вы ничего не ввели");
-            if (wcscspn(passportNum, L" ") <= 15)
+            if (wcscspn(passportNum, L" ") < wcscspn(passportNum, L"\0"))
                 throw SpaceException("Введена строка с пробелом");
             break;
         }
         catch (EmptyInputException exp)
         {
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
         catch (SpaceException exp)
         {
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
     
@@ -60,23 +56,17 @@ void User :: SetInfo()
             phoneNumber[wcscspn(phoneNumber, L"\n")] = L'\0';
             if (phoneNumber[0] == L'\0')
                 throw EmptyInputException("Вы ничего не ввели");
-            if (wcscspn(phoneNumber, L" ") <= 15)
+            if (wcscspn(phoneNumber, L" ") < wcscspn(phoneNumber, L"\0"))
                 throw SpaceException("Введена строка с пробелом");
             break;
         }
         catch (EmptyInputException exp)
         {
-
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
         catch (SpaceException exp)
         {
-
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
 
@@ -90,23 +80,11 @@ void User :: SetInfo()
             adress.country[wcscspn(adress.country, L"\n")] = L'\0';
             if (adress.country[0] == L'\0')
                 throw EmptyInputException("Вы ничего не ввели");
-            if (wcscspn(adress.country, L" ") <= 30)
-                throw SpaceException("Введена строка с пробелом");
             break;
         }
         catch (EmptyInputException exp)
         {
-
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
-        }
-        catch (SpaceException exp)
-        {
-
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
     adress.country[0] = towupper(adress.country[0]);
@@ -121,23 +99,17 @@ void User :: SetInfo()
             adress.city[wcscspn(adress.city, L"\n")] = L'\0';
             if (adress.city[0] == L'\0')
                 throw EmptyInputException("Вы ничего не ввели");
-            if (wcscspn(adress.city, L" ") <= 30)
+            if (wcscspn(adress.city, L" ") < wcscspn(adress.city, L"\0"))
                 throw SpaceException("Введена строка с пробелом");
             break;
         }
         catch (EmptyInputException exp)
         {
-
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
         catch (SpaceException exp)
         {
-
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
     adress.city[0] = towupper(adress.city[0]);
@@ -152,23 +124,17 @@ void User :: SetInfo()
             adress.street[wcscspn(adress.street, L"\n")] = L'\0';
             if (adress.street[0] == L'\0')
                 throw EmptyInputException("Вы ничего не ввели");
-            if (wcscspn(adress.street, L" ") <= 30)
+            if (wcscspn(adress.street, L" ") < wcscspn(adress.street, L"\0"))
                 throw SpaceException("Введена строка с пробелом");
             break;
         }
         catch (EmptyInputException exp)
         {
-
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
         catch (SpaceException exp)
         {
-
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
     adress.street[0] = towupper(adress.street[0]);
@@ -187,19 +153,11 @@ void User :: SetInfo()
         }
         catch (BadInputException exp)
         {
-            cin.clear();
-            cin.ignore();
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
         catch (Exception exp)
         {
-            cin.clear();
-            cin.ignore();
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
 
@@ -217,19 +175,11 @@ void User :: SetInfo()
         }
         catch (BadInputException exp)
         {
-            cin.clear();
-            cin.ignore();
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
         catch (Exception exp)
         {
-            cin.clear();
-            cin.ignore();
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
 
@@ -255,23 +205,17 @@ void User :: SetNewNumber()
             tmpPhoneNumber[wcscspn(tmpPhoneNumber, L"\n")] = L'\0';
             if (tmpPhoneNumber[0] == L'\0')
                 throw EmptyInputException("Вы ничего не ввели");
-            if (wcscspn(tmpPhoneNumber, L" ") <= 15)
+            if (wcscspn(tmpPhoneNumber, L" ") < wcscspn(tmpPhoneNumber, L"\0"))
                 throw SpaceException("Введена строка с пробелом");
             break;
         }
         catch (EmptyInputException exp)
         {
-
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
         catch (SpaceException exp)
         {
-
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
     cout << "Подтвердить изменения?\n"
@@ -291,19 +235,11 @@ void User :: SetNewNumber()
         }
         catch (BadInputException exp)
         {
-            cin.clear();
-            cin.ignore();
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
         catch (Exception exp)
         {
-            cin.clear();
-            cin.ignore();
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
     if (choice == 1)
@@ -326,23 +262,11 @@ void User :: SetNewAdress()
             country[wcscspn(country, L"\n")] = L'\0';
             if (country[0] == L'\0')
                 throw EmptyInputException("Вы ничего не ввели");
-            if (wcscspn(country, L" ") <= 30)
-                throw SpaceException("Введена строка с пробелом");
             break;
         }
         catch (EmptyInputException exp)
         {
-
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
-        }
-        catch (SpaceException exp)
-        {
-
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
     country[0] = towupper(country[0]);
@@ -357,23 +281,17 @@ void User :: SetNewAdress()
             city[wcscspn(city, L"\n")] = L'\0';
             if (city[0] == L'\0')
                 throw EmptyInputException("Вы ничего не ввели");
-            if (wcscspn(city, L" ") <= 30)
+            if (wcscspn(city, L" ") < wcscspn(city, L"\0"))
                 throw SpaceException("Введена строка с пробелом");
             break;
         }
         catch (EmptyInputException exp)
         {
-
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
         catch (SpaceException exp)
         {
-
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
     city[0] = towupper(city[0]);
@@ -388,23 +306,17 @@ void User :: SetNewAdress()
             street[wcscspn(street, L"\n")] = L'\0';
             if (street[0] == L'\0')
                 throw EmptyInputException("Вы ничего не ввели");
-            if (wcscspn(street, L" ") <= 30)
+            if (wcscspn(street, L" ") < wcscspn(street, L"\0"))
                 throw SpaceException("Введена строка с пробелом");
             break;
         }
         catch (EmptyInputException exp)
         {
-
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
         catch (SpaceException exp)
         {
-
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
     street[0] = towupper(street[0]);
@@ -424,19 +336,11 @@ void User :: SetNewAdress()
         }
         catch (BadInputException exp)
         {
-            cin.clear();
-            cin.ignore();
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
         catch (Exception exp)
         {
-            cin.clear();
-            cin.ignore();
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
     cout << "Введите номер квартиры: ";
@@ -453,19 +357,11 @@ void User :: SetNewAdress()
         }
         catch (BadInputException exp)
         {
-            cin.clear();
-            cin.ignore();
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
         catch (Exception exp)
         {
-            cin.clear();
-            cin.ignore();
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
     cout << "Подтвердить изменения?\n"
@@ -485,19 +381,11 @@ void User :: SetNewAdress()
         }
         catch (BadInputException exp)
         {
-            cin.clear();
-            cin.ignore();
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
         catch (Exception exp)
         {
-            cin.clear();
-            cin.ignore();
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
     if (choice == 1)
@@ -525,23 +413,17 @@ void User :: SetNewPassport()
             tmpPassportNum[wcscspn(tmpPassportNum, L"\n")] = L'\0';
             if (tmpPassportNum[0] == L'\0')
                 throw EmptyInputException("Вы ничего не ввели");
-            if (wcscspn(tmpPassportNum, L" ") <= 15)
+            if (wcscspn(tmpPassportNum, L" ") < wcscspn(tmpPassportNum, L"\0"))
                 throw SpaceException("Введена строка с пробелом");
             break;
         }
         catch (EmptyInputException exp)
         {
-
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
         catch (SpaceException exp)
         {
-
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
     
@@ -562,19 +444,11 @@ void User :: SetNewPassport()
         }
         catch (BadInputException exp)
         {
-            cin.clear();
-            cin.ignore();
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
         catch (Exception exp)
         {
-            cin.clear();
-            cin.ignore();
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
     if (choice == 1)

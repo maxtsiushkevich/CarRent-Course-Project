@@ -1,7 +1,7 @@
 #include "HybridCar.h"
 #include <fstream>
 #include <iostream>
-
+#include "../Exception/Exception.h"
 
 void HybridCar :: SetInfo()
 {
@@ -10,11 +10,25 @@ void HybridCar :: SetInfo()
     cout << "Тип топлива: " << endl;
     cout << "1 - Бензин\n"
             "2 - Дизель\n";
-    cin >> choice;
-    while (choice > 2 || choice < 1)
+    while (1)
     {
-        cout << "Ошибка. Введите еще раз: ";
-        cin >> choice;
+        try
+        {
+            cin >> choice;
+            if (cin.fail())
+                throw BadInputException("Введена не цифра");
+            if (choice > 2 || choice < 1)
+                throw Exception("Введен неверный пункт");
+            break;
+        }
+        catch (BadInputException exp)
+        {
+            exp.Fix();
+        }
+        catch (Exception exp)
+        {
+            exp.Fix();
+        }
     }
     switch (choice)
     {
@@ -24,24 +38,67 @@ void HybridCar :: SetInfo()
 
     cout << "Объем двигателя: " << endl;
     cin >> volume;
-    while (volume > 8.5 || volume < 0)
+    while (1)
     {
-        cout << "Ошибка. Введите еще раз: ";
-        cin >> volume;
+        try
+        {
+            cin >> volume;
+            if (cin.fail())
+                throw BadInputException("Введена не цифра");
+            if (volume < 0 || volume > 8.5)
+                throw Exception("Введено неверное значение");
+            break;
+        }
+        catch (BadInputException exp)
+        {
+            exp.Fix();
+        }
+        catch (Exception exp)
+        {
+            exp.Fix();
+        }
     }
     cout << "Расход топлива на 100км: " << endl;
-    cin >> consumption;
-    while (consumption < 0)
+    while (1)
     {
-        cout << "Ошибка. Введите еще раз: ";
-        cin >> consumption;
+        try
+        {
+            cin >> consumption;
+            if (cin.fail())
+                throw BadInputException("Введена не цифра");
+            if (consumption < 0)
+                throw Exception("Введено неверное значение");
+            break;
+        }
+        catch (BadInputException exp)
+        {
+            exp.Fix();
+        }
+        catch (Exception exp)
+        {
+            exp.Fix();
+        }
     }
-
     cout << "Объем батареи: " << endl;
     cin >> batteryCapacity;
-    while (batteryCapacity < 0)
+    while (1)
     {
-        cout << "Ошибка. Введите еще раз: ";
-        cin >> batteryCapacity;
+        try
+        {
+            cin >> batteryCapacity;
+            if (cin.fail())
+                throw BadInputException("Введена не цифра");
+            if (batteryCapacity < 0)
+                throw Exception("Введено неверное значение");
+            break;
+        }
+        catch (BadInputException exp)
+        {
+            exp.Fix();
+        }
+        catch (Exception exp)
+        {
+            exp.Fix();
+        }
     }
 }

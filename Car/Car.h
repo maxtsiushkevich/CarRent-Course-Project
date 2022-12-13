@@ -11,9 +11,9 @@ class Car
 protected:
     int id; // ID
     bool deleteMark; // метка, удалена ли машина
-    wchar_t brand[30], model[30], country[30], bodyType[30];
+    wchar_t brand[30] = {L"\0"}, model[30] = {L"\0"}, country[30] = {L"\0"}, bodyType[30] = {L"\0"};
     int manufacturedYear; // год производства
-    wchar_t transmissionType[5];
+    wchar_t transmissionType[5] = {L"\0"};
     int numberOfSeats; // количество мест
 
     int horsepower; // лошадиные силы
@@ -22,9 +22,9 @@ protected:
 
     struct interior
     {
-        wchar_t color[30], material[30];
+        wchar_t color[30] = {L"\0"}, material[30] = {L"\0"};
     } interior;
-    wchar_t color[30];
+    wchar_t color[30] = {L"\0"};
     int costPerDay; // стоимость аренды
 public:
     Car();

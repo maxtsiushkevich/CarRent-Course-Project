@@ -5,8 +5,8 @@ class Userdata
 {
     friend class Interface;
 private:
-    wchar_t login[30]; // ограничить длину
-    wchar_t password[30];
+    wchar_t login[30] = {L"\0"}; // ограничить длину
+    wchar_t password[30] = {L"\0"};
     int id;
 public:
     Userdata();

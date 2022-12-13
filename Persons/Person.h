@@ -10,8 +10,8 @@ class Person
 {
 protected:
     int id;
-    wchar_t name[30];
-    wchar_t surname[30];
+    wchar_t name[30] = {L"\0"};
+    wchar_t surname[30] = {L"\0"};
     int age;
 public:
     Person();

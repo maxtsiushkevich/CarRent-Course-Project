@@ -11,8 +11,8 @@ using namespace std;
 class User : public Person
 {
 private:
-    wchar_t passportNum[15]; // номер паспорта
-    wchar_t status[10]; // classic, silver, gold, platinum // добавить установку статуса
+    wchar_t passportNum[15] = {L"\0"}; // номер паспорта
+    wchar_t status[10] = {L"\0"}; // classic, silver, gold, platinum // добавить установку статуса
 
     // classic -0%
     // silver -5%
@@ -21,12 +21,12 @@ private:
 
     float count; // счет
     float spendMoney; // потраченные средства
-    wchar_t phoneNumber[15];
+    wchar_t phoneNumber[15] = {L"\0"};
     struct Adress
     {
-        wchar_t country[30];
-        wchar_t city[30];
-        wchar_t street[30];
+        wchar_t country[30] = {L"\0"};
+        wchar_t city[30] = {L"\0"};
+        wchar_t street[30] = {L"\0"};
         int house;
         int flat;
     } adress;

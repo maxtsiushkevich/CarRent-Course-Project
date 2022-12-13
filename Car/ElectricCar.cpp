@@ -1,6 +1,7 @@
 #include "ElectricCar.h"
 #include <iostream>
 #include <fstream>
+#include "../Exception/Exception.h"
 
 ElectricCar :: ElectricCar()
 {
@@ -11,10 +12,24 @@ void ElectricCar :: SetInfo()
 {
     Car::SetInfo();
     cout << "Объем батареи: " << endl;
-    cin >> batteryCapacity;
-    while (batteryCapacity < 0)
+    while (1)
     {
-        cout << "Ошибка. Введите еще раз: ";
-        cin >> batteryCapacity;
+        try
+        {
+            cin >> batteryCapacity;
+            if (cin.fail())
+                throw BadInputException("Введена не цифра");
+            if (batteryCapacity < 0)
+                throw Exception("Введено неверное значение");
+            break;
+        }
+        catch (BadInputException exp)
+        {
+            exp.Fix();
+        }
+        catch (Exception exp)
+        {
+            exp.Fix();
+        }
     }
 }

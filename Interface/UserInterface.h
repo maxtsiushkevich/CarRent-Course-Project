@@ -32,19 +32,11 @@ void Interface :: UserMainMenu()
             }
             catch (BadInputException exp)
             {
-                cin.clear();
-                cin.ignore();
-                fflush(stdin);
-                exp.Show();
-                cout << "Введите еще раз: ";
+                exp.Fix();
             }
             catch (Exception exp)
             {
-                cin.clear();
-                cin.ignore();
-                fflush(stdin);
-                exp.Show();
-                cout << "Введите еще раз: ";
+                exp.Fix();
             }
         }
         switch (choice)
@@ -111,19 +103,11 @@ void Interface :: SeeCars()
             }
             catch (BadInputException exp)
             {
-                cin.clear();
-                cin.ignore();
-                fflush(stdin);
-                exp.Show();
-                cout << "Введите еще раз: ";
+                exp.Fix();
             }
             catch (Exception exp)
             {
-                cin.clear();
-                cin.ignore();
-                fflush(stdin);
-                exp.Show();
-                cout << "Введите еще раз: ";
+                exp.Fix();
             }
         }
         if (choice == 5)
@@ -152,19 +136,11 @@ void Interface :: SeeCars()
                 }
                 catch (BadInputException exp)
                 {
-                    cin.clear();
-                    cin.ignore();
-                    fflush(stdin);
-                    exp.Show();
-                    cout << "Введите еще раз: ";
+                    exp.Fix();
                 }
                 catch (Exception exp)
                 {
-                    cin.clear();
-                    cin.ignore();
-                    fflush(stdin);
-                    exp.Show();
-                    cout << "Введите еще раз: ";
+                    exp.Fix();
                 }
             }
             if (tmp == 4)
@@ -288,11 +264,7 @@ void Interface :: CarOrder(int choice)
         }
         catch (BadInputException exp)
         {
-            cin.clear();
-            cin.ignore();
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
     sort(carIdInUsage.begin(), carIdInUsage.end());
@@ -315,19 +287,11 @@ void Interface :: CarOrder(int choice)
             }
             catch (BadInputException exp)
             {
-                cin.clear();
-                cin.ignore();
-                fflush(stdin);
-                exp.Show();
-                cout << "Введите еще раз: ";
+                exp.Fix();
             }
             catch (Exception exp)
             {
-                cin.clear();
-                cin.ignore();
-                fflush(stdin);
-                exp.Show();
-                cout << "Введите еще раз: ";
+                exp.Fix();
             }
         }
         if (tmp == 1)
@@ -357,19 +321,11 @@ void Interface :: CarOrder(int choice)
             }
             catch (BadInputException exp)
             {
-                cin.clear();
-                cin.ignore();
-                fflush(stdin);
-                exp.Show();
-                cout << "Введите еще раз: ";
+                exp.Fix();
             }
             catch (Exception exp)
             {
-                cin.clear();
-                cin.ignore();
-                fflush(stdin);
-                exp.Show();
-                cout << "Введите еще раз: ";
+                exp.Fix();
             }
         }
         if (tmp == 1)
@@ -624,19 +580,11 @@ void Interface :: AddCount()
         }
         catch (BadInputException exp)
         {
-            cin.clear();
-            cin.ignore();
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
         catch (OverflowException exp)
         {
-            cin.clear();
-            cin.ignore();
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+           exp.Fix();
         }
     }
     user.SetCount(plus);
@@ -666,19 +614,11 @@ void Interface :: SetAccountSettings()
             }
             catch (BadInputException exp)
             {
-                cin.clear();
-                cin.ignore();
-                fflush(stdin);
-                exp.Show();
-                cout << "Введите еще раз: ";
+                exp.Fix();
             }
             catch (Exception exp)
             {
-                cin.clear();
-                cin.ignore();
-                fflush(stdin);
-                exp.Show();
-                cout << "Введите еще раз: ";
+               exp.Fix();
             }
         }
         switch (choice)

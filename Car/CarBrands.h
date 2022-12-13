@@ -10,8 +10,8 @@ struct CarBrands
     friend class Car;
 private:
     int num;
-    wchar_t brand[30];
-    wchar_t country[30];
+    wchar_t brand[30] = {L"\0"};
+    wchar_t country[30] = {L"\0"};
     CarBrands() = default;
     ~CarBrands() = default;
     void GetCarBrands();

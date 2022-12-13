@@ -18,6 +18,13 @@ public:
     {
         cout << message << endl;
     }
+    virtual void Fix()
+    {
+        cin.clear();
+        fflush(stdin);
+        this->Show();
+        cout << "Введите еще раз: ";
+    }
 };
 class BadInputException : public Exception
 {
@@ -42,6 +49,12 @@ public:
     EmptyInputException(string message) : Exception()
     {
         this->message = message;
+    }
+    void Fix()
+    {
+        fflush(stdin);
+        this->Show();
+        cout << "Введите еще раз: ";
     }
 };
 class SpaceException : public Exception

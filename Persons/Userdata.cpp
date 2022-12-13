@@ -28,21 +28,17 @@ void Userdata :: SetInfo(int mode)
             login[wcscspn(login, L"\n")] = L'\0';
             if (login[0] == L'\0')
                 throw EmptyInputException("Вы ничего не ввели");
-            if (wcscspn(login, L" ") <= 30)
+            if (wcscspn(login, L" ") < wcscspn(login, L"\0"))
                 throw SpaceException("Введена строка с пробелом");
             break;
         }
         catch (EmptyInputException exp)
         {
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
         catch (SpaceException exp)
         {
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
     while (this->CheckLogin(login) == false)
@@ -58,21 +54,17 @@ void Userdata :: SetInfo(int mode)
                 login[wcscspn(login, L"\n")] = L'\0';
                 if (login[0] == L'\0')
                     throw EmptyInputException("Вы ничего не ввели");
-                if (wcscspn(login, L" ") <= 30)
+                if (wcscspn(login, L" ") < wcscspn(login, L"\0"))
                     throw SpaceException("Введена строка с пробелом");
                 break;
             }
             catch (EmptyInputException exp)
             {
-                fflush(stdin);
-                exp.Show();
-                cout << "Введите еще раз: ";
+                exp.Fix();
             }
             catch (SpaceException exp)
             {
-                fflush(stdin);
-                exp.Show();
-                cout << "Введите еще раз: ";
+                exp.Fix();
             }
         }
     }
@@ -86,21 +78,17 @@ void Userdata :: SetInfo(int mode)
             password[wcscspn(password, L"\n")] = L'\0';
             if (login[0] == L'\0')
                 throw EmptyInputException("Вы ничего не ввели");
-            if (wcscspn(password, L" ") <= 30)
+            if (wcscspn(password, L" ") < wcscspn(password, L"\0"))
                 throw SpaceException("Введена строка с пробелом");
             break;
         }
         catch (EmptyInputException exp)
         {
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
         catch (SpaceException exp)
         {
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
     ofstream file;
@@ -225,21 +213,17 @@ void Userdata :: ChangeLogin(int id)
             login[wcscspn(login, L"\n")] = L'\0';
             if (login[0] == L'\0')
                 throw EmptyInputException("Вы ничего не ввели");
-            if (wcscspn(login, L" ") <= 30)
+            if (wcscspn(login, L" ") < wcscspn(login, L"\0"))
                 throw SpaceException("Введена строка с пробелом");
             break;
         }
         catch (EmptyInputException exp)
         {
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
         catch (SpaceException exp)
         {
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
     while (CheckLogin(login) == false)
@@ -255,21 +239,17 @@ void Userdata :: ChangeLogin(int id)
                 login[wcscspn(login, L"\n")] = L'\0';
                 if (login[0] == L'\0')
                     throw EmptyInputException("Вы ничего не ввели");
-                if (wcscspn(login, L" ") <= 30)
+                if (wcscspn(login, L" ") < wcscspn(login, L"\0"))
                     throw SpaceException("Введена строка с пробелом");
                 break;
             }
             catch (EmptyInputException exp)
             {
-                fflush(stdin);
-                exp.Show();
-                cout << "Введите еще раз: ";
+                exp.Fix();
             }
             catch (SpaceException exp)
             {
-                fflush(stdin);
-                exp.Show();
-                cout << "Введите еще раз: ";
+                exp.Fix();
             }
         }
     }
@@ -320,21 +300,17 @@ void Userdata :: ChangePassword(int id)
             password[wcscspn(password, L"\n")] = L'\0';
             if (password[0] == L'\0')
                 throw EmptyInputException("Вы ничего не ввели");
-            if (wcscspn(password, L" ") <= 30)
+            if (wcscspn(password, L" ") < wcscspn(password, L"\0"))
                 throw SpaceException("Введена строка с пробелом");
             break;
         }
         catch (EmptyInputException exp)
         {
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
         catch (SpaceException exp)
         {
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
 

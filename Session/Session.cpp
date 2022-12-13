@@ -161,7 +161,6 @@ bool Session :: CheckDate(int daysNumFrom, int daysNumTo)
         return true;
 }
 
-
 int Session :: JDDate(int day, int month, int year)
 {
     int a = (14 - month) / 12;

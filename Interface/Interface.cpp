@@ -46,19 +46,11 @@ void Interface :: FirstMenu()
             }
             catch (BadInputException exp)
             {
-                cin.clear();
-                cin.ignore();
-                fflush(stdin);
-                exp.Show();
-                cout << "Введите еще раз: ";
+                exp.Fix();
             }
             catch (Exception exp)
             {
-                cin.clear();
-                cin.ignore();
-                fflush(stdin);
-                exp.Show();
-                cout << "Введите еще раз: ";
+                exp.Fix();
             }
         }
         Authentication auth;
@@ -114,19 +106,11 @@ void Interface :: AdminMainMenu()
             }
             catch (BadInputException exp)
             {
-                cin.clear();
-                cin.ignore();
-                fflush(stdin);
-                exp.Show();
-                cout << "Введите еще раз: ";
+                exp.Fix();
             }
             catch (Exception exp)
             {
-                cin.clear();
-                cin.ignore();
-                fflush(stdin);
-                exp.Show();
-                cout << "Введите еще раз: ";
+                exp.Fix();
             }
         }
         switch (choice)
@@ -313,11 +297,7 @@ void Interface :: ShowSpecificUserSessions()
         }
         catch (BadInputException exp)
         {
-            cin.clear();
-            cin.ignore();
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
     file.open("/Users/max/Desktop/CarRent/Files/User.bin", ios::binary); // кетч
@@ -355,11 +335,7 @@ void Interface ::DeleteSpecificCar()
             }
             catch (BadInputException exp)
             {
-                cin.clear();
-                cin.ignore();
-                fflush(stdin);
-                exp.Show();
-                cout << "Введите еще раз: ";
+                exp.Fix();
             }
         }
 
@@ -381,19 +357,11 @@ void Interface ::DeleteSpecificCar()
             }
             catch (BadInputException exp)
             {
-                cin.clear();
-                cin.ignore();
-                fflush(stdin);
-                exp.Show();
-                cout << "Введите еще раз: ";
+                exp.Fix();
             }
             catch (Exception exp)
             {
-                cin.clear();
-                cin.ignore();
-                fflush(stdin);
-                exp.Show();
-                cout << "Введите еще раз: ";
+                exp.Fix();
             }
         }
         if (tmp == 0)
@@ -488,11 +456,7 @@ void Interface :: ShowSpecificCarSessions()
         }
         catch (BadInputException exp)
         {
-            cin.clear();
-            cin.ignore();
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
     for (auto it = allSessions.begin(); it != allSessions.end(); ++it)
@@ -547,19 +511,11 @@ void Interface :: AddNewCar()
         }
         catch (BadInputException exp)
         {
-            cin.clear();
-            cin.ignore();
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
         catch (Exception exp)
         {
-            cin.clear();
-            cin.ignore();
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
 

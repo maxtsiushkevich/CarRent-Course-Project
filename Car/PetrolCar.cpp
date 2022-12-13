@@ -1,5 +1,6 @@
 #include "PetrolCar.h"
 #include <iostream>
+#include "../Exception/Exception.h"
 
 PetrolCar :: PetrolCar() : OilCar()
 {
@@ -15,11 +16,25 @@ void PetrolCar :: SetInfo()
             "2 - 92\n"
             "3 - 95\n"
             "4 - 98\n";
-    cin >> choice;
-    while (choice > 4 || choice < 0)
+    while (1)
     {
-        cout << "Ошибка. Введите еще раз: ";
-        cin >> choice;
+        try
+        {
+            cin >> choice;
+            if (cin.fail())
+                throw BadInputException("Введена не цифра");
+            if (choice < 1 || choice > 4)
+                throw Exception("Введен неверный пункт");
+            break;
+        }
+        catch (BadInputException exp)
+        {
+            exp.Fix();
+        }
+        catch (Exception exp)
+        {
+            exp.Fix();
+        }
     }
     switch (choice)
     {

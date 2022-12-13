@@ -9,7 +9,7 @@ class HybridCar : public ElectricCar, public OilCar
 {
     friend class Database;
 protected:
-    wchar_t fuelType[8];
+    wchar_t fuelType[8] = {L"\0"};
 public:
     HybridCar() : Car(), OilCar(), ElectricCar() { }
     ~HybridCar() = default;

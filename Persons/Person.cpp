@@ -20,21 +20,17 @@ void Person :: SetInfo()
             surname[wcscspn(surname, L"\n")] = L'\0';
             if (surname[0] == L'\0')
                 throw EmptyInputException("Вы ничего не ввели");
-            if (wcscspn(surname, L" ") <= 30)
+            if (wcscspn(surname, L" ") < wcscspn(surname, L"\0")) // считает до \0
                 throw SpaceException("Введена строка с пробелом");
             break;
         }
         catch (EmptyInputException exp)
         {
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
         catch (SpaceException exp)
         {
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
     surname[0] = towupper(surname[0]);
@@ -45,25 +41,21 @@ void Person :: SetInfo()
     {
         try
         {
-            fgetws(surname, 30, stdin);
-            surname[wcscspn(surname, L"\n")] = L'\0';
+            fgetws(name, 30, stdin);
+            surname[wcscspn(name, L"\n")] = L'\0';
             if (surname[0] == L'\0')
                 throw EmptyInputException("Вы ничего не ввели");
-            if (wcscspn(surname, L" ") <= 30)
+            if (wcscspn(name, L" ") < wcscspn(name, L"\0"))
                 throw SpaceException("Введена строка с пробелом");
             break;
         }
         catch (EmptyInputException exp)
         {
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
         catch (SpaceException exp)
         {
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
     name[0] = towupper(name[0]);
@@ -82,15 +74,11 @@ void Person :: SetInfo()
         }
         catch (BadInputException exp)
         {
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
         catch (Exception exp)
         {
-            fflush(stdin);
-            exp.Show();
-            cout << "Введите еще раз: ";
+            exp.Fix();
         }
     }
 }
