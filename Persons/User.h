@@ -1,5 +1,6 @@
 #ifndef CARRENT_USER_H
 #define CARRENT_USER_H
+
 #include "Person.h"
 
 #include <string>
@@ -8,22 +9,14 @@
 
 using namespace std;
 
-class User : public Person
-{
+class User : public Person {
 private:
     wchar_t passportNum[15] = {L"\0"}; // номер паспорта
-    wchar_t status[10] = {L"\0"}; // classic, silver, gold, platinum // добавить установку статуса
-
-    // classic -0%
-    // silver -5%
-    // gold -10%
-    // platinum -15%
-
+    wchar_t status[10] = {L"\0"}; // classic -0%, silver -5%, gold -10%, platinum -15%
     float count; // счет
     float spendMoney; // потраченные средства
     wchar_t phoneNumber[15] = {L"\0"};
-    struct Adress
-    {
+    struct Adress {
         wchar_t country[30] = {L"\0"};
         wchar_t city[30] = {L"\0"};
         wchar_t street[30] = {L"\0"};
@@ -32,9 +25,10 @@ private:
     } adress;
 public:
     User();
-    ~User() = default;
-    void SetInfo(); // заполнение полей класса
 
+    ~User() = default;
+
+    void SetInfo(); // заполнение полей класса
     void SetNewNumber(); // установка нового номера телефона
     void SetNewAdress(); // установка нового номера паспорта
     void SetNewPassport();
@@ -42,14 +36,14 @@ public:
     void SetCount(float plus) { count += plus; } // пополнение счета
     void SetSpendMoney(float spend) { spendMoney += spend; } // изменение количества потраченных средств
     void SetStatus(wchar_t *newStatus) { wcscpy(status, newStatus); } // установка нового статуса
-    wchar_t* GetPassportNum() { return passportNum; } // получение номера паспорта
-    wchar_t* GetStatus() { return status; } // получение текущего статуса
+    wchar_t *GetPassportNum() { return passportNum; } // получение номера паспорта
+    wchar_t *GetStatus() { return status; } // получение текущего статуса
     float GetCount() { return count; } // получение текущего баланса
     float GetSpendMoney() { return spendMoney; } // получение потраченных средств
-    wchar_t* GetPhoneNumber() { return phoneNumber; } // получение номера телефона
-    wchar_t* GetCountry() { return adress.country; } // получение страны
-    wchar_t* GetCity() { return adress.city; } // получение города
-    wchar_t* GetStreet() { return adress.street; } // получение улицы
+    wchar_t *GetPhoneNumber() { return phoneNumber; } // получение номера телефона
+    wchar_t *GetCountry() { return adress.country; } // получение страны
+    wchar_t *GetCity() { return adress.city; } // получение города
+    wchar_t *GetStreet() { return adress.street; } // получение улицы
     int GetHouse() { return adress.house; } // получение дома
     int GetFlat() { return adress.flat; } // получение квартиры
 };

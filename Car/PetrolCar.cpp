@@ -2,11 +2,11 @@
 #include <iostream>
 #include "../Exception/Exception.h"
 
-PetrolCar :: PetrolCar() : OilCar() {
+PetrolCar::PetrolCar() : OilCar() {
     petrolType = 0;
 }
 
-void PetrolCar :: SetInfo() {
+void PetrolCar::SetInfo() {
     OilCar::SetInfo();
     int choice;
     cout << "Марка бензина: " << endl;
@@ -32,12 +32,16 @@ void PetrolCar :: SetInfo() {
     }
     switch (choice) {
         case 1:
-            petrolType = 80; break;
+            petrolType = 80;
+            break;
         case 2:
-            petrolType = 92; break;
+            petrolType = 92;
+            break;
         case 3:
-            petrolType = 95; break;
+            petrolType = 95;
+            break;
         case 4:
-            petrolType = 98; break;
+            petrolType = 98;
+            break;
     }
 }

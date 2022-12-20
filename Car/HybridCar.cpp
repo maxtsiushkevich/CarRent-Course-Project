@@ -3,7 +3,7 @@
 #include <iostream>
 #include "../Exception/Exception.h"
 
-void HybridCar :: SetInfo() {
+void HybridCar::SetInfo() {
     Car::SetInfo();
     int choice;
     cout << "Тип топлива: " << endl;
@@ -27,12 +27,13 @@ void HybridCar :: SetInfo() {
     }
     switch (choice) {
         case 1:
-            wcscpy(fuelType, L"Бензин\0"); break;
+            wcscpy(fuelType, L"Бензин\0");
+            break;
         case 2:
-            wcscpy(fuelType, L"Дизель\0"); break;
+            wcscpy(fuelType, L"Дизель\0");
+            break;
     }
     cout << "Объем двигателя: " << endl;
-    cin >> volume;
     while (1) {
         try {
             cin >> volume;
@@ -67,7 +68,6 @@ void HybridCar :: SetInfo() {
         }
     }
     cout << "Объем батареи: " << endl;
-    cin >> batteryCapacity;
     while (1) {
         try {
             cin >> batteryCapacity;

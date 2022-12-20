@@ -4,8 +4,7 @@
 
 using namespace std;
 
-bool Authentication :: AdminAuthentication(Admin& admin)
-{
+bool Authentication::AdminAuthentication(Admin &admin) {
     wchar_t login[30], password[30];
     int mode = 1;
     cout << "Введите логин учетной записи" << endl;
@@ -17,12 +16,12 @@ bool Authentication :: AdminAuthentication(Admin& admin)
     fgetws(password, 30, stdin);
     password[wcscspn(password, L"\n")] = L'\0';
     account.SetData(login, password);
-    while(!account.CheckAccess(mode))
-    {
+    while (account.CheckAccess(mode) == false) {
         char tmp;
         fflush(stdin);
         cout << "Ошибка! Введите логин и пароль заново" << endl;
-        cout << "Если хотите выбрать другой режим входа, введите 1\nЕсли хотите продолжить, нажмите любую другую кнопку" << endl;
+        cout << "Если хотите выбрать другой режим входа, введите 1\nЕсли хотите продолжить, нажмите любую другую кнопку"
+             << endl;
         tmp = cin.get();
         if (tmp == '1')
             return false;
@@ -41,18 +40,15 @@ bool Authentication :: AdminAuthentication(Admin& admin)
     file.open("/Users/max/Desktop/CarRent/Files/Admin.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
-    while(file.read((char*)&admin, sizeof(Admin)))
-    {
+    while (file.read((char *) &admin, sizeof(Admin))) {
         if (admin.GetID() == account.GetID())
             break;
     }
     file.close();
     return true;
-};
+}
 
-bool Authentication :: UserAuthentication(User& user)
-{
-
+bool Authentication::UserAuthentication(User &user) {
     wchar_t login[30], password[30];
     int mode = 2;
     cout << "Введите логин учетной записи" << endl;
@@ -64,12 +60,12 @@ bool Authentication :: UserAuthentication(User& user)
     fgetws(password, 30, stdin);
     password[wcscspn(password, L"\n")] = L'\0';
     account.SetData(login, password);
-    while(!account.CheckAccess(mode))
-    {
+    while (!account.CheckAccess(mode)) {
         char tmp;
         fflush(stdin);
         cout << "Ошибка! Введите логин и пароль заново" << endl;
-        cout << "Если хотите выбрать другой режим входа, введите 1\nЕсли хотите продолжить, нажмите любую другую кнопку" << endl;
+        cout << "Если хотите выбрать другой режим входа, введите 1\nЕсли хотите продолжить, нажмите любую другую кнопку"
+             << endl;
         tmp = cin.get();
         if (tmp == '1')
             return false;
@@ -84,15 +80,14 @@ bool Authentication :: UserAuthentication(User& user)
         account.SetData(login, password);
     }
     cout << "Вход выполнен!" << endl;
-
     ifstream file;
     file.open("/Users/max/Desktop/CarRent/Files/User.bin", ios::binary);
-    if (!file.is_open())
-        cout << "Error";
-    while(file.read((char*)&user, sizeof(User)))
-    {
-        if (user.GetID() == account.GetID())
-        {
+    if (!file.is_open()) {
+        cout << "Ошибка открытия файла";
+        return false;
+    }
+    while (file.read((char *) &user, sizeof(User))) {
+        if (user.GetID() == account.GetID()) {
             file.close();
             break;
         }

@@ -2,12 +2,12 @@
 #include <fstream>
 #include <iostream>
 
-CarInUsage :: CarInUsage(int lastDay, int carID) {
+CarInUsage::CarInUsage(int lastDay, int carID) {
     this->lastDay = lastDay;
     this->carID = carID;
 }
 
-void CarInUsage :: WriteInFile() {
+void CarInUsage::WriteInFile() {
     ofstream file;
     file.open("/Users/max/Desktop/CarRent/Files/CarInUsage.bin", ios::binary | ios::app);
     if (!file.is_open())
@@ -17,7 +17,7 @@ void CarInUsage :: WriteInFile() {
     this->RefreshFile();
 }
 
-void CarInUsage :: RefreshFile() {
+void CarInUsage::RefreshFile() {
     int nowDay;
     time_t seconds = time(NULL);
     tm *currentTime = localtime(&seconds);
@@ -43,7 +43,7 @@ void CarInUsage :: RefreshFile() {
     rename("/Users/max/Desktop/CarRent/Files/tmp.bin", "/Users/max/Desktop/CarRent/Files/CarInUsage.bin");
 }
 
-void CarInUsage :: GetCarsInUsage(vector<int> &carIdInUsage) {
+void CarInUsage::GetCarsInUsage(vector<int> &carIdInUsage) {
     this->RefreshFile();
     ifstream file;
     file.open("/Users/max/Desktop/CarRent/Files/CarInUsage.bin", ios::binary);

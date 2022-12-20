@@ -3,11 +3,11 @@
 #include <fstream>
 #include "../Exception/Exception.h"
 
-ElectricCar :: ElectricCar() {
+ElectricCar::ElectricCar() {
     batteryCapacity = 0;
 }
 
-void ElectricCar :: SetInfo() {
+void ElectricCar::SetInfo() {
     Car::SetInfo();
     cout << "Объем батареи: " << endl;
     while (1) {

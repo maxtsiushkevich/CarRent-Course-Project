@@ -4,12 +4,12 @@
 #include <fstream>
 #include "../Exception/Exception.h"
 
-OilCar :: OilCar () : Car() {
+OilCar::OilCar() : Car() {
     volume = 0.0;
     consumption = 0.0;
 }
 
-void OilCar :: SetInfo() {
+void OilCar::SetInfo() {
     Car::SetInfo();
     cout << "Объем двигателя: " << endl;
     while (1) {

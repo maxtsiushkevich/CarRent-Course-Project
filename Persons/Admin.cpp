@@ -4,8 +4,7 @@
 #include <iostream>
 #include "../ID/IdGenerator.h"
 
-void Admin :: SetInfo()
-{
+void Admin::SetInfo() {
     id = IdGenerator::GetIdForPerson();
     Person::SetInfo();
     Userdata userdata(id);
@@ -14,6 +13,6 @@ void Admin :: SetInfo()
     file.open("/Users/max/Desktop/CarRent/Files/Admin.bin", ios::binary | ios::app);
     if (!file.is_open())
         cout << "Error";
-    file.write((char*)this, sizeof(Admin));
+    file.write((char *) this, sizeof(Admin));
     file.close();
 }

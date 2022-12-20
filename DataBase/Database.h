@@ -7,24 +7,31 @@
 #include "HybridCar.h"
 #include <vector>
 
-class Database
-{
+class Database {
 public:
-    static void AddInDatabase(DieselCar&);
-    static void AddInDatabase(PetrolCar&);
-    static void AddInDatabase(ElectricCar&);
-    static void AddInDatabase(HybridCar&);
+    static void AddInDatabase(DieselCar &);
 
-    static void GetFromDatabase(vector<DieselCar>&);
-    static void GetFromDatabase(vector<PetrolCar>&);
-    static void GetFromDatabase(vector<ElectricCar>&);
-    static void GetFromDatabase(vector<HybridCar>&);
+    static void AddInDatabase(PetrolCar &);
 
-    static void DeleteFromDatabase(DieselCar&);
-    static void DeleteFromDatabase(PetrolCar&);
-    static void DeleteFromDatabase(ElectricCar&);
-    static void DeleteFromDatabase(HybridCar&);
+    static void AddInDatabase(ElectricCar &);
 
+    static void AddInDatabase(HybridCar &);
+
+    static void GetFromDatabase(vector<DieselCar> &);
+
+    static void GetFromDatabase(vector<PetrolCar> &);
+
+    static void GetFromDatabase(vector<ElectricCar> &);
+
+    static void GetFromDatabase(vector<HybridCar> &);
+
+    static void DeleteFromDatabase(DieselCar &);
+
+    static void DeleteFromDatabase(PetrolCar &);
+
+    static void DeleteFromDatabase(ElectricCar &);
+
+    static void DeleteFromDatabase(HybridCar &);
 };
 
 

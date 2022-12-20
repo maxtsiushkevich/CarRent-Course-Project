@@ -4,19 +4,19 @@
 #include "CarBrands.h"
 #include "../ID/IdGenerator.h"
 #include "../Exception/Exception.h"
+
 using namespace std;
 
-Car :: Car() {
+Car::Car() {
     id = 0; // присваем ID
     deleteMark = false;
     manufacturedYear = 0;
     numberOfSeats = 0;
-    horsepower = 0;
-    to100 = 0.0;
     maxSpeed = 0;
     costPerDay = 0;
 }
-void Car :: SetInfo() {
+
+void Car::SetInfo() {
     int choice;
     id = IdGenerator::GetIdForCar(); // присваем ID
     CarBrands carinfo;
@@ -87,7 +87,7 @@ void Car :: SetInfo() {
             if (cin.fail())
                 throw BadInputException("Введена не цифра");
             if (manufacturedYear < 1930 || manufacturedYear > 2022)
-                throw Exception("Неверное значене");
+                throw Exception("Неверное значение");
             break;
         }
         catch (BadInputException exp) {
@@ -97,32 +97,6 @@ void Car :: SetInfo() {
             exp.Fix();
         }
     }
-    cout << "Коробка передач:\n1 - Автоматическа\n2 - Механическая " << endl; // выбор из АКПП или МКПП
-    while (1) {
-        try {
-            cin >> choice;
-            if (cin.fail())
-                throw BadInputException("Введена не цифра");
-            if (choice < 1 || choice > 2)
-                throw Exception("Введен неверный пункт");
-            break;
-        }
-        catch (BadInputException exp) {
-            exp.Fix();
-        }
-        catch (Exception exp) {
-            exp.Fix();
-        }
-    }
-    switch (choice) {
-        case 1:
-            wcscpy(transmissionType, L"АКПП\0");
-            break;
-        case 2:
-            wcscpy(transmissionType, L"МКПП\0");
-            break;
-    }
-
     cout << "Количество мест: " << endl;
     while (1) {
         try {
@@ -188,7 +162,7 @@ void Car :: SetInfo() {
             color[wcscspn(color, L"\n")] = L'\0';
             if (color[0] == L'\0')
                 throw EmptyInputException("Вы ничего не ввели");
-            if (wcscspn(color, L" ") < wcscspn(interior.color, L"\0"))
+            if (wcscspn(color, L" ") < wcscspn(color, L"\0"))
                 throw SpaceException("Введена строка с пробелом");
             break;
         }
@@ -200,40 +174,6 @@ void Car :: SetInfo() {
         }
     }
     color[0] = towupper(color[0]);
-    cout << "Количество лошадиных сил в двигателе: " << endl;
-    while (1) {
-        try {
-            cin >> horsepower;
-            if (cin.fail())
-                throw BadInputException("Введена не цифра");
-            if (horsepower <= 0 || horsepower > 1000)
-                throw Exception("Введен неверный пункт");
-            break;
-        }
-        catch (BadInputException exp) {
-            exp.Fix();
-        }
-        catch (Exception exp) {
-            exp.Fix();
-        }
-    }
-    cout << "Разгон до 100: " << endl;
-    while (1) {
-        try {
-            cin >> to100;
-            if (cin.fail())
-                throw BadInputException("Введена не цифра");
-            if (to100 < 1.0)
-                throw Exception("Введен неверный пункт");
-            break;
-        }
-        catch (BadInputException exp) {
-            exp.Fix();
-        }
-        catch (Exception exp) {
-            exp.Fix();
-        }
-    }
     cout << "Максимальная скорость: " << endl;
     while (1) {
         try {

@@ -6,24 +6,19 @@
 
 using namespace std;
 
-Userdata :: Userdata()
-{
+Userdata::Userdata() {
     id = 0;
 }
 
-Userdata :: Userdata(int id)
-{
+Userdata::Userdata(int id) {
     this->id = id;
 }
 
-void Userdata :: SetInfo(int mode)
-{
+void Userdata::SetInfo(int mode) {
     cout << "Введите логин (пробелы недопустимы): ";
     fflush(stdin);
-    while (1)
-    {
-        try
-        {
+    while (1) {
+        try {
             fgetws(login, 30, stdin);
             login[wcscspn(login, L"\n")] = L'\0';
             if (login[0] == L'\0')
@@ -32,24 +27,19 @@ void Userdata :: SetInfo(int mode)
                 throw SpaceException("Введена строка с пробелом");
             break;
         }
-        catch (EmptyInputException exp)
-        {
+        catch (EmptyInputException exp) {
             exp.Fix();
         }
-        catch (SpaceException exp)
-        {
+        catch (SpaceException exp) {
             exp.Fix();
         }
     }
-    while (this->CheckLogin(login) == false)
-    {
+    while (!this->CheckLogin(login)) {
         cout << "Данный логин недоступен! " << endl;
         cout << "Введите другой логин: " << endl;
         fflush(stdin);
-        while (1)
-        {
-            try
-            {
+        while (1) {
+            try {
                 fgetws(login, 30, stdin);
                 login[wcscspn(login, L"\n")] = L'\0';
                 if (login[0] == L'\0')
@@ -58,22 +48,18 @@ void Userdata :: SetInfo(int mode)
                     throw SpaceException("Введена строка с пробелом");
                 break;
             }
-            catch (EmptyInputException exp)
-            {
+            catch (EmptyInputException exp) {
                 exp.Fix();
             }
-            catch (SpaceException exp)
-            {
+            catch (SpaceException exp) {
                 exp.Fix();
             }
         }
     }
     cout << "Введите пароль (пробелы недопустимы): ";
     fflush(stdin);
-    while (1)
-    {
-        try
-        {
+    while (1) {
+        try {
             fgetws(password, 30, stdin);
             password[wcscspn(password, L"\n")] = L'\0';
             if (login[0] == L'\0')
@@ -82,54 +68,47 @@ void Userdata :: SetInfo(int mode)
                 throw SpaceException("Введена строка с пробелом");
             break;
         }
-        catch (EmptyInputException exp)
-        {
+        catch (EmptyInputException exp) {
             exp.Fix();
         }
-        catch (SpaceException exp)
-        {
+        catch (SpaceException exp) {
             exp.Fix();
         }
     }
     ofstream file;
-    switch (mode)
-    {
+    switch (mode) {
         case 1:
             file.open("/Users/max/Desktop/CarRent/Files/AdminAuthentication.bin", ios::binary | ios::app);
             if (!file.is_open())
                 cout << "Error";
-            file.write((char*)this, sizeof(Userdata));
+            file.write((char *) this, sizeof(Userdata));
             file.close();
             break;
         case 2:
             file.open("/Users/max/Desktop/CarRent/Files/UserAuthentication.bin", ios::binary | ios::app);
             if (!file.is_open())
                 cout << "Error";
-            file.write((char*)this, sizeof(Userdata));
+            file.write((char *) this, sizeof(Userdata));
             file.close();
             break;
     }
 }
-void Userdata :: SetData(wchar_t login[], wchar_t password[])
-{
+
+void Userdata::SetData(wchar_t login[], wchar_t password[]) {
     wcscpy(this->login, login);
     wcscpy(this->password, password);
 }
 
-bool Userdata :: CheckAccess(int mode)
-{
+bool Userdata::CheckAccess(int mode) {
     Userdata tmp;
     ifstream file;
-    if (mode == 1)
-    {
+    if (mode == 1) {
         file.open("/Users/max/Desktop/CarRent/Files/AdminAuthentication.bin", ios::binary);
         if (!file.is_open())
             cout << "Error";
-            // добавить исключение
-        while (file.read((char*)&tmp, sizeof(tmp)))
-        {
-            if (!wcscmp(tmp.login, login) && !wcscmp(tmp.password, password))
-            {
+        // добавить исключение
+        while (file.read((char *) &tmp, sizeof(tmp))) {
+            if (!wcscmp(tmp.login, login) && !wcscmp(tmp.password, password)) {
                 this->id = tmp.id;
                 file.close();
                 return true;
@@ -138,16 +117,13 @@ bool Userdata :: CheckAccess(int mode)
         file.close();
         return false;
     }
-    if (mode == 2)
-    {
+    if (mode == 2) {
         file.open("/Users/max/Desktop/CarRent/Files/UserAuthentication.bin", ios::binary);
         if (!file.is_open())
             cout << "Error";
-            // добавить искючения
-        while (file.read((char *) &tmp, sizeof(tmp)))
-        {
-            if (!wcscmp(tmp.login, login) && !wcscmp(tmp.password, password))
-            {
+        // добавить искючения
+        while (file.read((char *) &tmp, sizeof(tmp))) {
+            if (!wcscmp(tmp.login, login) && !wcscmp(tmp.password, password)) {
                 this->id = tmp.id;
                 file.close();
                 return true;
@@ -158,30 +134,24 @@ bool Userdata :: CheckAccess(int mode)
     }
 }
 
-bool Userdata :: CheckLogin(wchar_t login[])
-{
+bool Userdata::CheckLogin(wchar_t login[]) {
     Userdata tmp;
     ifstream file;
     file.open("/Users/max/Desktop/CarRent/Files/AdminAuthentication.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
-    while (file.read((char*)&tmp, sizeof(tmp)))
-    {
-        if (!wcscmp(tmp.login, login))
-        {
+    while (file.read((char *) &tmp, sizeof(tmp))) {
+        if (!wcscmp(tmp.login, login)) {
             file.close();
             return false;
         }
     }
     file.close();
-
     file.open("/Users/max/Desktop/CarRent/Files/UserAuthentication.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
-    while (file.read((char*)&tmp, sizeof(tmp)))
-    {
-        if (!wcscmp(tmp.login, login))
-        {
+    while (file.read((char *) &tmp, sizeof(tmp))) {
+        if (!wcscmp(tmp.login, login)) {
             file.close();
             return false;
         }
@@ -189,26 +159,22 @@ bool Userdata :: CheckLogin(wchar_t login[])
     return true;
 }
 
-void Userdata :: ChangeLogin(int id)
-{
+void Userdata::ChangeLogin(int id) {
     Userdata newUserdata;
     ifstream file;
     file.open("/Users/max/Desktop/CarRent/Files/UserAuthentication.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
-    while (file.read((char*)&newUserdata, sizeof(Userdata)))
-    {
-        if(newUserdata.GetID() == id)
+    while (file.read((char *) &newUserdata, sizeof(Userdata))) {
+        if (newUserdata.GetID() == id)
             break;
     }
     file.close();
     wchar_t login[30];
     cout << "Введите новый логин (пробелы недопустимы): ";
     fflush(stdin);
-    while (1)
-    {
-        try
-        {
+    while (1) {
+        try {
             fgetws(login, 30, stdin);
             login[wcscspn(login, L"\n")] = L'\0';
             if (login[0] == L'\0')
@@ -217,24 +183,19 @@ void Userdata :: ChangeLogin(int id)
                 throw SpaceException("Введена строка с пробелом");
             break;
         }
-        catch (EmptyInputException exp)
-        {
+        catch (EmptyInputException exp) {
             exp.Fix();
         }
-        catch (SpaceException exp)
-        {
+        catch (SpaceException exp) {
             exp.Fix();
         }
     }
-    while (CheckLogin(login) == false)
-    {
+    while (CheckLogin(login) == false) {
         cout << "Данный логин недоступен! " << endl;
         cout << "Введите другой логин: " << endl;
         fflush(stdin);
-        while (1)
-        {
-            try
-            {
+        while (1) {
+            try {
                 fgetws(login, 30, stdin);
                 login[wcscspn(login, L"\n")] = L'\0';
                 if (login[0] == L'\0')
@@ -243,59 +204,50 @@ void Userdata :: ChangeLogin(int id)
                     throw SpaceException("Введена строка с пробелом");
                 break;
             }
-            catch (EmptyInputException exp)
-            {
+            catch (EmptyInputException exp) {
                 exp.Fix();
             }
-            catch (SpaceException exp)
-            {
+            catch (SpaceException exp) {
                 exp.Fix();
             }
         }
     }
     newUserdata.SetData(login, newUserdata.GetPassword());
-
     ifstream file1; // для чтения
     ofstream file2; // для записи
-
     file1.open("/Users/max/Desktop/CarRent/Files/UserAuthentication.bin", ios::binary);
     if (!file1.is_open())
         cout << "Error";
     file2.open("/Users/max/Desktop/CarRent/Files/tmp.bin", ios::binary | ios::app);
     Userdata tmp;
-    while(file1.read((char*)&tmp, sizeof(Userdata)))
-    {
+    while (file1.read((char *) &tmp, sizeof(Userdata))) {
         if (tmp.GetID() == newUserdata.GetID())
-            file2.write((char*)&newUserdata, sizeof(newUserdata));
+            file2.write((char *) &newUserdata, sizeof(newUserdata));
         else
-            file2.write((char*)&tmp, sizeof(newUserdata));
+            file2.write((char *) &tmp, sizeof(newUserdata));
     }
     file1.close();
     remove("/Users/max/Desktop/CarRent/Files/UserAuthentication.bin");
     file2.close();
-    rename("/Users/max/Desktop/CarRent/Files/tmp.bin","/Users/max/Desktop/CarRent/Files/UserAuthentication.bin");
+    rename("/Users/max/Desktop/CarRent/Files/tmp.bin", "/Users/max/Desktop/CarRent/Files/UserAuthentication.bin");
 }
 
-void Userdata :: ChangePassword(int id)
-{
+void Userdata::ChangePassword(int id) {
     Userdata newUserdata;
     ifstream file;
     file.open("/Users/max/Desktop/CarRent/Files/UserAuthentication.bin", ios::binary);
     if (!file.is_open())
         cout << "Error";
-    while (file.read((char*)&newUserdata, sizeof(Userdata)))
-    {
-        if(newUserdata.GetID() == id)
+    while (file.read((char *) &newUserdata, sizeof(Userdata))) {
+        if (newUserdata.GetID() == id)
             break;
     }
     file.close();
     wchar_t password[30];
     cout << "Введите новый пароль (пробелы недопустимы): ";
     fflush(stdin);
-    while (1)
-    {
-        try
-        {
+    while (1) {
+        try {
             fgetws(password, 30, stdin);
             password[wcscspn(password, L"\n")] = L'\0';
             if (password[0] == L'\0')
@@ -304,35 +256,29 @@ void Userdata :: ChangePassword(int id)
                 throw SpaceException("Введена строка с пробелом");
             break;
         }
-        catch (EmptyInputException exp)
-        {
+        catch (EmptyInputException exp) {
             exp.Fix();
         }
-        catch (SpaceException exp)
-        {
+        catch (SpaceException exp) {
             exp.Fix();
         }
     }
-
     newUserdata.SetData(newUserdata.GetLogin(), password);
-
     ifstream file1; // для чтения
     ofstream file2; // для записи
-
     file1.open("/Users/max/Desktop/CarRent/Files/UserAuthentication.bin", ios::binary);
     if (!file1.is_open())
         cout << "Error";
     file2.open("/Users/max/Desktop/CarRent/Files/tmp.bin", ios::binary | ios::app);
     Userdata tmp;
-    while(file1.read((char*)&tmp, sizeof(Userdata)))
-    {
+    while (file1.read((char *) &tmp, sizeof(Userdata))) {
         if (tmp.GetID() == newUserdata.GetID())
-            file2.write((char*)&newUserdata, sizeof(newUserdata));
+            file2.write((char *) &newUserdata, sizeof(newUserdata));
         else
-            file2.write((char*)&tmp, sizeof(newUserdata));
+            file2.write((char *) &tmp, sizeof(newUserdata));
     }
     file1.close();
     remove("/Users/max/Desktop/CarRent/Files/UserAuthentication.bin");
     file2.close();
-    rename("/Users/max/Desktop/CarRent/Files/tmp.bin","/Users/max/Desktop/CarRent/Files/UserAuthentication.bin");
+    rename("/Users/max/Desktop/CarRent/Files/tmp.bin", "/Users/max/Desktop/CarRent/Files/UserAuthentication.bin");
 }

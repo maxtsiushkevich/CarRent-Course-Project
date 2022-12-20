@@ -15,14 +15,12 @@ Interface::Interface() {
     Database::GetFromDatabase(dieselCars);
     Database::GetFromDatabase(electricCars);
     Database::GetFromDatabase(hybridCars);
-
     CarInUsage tmp;
     tmp.GetCarsInUsage(carIdInUsage);
-
     Session::GetAllSessions(allSessions);
 }
 
-void Interface :: FirstMenu() {
+void Interface::FirstMenu() {
     int choice;
     while (1) {
         cout << "Выберите режим входа: \n"
@@ -57,7 +55,7 @@ void Interface :: FirstMenu() {
                     this->UserMainMenu();
                 break;
             case 3:
-                this->Registation();
+                this->Registration();
                 break;
             case 4:
                 exit(0);
@@ -65,11 +63,11 @@ void Interface :: FirstMenu() {
     }
 }
 
-void Interface :: Registation() {
+void Interface::Registration() {
     user.SetInfo();
 }
 
-void Interface :: AdminMainMenu() {
+void Interface::AdminMainMenu() {
     int choice;
     while (1) {
         cout << "===== Личный кабинет ===== \n"
@@ -130,7 +128,7 @@ void Interface :: AdminMainMenu() {
     }
 }
 
-void Interface :: ShowAllUsers() {
+void Interface::ShowAllUsers() {
     ifstream file;
     file.open("/Users/max/Desktop/CarRent/Files/User.bin", ios::binary);
     if (!file.is_open()) // кетч
@@ -142,7 +140,7 @@ void Interface :: ShowAllUsers() {
     wcout << '|' << setw(10) << left << L"ID" << '|' << setw(15) << L"Фамилия" << '|' << setw(15) << L"Имя" << '|'
           << setw(10) << L"Возраст" << '|'
           << setw(15) << L"Баланс" << '|' << setw(15) << L"Потрачено" << '|' << setw(10) << L"Статус" << '|' << setw(15)
-          << L"Номер телефона" << '|' << setw(15) << L"Номер паспорта" << '|' << endl;
+          << L"Номер телефона" << '|' << setw(15) << L"Номер паспорта" << '|' << endl; // добавить вывод адреса
     cout
             << "----------------------------------------------------------------------------------------------------------------------------------"
             << endl;
@@ -159,7 +157,7 @@ void Interface :: ShowAllUsers() {
     }
 }
 
-void Interface :: ShowAllSessions() {
+void Interface::ShowAllSessions() {
     ifstream file;
     file.open("/Users/max/Desktop/CarRent/Files/User.bin", ios::binary);
     if (!file.is_open())
@@ -248,7 +246,7 @@ void Interface :: ShowAllSessions() {
     }
 }
 
-void Interface :: ShowAllCars() {
+void Interface::ShowAllCars() {
     cout << "----------------------------------------------------------------------------------" << endl;
     wcout << '|' << setw(10) << left << L"Номер" << '|' << setw(15) << L"Марка" << '|' << setw(15) << L"Модель" << '|'
           << setw(15) << L"Год выпуска" << '|' << setw(10) << L"Стоимость" << '|' << setw(10) << L"Удален ли" << '|'
@@ -300,7 +298,7 @@ void Interface :: ShowAllCars() {
     }
 }
 
-void Interface :: ShowSpecificUserSessions() {
+void Interface::ShowSpecificUserSessions() {
     this->ShowAllUsers();
     int userID;
     ifstream file;
@@ -329,7 +327,7 @@ void Interface :: ShowSpecificUserSessions() {
     return;
 }
 
-void Interface ::DeleteSpecificCar() {
+void Interface::DeleteSpecificCar() {
     int choice;
     while (1) {
         this->ShowAllCars();
@@ -346,7 +344,6 @@ void Interface ::DeleteSpecificCar() {
                 exp.Fix();
             }
         }
-
         if (choice == 0)
             return;
         cout << "Для подтверждения удаления введите '1'\n"
@@ -370,7 +367,6 @@ void Interface ::DeleteSpecificCar() {
         }
         if (tmp == 0)
             return;
-
         for (auto it = petrolCars.begin(); it != petrolCars.end(); ++it) {
             if (it->GetID() == choice) {
                 it->DeleteCar();
@@ -403,39 +399,37 @@ void Interface ::DeleteSpecificCar() {
     }
 }
 
-void Interface :: RefreshAllCars() {
+void Interface::RefreshAllCars() {
     ofstream file;
-
     file.open("/Users/max/Desktop/CarRent/Files/PetrolCars.bin", ios::out | ios::binary | ios::trunc);
     file.close();
     for (auto it = petrolCars.begin(); it != petrolCars.end(); ++it)
         Database::AddInDatabase(*it);
-
     file.open("/Users/max/Desktop/CarRent/Files/DieselCars.bin", ios::out | ios::binary | ios::trunc);
     file.close();
     for (auto it = dieselCars.begin(); it != dieselCars.end(); ++it)
         Database::AddInDatabase(*it);
-
     file.open("/Users/max/Desktop/CarRent/Files/ElectricCars.bin", ios::out | ios::binary | ios::trunc);
     file.close();
     for (auto it = electricCars.begin(); it != electricCars.end(); ++it)
         Database::AddInDatabase(*it);
-
     file.open("/Users/max/Desktop/CarRent/Files/HybridCars.bin", ios::out | ios::binary | ios::trunc);
     file.close();
     for (auto it = hybridCars.begin(); it != hybridCars.end(); ++it)
         Database::AddInDatabase(*it);
 }
 
-void Interface :: ShowSpecificCarSessions() {
+void Interface::ShowSpecificCarSessions() {
     ifstream file;
     file.open("/Users/max/Desktop/CarRent/Files/User.bin", ios::binary);
-    if (!file.is_open())
-        cout << "Error";
+    if (!file.is_open()) {
+        cout << "Ошибка открытия файла";
+        return;
+    }
+    file.close();
     vector<User> users;
     while (file.read((char *) &user, sizeof(User)))
         users.push_back(user);
-
     this->ShowAllCars();
     cout << "Введите ID интересуещего автомобиля: ";
     int carID;
@@ -462,7 +456,6 @@ void Interface :: ShowSpecificCarSessions() {
           << setw(15) << L"Дата начала" << '|' << setw(15) << L"Дата окончания" << '|' << setw(10) << L"Стоимость"
           << '|' << endl;
     cout << "---------------------------------------------------------------------------------------" << endl;
-
     for (auto it = allSessions.begin(); it != allSessions.end(); ++it) {
         if (it->carID == carID) {
             for (auto it1 = users.begin(); it1 != users.end(); ++it1) {
@@ -480,9 +473,10 @@ void Interface :: ShowSpecificCarSessions() {
             }
         }
     }
+    return;
 }
 
-void Interface :: AddNewCar() {
+void Interface::AddNewCar() {
     cout << "Тип автомобиля тип для добавления\n"
             "1 - Бензиновые автомобили\n"
             "2 - Дизельные автомобили\n"
@@ -506,7 +500,6 @@ void Interface :: AddNewCar() {
             exp.Fix();
         }
     }
-
     PetrolCar pcar;
     DieselCar dcar;
     ElectricCar ecar;
